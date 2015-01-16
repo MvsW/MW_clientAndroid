@@ -7,7 +7,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import com.example.checkconnectivity.R;
+import dam.mw.clientAndroid.R;
 
 import android.app.Activity;
 import android.content.Context;
