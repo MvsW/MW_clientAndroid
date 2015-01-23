@@ -1,8 +1,12 @@
 package dam.mw.clientAndroid;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -31,6 +35,9 @@ public class MainActivity extends Activity {
 
 	private ObjectOutputStream sortida;
 	private ObjectInputStream entrada;
+	
+	private OutputStream testSortida;
+	private InputStream testEntrada;
 
 	private Context context;
 	private Activity activity;
@@ -145,7 +152,8 @@ public class MainActivity extends Activity {
 	
 
 	public void enviarDades(String message) throws IOException {
-		this.sortida.writeObject(message);
+		//this.sortida.writeObject(message);
+		testSortida.write(message.getBytes());
 	}
 
 	class ClientThread implements Runnable {
@@ -165,9 +173,13 @@ public class MainActivity extends Activity {
 				printarLog("Conectat a: "
 						+ socket.getInetAddress().getHostName());
 
-				sortida = new ObjectOutputStream(socket.getOutputStream());
-				sortida.flush();
-				entrada = new ObjectInputStream(socket.getInputStream());
+//				sortida = new ObjectOutputStream(socket.getOutputStream());
+//				sortida.flush();
+//				entrada = new ObjectInputStream(socket.getInputStream());
+				
+				testSortida = socket.getOutputStream();
+				testSortida.flush();
+				testEntrada = socket.getInputStream();
 
 				printarLog("S'han rebut els flux de E/S");
 				printarLog("Buscant oponent...");
@@ -175,14 +187,15 @@ public class MainActivity extends Activity {
 				activarBtnSend();
 				
 				try {
-					printarLog((String) entrada.readObject()); // Rebem el què
-																// ens diu el
+					//printarLog((String) entrada.readObject()); // Rebem el què
+					printarLog(llegir());						// ens diu el
 																// servidor.
 					printarLog("Introdueix un text pel servidor");
 					// /VERSIO BETA PROTOCOL
 					boolean escoltant = true;
 					do {
-						String msg = (String) entrada.readObject();
+						//String msg = (String) entrada.readObject();
+						String msg = llegir();
 						printarLog("<---" + msg);
 						if(msg.equals("bye,bye")){
 							escoltant = false;
@@ -198,11 +211,27 @@ public class MainActivity extends Activity {
 			} catch (UnknownHostException e1) {
 				Log.e("LogsAndroid", "Host desconegut");
 			} catch (IOException e1) {
-				Log.e("LogsAndroid","Error I/O ->" + e1.getMessage());
+				Log.e("LogsAndroid","Error I/O ->" + e1.toString());
 			} catch (Exception e1) {
 				Log.e("LogsAndroid", e1.getMessage());
 			}
 			return true;
+		}
+		
+		public String llegir() throws IOException{
+			String msg;
+			byte array[] = new byte[1024];
+            //int readed = testEntrada.read(array);
+           // msg = new String(array).trim();
+            
+            BufferedInputStream bis = new BufferedInputStream(testEntrada);
+            int readed = bis.read(array);
+            if(readed == -1){
+            	desconectar();
+            	Log.i("LogsAndroid","-1 desconectar!!");
+            }
+            msg = new String(array).trim();
+            return  msg;
 		}
 		
 		public void desconectar(){
