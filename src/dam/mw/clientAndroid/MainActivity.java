@@ -32,10 +32,10 @@ public class MainActivity extends Activity {
 	private EditText et_ip, et_message;
 	private Button btn_connect, btn_send_message;
 	private TextView tv_log, tv_xivato;
+	/* */
+	// private ObjectOutputStream sortida;
+	// private ObjectInputStream entrada;
 
-	private ObjectOutputStream sortida;
-	private ObjectInputStream entrada;
-	
 	private OutputStream testSortida;
 	private InputStream testEntrada;
 
@@ -44,6 +44,8 @@ public class MainActivity extends Activity {
 	static String HOST = "null";
 	static final int PORT = 4444;
 	private Socket socket;
+
+	GPSTracker gps;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,7 @@ public class MainActivity extends Activity {
 			toast.show();
 			System.exit(1);
 		}
+		chechGPS();
 
 		btn_connect.setOnClickListener(new OnClickListener() {
 			@Override
@@ -96,7 +99,7 @@ public class MainActivity extends Activity {
 				// Llegim les dades
 				String message = et_message.getText().toString();
 				if (!message.isEmpty() && message != null) {
-					printarLog("-->"+message);
+					printarLog("-->" + message);
 					try {
 						enviarDades(message);
 						et_message.setText("");
@@ -106,6 +109,28 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
+	}
+
+	public void chechGPS() {
+		gps = new GPSTracker(MainActivity.this);
+
+		// Check if GPS enabled
+		if (gps.canGetLocation()) {
+
+			double latitude = gps.getLatitude();
+			double longitude = gps.getLongitude();
+			tv_xivato.setText("Your Location is - Lat: " + latitude + " Long: "+longitude);
+			// \n is for new line
+			Toast.makeText(
+					getApplicationContext(),
+					"Your Location is - \nLat: " + latitude + "\nLong: "
+							+ longitude, Toast.LENGTH_LONG).show();
+		} else {
+			// Can't get location.
+			// GPS or network is not enabled.
+			// Ask user to enable GPS/network in settings.
+			gps.showSettingsAlert();
+		}
 	}
 
 	public boolean checkConnection() {
@@ -119,8 +144,8 @@ public class MainActivity extends Activity {
 		return isConnected;
 	}
 
-								/** METHODS UPDATE UI  **/
-	
+	/** METHODS UPDATE UI **/
+
 	public void printarLog(final String message) {
 		runOnUiThread(new Runnable() {
 			@Override
@@ -129,30 +154,32 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
-	public void resetGUI(){
+
+	public void resetGUI() {
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				//ALGUNA COSA MES A REINICIAR??????
+				// ALGUNA COSA MES A REINICIAR??????
 				btn_connect.setEnabled(true);
 				btn_send_message.setEnabled(false);
 			}
 		});
 	}
-	public void activarBtnSend(){
+
+	public void activarBtnSend() {
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
 				btn_send_message.setEnabled(true);
-				
+
 			}
 		});
 	}
-									/** FINAL UPDATES**/
-	
+
+	/** FINAL UPDATES **/
 
 	public void enviarDades(String message) throws IOException {
-		//this.sortida.writeObject(message);
+		// this.sortida.writeObject(message);
 		testSortida.write(message.getBytes());
 	}
 
@@ -173,10 +200,10 @@ public class MainActivity extends Activity {
 				printarLog("Conectat a: "
 						+ socket.getInetAddress().getHostName());
 
-//				sortida = new ObjectOutputStream(socket.getOutputStream());
-//				sortida.flush();
-//				entrada = new ObjectInputStream(socket.getInputStream());
-				
+				// sortida = new ObjectOutputStream(socket.getOutputStream());
+				// sortida.flush();
+				// entrada = new ObjectInputStream(socket.getInputStream());
+
 				testSortida = socket.getOutputStream();
 				testSortida.flush();
 				testEntrada = socket.getInputStream();
@@ -185,25 +212,27 @@ public class MainActivity extends Activity {
 				printarLog("Buscant oponent...");
 
 				activarBtnSend();
-				
+
 				try {
-					//printarLog((String) entrada.readObject()); // Rebem el què
-					printarLog(llegir());						// ens diu el
-																// servidor.
+					// printarLog((String) entrada.readObject()); // Rebem el
+					// què
+					printarLog(llegir()); // ens diu el
+											// servidor.
 					printarLog("Introdueix un text pel servidor");
 					// /VERSIO BETA PROTOCOL
 					boolean escoltant = true;
 					do {
-						//String msg = (String) entrada.readObject();
+						// String msg = (String) entrada.readObject();
 						String msg = llegir();
 						printarLog("<---" + msg);
-						if(msg.equals("bye,bye")){
+						if (msg.equals("bye,bye")) {
 							escoltant = false;
 						}
-					} while(escoltant);
-					Log.i("LogsAndroid", "<--- servidor a tancat la conexio amb exit");
+					} while (escoltant);
+					Log.i("LogsAndroid",
+							"<--- servidor a tancat la conexio amb exit");
 					desconectar();
-					
+
 				} catch (Exception e) {
 					Toast.makeText(activity, e.toString(), Toast.LENGTH_SHORT)
 							.show();
@@ -211,36 +240,36 @@ public class MainActivity extends Activity {
 			} catch (UnknownHostException e1) {
 				Log.e("LogsAndroid", "Host desconegut");
 			} catch (IOException e1) {
-				Log.e("LogsAndroid","Error I/O ->" + e1.toString());
+				Log.e("LogsAndroid", "Error I/O ->" + e1.toString());
 			} catch (Exception e1) {
 				Log.e("LogsAndroid", e1.getMessage());
 			}
 			return true;
 		}
-		
-		public String llegir() throws IOException{
+
+		public String llegir() throws IOException {
 			String msg;
 			byte array[] = new byte[1024];
-            //int readed = testEntrada.read(array);
-           // msg = new String(array).trim();
-            
-            BufferedInputStream bis = new BufferedInputStream(testEntrada);
-            int readed = bis.read(array);
-            if(readed == -1){
-            	desconectar();
-            	Log.i("LogsAndroid","-1 desconectar!!");
-            }
-            msg = new String(array).trim();
-            return  msg;
+			// int readed = testEntrada.read(array);
+			// msg = new String(array).trim();
+
+			BufferedInputStream bis = new BufferedInputStream(testEntrada);
+			int readed = bis.read(array);
+			if (readed == -1) {
+				desconectar();
+				Log.i("LogsAndroid", "-1 desconectar!!");
+			}
+			msg = new String(array).trim();
+			return msg;
 		}
-		
-		public void desconectar(){
+
+		public void desconectar() {
 			try {
 				socket.close();
 				resetGUI();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				Log.e("LogsAndroid",e.getMessage());
+				Log.e("LogsAndroid", e.getMessage());
 			}
 		}
 	}
