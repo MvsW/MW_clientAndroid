@@ -13,6 +13,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+/**
+ * This class acts as main activity 
+ * @author Olivellaf
+ *
+ */
 public class ALogin extends Activity implements OnClickListener {
 
 	@Override

@@ -18,7 +18,8 @@ public class ASplash extends Activity {
         /** Hide action bar **/
         getActionBar().hide();
         /* New Handler to start the Menu-Activity 
-         * and close this Splash-Screen after some seconds.*/
+         * and close this Splash-Screen after some seconds.
+         * Implements the connectivity test (GPS) */
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
