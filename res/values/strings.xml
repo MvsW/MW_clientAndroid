@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+	<!-- Title Activitys & App name -->
     <string name="app_name">MW_clientAndroid</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="title_activity_alogin">Login</string>
+    <string name="title_activity_amenu">Menu</string>
+    <string name="title_activity_aregister">Register</string>
+    <string name="title_activity_abattle">Battle</string>
+    <string name="title_activity_amy_data">My Data</string>
+    
+    <!-- ALogin Strings -->
+    <string  name="btn_register">Register</string>
+	<string name="btn_login">Login</string>
+	<string name="hint_userOrMail">userName Or Mail</string>
+	<string name="hint_password">Password</string>
+	
+	<!-- AMenu Strings -->
+	<string name="btn_battle">Battle</string>
+	<string name="btn_showData">Show Data</string>
+	
+	<!-- ABattle Strings -->
+	<string name="btn_defense">Defense</string>
+	<string name="btn_dodge">Dodge</string>
+	<string name="btn_superAttack">Super Attack</string>
+	<string name="btn_spell1">Spell 1</string>
+	<string name="btn_spell2">Spell 2</string>
+    <string name="btn_normalAttack">Normal Attack</string>
+	
+    <!-- AMyData Strings -->
+    <string name="tv_life">LIFE</string>
+    <string name="tv_energy">ENERGY</string>
+    <string name="tv_regEnergy">Energy Regeneration</string>
+	<string name="tv_strength">STRENGTH</string>
+	<string name="tv_inteligence">INTELIGENCE</string>
+	<string name="tv_dateRegister">DATE REGISTER</string>
+	<string name="tv_totalPoints">TOTAL POINTS</string>
+	<string name="tv_totalWins">TOTAL WINS</string>
+	
+	<!-- ASplash Strings -->
+	
+	<!--  ARegister Strings -->
+	
+	<!-- ARegisterCharacter Strings -->
+	
+	<!-- ASearchingBattle Strings -->
+	
 </resources>

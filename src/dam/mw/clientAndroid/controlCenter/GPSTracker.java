@@ -1,4 +1,4 @@
-package dam.mw.clientAndroid;
+package dam.mw.clientAndroid.controlCenter;
 
 import android.app.AlertDialog;
 import android.app.Service;

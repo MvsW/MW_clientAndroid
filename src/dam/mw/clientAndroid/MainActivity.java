@@ -12,6 +12,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import dam.mw.clientAndroid.R;
+import dam.mw.clientAndroid.controlCenter.CConstants;
+import dam.mw.clientAndroid.controlCenter.GPSTracker;
 
 import android.app.Activity;
 import android.content.Context;
@@ -44,6 +46,7 @@ public class MainActivity extends Activity {
 	static String HOST = "null";
 	static final int PORT = 4444;
 	private Socket socket;
+	private boolean escoltant = true;
 
 	GPSTracker gps;
 
@@ -195,7 +198,7 @@ public class MainActivity extends Activity {
 		@Override
 		protected Boolean doInBackground(Void... params) {
 			try {
-				InetAddress serverAddr = InetAddress.getByName(HOST);
+				InetAddress serverAddr = InetAddress.getByName(CConstants.HOST);//HOST
 				socket = new Socket(serverAddr, PORT);
 				printarLog("Conectat a: "
 						+ socket.getInetAddress().getHostName());
@@ -220,7 +223,7 @@ public class MainActivity extends Activity {
 											// servidor.
 					printarLog("Introdueix un text pel servidor");
 					// /VERSIO BETA PROTOCOL
-					boolean escoltant = true;
+					
 					do {
 						// String msg = (String) entrada.readObject();
 						String msg = llegir();
@@ -267,6 +270,7 @@ public class MainActivity extends Activity {
 			try {
 				socket.close();
 				resetGUI();
+				escoltant = false;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				Log.e("LogsAndroid", e.getMessage());
