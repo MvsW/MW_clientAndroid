@@ -22,10 +22,10 @@ public class CConnection {
 
     public CConnection(Socket socket) {
         this.conexio = socket;
-        obtenirFlux();
+        getFlush();
     }
 
-    private void obtenirFlux() {//obtenir flux deja preparado los outputs y inputs
+    private void getFlush() {//obtenir flux deja preparado los outputs y inputs
         try {
             os = conexio.getOutputStream();
             os.flush();

@@ -1,9 +1,12 @@
 package dam.mw.clientAndroid.official;
 
+import java.util.ArrayList;
+
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
+import dam.mw.clientAndroid.controlCenter.JApp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.*;
 
 /**
  * This class acts as main activity 
@@ -20,10 +23,22 @@ import android.widget.Button;
  */
 public class ALogin extends Activity implements OnClickListener {
 
+	private JApp japp = new JApp(); 
+	private EditText et_usernameOrEmail, et_password;
+	private ArrayList<EditText> fields;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_alogin);
+		
+		// FindViewBy ID
+		et_usernameOrEmail = (EditText) findViewById(R.id.et_userOrMail);
+		et_password = (EditText) findViewById(R.id.et_password);
+		
+		// Add to a ArrayList
+		fields.add(et_usernameOrEmail);
+		fields.add(et_password);
 	}
 
 	@Override
@@ -50,7 +65,11 @@ public class ALogin extends Activity implements OnClickListener {
 		Intent intent;
 		switch (v.getId()) {
 		case R.id.btn_login:
-			if(true){ //Validar fields
+			if(true){ 
+				//Validar fields
+				if (!japp.areEmpty(fields) && japp.validatedLogin(japp.getUserLoginInfo(fields))) {
+					
+				}
 				//Compleixen la condició 
 				//start Protocol login
 				intent = new Intent(this,AMenu.class);
