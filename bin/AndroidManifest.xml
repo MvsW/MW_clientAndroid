@@ -7,27 +7,47 @@
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="21" />
-   
-    <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+
+    <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
     <uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            
-            android:name="dam.mw.clientAndroid.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
+        </activity>
+        <activity
+            android:name=".official.ALogin"
+            android:label="@string/title_activity_alogin" >
+                        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-				
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            
+        </activity>
+        <activity
+            android:name=".official.AMenu"
+            android:label="@string/title_activity_amenu" >
+        </activity>
+        <activity
+            android:name=".official.ARegister"
+            android:label="@string/title_activity_aregister" >
+        </activity>
+        <activity
+            android:name=".official.ABattle"
+            android:label="@string/title_activity_abattle" >
+        </activity>
+        <activity
+            android:name="dam.mw.clientAndroid.official.AMyData"
+            android:label="@string/title_activity_amy_data" >
         </activity>
     </application>
 
