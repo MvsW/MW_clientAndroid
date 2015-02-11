@@ -31,6 +31,7 @@ public class ALogin extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_alogin);
+		// TODO: Revisar documentos juancar para quitar top-bars y status-bar.
 		
 		// FindViewBy ID
 		et_usernameOrEmail = (EditText) findViewById(R.id.et_userOrMail);
@@ -40,43 +41,29 @@ public class ALogin extends Activity implements OnClickListener {
 		fields.add(et_usernameOrEmail);
 		fields.add(et_password);
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.alogin, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
+	
 	@Override
 	public void onClick(View v) {
 		Intent intent;
 		switch (v.getId()) {
 		case R.id.btn_login:
 			if(true){ 
-				//Validar fields
-				if (!japp.areEmpty(fields) && japp.validatedLogin(japp.getUserLoginInfo(fields))) {
-					
+				// TODO: VALIDACIONES de los CAMPOS
+				// 1- Si están vacios o no
+				// 2- Cada campo con su propia validación (revisar excel para conocer los tamaños y maneres de realizar estos checks)
+				// 3- Validación de que el usuario existe en la bbdd. No solo utilizar JAPP, seguramente se deberá recurrir a CConnection a través de CApppp
+				if (!japp.areEmpty(fields) 
+						&& japp.validatedLogin(japp.getUserLoginInfo(fields))) {
+					// Si Compleixen la condició 
+					// START PROTOCOL LOGIN
+					intent = new Intent(this, AMenu.class);
+					// Tenemos que añadir algun put extra? Alguna información?
+					// Falta iniciar la activity
 				}
-				//Compleixen la condició 
-				//start Protocol login
-				intent = new Intent(this,AMenu.class);
 			}
-			
 			break;
 		case R.id.btn_register:
+			// TODO: Falta iniciar la activity
 			intent = new Intent(this,ARegister.class);
 			break;
 		default:
