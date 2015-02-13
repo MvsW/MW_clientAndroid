@@ -30,7 +30,7 @@
     <!-- AMyData Strings -->
     <string name="tv_life">LIFE</string>
     <string name="tv_energy">ENERGY</string>
-    <string name="tv_regEnergy">Energy Regeneration</string>
+    <string name="tv_regEnergy">ENERGY REGENERATION</string>
 	<string name="tv_strength">STRENGTH</string>
 	<string name="tv_inteligence">INTELIGENCE</string>
 	<string name="tv_dateRegister">DATE REGISTER</string>
@@ -40,9 +40,42 @@
 	<!-- ASplash Strings -->
 	
 	<!--  ARegister Strings -->
+	<string name="tv_registration">Registration</string>
+    <string name="tv_userName">User Name</string>
+    <string name="et_userName">Choose your User Name</string>
+	<string name="tv_mail">Mail</string>
+	<string name="et_mail">Type the real email</string>
+	<string name="tv_password">Password</string>
+	<string name="et_password">Choose the password</string>
+	<string name="tv_confirmPassword">Confirm password</string>
+	<string name="et_confirmPassword">Repeat this password</string>
+	<string name="btn_registerActivity">Register</string>
 	
-	<!-- ARegisterCharacter Strings -->
+	<!-- ARegisterPlayer Strings -->
+	
+	<string name="tv_title_selectClass">Select Class</string>
+	<string name="tv_warlock">Warlock</string>
+	<string name="tv_mage">Mage</string>
+	<string name="tv_skill_life">Life</string>
+	<string name="tv_skill_energy">Energy</string>
+	<string name="tv_skill_regEnergy">Energy Regeneration</string>
+	<string name="tv_skill_strength">Strength</string>
+	<string name="tv_skill_inteligence">Inteligence</string>
+	<string name="tv_skill_unassigned_points">Unassigned Points</string>
+	<string name="tv_check_register_player_form"></string>
+	<string name="lbl_life"></string>
+	<string name="lbl_energy"></string>
+	<string name="lbl_regEnergy"></string>
+	<string name="lbl_strength"></string> 	<!-- Enter to the custom component -->
+	<string name="lbl_inteligence"></string> <!--Enter to the custom component -->
+	<string name="lbl_unsassigned_points"></string>
+	
+	<string name="et_playerName">Choose your player name</string>
 	
 	<!-- ASearchingBattle Strings -->
+	
+	<string name="tv_searching">Searching</string>
+	<string name="tv_cheats"></string>
+	
 	
 </resources>

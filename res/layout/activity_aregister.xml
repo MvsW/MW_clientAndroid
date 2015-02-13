@@ -8,5 +8,111 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="dam.mw.clientAndroid.official.ARegister" >
 
+    
+    <TextView
+        android:id="@+id/tv_registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/tv_registration"        
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/et_userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_registration"
+        android:layout_marginTop="39dp"
+        android:hint="@string/et_userName"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_userName"
+        android:layout_alignRight="@+id/et_userName"
+        android:layout_below="@+id/et_userName"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/et_mail"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_mail"
+        android:layout_alignRight="@+id/et_mail"
+        android:layout_below="@+id/et_mail"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:hint="@string/et_password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/et_confirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_password"
+        android:layout_alignRight="@+id/et_password"
+        android:layout_below="@+id/et_password"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="@string/et_confirmPassword"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/tv_userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_userName"
+        android:layout_below="@+id/tv_registration"
+        android:layout_marginTop="24dp"
+        android:hint="@string/tv_userName" />
+
+    <TextView
+        android:id="@+id/tv_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_mail"
+        android:layout_below="@+id/et_userName"
+        android:layout_marginTop="16dp"
+        android:hint="@string/tv_mail"/>
+
+    <TextView
+        android:id="@+id/tv_confirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_confirmPassword"
+        android:layout_below="@+id/et_password"
+        android:layout_marginTop="26dp"
+        android:hint="@string/tv_confirmPassword" />
+
+    <Button
+        android:id="@+id/btn_registerActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:onClick="onClick"
+        android:text="@string/btn_registerActivity" />
+
+    <TextView
+        android:id="@+id/tv_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tv_userName"
+        android:layout_below="@+id/et_mail"
+        android:hint="@string/tv_password" />
+    
 
 </RelativeLayout>

@@ -35,6 +35,22 @@ public class JApp {
 		return false;
 	}
 	
+	public boolean mailValidation (ArrayList<EditText> fields){
+		String fieldText= fields.get(1).getText().toString();
+		if (!fieldText.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")){
+			return true; 
+		}
+	return false;
+}
+	
+	
+	public boolean passwordValidation (ArrayList<EditText> fields){
+			if (fields.get(2).length()<=7){
+				return true; 
+			}
+		return false;
+	}
+	
 	public ContentValues getUserLoginInfo (ArrayList<EditText> fields) {
 		ContentValues values = new ContentValues();
 		values.put("USERNAME_OR_EMAIL", fields.get(0).toString());

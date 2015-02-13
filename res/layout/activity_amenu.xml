@@ -21,18 +21,19 @@
         android:id="@+id/btn_battle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_showData"
+        android:layout_alignRight="@+id/btn_showData"
         android:layout_below="@+id/iv_LogoMenu"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="127dp"
         android:text="@string/btn_battle" />
 
     <Button
         android:id="@+id/btn_showData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_battle"
         android:layout_below="@+id/btn_battle"
-        android:layout_marginTop="27dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
         android:text="@string/btn_showData" />
     
 </RelativeLayout>

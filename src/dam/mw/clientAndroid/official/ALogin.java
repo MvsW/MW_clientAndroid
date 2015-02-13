@@ -25,7 +25,7 @@ public class ALogin extends Activity implements OnClickListener {
 
 	private JApp japp = new JApp(); 
 	private EditText et_usernameOrEmail, et_password;
-	private ArrayList<EditText> fields;
+	private ArrayList<EditText> fields = new ArrayList<EditText>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +47,19 @@ public class ALogin extends Activity implements OnClickListener {
 		Intent intent;
 		switch (v.getId()) {
 		case R.id.btn_login:
-			if(true){ 
+			if(true){
 				// TODO: VALIDACIONES de los CAMPOS
-				// 1- Si están vacios o no
-				// 2- Cada campo con su propia validación (revisar excel para conocer los tamaños y maneres de realizar estos checks)
+				//Si estan vac�os o no.
+				if	(japp.areEmpty(fields)){
+					et_usernameOrEmail.setError("Required field");
+					et_password.setError("Required field");
+				}else{
+				// 2- Cada campo con su propia validación (revisar excel para conocer los tamaños y maneres de realizar estos checks) Password lenght: 8
+				
+				}
+				
 				// 3- Validación de que el usuario existe en la bbdd. No solo utilizar JAPP, seguramente se deberá recurrir a CConnection a través de CApppp
-				if (!japp.areEmpty(fields) 
-						&& japp.validatedLogin(japp.getUserLoginInfo(fields))) {
+				if (!japp.areEmpty(fields) && japp.validatedLogin(japp.getUserLoginInfo(fields))) {
 					// Si Compleixen la condició 
 					// START PROTOCOL LOGIN
 					intent = new Intent(this, AMenu.class);
@@ -65,6 +71,7 @@ public class ALogin extends Activity implements OnClickListener {
 		case R.id.btn_register:
 			// TODO: Falta iniciar la activity
 			intent = new Intent(this,ARegister.class);
+			startActivity(intent);
 			break;
 		default:
 			break;
