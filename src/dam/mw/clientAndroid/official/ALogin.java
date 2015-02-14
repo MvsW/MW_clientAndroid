@@ -32,6 +32,7 @@ public class ALogin extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_alogin);
 		// TODO: Revisar documentos juancar para quitar top-bars y status-bar.
+		//getActionBar().hide();
 		
 		// FindViewBy ID
 		et_usernameOrEmail = (EditText) findViewById(R.id.et_userOrMail);
@@ -49,7 +50,7 @@ public class ALogin extends Activity implements OnClickListener {
 		case R.id.btn_login:
 			if(true){
 				// TODO: VALIDACIONES de los CAMPOS
-				//Si estan vacíos o no.
+				//Si estan vacï¿½os o no.
 				if	(japp.areEmpty(fields)){
 					et_usernameOrEmail.setError("Required field");
 					et_password.setError("Required field");
