@@ -114,7 +114,7 @@ public final class R {
         public static final int lbl_life=0x7f05002f;
         public static final int lbl_regEnergy=0x7f050031;
         public static final int lbl_strength=0x7f050032;
-        /** Enter to the custom component 
+        /**  Enter to the custom component 
          */
         public static final int lbl_unsassigned_points=0x7f050034;
         public static final int title_activity_abattle=0x7f050005;
@@ -136,7 +136,7 @@ public final class R {
         public static final int tv_password=0x7f050020;
         public static final int tv_regEnergy=0x7f050015;
         /**  ASplash Strings 
-  ARegister Strings 
+ ARegister Strings 
          */
         public static final int tv_registration=0x7f05001b;
         /**  ASearchingBattle Strings 
