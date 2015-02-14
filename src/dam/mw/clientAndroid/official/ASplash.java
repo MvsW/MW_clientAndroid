@@ -71,6 +71,7 @@ public class ASplash extends Activity {
 
 			double latitude = gps.getLatitude();
 			double longitude = gps.getLongitude();
+			CApp.setPosition(latitude, longitude);
 			// \n is for new line
 			check = true;
 			Toast.makeText(

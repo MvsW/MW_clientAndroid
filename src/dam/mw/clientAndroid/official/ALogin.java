@@ -63,12 +63,15 @@ public class ALogin extends Activity implements OnClickListener {
 
 				}
 
-				
+				CApp.sendLogin(fields.get(0).getText().toString(), fields
+						.get(1).getText().toString(), CApp.getLongitude(),
+						CApp.getLatitude());
 				// 3- Validación de que el usuario existe en la bbdd. No solo
 				// utilizar JAPP, seguramente se deberá recurrir a CConnection a
 				// través de CApppp
 				if (!JApp.areEmpty(fields)
 						&& JApp.validatedLogin(JApp.getUserLoginInfo(fields))) {
+
 					// Si Compleixen la condició
 					// START PROTOCOL LOGIN
 					intent = new Intent(this, AMenu.class);
@@ -77,8 +80,6 @@ public class ALogin extends Activity implements OnClickListener {
 			}
 			break;
 		case R.id.btn_register:
-			// TODO: Falta iniciar la activity
-			Log.i("LogsAndroid", "register click");
 			intent = new Intent(this, ARegister.class);
 			startActivity(intent);
 			break;
