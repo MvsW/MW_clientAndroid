@@ -47,6 +47,7 @@ public class JApp {
 		return false;
 	}
 
+	/** WTF??? **/
 	public static ContentValues getUserLoginInfo(ArrayList<EditText> fields) {
 		ContentValues values = new ContentValues();
 		values.put("USERNAME_OR_EMAIL", fields.get(0).toString());

@@ -5,6 +5,8 @@ import java.net.Socket;
 
 import org.apache.http.util.LangUtils;
 
+import android.util.Log;
+
 public class CApp {
 
 	private static CConnection connection;
@@ -16,7 +18,10 @@ public class CApp {
 		InetAddress serverAddr = InetAddress.getByName(CConstants.HOST);// HOST
 		socket = new Socket(serverAddr, CConstants.PORT);
 
+		
 		connection = new CConnection(socket);
+		Log.i("LogsAndroid","Conectat a: "
+				+ socket.getInetAddress().getHostName());
 	}
 
 	public static void setPosition(double lat, double lon) {
@@ -34,13 +39,20 @@ public class CApp {
 
 	public static boolean sendLogin(String userOrMail, String Password,
 			double longitude, double latitude) {
+
 		boolean logged = false;
+		// Log.i("LogsAndroid", ""+connection.equals(null));
+		Log.i("LogsAndroid", "prepare send login...");
 		connection.sendData(userOrMail + "," + Password + "," + longitude + ","
 				+ latitude);
+		Log.i("LogsAndroid", "send login...");
 		if (connection.readData().equals(CConstants.SUCCES)) {
+
+			Log.i("LogsAndroid", "recived...");
 			// Ok login correcte
 			logged = true;
 		}
+
 		return logged;
 	}
 
@@ -54,6 +66,10 @@ public class CApp {
 			logged = true;
 		}
 		return logged;
+	}
+
+	public static String getData() {
+		return connection.readData();
 	}
 
 	public static void sendRegisterOp() {

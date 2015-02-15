@@ -1,6 +1,5 @@
 package dam.mw.clientAndroid.official;
 
-import dam.mw.clientAndroid.MainActivity;
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.GPSTracker;
@@ -48,14 +47,13 @@ public class ASplash extends Activity {
 
 	private void startLogin() {
 		/*
-		 * New Handler to start the Menu-Activity and close this Splash-Screen
+		 * New Handler to start the Login-Activity and close this Splash-Screen
 		 * after some seconds. Implements the connectivity test (GPS)
 		 */
-		Log.i(log, "display");
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				/* Create an Intent that will start the Menu-Activity. */
+				/* Create an Intent that will start the Login-Activity. */
 				Intent mainIntent = new Intent(ASplash.this, ALogin.class);
 				ASplash.this.startActivity(mainIntent);
 				ASplash.this.finish();
@@ -87,19 +85,20 @@ public class ASplash extends Activity {
 	}
 
 	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
+	protected void onResume(){
+		//falta pulir el metode per recupera la posició al torna del intent settings
 		super.onResume();
 		chechGPS();
 		if (check) {
 			startLogin();
 		}
-
+		// Thread per separa network del fil principal
 		new Thread(new Runnable() {
 
 			@Override
 			public void run() {
 				try {
+					Log.i(log, "trying to connect");
 					CApp.connect();
 				} catch (Exception e) {
 					Log.e(log,
@@ -107,10 +106,11 @@ public class ASplash extends Activity {
 									+ e.toString());
 				}
 			}
-		});
+		}).start();
 
 	}
 
+	// Check connectivity network
 	private boolean checkConnection() {
 		ConnectivityManager cm = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
