@@ -50,6 +50,7 @@ public class AMenu extends Activity implements OnClickListener {
 			// a Abattle, rebre dades a mostrar en la activity. Inicia la batalla (timeOuts) 
 			intent = new Intent(this, ABattle.class);
 			// startActivity(intent);
+			
 
 			break;
 		case R.id.btn_showData: // click show data

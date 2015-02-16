@@ -77,7 +77,7 @@ public class ALogin extends Activity implements OnClickListener {
 							} else {
 								// password incorrect o user not exist
 								Log.i("LogsAndroid",
-										"password incorrec o user not exist");
+										"password incorrect o user not exist");
 							}
 						}
 					}).start();
