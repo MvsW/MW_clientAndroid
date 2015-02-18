@@ -25,31 +25,40 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int LinearLayout2=0x7f08000f;
-        public static final int action_settings=0x7f080018;
+        public static final int LinearLayout2=0x7f080018;
+        public static final int action_settings=0x7f080021;
         public static final int btn_battle=0x7f08000d;
-        public static final int btn_connect=0x7f080012;
+        public static final int btn_connect=0x7f08001b;
         public static final int btn_defense=0x7f080001;
         public static final int btn_dodge=0x7f080002;
         public static final int btn_login=0x7f08000a;
         public static final int btn_normalAttack=0x7f080005;
         public static final int btn_register=0x7f08000b;
-        public static final int btn_send_message=0x7f080015;
+        public static final int btn_registerActivity=0x7f080016;
+        public static final int btn_send_message=0x7f08001e;
         public static final int btn_showData=0x7f08000e;
         public static final int btn_spell1=0x7f080006;
         public static final int btn_spell2=0x7f080004;
         public static final int btn_superAttack=0x7f080003;
-        public static final int et_ip=0x7f080011;
-        public static final int et_message=0x7f080014;
+        public static final int et_confirmPassword=0x7f080012;
+        public static final int et_ip=0x7f08001a;
+        public static final int et_mail=0x7f080011;
+        public static final int et_message=0x7f08001d;
         public static final int et_password=0x7f080009;
+        public static final int et_userName=0x7f080010;
         public static final int et_userOrMail=0x7f080008;
         public static final int iv_LogoMenu=0x7f08000c;
         public static final int iv_logoLogin=0x7f080007;
-        public static final int splashscreen=0x7f080017;
-        public static final int textView1=0x7f080010;
-        public static final int tv_log=0x7f080013;
+        public static final int splashscreen=0x7f080020;
+        public static final int textView1=0x7f080019;
+        public static final int tv_confirmPassword=0x7f080015;
+        public static final int tv_log=0x7f08001c;
         public static final int tv_logBattle=0x7f080000;
-        public static final int tv_xivato=0x7f080016;
+        public static final int tv_mail=0x7f080014;
+        public static final int tv_password=0x7f080017;
+        public static final int tv_registration=0x7f08000f;
+        public static final int tv_userName=0x7f080013;
+        public static final int tv_xivato=0x7f08001f;
     }
     public static final class layout {
         public static final int activity_abattle=0x7f030000;
@@ -58,7 +67,8 @@ public final class R {
         public static final int activity_amy_data=0x7f030003;
         public static final int activity_aregister=0x7f030004;
         public static final int activity_main=0x7f030005;
-        public static final int splashscreen=0x7f030006;
+        public static final int fragment_fregisterplayer=0x7f030006;
+        public static final int splashscreen=0x7f030007;
     }
     public static final class menu {
         public static final int abattle=0x7f070000;
@@ -85,27 +95,67 @@ public final class R {
         /**  ALogin Strings 
          */
         public static final int btn_register=0x7f050007;
+        public static final int btn_registerActivity=0x7f050024;
         public static final int btn_showData=0x7f05000c;
         public static final int btn_spell1=0x7f050010;
         public static final int btn_spell2=0x7f050011;
         public static final int btn_superAttack=0x7f05000f;
+        public static final int et_confirmPassword=0x7f050023;
+        public static final int et_mail=0x7f05001f;
+        public static final int et_password=0x7f050021;
+        public static final int et_playerName=0x7f050035;
+        public static final int et_userName=0x7f05001d;
         public static final int hint_password=0x7f05000a;
         public static final int hint_userOrMail=0x7f050009;
+        public static final int lbl_energy=0x7f050030;
+        /**  Enter to the custom component 
+         */
+        public static final int lbl_inteligence=0x7f050033;
+        public static final int lbl_life=0x7f05002f;
+        public static final int lbl_regEnergy=0x7f050031;
+        public static final int lbl_strength=0x7f050032;
+        /**  Enter to the custom component 
+         */
+        public static final int lbl_unsassigned_points=0x7f050034;
         public static final int title_activity_abattle=0x7f050005;
         public static final int title_activity_alogin=0x7f050002;
         public static final int title_activity_amenu=0x7f050003;
         public static final int title_activity_amy_data=0x7f050006;
         public static final int title_activity_aregister=0x7f050004;
+        public static final int tv_cheats=0x7f050037;
+        public static final int tv_check_register_player_form=0x7f05002e;
+        public static final int tv_confirmPassword=0x7f050022;
         public static final int tv_dateRegister=0x7f050018;
         public static final int tv_energy=0x7f050014;
         public static final int tv_inteligence=0x7f050017;
         /**  AMyData Strings 
          */
         public static final int tv_life=0x7f050013;
+        public static final int tv_mage=0x7f050027;
+        public static final int tv_mail=0x7f05001e;
+        public static final int tv_password=0x7f050020;
         public static final int tv_regEnergy=0x7f050015;
+        /**  ASplash Strings 
+ ARegister Strings 
+         */
+        public static final int tv_registration=0x7f05001b;
+        /**  ASearchingBattle Strings 
+         */
+        public static final int tv_searching=0x7f050036;
+        public static final int tv_skill_energy=0x7f050029;
+        public static final int tv_skill_inteligence=0x7f05002c;
+        public static final int tv_skill_life=0x7f050028;
+        public static final int tv_skill_regEnergy=0x7f05002a;
+        public static final int tv_skill_strength=0x7f05002b;
+        public static final int tv_skill_unassigned_points=0x7f05002d;
         public static final int tv_strength=0x7f050016;
+        /**  ARegisterPlayer Strings 
+         */
+        public static final int tv_title_selectClass=0x7f050025;
         public static final int tv_totalPoints=0x7f050019;
         public static final int tv_totalWins=0x7f05001a;
+        public static final int tv_userName=0x7f05001c;
+        public static final int tv_warlock=0x7f050026;
     }
     public static final class style {
         /** 
