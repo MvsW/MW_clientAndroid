@@ -20,6 +20,7 @@ public class JApp {
 
 	public static boolean isEmpty(EditText et) {
 		return et.getText().toString().isEmpty();
+		
 	}
 
 	public static boolean areEmpty(ArrayList<EditText> fields) {
