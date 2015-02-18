@@ -77,5 +77,8 @@
 
     <string name="tv_searching">Searching</string>
     <string name="tv_cheats"></string>
+    
+    <string name="title_activity_aregister_player">ARegister_player</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
