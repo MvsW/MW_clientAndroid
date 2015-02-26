@@ -79,6 +79,20 @@ public class ARegister extends Activity {
 					validationOK = false;
 				}
 				// 2- Cada campo con su propia validación (revisar excel para conocer los tamaños y maneres de realizar estos checks) Password lenght: 8
+				if(!username.isEmpty()){
+					if	(username.length()>12){
+						et_username.setError("Max lenght: 12");
+						validationOK = false;
+					}
+					
+					if	(username.contains("@")){
+						et_username.setError("'@' not allowed");
+						validationOK = false;
+					}
+				}
+				
+				
+				
 				if(!mail.isEmpty()){
 				if	(japp.mailValidation(fields)){
 				    et_mail.setError("The e-mail not have the correct format");
