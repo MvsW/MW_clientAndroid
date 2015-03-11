@@ -1,0 +1,261 @@
+ <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="dam.mw.clientAndroid.official.ARegister_Player"
+    >
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/pergamino" >
+
+            <EditText
+                android:id="@+id/et_characterName"
+                android:layout_width="500px"
+                android:layout_height="70px"
+                android:layout_marginTop="75dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="Character Name"
+                android:ems="10"
+                android:background="@drawable/rounded_edittext"
+                 >
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:id="@+id/tv_selectClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Select Class"
+                android:textSize="30dp" />
+
+            <ToggleButton
+                android:id="@+id/selectChamp"
+                android:layout_width="165dp"
+                android:layout_height="174dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:text="ToggleButton" 
+                android:background="@drawable/toggle_style"
+                android:textOn=""
+                android:textOff=""/>
+
+            <TextView
+                android:id="@+id/characterClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:text="Warlock" />
+
+            <ImageView
+                android:id="@+id/iv_separator1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
+                android:layout_gravity="center"
+                android:src="@drawable/separator" />
+            
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_gravity="left|top"
+            android:layout_row="7" >
+
+
+
+            <TextView
+                android:id="@+id/tv_skill_life"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="50dp"
+                android:text="@string/tv_skill_life"
+                android:textSize="20dp" />
+            
+           <TextView
+                android:id="@+id/life_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="50dp"
+                android:gravity="right"
+                android:text="8" />
+
+
+
+            <TextView
+                android:id="@+id/tv_skill_energy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="50dp"
+                android:layout_below="@+id/tv_skill_life"
+                android:textSize="20dp"
+                android:text="@string/tv_skill_energy" />
+            
+            <TextView
+                android:id="@+id/energy_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_skill_life"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="50dp"
+                android:gravity="right"
+                android:text="5" />
+            
+
+            <TextView
+                android:id="@+id/tv_skill_regEnergy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="50dp"
+                android:layout_below="@+id/tv_skill_energy"
+                android:textSize="20dp"
+                android:text="@string/tv_skill_regEnergy" />
+            
+            <TextView
+                android:id="@+id/energyReg_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_skill_energy"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="50dp"
+                android:gravity="right"
+                android:text="3" />
+
+        </RelativeLayout>
+        
+            <ImageView
+                android:id="@+id/iv_separator2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
+                android:layout_gravity="center"
+                android:src="@drawable/separator" />
+
+             <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_gravity="left|top"
+            android:layout_row="10" >
+
+            <TextView
+                android:id="@+id/tv_skill_strength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="50dp"
+                android:textSize="20dp"
+                android:text="@string/tv_skill_strength"/>
+            
+            <Button
+                    android:id="@+id/strength_point_down"
+                    android:layout_width="30dp"
+        			android:layout_height="30dp"
+        			android:layout_alignRight="@+id/strength_point"
+        			android:layout_marginRight="5dp"
+        			android:gravity="center"
+        			android:onClick="strenght_down"
+        			android:background="@drawable/minus" />
+            
+            <TextView
+                android:id="@+id/strength_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:layout_marginRight="50dp" />
+            
+            <Button
+                    android:id="@+id/strength_point_up"
+                    android:layout_width="30dp"
+        			android:layout_height="30dp"
+        			android:layout_marginLeft="5dp"
+        			android:layout_alignLeft="@+id/strength_point"
+        			android:onClick="strenght_up"
+        			android:background="@drawable/plus"/>
+            
+            <TextView
+                android:id="@+id/tv_skill_inteligence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_skill_strength"
+                android:layout_below="@+id/tv_skill_strength"
+                android:textSize="20dp"
+                android:text="@string/tv_skill_inteligence" />
+            
+            <Button
+                    android:id="@+id/inteligence_point_down"
+                    android:layout_width="30dp"
+        			android:layout_height="30dp"
+        			android:layout_alignRight="@+id/inteligence_point"
+        			android:layout_marginRight="10dp"
+        			android:layout_below="@+id/tv_skill_strength"
+        			android:gravity="center"
+        			android:onClick="inteligence_down"
+        			android:background="@drawable/minus" />
+            
+            <TextView
+                android:id="@+id/inteligence_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_skill_strength"
+                android:layout_marginRight="50dp"
+                android:gravity="right"/>
+            
+            <Button
+                    android:id="@+id/inteligence_point_up"
+                    android:layout_width="30dp"
+        			android:layout_height="30dp"
+        			android:layout_below="@+id/tv_skill_strength"
+        			android:layout_marginLeft="10dp"
+        			android:layout_alignLeft="@+id/inteligence_point"
+        			android:onClick="inteligence_up"
+        			android:background="@drawable/plus"/>
+            
+            <TextView
+                android:id="@+id/tv_skill_unassigned_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_skill_inteligence"
+                android:layout_below="@+id/tv_skill_inteligence"
+                android:textSize="20dp"
+                android:text="@string/tv_skill_unassigned_points" />
+            
+            <TextView
+                android:id="@+id/unassigned_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_skill_inteligence"
+                android:layout_marginRight="50dp"
+                android:gravity="right"
+                android:text="12" />
+            
+        </RelativeLayout>
+        
+             <Button
+                    android:id="@+id/button1"
+                    android:layout_width="70dp"
+        			android:layout_height="70dp"
+        			android:layout_gravity="center"
+        			android:layout_marginTop="50dp"
+        			android:onClick="onClick"
+        			android:background="@drawable/okey" />
+
+        </LinearLayout>
+    </ScrollView>

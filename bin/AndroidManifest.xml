@@ -52,6 +52,10 @@
             android:name="dam.mw.clientAndroid.official.AMyData"
             android:label="@string/title_activity_amy_data" >
         </activity>
+        <activity
+            android:name="dam.mw.clientAndroid.official.ARegister_player"
+            android:label="@string/title_activity_aregister_player" >
+        </activity>
     </application>
 
 </manifest>
