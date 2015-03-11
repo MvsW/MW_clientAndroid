@@ -20,8 +20,7 @@ public class CApp {
 
 		
 		connection = new CConnection(socket);
-		Log.i("LogsAndroid","Conectat a: "
-				+ socket.getInetAddress().getHostName());
+		Log.i("LogsAndroid","Conectat a: "+ socket.getInetAddress().getHostName());
 	}
 
 	public static void setPosition(double lat, double lon) {
@@ -43,8 +42,8 @@ public class CApp {
 		boolean logged = false;
 		// Log.i("LogsAndroid", ""+connection.equals(null));
 		Log.i("LogsAndroid", "prepare send login...");
-		connection.sendData(userOrMail + "," + Password + "," + longitude + ","
-				+ latitude);
+		connection.sendData(userOrMail + "," + Password + "," + latitude + ","
+				+ longitude);
 		Log.i("LogsAndroid", "send login...");
 		if (connection.readData().equals(CConstants.SUCCES)) {
 
@@ -73,6 +72,7 @@ public class CApp {
 	}
 
 	public static void sendRegisterOp() {
+		
 		connection.sendData(CConstants.REGISTER + "," + CConstants.REGISTER);
 	}
 

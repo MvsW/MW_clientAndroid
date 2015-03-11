@@ -7,6 +7,7 @@ import dam.mw.clientAndroid.R.menu;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -54,10 +55,10 @@ public class AMenu extends Activity implements OnClickListener {
 
 			break;
 		case R.id.btn_showData: // click show data
-
 			// previament notificar al servidor per rebre les dades a mostrar
 			intent = new Intent(this, AMyData.class);
 			startActivity(intent);
+			
 			break;
 		default:
 			break;

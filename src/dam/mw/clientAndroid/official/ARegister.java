@@ -115,14 +115,14 @@ public class ARegister extends Activity {
 				}
 				
 				// 3- Registrar usuario a la base de datos
-				//if	(validationOK == true){
+				if	(validationOK == true){
 					Toast e=Toast.makeText(this,"Correct!", Toast.LENGTH_SHORT);
 				    e.show();
 				    Intent i = new Intent(ARegister.this, ARegister_player.class);
 					startActivity(i);
 						
 					overridePendingTransition(R.animator.animator5, R.animator.animator6);
-				//}
+				}
 			}
 			break;
 		default:

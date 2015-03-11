@@ -25,6 +25,7 @@
         android:layout_alignRight="@+id/btn_showData"
         android:layout_below="@+id/iv_LogoMenu"
         android:layout_marginTop="127dp"
+        android:onClick="onClick"
         android:text="@string/btn_battle" />
 
     <Button
@@ -34,6 +35,7 @@
         android:layout_below="@+id/btn_battle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
+        android:onClick="onClick"
         android:text="@string/btn_showData" />
     
 </RelativeLayout>

@@ -129,10 +129,12 @@ public class ARegister_player extends Activity {
 	
 	public void strenght_down (View v){
 		count_strength--;
-		count_unasigned++;
-		if	(count_strength<0){
+		if	(count_strength==0){
 			count_strength=0;
+		}else{
+			count_unasigned++;
 		}
+		
 		if(count_unasigned>=12){
 			count_unasigned=12;
 		}
@@ -159,9 +161,11 @@ public class ARegister_player extends Activity {
 	
 	public void inteligence_down (View v){
 		count_inteligence--;
-		count_unasigned++;
-		if	(count_inteligence<=0){
+		
+		if	(count_inteligence<0){
 			count_inteligence=0;
+		}else{
+			count_unasigned++;
 		}
 		if(count_unasigned>=12){
 			count_unasigned=12;
