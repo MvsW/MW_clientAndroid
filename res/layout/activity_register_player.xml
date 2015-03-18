@@ -2,14 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_generic"
     tools:context="dam.mw.clientAndroid.official.ARegister_Player"
+    
     >
         
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/pergamino" >
+            
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/et_characterName"
@@ -56,11 +58,11 @@
 
             <ImageView
                 android:id="@+id/iv_separator1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="45dp"
                 android:layout_marginRight="45dp"
-                android:layout_gravity="center"
                 android:src="@drawable/separator" />
             
             <RelativeLayout
@@ -137,8 +139,8 @@
         
             <ImageView
                 android:id="@+id/iv_separator2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="45dp"
                 android:layout_marginRight="45dp"
                 android:layout_gravity="center"

@@ -10,10 +10,12 @@ import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.JApp;
 import android.R.drawable;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -38,6 +40,7 @@ public class ALogin extends Activity implements OnClickListener {
 	String password;
 	boolean sendLogin = false;
 	static Context context;
+	ProgressDialog pDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,39 @@ public class ALogin extends Activity implements OnClickListener {
 		fields.add(et_usernameOrEmail);
 		fields.add(et_password);
 		context = this;
+	}
+	
+	class login extends AsyncTask<String, String, String>{
+
+		@Override
+		protected void onPreExecute(){
+			super.onPreExecute();
+			pDialog = new ProgressDialog(ALogin.this);
+			pDialog.setMessage("Login in. Please wait...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(false);
+			pDialog.show();
+		}
+		
+		@Override
+		protected String doInBackground(String... params) {
+			if (CApp.sendLogin(username, password, 0, 0)) {
+				sendLogin = true;
+			}
+			return "";
+		}
+		
+		@Override
+		protected void onPostExecute (String s){
+			super.onPostExecute(s);
+			pDialog.dismiss();
+			if(sendLogin == true){
+				Intent intent = new Intent(context, AMenu.class);
+				startActivity(intent);
+			}
+			
+		}
+		
 	}
 
 	@Override
@@ -73,7 +109,9 @@ public class ALogin extends Activity implements OnClickListener {
 					// para conocer los tamaños y maneres de realizar estos
 					// checks) Password lenght: 8
 
-					new Thread(new Runnable() {
+					new login().execute();
+					
+					/*new Thread(new Runnable() {
 
 						@Override
 						public void run() {
@@ -85,18 +123,9 @@ public class ALogin extends Activity implements OnClickListener {
 								startActivity(intent);
 							}
 						}
-					}).start();
+					}).start();*/
 					
-					/*try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						Toast.makeText(getApplicationContext(), "sdfsfd", Toast.LENGTH_LONG).show();
-					}
-					if (sendLogin) {
-						Intent intent = new Intent(this, AMenu.class);
-						startActivity(intent);
-					}*/
+					
 
 				}
 			}

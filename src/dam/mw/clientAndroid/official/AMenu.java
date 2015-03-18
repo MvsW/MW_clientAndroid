@@ -5,9 +5,12 @@ import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
 import dam.mw.clientAndroid.controlCenter.CApp;
+import dam.mw.clientAndroid.official.ALogin.login;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -18,12 +21,43 @@ import android.view.View.OnClickListener;
 public class AMenu extends Activity implements OnClickListener {
 
 	static Context context;
+	ProgressDialog pDialog;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_amenu);
 		
 		context = this;
+	}
+	
+	class sendData extends AsyncTask<String, String, String>{
+
+		@Override
+		protected void onPreExecute(){
+			super.onPreExecute();
+			pDialog = new ProgressDialog(AMenu.this);
+			pDialog.setMessage("Show My Data. Please wait...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(false);
+			pDialog.show();
+		}
+		
+		@Override
+		protected String doInBackground(String... params) {
+			Log.i("LogsAndroid", "Sending data to Show my data...");
+			CApp.sendDataShowMyData();
+			return "";
+		}
+		
+		@Override
+		protected void onPostExecute (String s){
+			super.onPostExecute(s);
+			pDialog.dismiss();
+			Intent intentShowData = new Intent(context, AMyData.class);
+			startActivity(intentShowData);
+			
+		}
+		
 	}
 
 	@Override
@@ -61,23 +95,7 @@ public class AMenu extends Activity implements OnClickListener {
 			break;
 		case R.id.btn_showData: // click show data
 			//send data to server (Register constant).
-			
-			
-			// previament notificar al servidor per rebre les dades a mostrar
-			
-			
-			new Thread(new Runnable() {
-				
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					Log.i("LogsAndroid", "Sending data to Show my data...");
-					CApp.sendDataShowMyData();
-					
-					Intent intentShowData = new Intent(context, AMyData.class);
-					startActivity(intentShowData);
-				}
-			}).start();
+			new sendData().execute();
 			
 			
 			
