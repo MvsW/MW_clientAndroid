@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class AMyData extends Activity {
 
@@ -23,7 +24,6 @@ public class AMyData extends Activity {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				
 				Log.i("LogsAndroid", CApp.getData());
 			}
 		}).start();

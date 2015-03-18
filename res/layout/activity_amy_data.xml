@@ -8,5 +8,173 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="dam.mw.clientAndroid.official.AMyData" >
 
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="31dp"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_dateRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_regEnergy"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="200dp"
+        android:text="@string/tv_dateRegister" />
+
+    <ImageView
+        android:id="@+id/iv_delimiter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="290dp"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_totalPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_dateRegister"
+        android:layout_below="@+id/tv_dateRegister"
+        android:layout_marginTop="12dp"
+        android:text="@string/tv_totalPoints" />
+
+    <TextView
+        android:id="@+id/tv_energy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_regEnergy"
+        android:layout_below="@+id/iv_avatar"
+        android:layout_marginTop="51dp"
+        android:text="@string/tv_energy" />
+
+    <TextView
+        android:id="@+id/tv_inteligence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_strength"
+        android:layout_below="@+id/tv_strength"
+        android:layout_marginTop="8dp"
+        android:text="@string/tv_inteligence" />
+
+    <TextView
+        android:id="@+id/tv_strength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_regEnergy"
+        android:layout_below="@+id/tv_regEnergy"
+        android:layout_marginTop="11dp"
+        android:text="@string/tv_strength" />
+
+    <TextView
+        android:id="@+id/tv_regEnergy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/iv_avatar"
+        android:layout_below="@+id/tv_energy"
+        android:layout_marginTop="11dp"
+        android:text="@string/tv_regEnergy" />
+
+    <TextView
+        android:id="@+id/tv_totalWins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_totalPoints"
+        android:layout_below="@+id/tv_totalPoints"
+        android:layout_marginTop="18dp"
+        android:text="@string/tv_totalWins" />
+
+    <TextView
+        android:id="@+id/tv_energyData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_regEnergy"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/iv_delimiter"
+        android:text="9999999" />
+
+    <TextView
+        android:id="@+id/tv_regEnergyData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_regEnergy"
+        android:layout_alignBottom="@+id/tv_regEnergy"
+        android:layout_alignRight="@+id/tv_energyData"
+        android:text="9999999" />
+
+    <TextView
+        android:id="@+id/tv_strengthData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_strength"
+        android:layout_alignBottom="@+id/tv_strength"
+        android:layout_alignRight="@+id/tv_regEnergyData"
+        android:text="9999999" />
+
+    <TextView
+        android:id="@+id/tv_inteligenceData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_inteligence"
+        android:layout_alignBottom="@+id/tv_inteligence"
+        android:layout_alignRight="@+id/tv_energyData"
+        android:text="9999999" />
+
+    <TextView
+        android:id="@+id/tv_dateRegisterData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_dateRegister"
+        android:layout_alignLeft="@+id/tv_inteligenceData"
+        android:text="9999999" />
+
+    <TextView
+        android:id="@+id/tv_totalPointsData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_totalPoints"
+        android:layout_alignBottom="@+id/tv_totalPoints"
+        android:layout_alignLeft="@+id/tv_dateRegisterData"
+        android:text="9999999" />
+
+    <TextView
+        android:id="@+id/tv_totalWinsData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_totalWins"
+        android:layout_alignLeft="@+id/tv_totalPointsData"
+        android:text="9999999" />
+
+    <TextView
+        android:id="@+id/tv_name_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_energyData"
+        android:layout_alignTop="@+id/iv_avatar"
+        android:layout_marginTop="13dp"
+        android:text="Name avatar" />
+
+    <TextView
+        android:id="@+id/tv_life"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_energyData"
+        android:layout_alignLeft="@+id/tv_energy"
+        android:layout_alignRight="@+id/tv_energy"
+        android:layout_marginBottom="11dp"
+        android:text="@string/tv_life" />
+
+    <TextView
+        android:id="@+id/tv_lifeData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_life"
+        android:layout_alignRight="@+id/tv_energyData"
+        android:text="9999999" />
 
 </RelativeLayout>

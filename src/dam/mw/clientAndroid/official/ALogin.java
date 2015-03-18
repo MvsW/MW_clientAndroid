@@ -78,7 +78,7 @@ public class ALogin extends Activity implements OnClickListener {
 						@Override
 						public void run() {
 							// TODO Auto-generated method stub
-							if (CApp.sendLogin("USER1", password, 0, 0)) {
+							if (CApp.sendLogin(username, password, 0, 0)) {
 								sendLogin = true;
 
 								Intent intent = new Intent(context, AMenu.class);

@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
+import android.util.Log;
+
 /**
  *
  * @author bc
@@ -52,7 +54,7 @@ public class CConnection {
             int readed = is.read(array);
             return new String(array).trim();
         } catch (IOException ex) {
-            System.err.println("Error de lectura");
+        	Log.i("LogsAndroid", "Error de lectura");
             //Implementar Tancar socket acaba thread
             return "";
         }

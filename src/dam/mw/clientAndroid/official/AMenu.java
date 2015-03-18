@@ -59,6 +59,8 @@ public class AMenu extends Activity implements OnClickListener {
 			intent = new Intent(this, AMyData.class);
 			startActivity(intent);
 			
+			//send data to server (Register constant).
+			
 			break;
 		default:
 			break;
