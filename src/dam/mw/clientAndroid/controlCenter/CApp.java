@@ -70,6 +70,10 @@ public class CApp {
 	public static String getData() {
 		return connection.readData();
 	}
+	
+	public static void sendDataShowMyData() {
+		connection.sendData(CConstants.SHOW_MY_DATA);
+	}
 
 	public static void sendRegisterOp() {
 		

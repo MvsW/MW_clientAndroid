@@ -9,6 +9,9 @@ public final class CConstants {
     public static final String SUCCES = "99"; //numero o text?¿?¿?
     public static final String ERROR = "100";
     public static final String REGISTER = "register";
+    public static final String SHOW_MY_DATA = "showData";
+    public static final String START_BATTLE = "startbattle";
+    
 	
 	
 }

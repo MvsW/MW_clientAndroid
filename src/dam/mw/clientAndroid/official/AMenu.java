@@ -4,7 +4,9 @@ import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
+import dam.mw.clientAndroid.controlCenter.CApp;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,10 +17,13 @@ import android.view.View.OnClickListener;
 
 public class AMenu extends Activity implements OnClickListener {
 
+	static Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_amenu);
+		
+		context = this;
 	}
 
 	@Override
@@ -50,16 +55,31 @@ public class AMenu extends Activity implements OnClickListener {
 			// pantalla de searching (timeOut), i al finalitzar si tenim contricant pasem
 			// a Abattle, rebre dades a mostrar en la activity. Inicia la batalla (timeOuts) 
 			intent = new Intent(this, ABattle.class);
-			// startActivity(intent);
+			startActivity(intent);
 			
 
 			break;
 		case R.id.btn_showData: // click show data
-			// previament notificar al servidor per rebre les dades a mostrar
-			intent = new Intent(this, AMyData.class);
-			startActivity(intent);
-			
 			//send data to server (Register constant).
+			
+			
+			// previament notificar al servidor per rebre les dades a mostrar
+			
+			
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					Log.i("LogsAndroid", "Sending data to Show my data...");
+					CApp.sendDataShowMyData();
+					
+					Intent intentShowData = new Intent(context, AMyData.class);
+					startActivity(intentShowData);
+				}
+			}).start();
+			
+			
 			
 			break;
 		default:
