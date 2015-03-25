@@ -21,6 +21,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -50,11 +51,15 @@ public class MainActivity extends Activity {
 
 	GPSTracker gps;
 
+	protected PowerManager.WakeLock wakelock;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setRequestedOrientation(1);
 		setContentView(R.layout.activity_main);
+		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
+        this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
+        wakelock.acquire();
 
 		// Initialize graphic components
 		et_ip = (EditText) findViewById(R.id.et_ip);

@@ -13,10 +13,12 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,16 +43,38 @@ public class ALogin extends Activity implements OnClickListener {
 	boolean sendLogin = false;
 	static Context context;
 	ProgressDialog pDialog;
+	
+	Button btn_register;
+	Button btn_login;
 
+	protected PowerManager.WakeLock wakelock;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_alogin);
+		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
+        this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
+        wakelock.acquire();
 		// TODO: Revisar documentos juancar para quitar top-bars y status-bar.
-
+		
+		//Set typeface.
+		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
+		
+		
+		//Buttons
+		btn_register = (Button)findViewById(R.id.btn_register);
+		btn_register.setTypeface(face);
+		
+		btn_login = (Button)findViewById(R.id.btn_login);
+		btn_login.setTypeface(face);
+		
 		// FindViewBy ID
 		et_usernameOrEmail = (EditText) findViewById(R.id.et_userOrMail);
+		
+		et_usernameOrEmail.setTypeface(face);
+		
 		et_password = (EditText) findViewById(R.id.et_password);
+		et_password.setTypeface(face);
 
 		// Add to a ArrayList
 		fields.add(et_usernameOrEmail);

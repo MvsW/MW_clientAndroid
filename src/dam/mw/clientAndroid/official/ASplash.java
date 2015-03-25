@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -26,10 +27,14 @@ public class ASplash extends Activity {
 	private boolean check = false;
 
 	/** Called when the activity is first created. */
+	protected PowerManager.WakeLock wakelock;
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		setContentView(R.layout.splashscreen);
+		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
+        this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
+        wakelock.acquire();
 		/** Hide action bar **/
 		// getActionBar().hide();
 		context = this;

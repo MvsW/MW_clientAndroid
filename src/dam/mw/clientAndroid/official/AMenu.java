@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,10 +23,16 @@ public class AMenu extends Activity implements OnClickListener {
 
 	static Context context;
 	ProgressDialog pDialog;
+	
+	protected PowerManager.WakeLock wakelock;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_amenu);
+		
+		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
+        this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
+        wakelock.acquire();
 		
 		context = this;
 	}

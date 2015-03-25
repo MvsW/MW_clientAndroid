@@ -5,8 +5,10 @@ import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,10 +41,14 @@ public class ARegister_player extends Activity {
 	
 	boolean registreOK=true;
 
+	protected PowerManager.WakeLock wakelock;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register_player);
+		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
+        this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
+        wakelock.acquire();
 		
 		
 		selectCharacter = (ToggleButton)findViewById(R.id.selectChamp);

@@ -34,6 +34,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="Select Class"
+                android:textColor="#FFFFFF"
                 android:textSize="30dp" />
 
             <ToggleButton
@@ -78,6 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                android:textColor="#FFFFFF"
                 android:layout_marginLeft="50dp"
                 android:text="@string/tv_skill_life"
                 android:textSize="20dp" />
@@ -89,6 +91,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="50dp"
                 android:gravity="right"
+                android:textColor="#FFFFFF"
                 android:text="8" />
 
 
@@ -99,6 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="50dp"
+                android:textColor="#FFFFFF"
                 android:layout_below="@+id/tv_skill_life"
                 android:textSize="20dp"
                 android:text="@string/tv_skill_energy" />
@@ -111,6 +115,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="50dp"
                 android:gravity="right"
+                android:textColor="#FFFFFF"
                 android:text="5" />
             
 
@@ -122,6 +127,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_below="@+id/tv_skill_energy"
                 android:textSize="20dp"
+                android:textColor="#FFFFFF"
                 android:text="@string/tv_skill_regEnergy" />
             
             <TextView
@@ -132,6 +138,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="50dp"
                 android:gravity="right"
+                android:textColor="#FFFFFF"
                 android:text="3" />
 
         </RelativeLayout>
@@ -160,6 +167,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="50dp"
                 android:textSize="20dp"
+                android:textColor="#FFFFFF"
                 android:text="@string/tv_skill_strength"/>
             
             <Button
@@ -178,6 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
+                android:textColor="#FFFFFF"
                 android:layout_marginRight="50dp" />
             
             <Button
@@ -196,6 +205,7 @@
                 android:layout_alignLeft="@+id/tv_skill_strength"
                 android:layout_below="@+id/tv_skill_strength"
                 android:textSize="20dp"
+                android:textColor="#FFFFFF"
                 android:text="@string/tv_skill_inteligence" />
             
             <Button
@@ -216,6 +226,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/tv_skill_strength"
                 android:layout_marginRight="50dp"
+                android:textColor="#FFFFFF"
                 android:gravity="right"/>
             
             <Button
@@ -235,6 +246,7 @@
                 android:layout_alignLeft="@+id/tv_skill_inteligence"
                 android:layout_below="@+id/tv_skill_inteligence"
                 android:textSize="20dp"
+                android:textColor="#FFFFFF"
                 android:text="@string/tv_skill_unassigned_points" />
             
             <TextView
@@ -245,6 +257,7 @@
                 android:layout_below="@+id/tv_skill_inteligence"
                 android:layout_marginRight="50dp"
                 android:gravity="right"
+                android:textColor="#FFFFFF"
                 android:text="12" />
             
         </RelativeLayout>

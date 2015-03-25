@@ -22,10 +22,16 @@
 
     <EditText
         android:id="@+id/et_userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_width="500px"
+        android:layout_height="80px"
+        android:gravity="center"
+        android:background="@drawable/edittext_modified_states"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="14dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_below="@+id/tv_registration"
         android:layout_marginTop="39dp"
         android:hint="@string/et_userName"
@@ -36,10 +42,16 @@
 
     <EditText
         android:id="@+id/et_mail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/et_userName"
-        android:layout_alignRight="@+id/et_userName"
+        android:layout_width="500px"
+        android:layout_height="80px"
+        android:gravity="center"
+        android:background="@drawable/edittext_modified_states"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="14dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_below="@+id/et_userName"
         android:layout_marginTop="30dp"
         android:ems="10"
@@ -48,10 +60,16 @@
 
     <EditText
         android:id="@+id/et_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/et_mail"
-        android:layout_alignRight="@+id/et_mail"
+        android:layout_width="500px"
+        android:layout_height="80px"
+        android:gravity="center"
+        android:background="@drawable/edittext_modified_states"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="14dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_below="@+id/et_mail"
         android:layout_marginTop="34dp"
         android:ems="10"
@@ -60,10 +78,16 @@
 
     <EditText
         android:id="@+id/et_confirmPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/et_password"
-        android:layout_alignRight="@+id/et_password"
+        android:layout_width="500px"
+        android:layout_height="80px"
+        android:gravity="center"
+        android:background="@drawable/edittext_modified_states"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="14dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_below="@+id/et_password"
         android:layout_marginTop="40dp"
         android:ems="10"
@@ -97,16 +121,6 @@
         android:layout_marginTop="26dp"
         android:hint="@string/tv_confirmPassword" />
 
-    <Button
-        android:id="@+id/btn_registerActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:onClick="onClick"
-        android:text="@string/btn_registerActivity" />
-
     <TextView
         android:id="@+id/tv_password"
         android:layout_width="wrap_content"
@@ -114,6 +128,19 @@
         android:layout_alignRight="@+id/tv_userName"
         android:layout_below="@+id/et_mail"
         android:hint="@string/tv_password" />
-    
+
+    <Button
+        android:id="@+id/btn_registerActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_confirmPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:background="@android:color/transparent"
+        android:onClick="onClick"
+        android:text="@string/btn_registerActivity"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

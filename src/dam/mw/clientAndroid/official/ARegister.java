@@ -7,8 +7,10 @@ import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
 import dam.mw.clientAndroid.controlCenter.JApp;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,10 +26,14 @@ public class ARegister extends Activity {
 	private String username, mail, password, passwordConfirm;
 	private boolean validationOK = true;
 	
+	protected PowerManager.WakeLock wakelock;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_aregister);
+		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
+        this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
+        wakelock.acquire();
 		
 		//getActionBar().setDisplayHomeAsUpEnabled(true);
 		
