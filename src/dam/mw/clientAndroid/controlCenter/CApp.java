@@ -18,9 +18,9 @@ public class CApp {
 		InetAddress serverAddr = InetAddress.getByName(CConstants.HOST);// HOST
 		socket = new Socket(serverAddr, CConstants.PORT);
 
-		
 		connection = new CConnection(socket);
-		Log.i("LogsAndroid","Conectat a: "+ socket.getInetAddress().getHostName());
+		Log.i("LogsAndroid", "Conectat a: "
+				+ socket.getInetAddress().getHostName());
 	}
 
 	public static void setPosition(double lat, double lon) {
@@ -54,6 +54,18 @@ public class CApp {
 
 		return logged;
 	}
+	public static boolean sendSearchBattle(){
+		boolean op = false;
+
+		Log.i("LogsAndroid", "prepare send searching...");
+		connection.sendData(CConstants.START_BATTLE);
+		Log.i("LogsAndroid", "send searching...");
+		if(connection.readData().equals(CConstants.SUCCES)){
+			op = true;
+			Log.i("LogsAndroid", "recived...");
+		}
+		return op;
+	}
 
 	public static boolean sendRegisterData(String username, String mail,
 			String password) {
@@ -70,14 +82,18 @@ public class CApp {
 	public static String getData() {
 		return connection.readData();
 	}
-	
+
 	public static void sendDataShowMyData() {
 		connection.sendData(CConstants.SHOW_MY_DATA);
 	}
+	public static void sendData(String data){
+		connection.sendData(data);
+	}
 
 	public static void sendRegisterOp() {
-		
-		connection.sendData(CConstants.REGISTER + "," + CConstants.REGISTER);
+
+		connection.sendData(CConstants.REGISTER + "," + CConstants.REGISTER
+				+ "," + CConstants.REGISTER + "," + CConstants.REGISTER);
 	}
 
 }

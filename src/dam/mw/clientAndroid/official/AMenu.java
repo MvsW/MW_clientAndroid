@@ -5,6 +5,7 @@ import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
 import dam.mw.clientAndroid.controlCenter.CApp;
+import dam.mw.clientAndroid.controlCenter.CConstants;
 import dam.mw.clientAndroid.official.ALogin.login;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -21,26 +22,29 @@ import android.view.View.OnClickListener;
 
 public class AMenu extends Activity implements OnClickListener {
 
-	static Context context;
-	ProgressDialog pDialog;
-	
+	private Context context;
+	private ProgressDialog pDialog;
+	private boolean searching = false;
+
 	protected PowerManager.WakeLock wakelock;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_amenu);
-		
-		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
-        this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
-        wakelock.acquire();
-		
+
+		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
+				"etiqueta");
+		wakelock.acquire();
+
 		context = this;
 	}
-	
-	class sendData extends AsyncTask<String, String, String>{
+
+	class sendData extends AsyncTask<String, String, String> {
 
 		@Override
-		protected void onPreExecute(){
+		protected void onPreExecute() {
 			super.onPreExecute();
 			pDialog = new ProgressDialog(AMenu.this);
 			pDialog.setMessage("Show My Data. Please wait...");
@@ -48,23 +52,58 @@ public class AMenu extends Activity implements OnClickListener {
 			pDialog.setCancelable(false);
 			pDialog.show();
 		}
-		
+
 		@Override
 		protected String doInBackground(String... params) {
 			Log.i("LogsAndroid", "Sending data to Show my data...");
 			CApp.sendDataShowMyData();
 			return "";
 		}
-		
+
 		@Override
-		protected void onPostExecute (String s){
+		protected void onPostExecute(String s) {
 			super.onPostExecute(s);
 			pDialog.dismiss();
 			Intent intentShowData = new Intent(context, AMyData.class);
 			startActivity(intentShowData);
-			
+
 		}
-		
+
+	}
+
+	class searchBattle extends AsyncTask<String, String, String> {
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(AMenu.this);
+			pDialog.setMessage("Searching battle. Please wait...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(false);
+			pDialog.show();
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			if (CApp.sendSearchBattle())
+				searching = true;
+
+			return "";
+		}
+
+		@Override
+		protected void onPostExecute(String s) {
+			super.onPostExecute(s);
+			Log.i("LogsAndroid",
+					"PostExecute Sending data to Searching battle...");
+			pDialog.dismiss();
+			if (searching) {
+				Intent intentBattle = new Intent(context, ABattle.class);
+				startActivity(intentBattle);
+			}
+
+		}
+
 	}
 
 	@Override
@@ -93,19 +132,18 @@ public class AMenu extends Activity implements OnClickListener {
 
 		case R.id.btn_battle: // click battle
 			// previament notificar al servidor per buscar un rival, mostrar
-			// pantalla de searching (timeOut), i al finalitzar si tenim contricant pasem
-			// a Abattle, rebre dades a mostrar en la activity. Inicia la batalla (timeOuts) 
-			intent = new Intent(this, ABattle.class);
-			startActivity(intent);
-			
+			// pantalla de searching (timeOut), i al finalitzar si tenim
+			// contricant pasem
+			// a Abattle, rebre dades a mostrar en la activity. Inicia la
+			// batalla (timeOuts)
+
+			new searchBattle().execute();
 
 			break;
 		case R.id.btn_showData: // click show data
-			//send data to server (Register constant).
+			// send data to server (Register constant).
 			new sendData().execute();
-			
-			
-			
+
 			break;
 		default:
 			break;
