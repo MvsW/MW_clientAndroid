@@ -5,7 +5,7 @@ import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
 import dam.mw.clientAndroid.controlCenter.CApp;
-import dam.mw.clientAndroid.controlCenter.CConstants;
+import dam.mw.clientAndroid.controlCenter.CConstant;
 import dam.mw.clientAndroid.official.ALogin.login;
 import android.app.Activity;
 import android.app.ProgressDialog;

@@ -3,35 +3,22 @@ package dam.mw.clientAndroid.official;
 import java.util.ArrayList;
 
 import dam.mw.clientAndroid.R;
-import dam.mw.clientAndroid.R.id;
-import dam.mw.clientAndroid.R.layout;
-import dam.mw.clientAndroid.R.menu;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.JApp;
-import android.R.drawable;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
 
-/**
- * This class acts as main activity
- * 
- * @author Olivellaf
- * 
- */
+
 public class ALogin extends Activity implements OnClickListener {
 
 	private JApp japp = new JApp();
@@ -40,7 +27,6 @@ public class ALogin extends Activity implements OnClickListener {
 	Drawable image;
 	String username;
 	String password;
-	boolean sendLogin = false;
 	static Context context;
 	ProgressDialog pDialog;
 	
@@ -82,7 +68,7 @@ public class ALogin extends Activity implements OnClickListener {
 		context = this;
 	}
 	
-	class login extends AsyncTask<String, String, String>{
+	class login extends AsyncTask<String, Void, Boolean>{
 
 		@Override
 		protected void onPreExecute(){
@@ -95,18 +81,19 @@ public class ALogin extends Activity implements OnClickListener {
 		}
 		
 		@Override
-		protected String doInBackground(String... params) {
+		protected Boolean doInBackground(String... params) {
+			Boolean sendLogin = false;
 			if (CApp.sendLogin(username, password, 0, 0)) {
 				sendLogin = true;
 			}
-			return "";
+			return sendLogin;
 		}
 		
 		@Override
-		protected void onPostExecute (String s){
+		protected void onPostExecute (Boolean s){
 			super.onPostExecute(s);
 			pDialog.dismiss();
-			if(sendLogin == true){
+			if(s == true){
 				Intent intent = new Intent(context, AMenu.class);
 				startActivity(intent);
 			}
@@ -124,7 +111,7 @@ public class ALogin extends Activity implements OnClickListener {
 				username = et_usernameOrEmail.getText().toString();
 				password = et_password.getText().toString();
 				// TODO: VALIDACIONES de los CAMPOS
-				// Si estan vacíos o no.
+				// Si estan vacï¿½os o no.
 				if (japp.areEmpty(fields)) {
 					et_usernameOrEmail.setError("Required field");
 					et_password.setError("Required field");

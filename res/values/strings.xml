@@ -21,12 +21,12 @@
     <string name="btn_showData">Show Data</string>
 
     <!-- ABattle Strings -->
-    <string name="btn_defense">Defense</string>
+    <string name="btn_defense">Shield</string>
     <string name="btn_dodge">Dodge</string>
-    <string name="btn_superAttack">Super Attack</string>
+    <string name="btn_superAttack">Ultimate Attack</string>
     <string name="btn_spell1">Spell 1</string>
     <string name="btn_spell2">Spell 2</string>
-    <string name="btn_normalAttack">Normal Attack</string>
+    <string name="btn_normalAttack">Basic Attack</string>
 
     <!-- AMyData Strings -->
     <string name="tv_life">LIFE</string>

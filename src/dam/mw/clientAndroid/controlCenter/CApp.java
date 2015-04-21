@@ -15,8 +15,8 @@ public class CApp {
 
 	public static void connect() throws Exception { // Modificar per tractament
 													// propi
-		InetAddress serverAddr = InetAddress.getByName(CConstants.HOST);// HOST
-		socket = new Socket(serverAddr, CConstants.PORT);
+		InetAddress serverAddr = InetAddress.getByName(CConstant.HOST);// HOST
+		socket = new Socket(serverAddr, CConstant.PORT);
 
 		connection = new CConnection(socket);
 		Log.i("LogsAndroid", "Conectat a: "
@@ -45,7 +45,7 @@ public class CApp {
 		connection.sendData(userOrMail + "," + Password + "," + latitude + ","
 				+ longitude);
 		Log.i("LogsAndroid", "send login...");
-		if (connection.readData().equals(CConstants.SUCCES)) {
+		if (connection.readData().equals(CConstant.SUCCES)) {
 
 			Log.i("LogsAndroid", "recived...");
 			// Ok login correcte
@@ -58,9 +58,9 @@ public class CApp {
 		boolean op = false;
 
 		Log.i("LogsAndroid", "prepare send searching...");
-		connection.sendData(CConstants.START_BATTLE);
+		connection.sendData(CConstant.START_BATTLE);
 		Log.i("LogsAndroid", "send searching...");
-		if(connection.readData().equals(CConstants.SUCCES)){
+		if(connection.readData().equals(CConstant.SUCCES)){
 			op = true;
 			Log.i("LogsAndroid", "recived...");
 		}
@@ -72,7 +72,7 @@ public class CApp {
 		boolean logged = false;
 		connection.sendData(username + "," + mail + "," + password + ","
 				+ CApp.getLongitude() + "," + CApp.getLatitude());
-		if (connection.readData().equals(CConstants.SUCCES)) {
+		if (connection.readData().equals(CConstant.SUCCES)) {
 			// Ok login correcte
 			logged = true;
 		}
@@ -84,7 +84,7 @@ public class CApp {
 	}
 
 	public static void sendDataShowMyData() {
-		connection.sendData(CConstants.SHOW_MY_DATA);
+		connection.sendData(CConstant.SHOW_MY_DATA);
 	}
 	public static void sendData(String data){
 		connection.sendData(data);
@@ -92,8 +92,8 @@ public class CApp {
 
 	public static void sendRegisterOp() {
 
-		connection.sendData(CConstants.REGISTER + "," + CConstants.REGISTER
-				+ "," + CConstants.REGISTER + "," + CConstants.REGISTER);
+		connection.sendData(CConstant.REGISTER + "," + CConstant.REGISTER
+				+ "," + CConstant.REGISTER + "," + CConstant.REGISTER);
 	}
 
 }

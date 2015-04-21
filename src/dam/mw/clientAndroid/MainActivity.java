@@ -12,7 +12,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import dam.mw.clientAndroid.R;
-import dam.mw.clientAndroid.controlCenter.CConstants;
+import dam.mw.clientAndroid.controlCenter.CConstant;
 import dam.mw.clientAndroid.controlCenter.GPSTracker;
 
 import android.app.Activity;
@@ -203,7 +203,7 @@ public class MainActivity extends Activity {
 		@Override
 		protected Boolean doInBackground(Void... params) {
 			try {
-				InetAddress serverAddr = InetAddress.getByName(CConstants.HOST);//HOST
+				InetAddress serverAddr = InetAddress.getByName(CConstant.HOST);//HOST
 				socket = new Socket(serverAddr, PORT);
 				printarLog("Conectat a: "
 						+ socket.getInetAddress().getHostName());
