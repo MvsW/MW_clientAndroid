@@ -2,20 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:focusable="false">
-    
+    android:background="@drawable/bg_generic"
+    android:focusable="false"
+    android:orientation="vertical" >
 
     <ImageView
-        android:id="@+id/splashscreen"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_launcher" />
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="455dp"
+        android:src="@drawable/logo" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World, splash" />
+        android:text="Developers: Sebastian cano, Jose Manuel Sanchez, Ferran Olivella, Roger Martín, Sergi Pscherer, Neus Pocorul, Miquel Estrada &amp; Alex Velasco"
+        android:textColor="#ffffff" />
 
 </LinearLayout>

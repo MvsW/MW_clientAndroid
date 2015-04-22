@@ -38,15 +38,16 @@ public final class R {
         public static final int et_tf_black_focus=0x7f020003;
         public static final int et_tf_black_no_focus=0x7f020004;
         public static final int ic_launcher=0x7f020005;
-        public static final int mago=0x7f020006;
-        public static final int minus=0x7f020007;
-        public static final int okey=0x7f020008;
-        public static final int pergamino=0x7f020009;
-        public static final int plus=0x7f02000a;
-        public static final int rounded_edittext=0x7f02000b;
-        public static final int separator=0x7f02000c;
-        public static final int toggle_style=0x7f02000d;
-        public static final int warlock=0x7f02000e;
+        public static final int logo=0x7f020006;
+        public static final int mago=0x7f020007;
+        public static final int minus=0x7f020008;
+        public static final int okey=0x7f020009;
+        public static final int pergamino=0x7f02000a;
+        public static final int plus=0x7f02000b;
+        public static final int rounded_edittext=0x7f02000c;
+        public static final int separator=0x7f02000d;
+        public static final int toggle_style=0x7f02000e;
+        public static final int warlock=0x7f02000f;
     }
     public static final class id {
         public static final int LinearLayout2=0x7f09002b;
@@ -76,6 +77,7 @@ public final class R {
         public static final int et_password=0x7f090009;
         public static final int et_userName=0x7f090023;
         public static final int et_userOrMail=0x7f090008;
+        public static final int imageView1=0x7f09004a;
         public static final int inteligence_point=0x7f090045;
         public static final int inteligence_point_down=0x7f090044;
         public static final int inteligence_point_up=0x7f090046;
@@ -87,7 +89,6 @@ public final class R {
         public static final int iv_separator2=0x7f09003e;
         public static final int life_point=0x7f090039;
         public static final int selectChamp=0x7f090035;
-        public static final int splashscreen=0x7f09004a;
         public static final int strength_point=0x7f090041;
         public static final int strength_point_down=0x7f090040;
         public static final int strength_point_up=0x7f090042;
