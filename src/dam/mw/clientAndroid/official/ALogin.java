@@ -97,7 +97,6 @@ public class ALogin extends Activity implements OnClickListener {
 				Intent intent = new Intent(context, AMenu.class);
 				startActivity(intent);
 			}
-			
 		}
 		
 	}
@@ -122,16 +121,19 @@ public class ALogin extends Activity implements OnClickListener {
 
 					new login().execute();
 					
+					
+					
+					
+					
 					/*new Thread(new Runnable() {
 
 						@Override
 						public void run() {
 							// TODO Auto-generated method stub
 							if (CApp.sendLogin(username, password, 0, 0)) {
-								sendLogin = true;
+								//sendLogin = true;
 
-								Intent intent = new Intent(context, AMenu.class);
-								startActivity(intent);
+								
 							}
 						}
 					}).start();*/

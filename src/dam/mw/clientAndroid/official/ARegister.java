@@ -5,12 +5,15 @@ import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
+import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.JApp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -121,18 +124,47 @@ public class ARegister extends Activity {
 				}
 				
 				// 3- Registrar usuario a la base de datos
-				//if	(validationOK == true){
-					Toast e=Toast.makeText(this,"Correct!", Toast.LENGTH_SHORT);
+				if (validationOK == true){
+					Toast e=Toast.makeText(this,"Correct!" + mail + username + password, Toast.LENGTH_SHORT);
 				    e.show();
-				    Intent i = new Intent(ARegister.this, ARegister_player.class);
-					startActivity(i);
-						
-					overridePendingTransition(R.animator.animator5, R.animator.animator6);
-				//}
+				    new sendRegisterData().execute();
+				    
+				    
+				}
 			}
 			break;
 		default:
 			break;
+		}
+		
+	}
+	
+	class sendRegisterData extends AsyncTask<String, Void, Boolean>{
+
+		@Override
+		protected void onPreExecute(){
+			super.onPreExecute();
+		}
+		
+		@Override
+		protected Boolean doInBackground(String... params) {
+			Boolean sendRegisterData = false;
+			if (CApp.sendRegisterData(mail, username, password)) {
+				sendRegisterData = true;
+			}
+			return sendRegisterData;
+		}
+		
+		@Override
+		protected void onPostExecute (Boolean s){
+			super.onPostExecute(s);
+			if(s == true){
+				
+				Intent i = new Intent(ARegister.this, ARegister_player.class);
+				startActivity(i);
+					
+				overridePendingTransition(R.animator.animator5, R.animator.animator6);
+			}
 		}
 		
 	}

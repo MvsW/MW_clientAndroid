@@ -7,7 +7,7 @@ public class CPlayer {
     /**
      * ATTRIBUTES
      */
-    private ArrayList<CSpell> spells = new ArrayList<>();
+    private ArrayList<CSpell> spells = new ArrayList<CSpell>();
     /* ó
     private CSpell[] spells = new CSpell[6]; // sugiero el uso de arrays cuando ya sabemos que es limitado
     */

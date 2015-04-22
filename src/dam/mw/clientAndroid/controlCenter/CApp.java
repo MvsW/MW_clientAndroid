@@ -67,13 +67,15 @@ public class CApp {
 		return op;
 	}
 
-	public static boolean sendRegisterData(String username, String mail,
+	public static boolean sendRegisterData(String mail, String username,
 			String password) {
 		boolean logged = false;
-		connection.sendData(username + "," + mail + "," + password + ","
-				+ CApp.getLongitude() + "," + CApp.getLatitude());
+		connection.sendData(mail + "," + username + "," + password);
+		Log.i("LogsAndroid", "Send data ok");
 		if (connection.readData().equals(CConstant.SUCCES)) {
 			// Ok login correcte
+			Log.i("LogsAndroid", "Send data ok 2");
+			
 			logged = true;
 		}
 		return logged;
