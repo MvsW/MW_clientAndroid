@@ -9,15 +9,6 @@
     android:background="@drawable/bg_generic"
     tools:context="dam.mw.clientAndroid.official.ALogin" >
 
-    <ImageView
-        android:id="@+id/iv_logoLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp"
-        android:src="@drawable/ic_launcher" />
-
     <EditText
         android:id="@+id/et_userOrMail"
         android:layout_width="500px"
@@ -30,28 +21,10 @@
         android:textColor="#FFFFFF"
         android:ems="10"
         android:hint="@string/hint_userOrMail"
-        android:textSize="25dp" >
+        android:textSize="20dp" >
 
         <requestFocus />
     </EditText>
-
-    <EditText
-        android:id="@+id/et_password"
-        android:layout_width="500px"
-        android:layout_height="100px"
-        android:layout_below="@+id/et_userOrMail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:background="@drawable/edittext_modified_states"
-        android:fontFamily="sans-serif-light"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp"
-        android:ems="10"
-        android:hint="@string/hint_password"
-        android:inputType="textPassword"
-         />
 
     <Button
         android:id="@+id/btn_login"
@@ -80,5 +53,38 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:textSize="30dp" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="500px"
+        android:layout_height="100px"
+        android:layout_alignLeft="@+id/et_userOrMail"
+        android:layout_below="@+id/et_userOrMail"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/edittext_modified_states"
+        android:ems="10"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="500px"
+        android:layout_height="500px"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="200px"
+        android:layout_height="200px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="41dp"
+        android:src="@drawable/iconregister" />
 
 </RelativeLayout>

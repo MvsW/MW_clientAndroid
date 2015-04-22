@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -56,11 +57,10 @@ public class ALogin extends Activity implements OnClickListener {
 		
 		// FindViewBy ID
 		et_usernameOrEmail = (EditText) findViewById(R.id.et_userOrMail);
-		
-		et_usernameOrEmail.setTypeface(face);
+		et_usernameOrEmail.setTextColor(Color.WHITE);
 		
 		et_password = (EditText) findViewById(R.id.et_password);
-		et_password.setTypeface(face);
+		et_password.setTextColor(Color.WHITE);
 
 		// Add to a ArrayList
 		fields.add(et_usernameOrEmail);

@@ -4,11 +4,11 @@
     >
     <item 
         android:state_pressed="true"
-        android:drawable="@drawable/et_tf_black_focus" 
+        android:drawable="@drawable/et_tf_black_focus_neon" 
         /> <!-- pressed -->    
     <item 
         android:state_focused="true"
-        android:drawable="@drawable/et_tf_black_focus" 
+        android:drawable="@drawable/et_tf_black_focus_neon" 
         /> <!-- focused -->    
     <item 
         android:drawable="@drawable/et_tf_black_no_focus" 

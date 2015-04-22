@@ -13,7 +13,7 @@
     <!-- ALogin Strings -->
     <string name="btn_register">Register</string>
     <string name="btn_login">Login</string>
-    <string name="hint_userOrMail">userName Or Mail</string>
+    <string name="hint_userOrMail">Username or Email</string>
     <string name="hint_password">Password</string>
 
     <!-- AMenu Strings -->
