@@ -84,7 +84,6 @@
         android:layout_height="200px"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="41dp"
-        android:src="@drawable/iconregister" />
+        android:layout_marginBottom="41dp" />
 
 </RelativeLayout>

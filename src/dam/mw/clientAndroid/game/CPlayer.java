@@ -21,6 +21,7 @@ public class CPlayer {
     private int currentPoints;
     private int wonGames;
     
+    
     // Battle attributes
     private int action; // use the constants of the CConstant for compare to. 
     private String statusOnBattle;
