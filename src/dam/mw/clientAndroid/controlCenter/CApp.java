@@ -54,6 +54,24 @@ public class CApp {
 
 		return logged;
 	}
+	
+	public static boolean sendRegisterTaped() {
+
+		boolean logged = false;
+		// Log.i("LogsAndroid", ""+connection.equals(null));
+		Log.i("LogsAndroid", "prepare register...");
+		connection.sendData(CConstant.REGISTER + "," + CConstant.REGISTER + "," + CConstant.REGISTER + ","+ CConstant.REGISTER);
+		Log.i("LogsAndroid", "send register tapped");
+		if (connection.readData().equals(CConstant.SUCCES)) {
+
+			Log.i("LogsAndroid", "Register Tapped...");
+			// Ok login correcte
+			logged = true;
+		}
+
+		return logged;
+	}
+	
 	public static boolean sendSearchBattle(){
 		boolean op = false;
 
@@ -70,12 +88,11 @@ public class CApp {
 	public static boolean sendRegisterData(String mail, String username,
 			String password) {
 		boolean logged = false;
+		Log.i("LogsAndroid", "Preparing send data...");
 		connection.sendData(mail + "," + username + "," + password);
-		Log.i("LogsAndroid", "Send data ok");
+		Log.i("LogsAndroid", "Data sended");
 		if (connection.readData().equals(CConstant.SUCCES)) {
-			// Ok login correcte
-			Log.i("LogsAndroid", "Send data ok 2");
-			
+			Log.i("LogsAndroid", "Data recived");
 			logged = true;
 		}
 		return logged;

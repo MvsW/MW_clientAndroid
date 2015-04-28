@@ -10,6 +10,7 @@ import dam.mw.clientAndroid.controlCenter.JApp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
@@ -17,16 +18,20 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ARegister extends Activity {
 	
 	private JApp japp = new JApp(); 
 	private EditText et_username, et_mail, et_password, et_confirmPassword;
+	private TextView tv_registration, tv_username, tv_mail, tv_password, tv_confirmPassword;
 	private ArrayList<EditText> fields = new ArrayList<EditText>();
 	private String username, mail, password, passwordConfirm;
+	private Button btn_registerActivity;
 	private boolean validationOK = true;
 	
 	protected PowerManager.WakeLock wakelock;
@@ -37,15 +42,34 @@ public class ARegister extends Activity {
 		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
+        
+        
+        
+        //Set typeface.
+      	Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
 		
 		//getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		// FindViewBy ID
+      	btn_registerActivity = (Button)findViewById(R.id.btn_registerActivity);
+      	btn_registerActivity.setTypeface(face);
+      	
 		et_username = (EditText) findViewById(R.id.et_userName);
 		et_mail = (EditText) findViewById(R.id.et_mail);
 		et_password = (EditText) findViewById(R.id.et_password);
 		et_confirmPassword = (EditText) findViewById(R.id.et_confirmPassword);
 		
+		tv_registration = (TextView)findViewById(R.id.tv_registration);
+		tv_username = (TextView)findViewById(R.id.tv_userName);
+		tv_mail = (TextView)findViewById(R.id.tv_mail);
+		tv_password = (TextView)findViewById(R.id.tv_password);
+		tv_confirmPassword = (TextView)findViewById(R.id.tv_confirmPassword);
+		
+		tv_registration.setTypeface(face);
+		tv_username.setTypeface(face);
+		tv_mail.setTypeface(face);
+		tv_password.setTypeface(face);
+		tv_confirmPassword.setTypeface(face);
 		
 		
 		// Add to a ArrayList
@@ -125,9 +149,10 @@ public class ARegister extends Activity {
 				
 				// 3- Registrar usuario a la base de datos
 				if (validationOK == true){
+					new sendRegisterData().execute();
 					Toast e=Toast.makeText(this,"Correct!" + mail + username + password, Toast.LENGTH_SHORT);
 				    e.show();
-				    new sendRegisterData().execute();
+				    
 				    
 				    
 				}

@@ -100,9 +100,13 @@ public class ALogin extends Activity implements OnClickListener {
 		}
 		
 	}
+	
+	
 
 	@Override
 	public void onClick(View v) {
+		
+		//user1@hotmail.com	User1964
 
 		switch (v.getId()) {
 		case R.id.btn_login:
@@ -120,37 +124,46 @@ public class ALogin extends Activity implements OnClickListener {
 					// checks) Password lenght: 8
 
 					new login().execute();
-					
-					
-					
-					
-					
-					/*new Thread(new Runnable() {
-
-						@Override
-						public void run() {
-							// TODO Auto-generated method stub
-							if (CApp.sendLogin(username, password, 0, 0)) {
-								//sendLogin = true;
-
-								
-							}
-						}
-					}).start();*/
-					
-					
-
 				}
 			}
 			break;
 		case R.id.btn_register:
 			// TODO: Falta iniciar la activity
-			Intent intent = new Intent(this, ARegister.class);
-			startActivity(intent);
+			
+			new register().execute();
+			
+			
 			break;
 		default:
 			break;
 		}
 
+	}
+	
+	class register extends AsyncTask<String, Void, Boolean>{
+
+		@Override
+		protected void onPreExecute(){
+			super.onPreExecute();
+		}
+		
+		@Override
+		protected Boolean doInBackground(String... params) {
+			Boolean sendRegister = false;
+			if (CApp.sendRegisterTaped()) {
+				sendRegister = true;
+			}
+			return sendRegister;
+		}
+		
+		@Override
+		protected void onPostExecute (Boolean s){
+			super.onPostExecute(s);
+			if(s == true){
+				Intent intent = new Intent(context, ARegister.class);
+				startActivity(intent);
+			}
+		}
+		
 	}
 }

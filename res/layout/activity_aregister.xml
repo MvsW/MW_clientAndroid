@@ -17,7 +17,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="@string/tv_registration"        
+        android:text="@string/tv_registration"
+        android:textColor="#FFFFFF" 
+        android:textSize="100px"       
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -105,7 +107,7 @@
         android:onClick="onClick"
         android:text="@string/btn_registerActivity"
         android:textColor="#FFFFFF"
-        android:textSize="20dp"
+        android:textSize="80px"
         android:textStyle="bold" />
 
     <TextView
@@ -114,8 +116,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_registration"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:hint="@string/tv_userName" />
+        android:layout_marginTop="15dp"
+        android:text="@string/tv_userName"
+        android:textColor="#FFFFFF"
+        android:textSize="50px" />
 
     <TextView
         android:id="@+id/tv_mail"
@@ -123,8 +127,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_userName"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:hint="@string/tv_mail" />
+        android:text="@string/tv_mail"
+        android:textColor="#FFFFFF"
+        android:textSize="50px" />
+
+    <TextView
+        android:id="@+id/tv_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_mail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:text="@string/tv_password"
+        android:textColor="#FFFFFF"
+        android:textSize="50px" />
 
     <TextView
         android:id="@+id/tv_confirmPassword"
@@ -132,15 +148,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_password"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp"
-        android:hint="@string/tv_confirmPassword" />
-
-    <TextView
-        android:id="@+id/tv_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/tv_userName"
-        android:layout_below="@+id/et_mail"
-        android:hint="@string/tv_password" />
+        android:layout_marginTop="11dp"
+        android:text="@string/tv_confirmPassword"
+        android:textColor="#FFFFFF"
+        android:textSize="50px" />
 
 </RelativeLayout>
