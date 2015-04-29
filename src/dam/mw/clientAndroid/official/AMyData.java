@@ -16,10 +16,22 @@ import android.os.PowerManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AMyData extends Activity {
 	ProgressDialog pDialog;
+	
+	private String[] playerArray = new String[10];
+	
+	private TextView tv_player_name;
+	private TextView tv_lifeData;
+	private TextView tv_energyData;
+	private TextView tv_regEnergyData;
+	private TextView tv_strengthData;
+	private TextView tv_inteligenceData;
+	private TextView tv_dateRegisterData;
+	
 
 	protected PowerManager.WakeLock wakelock;
 	@Override
@@ -29,6 +41,16 @@ public class AMyData extends Activity {
 		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
+        
+        //Components declaration
+        tv_player_name = (TextView) findViewById(R.id.tv_name_avatar);
+        tv_lifeData = (TextView)findViewById(R.id.tv_lifeData);
+        tv_energyData = (TextView)findViewById(R.id.tv_energyData);
+        tv_regEnergyData = (TextView)findViewById(R.id.tv_regEnergyData);
+        tv_strengthData = (TextView)findViewById(R.id.tv_strengthData);
+        tv_inteligenceData = (TextView)findViewById(R.id.tv_inteligenceData);
+        tv_dateRegisterData = (TextView)findViewById(R.id.tv_dateRegisterData);
+        
 		
 		new getData().execute();
 		
@@ -50,7 +72,6 @@ public class AMyData extends Activity {
 		@Override
 		protected void onPostExecute (String s){
 			super.onPostExecute(s);
-			
 		}
 		
 	}
