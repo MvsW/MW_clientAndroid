@@ -164,6 +164,5 @@ public class ALogin extends Activity implements OnClickListener {
 				startActivity(intent);
 			}
 		}
-		
 	}
 }

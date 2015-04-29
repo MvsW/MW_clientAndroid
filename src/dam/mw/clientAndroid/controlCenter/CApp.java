@@ -60,12 +60,10 @@ public class CApp {
 		boolean logged = false;
 		// Log.i("LogsAndroid", ""+connection.equals(null));
 		Log.i("LogsAndroid", "prepare register...");
-		connection.sendData(CConstant.REGISTER + "," + CConstant.REGISTER + "," + CConstant.REGISTER + ","+ CConstant.REGISTER);
+		connection.sendData(CConstant.REGISTER + "," + CConstant.REGISTER + "," + 0.0 + ","+ 0.0);
 		Log.i("LogsAndroid", "send register tapped");
 		if (connection.readData().equals(CConstant.SUCCES)) {
-
 			Log.i("LogsAndroid", "Register Tapped...");
-			// Ok login correcte
 			logged = true;
 		}
 
@@ -93,6 +91,18 @@ public class CApp {
 		Log.i("LogsAndroid", "Data sended");
 		if (connection.readData().equals(CConstant.SUCCES)) {
 			Log.i("LogsAndroid", "Data recived");
+			logged = true;
+		}
+		return logged;
+	}
+	
+	public static boolean sendRegisterPlayer(String playerName, String idPlayerType, String life, String energy, String eRegeneration, String strength, String intelligence) {
+		boolean logged = false;
+		Log.i("LogsAndroid", "Preparing send register player data...");
+		connection.sendData(playerName + "," + idPlayerType + "," + life + "," + energy + "," + eRegeneration + "," + strength + "," + intelligence+"," + 1+"," + 5);
+		Log.i("LogsAndroid", "Register player data sended");
+		if (connection.readData().equals(CConstant.SUCCES)) {
+			Log.i("LogsAndroid", "Register player data recived");
 			logged = true;
 		}
 		return logged;

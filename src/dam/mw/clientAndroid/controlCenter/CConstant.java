@@ -6,8 +6,8 @@ public final class CConstant {
 	//public static final String HOST = "192.168.1.11";
 	public static final int PORT = 4444;
 	
-	public static final int MAGE = 1;
-	public static final int WARLOCK = 2;
+	public static final String MAGE = "1";
+	public static final String WARLOCK = "2";
 	
 	
     public static final String SUCCES = "99"; //numero o text?¿?¿?

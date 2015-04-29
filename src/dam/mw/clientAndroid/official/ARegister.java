@@ -174,7 +174,7 @@ public class ARegister extends Activity {
 		@Override
 		protected Boolean doInBackground(String... params) {
 			Boolean sendRegisterData = false;
-			if (CApp.sendRegisterData(mail, username, password)) {
+			if (CApp.sendRegisterData(username, mail, password)) {
 				sendRegisterData = true;
 			}
 			return sendRegisterData;
