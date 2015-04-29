@@ -31,6 +31,8 @@ public class AMyData extends Activity {
 	private TextView tv_strengthData;
 	private TextView tv_inteligenceData;
 	private TextView tv_dateRegisterData;
+	private TextView tv_totalPointsData;
+	private TextView tv_totalWinsData;
 	
 
 	protected PowerManager.WakeLock wakelock;
@@ -49,11 +51,13 @@ public class AMyData extends Activity {
         tv_regEnergyData = (TextView)findViewById(R.id.tv_regEnergyData);
         tv_strengthData = (TextView)findViewById(R.id.tv_strengthData);
         tv_inteligenceData = (TextView)findViewById(R.id.tv_inteligenceData);
+        
+        tv_totalPointsData = (TextView)findViewById(R.id.tv_totalPointsData);
+        tv_totalWinsData = (TextView)findViewById(R.id.tv_totalWinsData);
         tv_dateRegisterData = (TextView)findViewById(R.id.tv_dateRegisterData);
         
 		
 		new getData().execute();
-		
 	}
 	
 	class getData extends AsyncTask<String, String, String>{
@@ -65,14 +69,35 @@ public class AMyData extends Activity {
 		
 		@Override
 		protected String doInBackground(String... params) {
-			Log.i("LogsAndroid", CApp.getData());
+			//Log.i("LogsAndroid", CApp.getData());
+			playerArray = CApp.getData().split(",");
 			return "";
 		}
 		
 		@Override
 		protected void onPostExecute (String s){
 			super.onPostExecute(s);
+			printMyData();
+			
 		}
-		
+	}
+	
+	public void printMyData() {
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				
+				tv_player_name.setText(playerArray[0]);
+				tv_lifeData.setText(playerArray[1]);
+				tv_energyData.setText(playerArray[3]);
+				tv_regEnergyData.setText(playerArray[4]);
+				tv_strengthData.setText(playerArray[5]);
+				tv_inteligenceData.setText(playerArray[6]);
+				tv_totalPointsData.setText(playerArray[7]);
+				tv_totalWinsData.setText(playerArray[8]);
+				tv_dateRegisterData.setText(playerArray[9]);
+				
+			}
+		});
 	}
 }
