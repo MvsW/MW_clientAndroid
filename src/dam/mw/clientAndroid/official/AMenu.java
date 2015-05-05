@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
@@ -19,14 +20,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class AMenu extends Activity implements OnClickListener {
 
 	private Context context;
 	private ProgressDialog pDialog;
 	private boolean searching = false;
+	
 
 	protected PowerManager.WakeLock wakelock;
+	
+	TextView tv_menu;
+	Button btn_battle;
+	Button btn_showData;
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +49,18 @@ public class AMenu extends Activity implements OnClickListener {
 		wakelock.acquire();
 
 		context = this;
+		
+		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
+		
+		tv_menu = (TextView)findViewById(R.id.tv_menu);
+		btn_battle = (Button)findViewById(R.id.btn_battle);
+		btn_showData = (Button)findViewById(R.id.btn_showData);
+		
+		tv_menu.setTypeface(face);
+		btn_battle.setTypeface(face);
+		btn_showData.setTypeface(face);
+		
+		
 	}
 
 	class sendData extends AsyncTask<String, String, String> {

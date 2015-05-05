@@ -119,9 +119,12 @@ public class CApp {
 
 	public static void sendDataShowMyData() {
 		connection.sendData(CConstant.SHOW_MY_DATA);
+		Log.i("LogsAndroid", "Data recived.");
 	}
 	public static void sendData(String data){
+		Log.i("LogsAndroid", "Prepare send battle action...");
 		connection.sendData(data);
+		Log.i("LogsAndroid", "Battle action sended: " + data);
 	}
 
 	public static void sendRegisterOp() {

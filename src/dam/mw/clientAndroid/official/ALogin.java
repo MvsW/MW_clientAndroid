@@ -57,10 +57,12 @@ public class ALogin extends Activity implements OnClickListener {
 		
 		// FindViewBy ID
 		et_usernameOrEmail = (EditText) findViewById(R.id.et_userOrMail);
-		et_usernameOrEmail.setTextColor(Color.WHITE);
+		et_usernameOrEmail.setTextColor(Color.RED);
+		et_usernameOrEmail.setText("user1@hotmail.com");
 		
 		et_password = (EditText) findViewById(R.id.et_password);
-		et_password.setTextColor(Color.WHITE);
+		et_password.setTextColor(Color.RED);
+		et_password.setText("User1996");
 
 		// Add to a ArrayList
 		fields.add(et_usernameOrEmail);
@@ -74,6 +76,7 @@ public class ALogin extends Activity implements OnClickListener {
 		protected void onPreExecute(){
 			super.onPreExecute();
 			pDialog = new ProgressDialog(ALogin.this);
+			
 			pDialog.setMessage("Login in. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(false);
@@ -123,7 +126,9 @@ public class ALogin extends Activity implements OnClickListener {
 					// para conocer los tamaños y maneres de realizar estos
 					// checks) Password lenght: 8
 
-					new login().execute();
+					Intent intent = new Intent(context, AMenu.class);
+					startActivity(intent);
+					//new login().execute();
 				}
 			}
 			break;

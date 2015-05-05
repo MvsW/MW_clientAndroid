@@ -6,36 +6,53 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg_generic"
     tools:context="dam.mw.clientAndroid.official.AMenu" >
 
     <ImageView
         android:id="@+id/iv_LogoMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="84dp"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/logo" />
 
     <Button
         android:id="@+id/btn_battle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50px"
+        android:layout_height="90px"
         android:layout_alignLeft="@+id/btn_showData"
         android:layout_alignRight="@+id/btn_showData"
         android:layout_below="@+id/iv_LogoMenu"
         android:layout_marginTop="127dp"
         android:onClick="onClick"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_modified_states"
         android:text="@string/btn_battle" />
+
+    <TextView
+        android:id="@+id/tv_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Menu"
+        android:textColor="#FFFFFF"
+        android:textSize="70dp" />
 
     <Button
         android:id="@+id/btn_showData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300px"
+        android:layout_height="90px"
         android:layout_below="@+id/btn_battle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_modified_states"
         android:onClick="onClick"
-        android:text="@string/btn_showData" />
+        android:text="@string/btn_showData"
+        android:textColor="#FFFFFF" />
+
+    
     
 </RelativeLayout>
