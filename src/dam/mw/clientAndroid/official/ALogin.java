@@ -76,10 +76,12 @@ public class ALogin extends Activity implements OnClickListener {
 		protected void onPreExecute(){
 			super.onPreExecute();
 			pDialog = new ProgressDialog(ALogin.this);
+			pDialog.show();
+			pDialog.setContentView(R.layout.custom_progressdialog);
 			pDialog.setMessage("Login in. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(false);
-			pDialog.show();
+			
 		}
 		
 		@Override

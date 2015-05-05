@@ -69,10 +69,11 @@ public class AMenu extends Activity implements OnClickListener {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pDialog = new ProgressDialog(AMenu.this);
+			pDialog.show();
+			pDialog.setContentView(R.layout.custom_progressdialog);
 			pDialog.setMessage("Show My Data. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(false);
-			pDialog.show();
 		}
 
 		@Override
@@ -99,10 +100,11 @@ public class AMenu extends Activity implements OnClickListener {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pDialog = new ProgressDialog(AMenu.this);
+			pDialog.show();
+			pDialog.setContentView(R.layout.custom_progressdialog);
 			pDialog.setMessage("Searching battle. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(false);
-			pDialog.show();
 		}
 
 		@Override
