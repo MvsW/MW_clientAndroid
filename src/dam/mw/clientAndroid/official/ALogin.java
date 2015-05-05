@@ -76,7 +76,6 @@ public class ALogin extends Activity implements OnClickListener {
 		protected void onPreExecute(){
 			super.onPreExecute();
 			pDialog = new ProgressDialog(ALogin.this);
-			
 			pDialog.setMessage("Login in. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(false);
@@ -126,9 +125,9 @@ public class ALogin extends Activity implements OnClickListener {
 					// para conocer los tamaños y maneres de realizar estos
 					// checks) Password lenght: 8
 
-					Intent intent = new Intent(context, AMenu.class);
-					startActivity(intent);
-					//new login().execute();
+					/*Intent intent = new Intent(context, AMenu.class);
+					startActivity(intent);*/
+					new login().execute();
 				}
 			}
 			break;
