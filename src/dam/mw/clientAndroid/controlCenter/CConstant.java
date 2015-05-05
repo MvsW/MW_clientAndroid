@@ -17,12 +17,12 @@ public final class CConstant {
     public static final String START_BATTLE = "startBattle";
     
     //ACTION BUTTONS BATTLE
-    public static final String NORMAL_ATTACK = "BA";
-    public static final String SPELL_1 = "S1";
-    public static final String SPELL_2 = "S2";
-    public static final String DEFENSE = "SH";
-    public static final String DODGE = "DG";
-    public static final String SUPER_ATTACK = "US";
+    public final static String BASIC = "1";
+    public final static String SPELL1 = "2";
+    public final static String SPELL2 = "3";
+    public final static String ULTIMATE = "4";
+    public final static String SHIELD = "5";
+    public final static String DODGE = "6";
 	
 	
 }

@@ -69,7 +69,6 @@ public class AMyData extends Activity {
 		
 		@Override
 		protected String doInBackground(String... params) {
-			//Log.i("LogsAndroid", CApp.getData());
 			playerArray = CApp.getData().split(",");
 			return "";
 		}

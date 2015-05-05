@@ -30,46 +30,27 @@ public class ABattle extends Activity implements OnClickListener {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.abattle, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 
 		case R.id.btn_normalAttack:
-			new SendActionBattle().execute(CConstant.NORMAL_ATTACK);
+			new SendActionBattle().execute(CConstant.BASIC);
 			break;
 		case R.id.btn_spell1:
-			new SendActionBattle().execute(CConstant.SPELL_1);
+			new SendActionBattle().execute(CConstant.SPELL1);
 			break;
 		case R.id.btn_spell2:
-			new SendActionBattle().execute(CConstant.SPELL_2);
+			new SendActionBattle().execute(CConstant.SPELL2);
 			break;
 		case R.id.btn_superAttack:
-			new SendActionBattle().execute(CConstant.SUPER_ATTACK);
+			new SendActionBattle().execute(CConstant.ULTIMATE);
 			break;
 		case R.id.btn_dodge:
 			new SendActionBattle().execute(CConstant.DODGE);
 			break;
 		case R.id.btn_defense:
-			new SendActionBattle().execute(CConstant.DEFENSE);
+			new SendActionBattle().execute(CConstant.SHIELD);
 			break;
 		default:
 			break;
@@ -88,28 +69,28 @@ public class ABattle extends Activity implements OnClickListener {
 		protected Boolean doInBackground(String... params) {
 			Boolean op = false;
 			switch (params[0]) { //TRY CATCH
-			case CConstant.NORMAL_ATTACK:
-				CApp.sendData(CConstant.NORMAL_ATTACK);
+			case CConstant.BASIC:
+				CApp.sendData(CConstant.BASIC);
 				op = true;
 				break;
-			case CConstant.SPELL_1:
-				CApp.sendData(CConstant.SPELL_1);
+			case CConstant.SPELL1:
+				CApp.sendData(CConstant.SPELL1);
 				op = true;
 				break;
-			case CConstant.SPELL_2:
-				CApp.sendData(CConstant.SPELL_2);
+			case CConstant.SPELL2:
+				CApp.sendData(CConstant.SPELL2);
 				op = true;
 				break;
-			case CConstant.SUPER_ATTACK:
-				CApp.sendData(CConstant.SUPER_ATTACK);
+			case CConstant.ULTIMATE:
+				CApp.sendData(CConstant.ULTIMATE);
 				op = true;
 				break;
 			case CConstant.DODGE:
 				CApp.sendData(CConstant.DODGE);
 				op = true;
 				break;
-			case CConstant.DEFENSE:
-				CApp.sendData(CConstant.DEFENSE);
+			case CConstant.SHIELD:
+				CApp.sendData(CConstant.SHIELD);
 				op = true;
 				break;
 			default:

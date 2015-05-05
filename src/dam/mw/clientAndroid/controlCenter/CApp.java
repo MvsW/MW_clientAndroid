@@ -46,11 +46,16 @@ public class CApp {
 				+ longitude);
 		Log.i("LogsAndroid", "send login...");
 		if (connection.readData().equals(CConstant.SUCCES)) {
-
 			Log.i("LogsAndroid", "recived...");
 			// Ok login correcte
 			logged = true;
+		}else if(connection.readData().equals(CConstant.ERROR)){
+			Log.i("LogsAndroid", "Error ocurred...");
+			// Ok login correcte
+			logged = false;
 		}
+		
+	
 
 		return logged;
 	}
