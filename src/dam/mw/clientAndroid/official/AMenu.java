@@ -35,6 +35,7 @@ public class AMenu extends Activity implements OnClickListener {
 	TextView tv_menu;
 	Button btn_battle;
 	Button btn_showData;
+	Button dialog_cancel;
 	
 	
 
@@ -60,6 +61,7 @@ public class AMenu extends Activity implements OnClickListener {
 		btn_battle.setTypeface(face);
 		btn_showData.setTypeface(face);
 		
+		dialog_cancel = (Button)findViewById(R.id.progress_cancel);
 		
 	}
 
