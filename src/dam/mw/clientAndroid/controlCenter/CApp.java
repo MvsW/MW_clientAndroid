@@ -45,11 +45,11 @@ public class CApp {
 		connection.sendData(userOrMail + "," + Password + "," + latitude + ","
 				+ longitude);
 		Log.i("LogsAndroid", "send login...");
-		if (connection.readData().equals(CConstant.SUCCES)) {
+		if (connection.readData().equals(CConstant.Response.SUCCES)) {
 			Log.i("LogsAndroid", "recived...");
 			// Ok login correcte
 			logged = true;
-		}else if(connection.readData().equals(CConstant.ERROR)){
+		}else if(connection.readData().equals(CConstant.Response.ERROR)){
 			Log.i("LogsAndroid", "Error ocurred...");
 			// Ok login correcte
 			logged = false;
@@ -67,7 +67,7 @@ public class CApp {
 		Log.i("LogsAndroid", "prepare register...");
 		connection.sendData(CConstant.REGISTER + "," + CConstant.REGISTER + "," + 0.0 + ","+ 0.0);
 		Log.i("LogsAndroid", "send register tapped");
-		if (connection.readData().equals(CConstant.SUCCES)) {
+		if (connection.readData().equals(CConstant.Response.SUCCES)) {
 			Log.i("LogsAndroid", "Register Tapped...");
 			logged = true;
 		}
@@ -81,7 +81,7 @@ public class CApp {
 		Log.i("LogsAndroid", "prepare send searching...");
 		connection.sendData(CConstant.START_BATTLE);
 		Log.i("LogsAndroid", "send searching...");
-		if(connection.readData().equals(CConstant.SUCCES)){
+		if(connection.readData().equals(CConstant.Response.SUCCES)){
 			op = true;
 			Log.i("LogsAndroid", "recived...");
 		}
@@ -94,7 +94,7 @@ public class CApp {
 		Log.i("LogsAndroid", "Preparing send data...");
 		connection.sendData(mail + "," + username + "," + password);
 		Log.i("LogsAndroid", "Data sended");
-		if (connection.readData().equals(CConstant.SUCCES)) {
+		if (connection.readData().equals(CConstant.Response.SUCCES)) {
 			Log.i("LogsAndroid", "Data recived");
 			logged = true;
 		}
@@ -106,7 +106,7 @@ public class CApp {
 		Log.i("LogsAndroid", "Preparing send register player data...");
 		connection.sendData(playerName + "," + idPlayerType + "," + life + "," + energy + "," + eRegeneration + "," + strength + "," + intelligence+"," + 1+"," + 5);
 		Log.i("LogsAndroid", "Register player data sended");
-		if (connection.readData().equals(CConstant.SUCCES)) {
+		if (connection.readData().equals(CConstant.Response.SUCCES)) {
 			Log.i("LogsAndroid", "Register player data recived");
 			logged = true;
 		}
@@ -132,5 +132,42 @@ public class CApp {
 		connection.sendData(CConstant.REGISTER + "," + CConstant.REGISTER
 				+ "," + CConstant.REGISTER + "," + CConstant.REGISTER);
 	}
+	
+	//Get error number from server and converts to error name
+		public String getErrorNameByErrorNum (String num){
+			String errorName="";
+			
+			switch(num){
+			case CConstant.Response.SUCCES:
+				errorName = "Success :)";
+				break;
+			case CConstant.Response.ERROR:
+				errorName = "Error :(";
+				break;
+			case CConstant.Response.E_USER_ALREADY_LOGGED:
+				errorName = "Error: User already logged.";
+				break;
+			case CConstant.Response.E_PASSWORD_INCORRECT:
+				errorName = "Error: Password incorrect.";
+				break;
+			case CConstant.Response.E_EMAIL_DOESNT_EXIST:
+				errorName = "Error: Email doesn't exists.";
+				break;
+			case CConstant.Response.E_USER_DOESENT_EXIST:
+				errorName = "Error: User doesn't exists.";
+				break;
+			case CConstant.Response.E_USER_ALREADY_USED:
+				errorName = "Error: User already used.";
+				break;
+			case CConstant.Response.E_EMAIL_ALREADY_USED:
+				errorName = "Error: Email alredy used.";
+				break;
+			case CConstant.Response.E_PLAYERNAME_ALREADY_USED:
+				errorName = "Error: Player name already used.";
+				break;
+			default: break;
+			}
+			return errorName;
+		}
 
 }
