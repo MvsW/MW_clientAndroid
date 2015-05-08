@@ -87,7 +87,7 @@ public class AMyData extends Activity {
 			public void run() {
 				
 				tv_player_name.setText(playerArray[0]);
-				tv_lifeData.setText(playerArray[1]);
+				tv_lifeData.setText(playerArray[2]);
 				tv_energyData.setText(playerArray[3]);
 				tv_regEnergyData.setText(playerArray[4]);
 				tv_strengthData.setText(playerArray[5]);

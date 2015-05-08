@@ -15,7 +15,8 @@
         android:layout_above="@+id/btn_defense"
         android:layout_alignParentTop="true"
         android:layout_weight="0.62"
-        android:scrollHorizontally="false" />
+        android:scrollHorizontally="false"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/btn_dodge"
@@ -24,7 +25,8 @@
         android:layout_alignLeft="@+id/btn_defense"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="19dp"
-        android:text="@string/btn_dodge" />
+        android:text="@string/btn_dodge"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/btn_defense"
@@ -34,7 +36,8 @@
         android:layout_alignLeft="@+id/tv_logBattle"
         android:layout_marginBottom="16dp"
         android:textSize="14dp"
-        android:text="@string/btn_defense" />
+        android:text="@string/btn_defense"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/btn_superAttack"
@@ -44,7 +47,8 @@
         android:layout_alignBottom="@+id/btn_defense"
         android:layout_centerHorizontal="true"
         android:textSize="12dp"
-        android:text="@string/btn_superAttack" />
+        android:text="@string/btn_superAttack"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/btn_spell2"
@@ -53,7 +57,8 @@
         android:layout_alignBaseline="@+id/btn_superAttack"
         android:layout_alignBottom="@+id/btn_superAttack"
         android:layout_alignRight="@+id/tv_logBattle"
-        android:text="@string/btn_spell2" />
+        android:text="@string/btn_spell2"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/btn_normalAttack"
@@ -63,7 +68,8 @@
         android:layout_alignBottom="@+id/btn_spell1"
         android:layout_alignRight="@+id/btn_spell2"
         android:textSize="10dp"
-        android:text="@string/btn_normalAttack" />
+        android:text="@string/btn_normalAttack"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/btn_spell1"
@@ -72,6 +78,7 @@
         android:layout_alignBaseline="@+id/btn_dodge"
         android:layout_alignBottom="@+id/btn_dodge"
         android:layout_centerHorizontal="true"
-        android:text="@string/btn_spell1" />
+        android:text="@string/btn_spell1"
+        android:onClick="onClick" />
     
 </RelativeLayout>

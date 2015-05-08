@@ -21,6 +21,8 @@ public final class CConstant {
     public final static String SHIELD = "5";
     public final static String DODGE = "6";
     
+    public final static String SEPARATOR = ",";
+    
     /**
      * STRUCTURED ERRORS
      */

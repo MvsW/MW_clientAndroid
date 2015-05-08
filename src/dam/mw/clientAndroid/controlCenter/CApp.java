@@ -42,30 +42,31 @@ public class CApp {
 		boolean logged = false;
 		// Log.i("LogsAndroid", ""+connection.equals(null));
 		Log.i("LogsAndroid", "prepare send login...");
-		connection.sendData(userOrMail + "," + Password + "," + latitude + ","
+		connection.sendData(userOrMail + CConstant.SEPARATOR + Password
+				+ CConstant.SEPARATOR + latitude + CConstant.SEPARATOR
 				+ longitude);
 		Log.i("LogsAndroid", "send login...");
 		if (connection.readData().equals(CConstant.Response.SUCCES)) {
 			Log.i("LogsAndroid", "recived...");
 			// Ok login correcte
 			logged = true;
-		}else if(connection.readData().equals(CConstant.Response.ERROR)){
+		} else if (connection.readData().equals(CConstant.Response.ERROR)) {
 			Log.i("LogsAndroid", "Error ocurred...");
 			// Ok login correcte
 			logged = false;
 		}
-		
-	
 
 		return logged;
 	}
-	
+
 	public static boolean sendRegisterTaped() {
 
 		boolean logged = false;
 		// Log.i("LogsAndroid", ""+connection.equals(null));
 		Log.i("LogsAndroid", "prepare register...");
-		connection.sendData(CConstant.REGISTER + "," + CConstant.REGISTER + "," + 0.0 + ","+ 0.0);
+		connection.sendData(CConstant.REGISTER + CConstant.SEPARATOR
+				+ CConstant.REGISTER + CConstant.SEPARATOR + 0.0
+				+ CConstant.SEPARATOR + 0.0);
 		Log.i("LogsAndroid", "send register tapped");
 		if (connection.readData().equals(CConstant.Response.SUCCES)) {
 			Log.i("LogsAndroid", "Register Tapped...");
@@ -74,14 +75,14 @@ public class CApp {
 
 		return logged;
 	}
-	
-	public static boolean sendSearchBattle(){
+
+	public static boolean sendSearchBattle() {
 		boolean op = false;
 
 		Log.i("LogsAndroid", "prepare send searching...");
 		connection.sendData(CConstant.START_BATTLE);
 		Log.i("LogsAndroid", "send searching...");
-		if(connection.readData().equals(CConstant.Response.SUCCES)){
+		if (connection.readData().equals(CConstant.Response.SUCCES)) {
 			op = true;
 			Log.i("LogsAndroid", "recived...");
 		}
@@ -92,7 +93,8 @@ public class CApp {
 			String password) {
 		boolean logged = false;
 		Log.i("LogsAndroid", "Preparing send data...");
-		connection.sendData(mail + "," + username + "," + password);
+		connection.sendData(mail + CConstant.SEPARATOR + username
+				+ CConstant.SEPARATOR + password);
 		Log.i("LogsAndroid", "Data sended");
 		if (connection.readData().equals(CConstant.Response.SUCCES)) {
 			Log.i("LogsAndroid", "Data recived");
@@ -100,11 +102,17 @@ public class CApp {
 		}
 		return logged;
 	}
-	
-	public static boolean sendRegisterPlayer(String playerName, String idPlayerType, String life, String energy, String eRegeneration, String strength, String intelligence) {
+
+	public static boolean sendRegisterPlayer(String playerName,
+			String idPlayerType, String life, String energy,
+			String eRegeneration, String strength, String intelligence) {
 		boolean logged = false;
 		Log.i("LogsAndroid", "Preparing send register player data...");
-		connection.sendData(playerName + "," + idPlayerType + "," + life + "," + energy + "," + eRegeneration + "," + strength + "," + intelligence+"," + 1+"," + 5);
+		connection.sendData(playerName + CConstant.SEPARATOR + idPlayerType
+				+ CConstant.SEPARATOR + life + CConstant.SEPARATOR + energy
+				+ CConstant.SEPARATOR + eRegeneration + CConstant.SEPARATOR
+				+ strength + CConstant.SEPARATOR + intelligence
+				+ CConstant.SEPARATOR + 1 + CConstant.SEPARATOR + 5);
 		Log.i("LogsAndroid", "Register player data sended");
 		if (connection.readData().equals(CConstant.Response.SUCCES)) {
 			Log.i("LogsAndroid", "Register player data recived");
@@ -121,7 +129,8 @@ public class CApp {
 		connection.sendData(CConstant.SHOW_MY_DATA);
 		Log.i("LogsAndroid", "Data recived.");
 	}
-	public static void sendData(String data){
+
+	public static void sendData(String data) {
 		Log.i("LogsAndroid", "Prepare send battle action...");
 		connection.sendData(data);
 		Log.i("LogsAndroid", "Battle action sended: " + data);
@@ -129,45 +138,47 @@ public class CApp {
 
 	public static void sendRegisterOp() {
 
-		connection.sendData(CConstant.REGISTER + "," + CConstant.REGISTER
-				+ "," + CConstant.REGISTER + "," + CConstant.REGISTER);
+		connection.sendData(CConstant.REGISTER + CConstant.SEPARATOR
+				+ CConstant.REGISTER + CConstant.SEPARATOR + CConstant.REGISTER
+				+ CConstant.SEPARATOR + CConstant.REGISTER);
 	}
-	
-	//Get error number from server and converts to error name
-		public String getErrorNameByErrorNum (String num){
-			String errorName="";
-			
-			switch(num){
-			case CConstant.Response.SUCCES:
-				errorName = "Success :)";
-				break;
-			case CConstant.Response.ERROR:
-				errorName = "Error :(";
-				break;
-			case CConstant.Response.E_USER_ALREADY_LOGGED:
-				errorName = "Error: User already logged.";
-				break;
-			case CConstant.Response.E_PASSWORD_INCORRECT:
-				errorName = "Error: Password incorrect.";
-				break;
-			case CConstant.Response.E_EMAIL_DOESNT_EXIST:
-				errorName = "Error: Email doesn't exists.";
-				break;
-			case CConstant.Response.E_USER_DOESENT_EXIST:
-				errorName = "Error: User doesn't exists.";
-				break;
-			case CConstant.Response.E_USER_ALREADY_USED:
-				errorName = "Error: User already used.";
-				break;
-			case CConstant.Response.E_EMAIL_ALREADY_USED:
-				errorName = "Error: Email alredy used.";
-				break;
-			case CConstant.Response.E_PLAYERNAME_ALREADY_USED:
-				errorName = "Error: Player name already used.";
-				break;
-			default: break;
-			}
-			return errorName;
+
+	// Get error number from server and converts to error name
+	public String getErrorNameByErrorNum(String num) {
+		String errorName = "";
+
+		switch (num) {
+		case CConstant.Response.SUCCES:
+			errorName = "Success :)";
+			break;
+		case CConstant.Response.ERROR:
+			errorName = "Error :(";
+			break;
+		case CConstant.Response.E_USER_ALREADY_LOGGED:
+			errorName = "Error: User already logged.";
+			break;
+		case CConstant.Response.E_PASSWORD_INCORRECT:
+			errorName = "Error: Password incorrect.";
+			break;
+		case CConstant.Response.E_EMAIL_DOESNT_EXIST:
+			errorName = "Error: Email doesn't exists.";
+			break;
+		case CConstant.Response.E_USER_DOESENT_EXIST:
+			errorName = "Error: User doesn't exists.";
+			break;
+		case CConstant.Response.E_USER_ALREADY_USED:
+			errorName = "Error: User already used.";
+			break;
+		case CConstant.Response.E_EMAIL_ALREADY_USED:
+			errorName = "Error: Email alredy used.";
+			break;
+		case CConstant.Response.E_PLAYERNAME_ALREADY_USED:
+			errorName = "Error: Player name already used.";
+			break;
+		default:
+			break;
 		}
+		return errorName;
+	}
 
 }

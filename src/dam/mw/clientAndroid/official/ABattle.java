@@ -8,15 +8,18 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 public class ABattle extends Activity implements OnClickListener {
 
 	// FALTA IMPLEMENTAR EL SERVIDOR seachBattle
 	protected PowerManager.WakeLock wakelock;
+	private Context context;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,8 @@ public class ABattle extends Activity implements OnClickListener {
 		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
 				"etiqueta");
 		wakelock.acquire();
+		context = this;
+		new ReadResponseBattle().execute();
 	}
 
 	@Override
@@ -63,10 +68,12 @@ public class ABattle extends Activity implements OnClickListener {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
+			Log.i("LogsAndroid", "sendActionBattle -> onPreExecute");
 		}
 
 		@Override
 		protected Boolean doInBackground(String... params) {
+			Log.i("LogsAndroid", "sendActionBattle -> doInBackground action( " + params[0]+" )");
 			Boolean op = false;
 			switch (params[0]) { //TRY CATCH
 			case CConstant.BASIC:
@@ -102,6 +109,7 @@ public class ABattle extends Activity implements OnClickListener {
 		@Override
 		protected void onPostExecute(Boolean op) {
 			super.onPostExecute(op);
+			Log.i("LogsAndroid", "sendActionBattle -> onPostExecute");
 			new ReadResponseBattle().execute();
 
 		}
@@ -109,22 +117,33 @@ public class ABattle extends Activity implements OnClickListener {
 	}
 
 	class ReadResponseBattle extends AsyncTask<String, Void, Boolean> {
-
+		String msg;
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
+			Log.i("LogsAndroid", "ReadResponseBattle -> onPreExecute");
 		}
 
 		@Override
 		protected Boolean doInBackground(String... params) {
 			Boolean op = true;
-			CApp.getData();
+			msg = CApp.getData();
+			Log.i("LogsAndroid", "ReadResponseBattle -> doInBackground "+msg);
 			return op;
 		}
 
 		@Override
 		protected void onPostExecute(Boolean op) {
 			super.onPostExecute(op);
+			runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					Toast.makeText(context, msg , Toast.LENGTH_SHORT).show();
+				}
+			});
+			
+			Log.i("LogsAndroid", "ReadResponseBattle -> onPostExecute");
 
 		}
 
