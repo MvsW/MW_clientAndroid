@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.controlCenter.CApp;
+import dam.mw.clientAndroid.controlCenter.CConstant;
 import dam.mw.clientAndroid.controlCenter.JApp;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -34,6 +35,8 @@ public class ALogin extends Activity implements OnClickListener {
 	
 	Button btn_register;
 	Button btn_login;
+	
+	private String errorNum="";
 
 	protected PowerManager.WakeLock wakelock;
 	@Override
@@ -59,11 +62,11 @@ public class ALogin extends Activity implements OnClickListener {
 		// FindViewBy ID
 		et_usernameOrEmail = (EditText) findViewById(R.id.et_userOrMail);
 		et_usernameOrEmail.setTextColor(Color.RED);
-		et_usernameOrEmail.setText("user1@hotmail.com");
+		et_usernameOrEmail.setText("android1");
 		
 		et_password = (EditText) findViewById(R.id.et_password);
 		et_password.setTextColor(Color.RED);
-		et_password.setText("User1996");
+		et_password.setText("Android1");
 
 		// Add to a ArrayList
 		fields.add(et_usernameOrEmail);
@@ -88,8 +91,19 @@ public class ALogin extends Activity implements OnClickListener {
 		@Override
 		protected Boolean doInBackground(String... params) {
 			Boolean sendLogin = false;
-			if (CApp.sendLogin(username, password, 0, 0)) {
+			
+			errorNum = CApp.sendLogin(username, password, 0, 0);
+			if (errorNum.equals(CConstant.Response.SUCCES)) {
 				sendLogin = true;
+
+			}else{
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						Toast.makeText(context, CApp.getErrorNameByErrorNum(errorNum), Toast.LENGTH_SHORT).show();
+					}
+				});
 			}
 			return sendLogin;
 		}

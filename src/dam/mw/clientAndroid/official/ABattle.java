@@ -4,6 +4,7 @@ import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class ABattle extends Activity implements OnClickListener {
 	// FALTA IMPLEMENTAR EL SERVIDOR seachBattle
 	protected PowerManager.WakeLock wakelock;
 	private Context context;
+	private ProgressDialog progressBarLife;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,32 @@ public class ABattle extends Activity implements OnClickListener {
 				"etiqueta");
 		wakelock.acquire();
 		context = this;
+		
+		progressBarLife = new ProgressDialog(this);
 		new ReadResponseBattle().execute();
+		
+		final int totalProgressTime = 100;
+		final Thread t = new Thread(){
+
+			   @Override
+			   public void run(){
+			 
+			      int jumpTime = 0;
+			      while(jumpTime < totalProgressTime){
+			         try {
+			            sleep(200);
+			            jumpTime += 5;
+			            progressBarLife.setProgress(jumpTime);
+			         } catch (InterruptedException e) {
+			           // TODO Auto-generated catch block
+			           e.printStackTrace();
+			         }
+
+			      }
+
+			   }
+			   
+		};
 	}
 
 	@Override

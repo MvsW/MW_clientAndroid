@@ -80,5 +80,14 @@
         android:layout_centerHorizontal="true"
         android:text="@string/btn_spell1"
         android:onClick="onClick" />
+
+    <ProgressBar
+        android:id="@+id/progressBarLife"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="500dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@+id/tv_logBattle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp" />
     
 </RelativeLayout>
