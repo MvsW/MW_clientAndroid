@@ -36,7 +36,7 @@ public class ALogin extends Activity implements OnClickListener {
 	Button btn_register;
 	Button btn_login;
 	
-	private String errorNum="";
+	private ArrayList<String> errorNum= new ArrayList<String>();
 
 	protected PowerManager.WakeLock wakelock;
 	@Override
@@ -93,7 +93,7 @@ public class ALogin extends Activity implements OnClickListener {
 			Boolean sendLogin = false;
 			
 			errorNum = CApp.sendLogin(username, password, 0, 0);
-			if (errorNum.equals(CConstant.Response.SUCCES)) {
+			if (errorNum.get(0).equals(CConstant.Response.SUCCES)) {
 				sendLogin = true;
 
 			}else{
@@ -101,7 +101,9 @@ public class ALogin extends Activity implements OnClickListener {
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
-						Toast.makeText(context, CApp.getErrorNameByErrorNum(errorNum), Toast.LENGTH_SHORT).show();
+						for(int i = 0; i<errorNum.size(); i++){
+						Toast.makeText(context, CApp.getErrorNameByErrorNum(errorNum.get(i)), Toast.LENGTH_SHORT).show();
+						}
 					}
 				});
 			}

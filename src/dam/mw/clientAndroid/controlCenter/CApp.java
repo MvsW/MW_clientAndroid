@@ -2,6 +2,7 @@ package dam.mw.clientAndroid.controlCenter;
 
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import org.apache.http.util.LangUtils;
 
@@ -12,6 +13,8 @@ public class CApp {
 	private static CConnection connection;
 	private static Socket socket;
 	private static double latitude, longitude;
+	
+	private static ArrayList<String> arrayListData; 
 
 	public static void connect() throws Exception { // Modificar per tractament
 													// propi
@@ -36,7 +39,9 @@ public class CApp {
 		return longitude;
 	}
 
-	public static String sendLogin(String userOrMail, String Password, double longitude, double latitude) {
+	public static ArrayList<String> sendLogin(String userOrMail, String Password, double longitude, double latitude) {
+		
+		arrayListData = new ArrayList<String>();
 
 		String result = "";
 		String data ="";
@@ -94,9 +99,11 @@ public class CApp {
 			break;
 		}
 		
+		arrayListData.add(result);
+		
 		}
 		Log.i("LogsAndroid", "Result: " + result);
-		return result;
+		return arrayListData;
 	}
 
 	public static boolean sendRegisterTaped() {
