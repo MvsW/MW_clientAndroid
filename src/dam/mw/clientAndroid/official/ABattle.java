@@ -3,6 +3,7 @@ package dam.mw.clientAndroid.official;
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
+import dam.mw.clientAndroid.official.AMyData.getData;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ABattle extends Activity implements OnClickListener {
@@ -22,11 +24,19 @@ public class ABattle extends Activity implements OnClickListener {
 	protected PowerManager.WakeLock wakelock;
 	private Context context;
 	private ProgressDialog progressBarLife;
+	
+	private String[] playerArray = new String[3];
+	
+	private TextView tv_lifeNumber;
+	private TextView tv_energyNumber;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_abattle);
+		
+		tv_lifeNumber = (TextView)findViewById(R.id.tv_lifeNumber);
+		tv_energyNumber = (TextView)findViewById(R.id.tv_energyNumber);
 
 		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
@@ -37,7 +47,7 @@ public class ABattle extends Activity implements OnClickListener {
 		progressBarLife = new ProgressDialog(this);
 		new ReadResponseBattle().execute();
 		
-		final int totalProgressTime = 100;
+		/*final int totalProgressTime = 100;
 		final Thread t = new Thread(){
 
 			   @Override
@@ -58,7 +68,45 @@ public class ABattle extends Activity implements OnClickListener {
 
 			   }
 			   
-		};
+		};*/
+		
+		new getData().execute();
+	}
+	
+	class getData extends AsyncTask<String, String, String>{
+
+		@Override
+		protected void onPreExecute(){
+			super.onPreExecute();
+		}
+		
+		@Override
+		protected String doInBackground(String... params) {
+			
+			//Revisar mètode per veure què rep del servidor.
+			playerArray = CApp.getData().split(",");
+			return "";
+		}
+		
+		@Override
+		protected void onPostExecute (String s){
+			super.onPostExecute(s);
+			printMyData();
+			
+		}
+	}
+	
+	public void printMyData() {
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				
+				//Assign life & energy of player.
+				tv_lifeNumber.setText(playerArray[0]);
+				tv_energyNumber.setText(playerArray[1]);
+				
+			}
+		});
 	}
 
 	@Override
