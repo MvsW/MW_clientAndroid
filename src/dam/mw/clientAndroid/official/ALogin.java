@@ -71,13 +71,13 @@ public class ALogin extends Activity implements OnClickListener {
 		// FindViewBy ID
 		et_usernameOrEmail = (EditText) findViewById(R.id.et_userOrMail);
 		et_usernameOrEmail.setTextColor(Color.RED);
-		//et_usernameOrEmail.setText("android1");
-		et_usernameOrEmail.setText(usernameRegistred);
+		et_usernameOrEmail.setText("android1");
+		//et_usernameOrEmail.setText(usernameRegistred);
 		
 		et_password = (EditText) findViewById(R.id.et_password);
 		et_password.setTextColor(Color.RED);
-		//et_password.setText("Android1");
-		et_password.setText(passwordRegistered);
+		et_password.setText("Android1");
+		//et_password.setText(passwordRegistered);
 
 		// Add to a ArrayList
 		fields.add(et_usernameOrEmail);

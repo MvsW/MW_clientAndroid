@@ -25,10 +25,12 @@ public class ABattle extends Activity implements OnClickListener {
 	private Context context;
 	private ProgressDialog progressBarLife;
 	
-	private String[] playerArray = new String[3];
+	private String[] playerArray = new String[0];
 	
 	private TextView tv_lifeNumber;
 	private TextView tv_energyNumber;
+	private TextView tv_lifeNumber2;
+	private TextView tv_energyNumber2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,8 @@ public class ABattle extends Activity implements OnClickListener {
 		
 		tv_lifeNumber = (TextView)findViewById(R.id.tv_lifeNumber);
 		tv_energyNumber = (TextView)findViewById(R.id.tv_energyNumber);
+		tv_lifeNumber2 = (TextView)findViewById(R.id.tv_lifeNumber2);
+		tv_energyNumber2 = (TextView)findViewById(R.id.tv_energyNumber2);
 
 		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
@@ -45,69 +49,12 @@ public class ABattle extends Activity implements OnClickListener {
 		context = this;
 		
 		progressBarLife = new ProgressDialog(this);
+		
+		
 		new ReadResponseBattle().execute();
 		
-		/*final int totalProgressTime = 100;
-		final Thread t = new Thread(){
-
-			   @Override
-			   public void run(){
-			 
-			      int jumpTime = 0;
-			      while(jumpTime < totalProgressTime){
-			         try {
-			            sleep(200);
-			            jumpTime += 5;
-			            progressBarLife.setProgress(jumpTime);
-			         } catch (InterruptedException e) {
-			           // TODO Auto-generated catch block
-			           e.printStackTrace();
-			         }
-
-			      }
-
-			   }
-			   
-		};*/
-		
-		new getData().execute();
 	}
 	
-	class getData extends AsyncTask<String, String, String>{
-
-		@Override
-		protected void onPreExecute(){
-			super.onPreExecute();
-		}
-		
-		@Override
-		protected String doInBackground(String... params) {
-			
-			//Revisar mètode per veure què rep del servidor.
-			playerArray = CApp.getData().split(",");
-			return "";
-		}
-		
-		@Override
-		protected void onPostExecute (String s){
-			super.onPostExecute(s);
-			printMyData();
-			
-		}
-	}
-	
-	public void printMyData() {
-		runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				
-				//Assign life & energy of player.
-				tv_lifeNumber.setText(playerArray[0]);
-				tv_energyNumber.setText(playerArray[1]);
-				
-			}
-		});
-	}
 
 	@Override
 	public void onClick(View v) {
@@ -203,6 +150,9 @@ public class ABattle extends Activity implements OnClickListener {
 		protected Boolean doInBackground(String... params) {
 			Boolean op = true;
 			msg = CApp.getData();
+			//Revisar mètode per veure què rep del servidor.
+			
+			playerArray = msg.split(",");
 			Log.i("LogsAndroid", "ReadResponseBattle -> doInBackground "+msg);
 			return op;
 		}
@@ -214,7 +164,15 @@ public class ABattle extends Activity implements OnClickListener {
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					Toast.makeText(context, msg , Toast.LENGTH_SHORT).show();
+					
+					if(playerArray[0].length()>3){
+						
+					}
+					
+					tv_lifeNumber.setText(playerArray[0].substring(0, 2));
+					tv_energyNumber.setText(playerArray[1].substring(0, 2));
+					tv_lifeNumber2.setText(playerArray[2].substring(0, 2));
+					tv_energyNumber2.setText(playerArray[3].substring(0, 2));
 				}
 			});
 			

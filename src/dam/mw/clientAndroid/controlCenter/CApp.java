@@ -230,7 +230,10 @@ public class CApp {
 	}
 
 	public static String getData() {
-		return connection.readData();
+		String data = connection.readData();
+		Log.i("LogsAndroid", "Data: " + data);
+		return data;
+		
 	}
 
 	public static void sendDataShowMyData() {
