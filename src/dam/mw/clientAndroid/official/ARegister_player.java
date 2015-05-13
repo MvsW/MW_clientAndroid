@@ -1,5 +1,7 @@
 package dam.mw.clientAndroid.official;
 
+import java.util.ArrayList;
+
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
@@ -54,6 +56,13 @@ public class ARegister_player extends Activity {
 	private String intelligence;
 	private int idUser;
 	private int totalPoints;
+	
+	private static Context context;
+	
+	private String username= "";
+	private String password = "";
+	
+	private ArrayList<String> errorNum= new ArrayList<String>();
 
 	protected PowerManager.WakeLock wakelock;
 	@Override
@@ -63,6 +72,9 @@ public class ARegister_player extends Activity {
 		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
+        
+        username = getIntent().getStringExtra("username");
+        password = getIntent().getStringExtra("password");
 		
 		
 		selectCharacter = (ToggleButton)findViewById(R.id.selectChamp);
@@ -94,6 +106,8 @@ public class ARegister_player extends Activity {
 		et_characterName.setTextSize(25);
 		
 		estatToggleButton();
+		
+		context = this;
 		
 	}
 	
@@ -170,8 +184,6 @@ public class ARegister_player extends Activity {
 		
 		if	(registreOK==true){
 			//TODO: Guardar registre a la base de dades.
-			Toast e=Toast.makeText(this,"Correct!", Toast.LENGTH_SHORT);
-		    e.show();
 		    
 		    new registerPlayer().execute();
 		}
@@ -200,9 +212,22 @@ public class ARegister_player extends Activity {
 				idUser
 				totalPoints	
 			 */
-			if (CApp.sendRegisterPlayer(playerName, idPlayerType, life, energy, eRegeneration, strength, intelligence)) {
+			errorNum = CApp.sendRegisterPlayer(playerName, idPlayerType, life, energy, eRegeneration, strength, intelligence);
+			if (errorNum.get(0).equals(CConstant.Response.SUCCES)) {
 				sendRegister = true;
+
+			}else{
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						for(int i = 0; i<errorNum.size(); i++){
+						Toast.makeText(context, CApp.getErrorNameByErrorNum(errorNum.get(i)), Toast.LENGTH_SHORT).show();
+						}
+					}
+				});
 			}
+			
 			return sendRegister;
 		}
 		
@@ -211,6 +236,8 @@ public class ARegister_player extends Activity {
 			super.onPostExecute(s);
 			if(s == true){
 				Intent intent = new Intent(ARegister_player.this, ALogin.class);
+				intent.putExtra("username", username);
+				intent.putExtra("password", password);
 				startActivity(intent);
 			}
 		}

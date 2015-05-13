@@ -6,8 +6,10 @@ import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
 import dam.mw.clientAndroid.controlCenter.CApp;
+import dam.mw.clientAndroid.controlCenter.CConstant;
 import dam.mw.clientAndroid.controlCenter.JApp;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -34,6 +36,12 @@ public class ARegister extends Activity {
 	private Button btn_registerActivity;
 	private boolean validationOK = true;
 	
+	ProgressDialog pDialog;
+	
+	private static Context context;
+	
+	private ArrayList<String> errorNum= new ArrayList<String>();
+	
 	protected PowerManager.WakeLock wakelock;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +51,7 @@ public class ARegister extends Activity {
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
         
+        context = this;
         
         
         //Set typeface.
@@ -150,11 +159,6 @@ public class ARegister extends Activity {
 				// 3- Registrar usuario a la base de datos
 				if (validationOK == true){
 					new sendRegisterData().execute();
-					Toast e=Toast.makeText(this,"Correct!" + mail + username + password, Toast.LENGTH_SHORT);
-				    e.show();
-				    
-				    
-				    
 				}
 			}
 			break;
@@ -169,23 +173,47 @@ public class ARegister extends Activity {
 		@Override
 		protected void onPreExecute(){
 			super.onPreExecute();
+			pDialog = new ProgressDialog(ARegister.this);
+			pDialog.show();
+			pDialog.setContentView(R.layout.custom_progressdialog);
+			pDialog.setMessage("Loading...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(false);
 		}
 		
 		@Override
 		protected Boolean doInBackground(String... params) {
 			Boolean sendRegisterData = false;
-			if (CApp.sendRegisterData(username, mail, password)) {
+			errorNum = CApp.sendRegisterData(username, mail, password);
+			
+			if (errorNum.get(0).equals(CConstant.Response.SUCCES)) {
 				sendRegisterData = true;
+
+			}else{
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						for(int i = 0; i<errorNum.size(); i++){
+						Toast.makeText(context, CApp.getErrorNameByErrorNum(errorNum.get(i)), Toast.LENGTH_SHORT).show();
+						}
+					}
+				});
 			}
+				
+			
 			return sendRegisterData;
 		}
 		
 		@Override
 		protected void onPostExecute (Boolean s){
 			super.onPostExecute(s);
+			pDialog.dismiss();
 			if(s == true){
 				
 				Intent i = new Intent(ARegister.this, ARegister_player.class);
+				i.putExtra("username", username);
+				i.putExtra("password", password);
 				startActivity(i);
 					
 				overridePendingTransition(R.animator.animator5, R.animator.animator6);

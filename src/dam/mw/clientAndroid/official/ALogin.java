@@ -36,6 +36,9 @@ public class ALogin extends Activity implements OnClickListener {
 	Button btn_register;
 	Button btn_login;
 	
+	private String usernameRegistred = "";
+	private String passwordRegistered = "";
+	
 	private ArrayList<String> errorNum= new ArrayList<String>();
 
 	protected PowerManager.WakeLock wakelock;
@@ -46,6 +49,12 @@ public class ALogin extends Activity implements OnClickListener {
 		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
+        
+        //Get username & password after register a user & player.
+        usernameRegistred = getIntent().getStringExtra("username");
+        passwordRegistered = getIntent().getStringExtra("password");
+        
+        
 		// TODO: Revisar documentos juancar para quitar top-bars y status-bar.
 		
 		//Set typeface.
@@ -62,11 +71,13 @@ public class ALogin extends Activity implements OnClickListener {
 		// FindViewBy ID
 		et_usernameOrEmail = (EditText) findViewById(R.id.et_userOrMail);
 		et_usernameOrEmail.setTextColor(Color.RED);
-		et_usernameOrEmail.setText("android1");
+		//et_usernameOrEmail.setText("android1");
+		et_usernameOrEmail.setText(usernameRegistred);
 		
 		et_password = (EditText) findViewById(R.id.et_password);
 		et_password.setTextColor(Color.RED);
-		et_password.setText("Android1");
+		//et_password.setText("Android1");
+		et_password.setText(passwordRegistered);
 
 		// Add to a ArrayList
 		fields.add(et_usernameOrEmail);
@@ -92,11 +103,15 @@ public class ALogin extends Activity implements OnClickListener {
 		protected Boolean doInBackground(String... params) {
 			Boolean sendLogin = false;
 			
+			//Get arrayList of all errors in format number.
 			errorNum = CApp.sendLogin(username, password, 0, 0);
+			
+			//Get error in position 0, if the number is 0 -> success.
 			if (errorNum.get(0).equals(CConstant.Response.SUCCES)) {
 				sendLogin = true;
 
 			}else{
+				//runOnUiThread for the toast.
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
