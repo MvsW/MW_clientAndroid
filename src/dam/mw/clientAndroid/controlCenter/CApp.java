@@ -2,6 +2,7 @@ package dam.mw.clientAndroid.controlCenter;
 
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import org.apache.http.util.LangUtils;
 
@@ -12,6 +13,8 @@ public class CApp {
 	private static CConnection connection;
 	private static Socket socket;
 	private static double latitude, longitude;
+	
+	private static ArrayList<String> arrayListData; 
 
 	public static void connect() throws Exception { // Modificar per tractament
 													// propi
@@ -36,27 +39,71 @@ public class CApp {
 		return longitude;
 	}
 
-	public static boolean sendLogin(String userOrMail, String Password,
-			double longitude, double latitude) {
+	public static ArrayList<String> sendLogin(String userOrMail, String Password, double longitude, double latitude) {
+		
+		arrayListData = new ArrayList<String>();
 
-		boolean logged = false;
-		// Log.i("LogsAndroid", ""+connection.equals(null));
+		String result = "";
+		String data ="";
+		
+		String arrayErrors[];
+		
 		Log.i("LogsAndroid", "prepare send login...");
 		connection.sendData(userOrMail + CConstant.SEPARATOR + Password
 				+ CConstant.SEPARATOR + latitude + CConstant.SEPARATOR
 				+ longitude);
 		Log.i("LogsAndroid", "send login...");
-		if (connection.readData().equals(CConstant.Response.SUCCES)) {
-			Log.i("LogsAndroid", "recived...");
-			// Ok login correcte
-			logged = true;
-		} else if (connection.readData().equals(CConstant.Response.ERROR)) {
-			Log.i("LogsAndroid", "Error ocurred...");
-			// Ok login correcte
-			logged = false;
+		
+		
+		data = connection.readData();
+		
+		Log.i("LogsAndroid", "Data: " + data);
+		
+		arrayErrors = data.split(CConstant.SEPARATOR);
+		
+		for (int x = 0; x < arrayErrors.length; x++){
+			
+			Log.i("LogsAndroid", "Data: " + arrayErrors[x]);
+		
+		switch(arrayErrors[x]){
+		
+		case CConstant.Response.SUCCES:
+			result = CConstant.Response.SUCCES; 
+			break;
+		case CConstant.Response.ERROR:
+			result = CConstant.Response.ERROR;
+			break;	
+		case CConstant.Response.E_USER_ALREADY_LOGGED:
+			result = CConstant.Response.E_USER_ALREADY_LOGGED;
+			break;	
+		case CConstant.Response.E_PASSWORD_INCORRECT:
+			result = CConstant.Response.E_PASSWORD_INCORRECT;
+			break;
+		case CConstant.Response.E_EMAIL_DOESNT_EXIST:
+			result = CConstant.Response.E_EMAIL_DOESNT_EXIST;
+			break;	
+		case CConstant.Response.E_USER_DOESENT_EXIST:
+			result = CConstant.Response.E_USER_DOESENT_EXIST;
+			break;	
+		case CConstant.Response.E_USER_ALREADY_USED:
+			result = CConstant.Response.E_USER_ALREADY_USED;
+			break;	
+		case CConstant.Response.E_EMAIL_ALREADY_USED:
+			result = CConstant.Response.E_EMAIL_ALREADY_USED;
+			break;
+		case CConstant.Response.E_PLAYERNAME_ALREADY_USED:
+			result = CConstant.Response.E_PLAYERNAME_ALREADY_USED;
+			break;	
+			
+		default:
+			break;
 		}
-
-		return logged;
+		
+		arrayListData.add(result);
+		
+		}
+		Log.i("LogsAndroid", "Result: " + result);
+		return arrayListData;
 	}
 
 	public static boolean sendRegisterTaped() {
@@ -144,7 +191,7 @@ public class CApp {
 	}
 
 	// Get error number from server and converts to error name
-	public String getErrorNameByErrorNum(String num) {
+	public static String getErrorNameByErrorNum(String num) {
 		String errorName = "";
 
 		switch (num) {
