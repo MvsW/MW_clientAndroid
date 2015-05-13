@@ -53,22 +53,23 @@ public final class R {
         public static final int progressdialog_color=0x7f020012;
         public static final int rounded_edittext=0x7f020013;
         public static final int separator=0x7f020014;
-        public static final int toggle_style=0x7f020015;
-        public static final int warlock=0x7f020016;
+        public static final int tittle_login=0x7f020015;
+        public static final int toggle_style=0x7f020016;
+        public static final int warlock=0x7f020017;
     }
     public static final class id {
         public static final int LinearLayout2=0x7f09002c;
-        public static final int action_settings=0x7f09004e;
-        public static final int btn_battle=0x7f09000d;
+        public static final int action_settings=0x7f09004d;
+        public static final int btn_battle=0x7f09000e;
         public static final int btn_connect=0x7f09002f;
         public static final int btn_defense=0x7f090001;
         public static final int btn_dodge=0x7f090002;
-        public static final int btn_login=0x7f09000b;
+        public static final int btn_login=0x7f09000a;
         public static final int btn_normalAttack=0x7f090005;
-        public static final int btn_register=0x7f09000a;
+        public static final int btn_register=0x7f09000b;
         public static final int btn_registerActivity=0x7f090027;
         public static final int btn_send_message=0x7f090032;
-        public static final int btn_showData=0x7f09000e;
+        public static final int btn_showData=0x7f09000f;
         public static final int btn_spell1=0x7f090006;
         public static final int btn_spell2=0x7f090004;
         public static final int btn_superAttack=0x7f090003;
@@ -84,14 +85,13 @@ public final class R {
         public static final int et_password=0x7f090009;
         public static final int et_userName=0x7f090024;
         public static final int et_userOrMail=0x7f090008;
-        public static final int imageView1=0x7f09004d;
+        public static final int imageView1=0x7f090007;
         public static final int inteligence_point=0x7f090046;
         public static final int inteligence_point_down=0x7f090045;
         public static final int inteligence_point_up=0x7f090047;
-        public static final int iv_LogoMenu=0x7f09000c;
+        public static final int iv_LogoMenu=0x7f09000d;
         public static final int iv_avatar=0x7f090010;
         public static final int iv_delimiter=0x7f090013;
-        public static final int iv_logo=0x7f090007;
         public static final int iv_separator1=0x7f090038;
         public static final int iv_separator2=0x7f09003f;
         public static final int life_point=0x7f09003a;
@@ -114,7 +114,7 @@ public final class R {
         public static final int tv_log=0x7f090030;
         public static final int tv_logBattle=0x7f090000;
         public static final int tv_mail=0x7f090029;
-        public static final int tv_menu=0x7f09000f;
+        public static final int tv_menu=0x7f09000c;
         public static final int tv_name_avatar=0x7f090020;
         public static final int tv_password=0x7f09002a;
         public static final int tv_regEnergy=0x7f090012;

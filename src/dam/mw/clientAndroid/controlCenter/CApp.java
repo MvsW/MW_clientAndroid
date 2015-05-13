@@ -89,11 +89,11 @@ public class CApp {
 		return op;
 	}
 
-	public static boolean sendRegisterData(String mail, String username,
+	public static boolean sendRegisterData(String username, String mail,
 			String password) {
 		boolean logged = false;
 		Log.i("LogsAndroid", "Preparing send data...");
-		connection.sendData(mail + CConstant.SEPARATOR + username
+		connection.sendData(username + CConstant.SEPARATOR + mail
 				+ CConstant.SEPARATOR + password);
 		Log.i("LogsAndroid", "Data sended");
 		if (connection.readData().equals(CConstant.Response.SUCCES)) {
