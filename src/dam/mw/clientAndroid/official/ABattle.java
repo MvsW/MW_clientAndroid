@@ -9,21 +9,23 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ABattle extends Activity implements OnClickListener {
-
-	// FALTA IMPLEMENTAR EL SERVIDOR seachBattle
+	
 	protected PowerManager.WakeLock wakelock;
 	private Context context;
-	private ProgressDialog progressBarLife;
+	
+	private Handler handler = new Handler();
 	
 	private String[] playerArray = new String[0];
 	
@@ -48,7 +50,6 @@ public class ABattle extends Activity implements OnClickListener {
 		wakelock.acquire();
 		context = this;
 		
-		progressBarLife = new ProgressDialog(this);
 		
 		
 		new ReadResponseBattle().execute();
@@ -160,19 +161,40 @@ public class ABattle extends Activity implements OnClickListener {
 		@Override
 		protected void onPostExecute(Boolean op) {
 			super.onPostExecute(op);
+			
 			runOnUiThread(new Runnable() {
+				
+				
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
 					
-					if(playerArray[0].length()>3){
-						
-					}
+					//String number without decimals.
+					double life_double = Double.parseDouble(playerArray[0]);
+					Integer life_int = (int) life_double;
+					String life_string = Integer.toString(life_int);
+					tv_lifeNumber.setText(life_string);
 					
-					tv_lifeNumber.setText(playerArray[0].substring(0, 2));
-					tv_energyNumber.setText(playerArray[1].substring(0, 2));
-					tv_lifeNumber2.setText(playerArray[2].substring(0, 2));
-					tv_energyNumber2.setText(playerArray[3].substring(0, 2));
+					//String number without decimals.
+					double energy_double = Double.parseDouble(playerArray[1]);
+					Integer energy_int = (int) energy_double;
+					String energy_string = Integer.toString(energy_int);
+					tv_energyNumber.setText(energy_string);
+					
+					//String number without decimals.
+					double life_contrincant_double = Double.parseDouble(playerArray[2]);
+					Integer life_contrincant_int = (int) life_contrincant_double;
+					String life_contrincant_string = Integer.toString(life_contrincant_int);
+					tv_lifeNumber2.setText(life_contrincant_string);
+					
+					//String number without decimals.
+					double energy_contrincant_double = Double.parseDouble(playerArray[3]);
+					Integer energy_contrincant_int = (int) energy_contrincant_double;
+					String energy_contrincant_string = Integer.toString(energy_contrincant_int);
+					tv_energyNumber2.setText(energy_contrincant_string);
+					
+					
+					
 				}
 			});
 			

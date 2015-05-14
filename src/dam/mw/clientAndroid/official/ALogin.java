@@ -1,14 +1,15 @@
 package dam.mw.clientAndroid.official;
 
 import java.util.ArrayList;
-
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
 import dam.mw.clientAndroid.controlCenter.JApp;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.AvoidXfermode.Mode;
 import android.graphics.Color;
@@ -17,6 +18,7 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.provider.Settings;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
@@ -104,6 +106,7 @@ public class ALogin extends Activity implements OnClickListener {
 			Boolean sendLogin = false;
 			
 			//Get arrayList of all errors in format number.
+			try{
 			errorNum = CApp.sendLogin(username, password, 0, 0);
 			
 			//Get error in position 0, if the number is 0 -> success.
@@ -119,6 +122,33 @@ public class ALogin extends Activity implements OnClickListener {
 						for(int i = 0; i<errorNum.size(); i++){
 						Toast.makeText(context, CApp.getErrorNameByErrorNum(errorNum.get(i)), Toast.LENGTH_SHORT).show();
 						}
+					}
+				});
+			}
+			}catch(Exception e){
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						final AlertDialog.Builder alert = new AlertDialog.Builder(context);
+						  
+						  alert.setTitle("Server maintenance");
+						  alert.setMessage("Please return in a few moments...");
+						  alert.setCancelable(true);
+						  alert.setPositiveButton("Close aplication", new DialogInterface.OnClickListener() {
+							  
+						  public void onClick(DialogInterface dialog, int whichButton) {
+							  	
+				                System.exit(-1);
+						  
+						  }
+						  });
+						  alert.setNegativeButton("Try again", new DialogInterface.OnClickListener() {
+						  public void onClick(DialogInterface dialog, int whichButton) {
+							  new login().execute();
+						  }
+						  });
+						  
+						  alert.show();
 					}
 				});
 			}
@@ -188,8 +218,36 @@ public class ALogin extends Activity implements OnClickListener {
 		@Override
 		protected Boolean doInBackground(String... params) {
 			Boolean sendRegister = false;
+			try{
 			if (CApp.sendRegisterTaped()) {
 				sendRegister = true;
+			}
+			}catch(Exception e){
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						final AlertDialog.Builder alert = new AlertDialog.Builder(context);
+						  
+						  alert.setTitle("Server maintenance");
+						  alert.setMessage("Please return in a few moments...");
+						  alert.setCancelable(true);
+						  alert.setPositiveButton("Close aplication", new DialogInterface.OnClickListener() {
+							  
+						  public void onClick(DialogInterface dialog, int whichButton) {
+							  	
+				                System.exit(-1);
+						  
+						  }
+						  });
+						  alert.setNegativeButton("Try again", new DialogInterface.OnClickListener() {
+						  public void onClick(DialogInterface dialog, int whichButton) {
+							  new register().execute();
+						  }
+						  });
+						  
+						  alert.show();
+					}
+				});
 			}
 			return sendRegister;
 		}

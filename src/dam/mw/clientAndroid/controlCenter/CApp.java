@@ -22,8 +22,7 @@ public class CApp {
 		socket = new Socket(serverAddr, CConstant.PORT);
 
 		connection = new CConnection(socket);
-		Log.i("LogsAndroid", "Conectat a: "
-				+ socket.getInetAddress().getHostName());
+		Log.i("LogsAndroid", "Conectat a: " + socket.getInetAddress().getHostName());
 	}
 
 	public static void setPosition(double lat, double lon) {

@@ -184,6 +184,7 @@ public class ARegister extends Activity {
 		@Override
 		protected Boolean doInBackground(String... params) {
 			Boolean sendRegisterData = false;
+			
 			errorNum = CApp.sendRegisterData(username, mail, password);
 			
 			if (errorNum.get(0).equals(CConstant.Response.SUCCES)) {
