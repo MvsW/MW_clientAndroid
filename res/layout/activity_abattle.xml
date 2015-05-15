@@ -7,105 +7,123 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp" >
+        android:orientation="vertical" 
+        android:layout_marginTop="40dp">
         
-        <TextView
-        android:id="@+id/tv_life"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="60dp"
-        
-        android:textColor="#FFFFFF"
-        android:text="Life: "
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <ProgressBar
+        android:id="@+id/pb_life"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="270dp"
+        android:layout_height="30dp"
+        android:indeterminate="false"
+        android:layout_gravity="center"
+        android:max="100"
+        android:progressDrawable="@drawable/progressbar_red"
+        android:minHeight="50dp"
+        android:minWidth="200dp"
+        android:progress="1" />
 
         <TextView
-            android:id="@+id/tv_lifeNumber"
+            android:id="@+id/tv_life"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="#FFFFFF"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
+            android:layout_marginLeft="25dp"
+            android:text="TextView"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF" />
+        
     </LinearLayout>
     
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp" >
+        android:orientation="vertical" 
+        android:layout_marginTop="10dp">
         
-        <TextView
-        android:id="@+id/tv_energy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="60dp"
-        
-        android:textColor="#FFFFFF"
-        android:text="Energy: "
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <ProgressBar
+        android:id="@+id/pb_mana"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="270dp"
+        android:layout_height="30dp"
+        android:indeterminate="false"
+        android:layout_gravity="center"
+        android:max="100"
+        android:progressDrawable="@drawable/progressbar_blue"
+        android:minHeight="50dp"
+        android:minWidth="200dp"
+        android:progress="1" />
 
         <TextView
-            android:id="@+id/tv_energyNumber"
+            android:id="@+id/tv_mana"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="#FFFFFF"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_marginLeft="25dp"
+            android:text="TextView"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF" />
+        
+    </LinearLayout>
+    
+    
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" 
+        android:layout_marginTop="10dp">
+        
+        <ProgressBar
+        android:id="@+id/pb_contrincantLife"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="270dp"
+        android:layout_height="30dp"
+        android:indeterminate="false"
+        android:layout_gravity="center"
+        android:max="100"
+        android:progressDrawable="@drawable/progressbar_red"
+        android:minHeight="50dp"
+        android:minWidth="200dp"
+        android:progress="1" />
 
+        <TextView
+            android:id="@+id/tv_contrincantLife"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text="TextView"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF" />
+        
     </LinearLayout>
     
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp" >
+        android:orientation="vertical" 
+        android:layout_marginTop="10dp">
         
-        <TextView
-        android:id="@+id/tv_life2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="60dp"
-        
-        android:textColor="#FFFFFF"
-        android:text="Contrincant life: "
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <ProgressBar
+        android:id="@+id/pb_contrincantMana"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="270dp"
+        android:layout_height="30dp"
+        android:indeterminate="false"
+        android:layout_gravity="center"
+        android:max="100"
+        android:progressDrawable="@drawable/progressbar_blue"
+        android:minHeight="50dp"
+        android:minWidth="200dp"
+        android:progress="1" />
 
         <TextView
-            android:id="@+id/tv_lifeNumber2"
+            android:id="@+id/tv_contrincantMana"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="#FFFFFF"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    </LinearLayout>
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp" >
+            android:layout_marginLeft="25dp"
+            android:text="TextView"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF" />
         
-        <TextView
-        android:id="@+id/tv_energy2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="60dp"
-        
-        android:textColor="#FFFFFF"
-        android:text="Contrincant energy: "
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/tv_energyNumber2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="#FFFFFF"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
     </LinearLayout>
     
     <LinearLayout

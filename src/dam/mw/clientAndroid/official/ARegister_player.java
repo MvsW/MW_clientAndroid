@@ -212,6 +212,7 @@ public class ARegister_player extends Activity {
 				idUser
 				totalPoints	
 			 */
+			try{
 			errorNum = CApp.sendRegisterPlayer(playerName, idPlayerType, life, energy, eRegeneration, strength, intelligence);
 			if (errorNum.get(0).equals(CConstant.Response.SUCCES)) {
 				sendRegister = true;
@@ -224,6 +225,15 @@ public class ARegister_player extends Activity {
 						for(int i = 0; i<errorNum.size(); i++){
 						Toast.makeText(context, CApp.getErrorNameByErrorNum(errorNum.get(i)), Toast.LENGTH_SHORT).show();
 						}
+					}
+				});
+			}
+			
+			}catch(Exception e){
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(context, "Error, please try again...", Toast.LENGTH_SHORT).show();
 					}
 				});
 			}

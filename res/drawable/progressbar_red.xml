@@ -1,0 +1,32 @@
+<!--  <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+  <item android:id="@android:id/progress">
+    <clip android:drawable="@drawable/redbarr">
+    </clip>
+  </item>
+</layer-list>-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+  <item android:id="@android:id/background">
+      
+    <shape>
+      <corners android:radius="5dip"/>
+      <gradient
+        android:angle="270"
+        android:centerColor="#424242"
+        android:centerY="0.5"
+        android:endColor="#000000"
+        android:startColor="#000000" />
+    </shape>
+  </item>
+  <item android:id="@android:id/progress">
+      <clip>
+      <shape>
+        <corners android:radius="5dip" />
+          <gradient
+            android:angle="0"
+            android:endColor="#B40404"
+            android:startColor="#DF0101" />
+      </shape>
+    </clip>
+    
+  </item>
+</layer-list>

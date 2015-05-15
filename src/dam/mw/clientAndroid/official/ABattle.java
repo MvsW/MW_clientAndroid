@@ -25,30 +25,44 @@ public class ABattle extends Activity implements OnClickListener {
 	protected PowerManager.WakeLock wakelock;
 	private Context context;
 	
-	private Handler handler = new Handler();
+	private ProgressBar pb_life;
+	private ProgressBar pb_mana;
+	private ProgressBar pb_contrincantLife;
+	private ProgressBar pb_contrincantMana;
+	
+	private int progressStatus = 100;
+	private int progressStatusMana = 100;
+	private int progressStatusContrincantLife = 100;
+	private int progressStatusContrincantMana = 100;
 	
 	private String[] playerArray = new String[0];
 	
-	private TextView tv_lifeNumber;
-	private TextView tv_energyNumber;
-	private TextView tv_lifeNumber2;
-	private TextView tv_energyNumber2;
+	
+	private TextView tv_life;
+	private TextView tv_mana;
+	private TextView tv_contrincantLife;
+	private TextView tv_contrincantMana;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_abattle);
 		
-		tv_lifeNumber = (TextView)findViewById(R.id.tv_lifeNumber);
-		tv_energyNumber = (TextView)findViewById(R.id.tv_energyNumber);
-		tv_lifeNumber2 = (TextView)findViewById(R.id.tv_lifeNumber2);
-		tv_energyNumber2 = (TextView)findViewById(R.id.tv_energyNumber2);
+		tv_life = (TextView)findViewById(R.id.tv_life);
+		tv_mana = (TextView)findViewById(R.id.tv_mana);
+		tv_contrincantLife = (TextView)findViewById(R.id.tv_contrincantLife);
+		tv_contrincantMana = (TextView)findViewById(R.id.tv_contrincantMana);
 
 		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
 				"etiqueta");
 		wakelock.acquire();
 		context = this;
+		
+		pb_life = (ProgressBar) findViewById(R.id.pb_life);
+		pb_mana = (ProgressBar) findViewById(R.id.pb_mana);
+		pb_contrincantLife = (ProgressBar) findViewById(R.id.pb_contrincantLife);
+		pb_contrincantMana = (ProgressBar) findViewById(R.id.pb_contrincantMana);
 		
 		
 		
@@ -164,7 +178,6 @@ public class ABattle extends Activity implements OnClickListener {
 			
 			runOnUiThread(new Runnable() {
 				
-				
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
@@ -172,29 +185,42 @@ public class ABattle extends Activity implements OnClickListener {
 					//String number without decimals.
 					double life_double = Double.parseDouble(playerArray[0]);
 					Integer life_int = (int) life_double;
-					String life_string = Integer.toString(life_int);
-					tv_lifeNumber.setText(life_string);
+					//String life_string = Integer.toString(life_int);
+					//tv_lifeNumber.setText(life_string);
 					
 					//String number without decimals.
 					double energy_double = Double.parseDouble(playerArray[1]);
 					Integer energy_int = (int) energy_double;
-					String energy_string = Integer.toString(energy_int);
-					tv_energyNumber.setText(energy_string);
+					//String energy_string = Integer.toString(energy_int);
+					//tv_energyNumber.setText(energy_string);
 					
 					//String number without decimals.
 					double life_contrincant_double = Double.parseDouble(playerArray[2]);
 					Integer life_contrincant_int = (int) life_contrincant_double;
-					String life_contrincant_string = Integer.toString(life_contrincant_int);
-					tv_lifeNumber2.setText(life_contrincant_string);
+					//String life_contrincant_string = Integer.toString(life_contrincant_int);
+					//tv_lifeNumber2.setText(life_contrincant_string);
 					
 					//String number without decimals.
 					double energy_contrincant_double = Double.parseDouble(playerArray[3]);
 					Integer energy_contrincant_int = (int) energy_contrincant_double;
-					String energy_contrincant_string = Integer.toString(energy_contrincant_int);
-					tv_energyNumber2.setText(energy_contrincant_string);
+					//String energy_contrincant_string = Integer.toString(energy_contrincant_int);
+					//tv_energyNumber2.setText(energy_contrincant_string);
 					
+					progressStatus = life_int;
+					pb_life.setProgress(progressStatus);
+					tv_life.setText("Life: " + progressStatus+"/"+"100");
 					
+					progressStatusMana = energy_int;
+					pb_mana.setProgress(progressStatus);
+					tv_mana.setText("Mana: " + progressStatusMana+"/"+"100");
 					
+					progressStatusContrincantLife = life_contrincant_int;
+					pb_contrincantLife.setProgress(progressStatusContrincantLife);
+					tv_contrincantLife.setText("Contrincant life: " + progressStatusContrincantLife+"/"+"100");
+					
+					progressStatusContrincantMana = energy_contrincant_int;
+					pb_contrincantMana.setProgress(progressStatusContrincantMana);
+					tv_contrincantMana.setText("Contrincant mana: " + progressStatusContrincantMana+"/"+"100");
 				}
 			});
 			

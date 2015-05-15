@@ -184,7 +184,7 @@ public class ARegister extends Activity {
 		@Override
 		protected Boolean doInBackground(String... params) {
 			Boolean sendRegisterData = false;
-			
+			try{
 			errorNum = CApp.sendRegisterData(username, mail, password);
 			
 			if (errorNum.get(0).equals(CConstant.Response.SUCCES)) {
@@ -201,6 +201,16 @@ public class ARegister extends Activity {
 					}
 				});
 			}
+			
+			}catch(Exception e){
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(context, "Error, please try again...", Toast.LENGTH_SHORT).show();
+					}
+				});
+			}
+			
 				
 			
 			return sendRegisterData;

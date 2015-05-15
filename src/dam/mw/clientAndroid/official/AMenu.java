@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AMenu extends Activity implements OnClickListener {
 
@@ -81,7 +82,17 @@ public class AMenu extends Activity implements OnClickListener {
 		@Override
 		protected String doInBackground(String... params) {
 			Log.i("LogsAndroid", "Sending data to Show my data...");
+			try{
 			CApp.sendDataShowMyData();
+			}catch(Exception e){
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(context, "Error, please try again...", Toast.LENGTH_SHORT).show();
+					}
+				});
+				
+			}
 			return "";
 		}
 
@@ -111,9 +122,19 @@ public class AMenu extends Activity implements OnClickListener {
 
 		@Override
 		protected String doInBackground(String... params) {
-			if (CApp.sendSearchBattle())
+			try{
+			
+			if (CApp.sendSearchBattle()){
 				searching = true;
-
+			}
+			}catch(Exception e){
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(context, "Error, please try again...", Toast.LENGTH_SHORT).show();
+					}
+				});
+			}
 			return "";
 		}
 
