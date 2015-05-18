@@ -178,6 +178,7 @@ public class ABattle extends Activity implements OnClickListener {
 			
 			if(playerArray.length == 3){
 				
+				
 			}
 			
 			runOnUiThread(new Runnable() {
