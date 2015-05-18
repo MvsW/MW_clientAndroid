@@ -8,6 +8,7 @@ import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
+import dam.mw.clientAndroid.controlCenter.JApp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -56,6 +57,8 @@ public class ARegister_player extends Activity {
 	private String intelligence;
 	private int idUser;
 	private int totalPoints;
+	
+	JApp Japp = new JApp();
 	
 	private static Context context;
 	
@@ -118,7 +121,7 @@ public class ARegister_player extends Activity {
 			public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
 				if	(buttonView.isChecked()){
 					characterClass.setText("Mage");
-					tv_life_point.setText("2");
+					tv_life_point.setText("4");
 					tv_energy_point.setText("8");
 					tv_energyReg_point.setText("5");
 					

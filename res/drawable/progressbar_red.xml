@@ -1,10 +1,10 @@
-<!--  <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
   <item android:id="@android:id/progress">
     <clip android:drawable="@drawable/redbarr">
     </clip>
   </item>
-</layer-list>-->
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+</layer-list>
+<!--  <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
   <item android:id="@android:id/background">
       
     <shape>
@@ -29,4 +29,4 @@
     </clip>
     
   </item>
-</layer-list>
+</layer-list>-->

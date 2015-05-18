@@ -176,6 +176,10 @@ public class ABattle extends Activity implements OnClickListener {
 		protected void onPostExecute(Boolean op) {
 			super.onPostExecute(op);
 			
+			if(playerArray.length == 3){
+				
+			}
+			
 			runOnUiThread(new Runnable() {
 				
 				@Override

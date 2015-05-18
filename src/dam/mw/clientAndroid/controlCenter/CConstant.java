@@ -9,7 +9,6 @@ public final class CConstant {
 	public static final String MAGE = "1";
 	public static final String WARLOCK = "2";
 	
-	
     public static final String REGISTER = "register";
     public static final String SHOW_MY_DATA = "showData";
     public static final String START_BATTLE = "startBattle";
@@ -23,10 +22,33 @@ public final class CConstant {
     
     public final static String SEPARATOR = ",";
     
+    
+    
+    /**
+     *CONSTANTS PLAYER POINTS & CALCS
+     */
+    
+    public static int TOTAL_POINTS = 200;
+    public static int BASE_PERCENT = 76;
+    public static int RAND_PERCENT = 4;
+    public static int CUSTOM_PERCENT = 20;
+    public static int LIFE_INTEL_PERCENT = 80;
+    public static int REGEN_ENERGY_BASE_PERCENT = 10;
+    
+    //Calcs
+    public static int BASE_CALC = TOTAL_POINTS * BASE_PERCENT;
+    public static int RAND_CALC = TOTAL_POINTS * RAND_PERCENT;
+    public static int CUSTOM_CALC = TOTAL_POINTS * CUSTOM_PERCENT;
+    
     /**
      * STRUCTURED ERRORS
      */
     public static class Response {
+    	
+    	// 
+        public final static String WIN = "10";
+        public final static String LOSE = "1";
+        public final static String DRAW = "11";
         
         /**
          * This class can be used for switching which type of responses
@@ -35,6 +57,8 @@ public final class CConstant {
         
         // SUCCESS
         public final static String SUCCES = "0";
+        
+        
         
         /**
          * ERRORS
