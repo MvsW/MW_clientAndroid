@@ -285,6 +285,15 @@ public class CApp {
 		case CConstant.Response.E_PLAYERNAME_ALREADY_USED:
 			errorName = "Error: Player name already used.";
 			break;
+		case CConstant.Response.WIN:
+			errorName = "YOU WIN :)";
+			break;
+		case CConstant.Response.DRAW:
+			errorName = "DRAW :/";
+			break;
+		case CConstant.Response.LOSE:
+			errorName = "YOU LOOSE :(";
+			break;
 		default:
 			break;
 		}

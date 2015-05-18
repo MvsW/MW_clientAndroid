@@ -7,6 +7,7 @@ import dam.mw.clientAndroid.official.AMyData.getData;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -176,17 +177,13 @@ public class ABattle extends Activity implements OnClickListener {
 		protected void onPostExecute(Boolean op) {
 			super.onPostExecute(op);
 			
-			if(playerArray.length == 3){
-				
-				
-			}
-			
 			runOnUiThread(new Runnable() {
 				
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
 					
+					if(playerArray.length == 4){
 					//String number without decimals.
 					double life_double = Double.parseDouble(playerArray[0]);
 					Integer life_int = (int) life_double;
@@ -226,8 +223,17 @@ public class ABattle extends Activity implements OnClickListener {
 					progressStatusContrincantMana = energy_contrincant_int;
 					pb_contrincantMana.setProgress(progressStatusContrincantMana);
 					tv_contrincantMana.setText("Contrincant mana: " + progressStatusContrincantMana+"/"+"100");
+					
+					}else if(playerArray.length == 5){
+						String result = CApp.getErrorNameByErrorNum(playerArray[4]);
+						Toast.makeText(context, "End battle: " + result , Toast.LENGTH_LONG).show();
+						
+						Intent intent = new Intent(context, AMenu.class);
+						startActivity(intent);
+					}
 				}
 			});
+		
 			
 			Log.i("LogsAndroid", "ReadResponseBattle -> onPostExecute");
 
