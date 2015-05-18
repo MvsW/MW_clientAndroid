@@ -112,18 +112,30 @@ public class ARegister_player extends Activity {
 		
 		context = this;
 		
+		setStats(CConstant.MAGE);
+		
+	}
+	
+	private void setStats(String value){
+		String[]fields = (CApp.getDefaultStats(Integer.parseInt(value))).split(CConstant.SEPARATOR);
+		
+		tv_life_point.setText(fields[0]);
+		tv_energy_point.setText(fields[1]);
+		tv_energyReg_point.setText(fields[2]);
+		tv_strength_point.setText(fields[3]);
+		tv_inteligence_point.setText(fields[4]);
+		
 	}
 	
 	public void estatToggleButton(){
 		selectCharacter.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-
+			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
 				if	(buttonView.isChecked()){
 					characterClass.setText("Mage");
-					tv_life_point.setText("4");
-					tv_energy_point.setText("8");
-					tv_energyReg_point.setText("5");
+					
+					setStats(CConstant.MAGE);
 					
 					//Assign id of the type Mage/Warlock
 					if(characterClass.getText().toString().equalsIgnoreCase("Mage")){
@@ -143,10 +155,8 @@ public class ARegister_player extends Activity {
 					
 				}else{
 					characterClass.setText("Warlock");
-					tv_life_point.setText("8");
-					tv_energy_point.setText("5");
-					tv_energyReg_point.setText("3");
-					
+					setStats(CConstant.WARLOCK);
+			
 					//Assign id of the type Mage/Warlock
 					if(characterClass.getText().toString().equalsIgnoreCase("Warlock")){
 						idPlayerType = CConstant.WARLOCK;

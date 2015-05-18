@@ -299,5 +299,40 @@ public class CApp {
 		}
 		return errorName;
 	}
+	
+	public static String getDefaultStats(int classType){
+		int life;
+		int energy;
+		int eReg;
+		int str = CConstant.PlayerUtils.BASE_CALC/2;
+		int intll = CConstant.PlayerUtils.BASE_CALC/2;
+		
+		for(int x = 0; x < CConstant.PlayerUtils.RAND_CALC; x++){
+			
+			int val = CRandom.generaInt(15);
+			switch (""+classType) {
+			case CConstant.WARLOCK:
+				if (val <= 10)
+					str++;
+				else
+					intll++;
+				break;
+			case CConstant.MAGE:
+				if (val <= 10)
+					intll++;
+				else
+					str++;
+				break;
+			default:
+				break;
+			}
+		}
+		
+		life = 100 + (int) (str * CConstant.PlayerUtils.LIFE_INTEL_PERCENT);
+		energy = 100 + (int) (intll * CConstant.PlayerUtils.LIFE_INTEL_PERCENT);
+		eReg = (int) (0.1 * energy) + intll/3;
+		return ""+life+CConstant.SEPARATOR+energy+CConstant.SEPARATOR+eReg+CConstant.SEPARATOR+str+CConstant.SEPARATOR+intll;
+	}
+	
 
 }
