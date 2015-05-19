@@ -330,7 +330,7 @@ public class CApp {
 		
 		life = 100 + (int) (str * CConstant.PlayerUtils.LIFE_INTEL_PERCENT);
 		energy = 100 + (int) (intll * CConstant.PlayerUtils.LIFE_INTEL_PERCENT);
-		eReg = (int) (0.1 * energy) + intll/3;
+		eReg = (int) (0.1 * energy);
 		return ""+life+CConstant.SEPARATOR+energy+CConstant.SEPARATOR+eReg+CConstant.SEPARATOR+str+CConstant.SEPARATOR+intll;
 	}
 	
