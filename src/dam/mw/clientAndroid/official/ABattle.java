@@ -47,6 +47,9 @@ public class ABattle extends Activity implements OnClickListener {
 	private static int originalContrincantLifePercent = 0;
 	private static int originalContrincantManaPercent = 0;
 	
+	private String classTypePlayer1 = "";
+	private String classTypePlayer2 = "";
+	
 	
 	private String[] playerArray = new String[0];
 	
@@ -219,6 +222,8 @@ public class ABattle extends Activity implements OnClickListener {
 					btn_dodge.setEnabled(false);
 					btn_defense.setEnabled(false);*/
 					
+					classTypePlayer1 = playerArray[1];
+					classTypePlayer2 = playerArray[5];
 					
 
 					if(playerArray.length == 8){
@@ -232,8 +237,10 @@ public class ABattle extends Activity implements OnClickListener {
 					double energy_double = Double.parseDouble(playerArray[3]);
 					Integer energy_int = (int) energy_double;
 					
-					tv_namePlayer1.setText(playerArray[0]);
-					tv_namePlayer2.setText(playerArray[4]);
+					tv_namePlayer1.setText(playerArray[0].toString());
+					tv_namePlayer2.setText(playerArray[4].toString());
+					
+					
 					
 					
 					
