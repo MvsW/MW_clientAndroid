@@ -232,6 +232,9 @@ public class ABattle extends Activity implements OnClickListener {
 					double energy_double = Double.parseDouble(playerArray[3]);
 					Integer energy_int = (int) energy_double;
 					
+					tv_namePlayer1.setText(playerArray[0]);
+					tv_namePlayer2.setText(playerArray[4]);
+					
 					if(energy_int<=0){
 						btn_superAttack.setEnabled(false);
 					}else{
