@@ -235,6 +235,8 @@ public class ABattle extends Activity implements OnClickListener {
 					tv_namePlayer1.setText(playerArray[0]);
 					tv_namePlayer2.setText(playerArray[4]);
 					
+					
+					
 					if(energy_int<=0){
 						btn_superAttack.setEnabled(false);
 					}else{
