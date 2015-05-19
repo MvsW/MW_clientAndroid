@@ -27,19 +27,19 @@ public final class CConstant {
     /**
      *CONSTANTS PLAYER POINTS & CALCS
      */
-    
-    public static int TOTAL_POINTS = 200;
-    public static int BASE_PERCENT = 76;
-    public static int RAND_PERCENT = 4;
-    public static int CUSTOM_PERCENT = 20;
-    public static int LIFE_INTEL_PERCENT = 80;
-    public static int REGEN_ENERGY_BASE_PERCENT = 10;
+    public static class PlayerUtils {
+    	public final static int TOTAL_POINTS = 200;
+    	public final static double BASE_PERCENT = 0.76;
+    	public final static double RAND_PERCENT = 0.4;
+    	public final static double CUSTOM_PERCENT = 0.20;
+    	public final static double LIFE_INTEL_PERCENT = 0.80;
+    	public final static double REGEN_ENERGY_BASE_PERCENT = 0.10;
     
     //Calcs
-    public static int BASE_CALC = TOTAL_POINTS * BASE_PERCENT;
-    public static int RAND_CALC = TOTAL_POINTS * RAND_PERCENT;
-    public static int CUSTOM_CALC = TOTAL_POINTS * CUSTOM_PERCENT;
-    
+    	public static int BASE_CALC = (int)(TOTAL_POINTS * BASE_PERCENT);
+    	public static int RAND_CALC = (int)(TOTAL_POINTS * RAND_PERCENT);
+    	public static int CUSTOM_CALC = (int)( TOTAL_POINTS * CUSTOM_PERCENT);
+    }
     /**
      * STRUCTURED ERRORS
      */

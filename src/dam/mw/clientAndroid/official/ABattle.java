@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,10 +32,21 @@ public class ABattle extends Activity implements OnClickListener {
 	private ProgressBar pb_contrincantLife;
 	private ProgressBar pb_contrincantMana;
 	
-	private int progressStatus = 100;
-	private int progressStatusMana = 100;
-	private int progressStatusContrincantLife = 100;
-	private int progressStatusContrincantMana = 100;
+	private int progressStatus;
+	private int progressStatusMana;
+	private int progressStatusContrincantLife;
+	private int progressStatusContrincantMana;
+	
+	private static int originalLife = 0;
+	private static int originalMana = 0;
+	private static int originalContrincantLife = 0;
+	private static int originalContrincantMana = 0;
+	
+	private static int originalLifePercent = 0;
+	private static int originalManaPercent = 0;
+	private static int originalContrincantLifePercent = 0;
+	private static int originalContrincantManaPercent = 0;
+	
 	
 	private String[] playerArray = new String[0];
 	
@@ -43,6 +55,14 @@ public class ABattle extends Activity implements OnClickListener {
 	private TextView tv_mana;
 	private TextView tv_contrincantLife;
 	private TextView tv_contrincantMana;
+	
+	private Button btn_normalAttack;
+	private Button btn_spell1;
+	private Button btn_spell2;
+	private Button btn_superAttack;
+	private Button btn_dodge;
+	private Button btn_defense;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +73,13 @@ public class ABattle extends Activity implements OnClickListener {
 		tv_mana = (TextView)findViewById(R.id.tv_mana);
 		tv_contrincantLife = (TextView)findViewById(R.id.tv_contrincantLife);
 		tv_contrincantMana = (TextView)findViewById(R.id.tv_contrincantMana);
+		
+		btn_normalAttack = (Button)findViewById(R.id.btn_normalAttack);
+		btn_spell1 = (Button)findViewById(R.id.btn_spell1);
+		btn_spell2 = (Button)findViewById(R.id.btn_spell2);
+		btn_superAttack = (Button)findViewById(R.id.btn_superAttack);
+		btn_dodge = (Button)findViewById(R.id.btn_dodge);
+		btn_defense = (Button)findViewById(R.id.btn_defense);
 
 		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
@@ -65,9 +92,7 @@ public class ABattle extends Activity implements OnClickListener {
 		pb_contrincantLife = (ProgressBar) findViewById(R.id.pb_contrincantLife);
 		pb_contrincantMana = (ProgressBar) findViewById(R.id.pb_contrincantMana);
 		
-		
-		
-		new ReadResponseBattle().execute();
+		new ReadResponseBattleFirstTime().execute();
 		
 	}
 	
@@ -183,6 +208,15 @@ public class ABattle extends Activity implements OnClickListener {
 				public void run() {
 					// TODO Auto-generated method stub
 					
+					/*btn_normalAttack.setEnabled(false);
+					btn_spell1.setEnabled(false);
+					btn_spell2.setEnabled(false);
+					btn_superAttack.setEnabled(false);
+					btn_dodge.setEnabled(false);
+					btn_defense.setEnabled(false);*/
+					
+					
+
 					if(playerArray.length == 4){
 					//String number without decimals.
 					double life_double = Double.parseDouble(playerArray[0]);
@@ -193,6 +227,12 @@ public class ABattle extends Activity implements OnClickListener {
 					//String number without decimals.
 					double energy_double = Double.parseDouble(playerArray[1]);
 					Integer energy_int = (int) energy_double;
+					
+					if(energy_int<=0){
+						btn_superAttack.setEnabled(false);
+					}else{
+						btn_superAttack.setEnabled(true);
+					}
 					//String energy_string = Integer.toString(energy_int);
 					//tv_energyNumber.setText(energy_string);
 					
@@ -208,21 +248,22 @@ public class ABattle extends Activity implements OnClickListener {
 					//String energy_contrincant_string = Integer.toString(energy_contrincant_int);
 					//tv_energyNumber2.setText(energy_contrincant_string);
 					
-					progressStatus = life_int;
+					
+					progressStatus = (life_int * 100 / originalLife);
 					pb_life.setProgress(progressStatus);
-					tv_life.setText("Life: " + progressStatus+"/"+"100");
+					tv_life.setText("Life: " + progressStatus+"/"+originalLifePercent);
 					
-					progressStatusMana = energy_int;
-					pb_mana.setProgress(progressStatus);
-					tv_mana.setText("Mana: " + progressStatusMana+"/"+"100");
+					progressStatusMana = (energy_int * 100 / originalMana);
+					pb_mana.setProgress(progressStatusMana);
+					tv_mana.setText("Mana: " + progressStatusMana+"/"+originalManaPercent);
 					
-					progressStatusContrincantLife = life_contrincant_int;
+					progressStatusContrincantLife = (life_contrincant_int * 100 / originalContrincantLife);
 					pb_contrincantLife.setProgress(progressStatusContrincantLife);
-					tv_contrincantLife.setText("Contrincant life: " + progressStatusContrincantLife+"/"+"100");
+					tv_contrincantLife.setText("Life: " + progressStatusContrincantLife+"/"+originalContrincantLifePercent);
 					
-					progressStatusContrincantMana = energy_contrincant_int;
+					progressStatusContrincantMana = (energy_contrincant_int * 100 / originalContrincantMana);
 					pb_contrincantMana.setProgress(progressStatusContrincantMana);
-					tv_contrincantMana.setText("Contrincant mana: " + progressStatusContrincantMana+"/"+"100");
+					tv_contrincantMana.setText("Mana: " + progressStatusContrincantMana+"/"+originalContrincantManaPercent);
 					
 					}else if(playerArray.length == 5){
 						String result = CApp.getErrorNameByErrorNum(playerArray[4]);
@@ -233,11 +274,80 @@ public class ABattle extends Activity implements OnClickListener {
 					}
 				}
 			});
-		
-			
 			Log.i("LogsAndroid", "ReadResponseBattle -> onPostExecute");
-
 		}
-
 	}
+	
+	//Calculate original life & mana.
+			class ReadResponseBattleFirstTime extends AsyncTask<String, Void, Boolean> {
+				String msg;
+				@Override
+				protected void onPreExecute() {
+					super.onPreExecute();
+					Log.i("LogsAndroid", "ReadResponseBattle -> onPreExecute");
+				}
+
+				@Override
+				protected Boolean doInBackground(String... params) {
+					Boolean op = true;
+					msg = CApp.getData();
+					//Revisar mètode per veure què rep del servidor.
+					
+					playerArray = msg.split(",");
+					Log.i("LogsAndroid", "ReadResponseBattle -> doInBackground "+msg);
+					return op;
+				}
+
+				@Override
+				protected void onPostExecute(Boolean op) {
+					super.onPostExecute(op);
+					
+					runOnUiThread(new Runnable() {
+						
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							
+							double life_double = Double.parseDouble(playerArray[0]);
+							Integer life_int = (int) life_double;
+							originalLife = life_int;
+							originalLifePercent = (life_int * 100 / life_int);
+							
+							double energy_double = Double.parseDouble(playerArray[1]);
+							Integer energy_int = (int) energy_double;
+							originalMana = energy_int;
+							originalManaPercent = (energy_int * 100 / energy_int);
+							
+							double life_contrincant_double = Double.parseDouble(playerArray[2]);
+							Integer life_contrincant_int = (int) life_contrincant_double;
+							originalContrincantLife = life_contrincant_int;
+							originalContrincantLifePercent = (life_contrincant_int * 100 / life_contrincant_int);
+							
+							double energy_contrincant_double = Double.parseDouble(playerArray[3]);
+							Integer energy_contrincant_int = (int) energy_contrincant_double;
+							originalContrincantMana = energy_contrincant_int;
+							originalContrincantManaPercent = (energy_contrincant_int * 100 / energy_contrincant_int);
+							
+							pb_life.setProgress(originalLifePercent);
+							tv_life.setText("Life: " + originalLifePercent+"/"+originalLifePercent);
+							
+							pb_mana.setProgress(originalManaPercent);
+							tv_mana.setText("Mana: " + originalManaPercent+"/"+originalManaPercent);
+							
+							pb_contrincantLife.setProgress(originalContrincantLifePercent);
+							tv_contrincantLife.setText("Contrincant life: " + originalContrincantLifePercent+"/"+originalContrincantLifePercent);
+							
+							pb_contrincantMana.setProgress(originalContrincantManaPercent);
+							tv_contrincantMana.setText("Contrincant mana: " + originalContrincantManaPercent+"/"+originalContrincantManaPercent);
+							
+							
+						}
+					});
+				
+					
+					Log.i("LogsAndroid", "ReadResponseBattle -> onPostExecute");
+
+				}
+
+			}
 }
