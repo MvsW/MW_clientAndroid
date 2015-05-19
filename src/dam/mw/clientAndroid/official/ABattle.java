@@ -55,6 +55,8 @@ public class ABattle extends Activity implements OnClickListener {
 	private TextView tv_mana;
 	private TextView tv_contrincantLife;
 	private TextView tv_contrincantMana;
+	private TextView tv_namePlayer1;
+	private TextView tv_namePlayer2;
 	
 	private Button btn_normalAttack;
 	private Button btn_spell1;
@@ -73,6 +75,8 @@ public class ABattle extends Activity implements OnClickListener {
 		tv_mana = (TextView)findViewById(R.id.tv_mana);
 		tv_contrincantLife = (TextView)findViewById(R.id.tv_contrincantLife);
 		tv_contrincantMana = (TextView)findViewById(R.id.tv_contrincantMana);
+		tv_namePlayer1 = (TextView)findViewById(R.id.tv_namePlayer1);
+		tv_namePlayer2 = (TextView)findViewById(R.id.tv_namePlayer2);
 		
 		btn_normalAttack = (Button)findViewById(R.id.btn_normalAttack);
 		btn_spell1 = (Button)findViewById(R.id.btn_spell1);
@@ -217,15 +221,15 @@ public class ABattle extends Activity implements OnClickListener {
 					
 					
 
-					if(playerArray.length == 4){
+					if(playerArray.length == 8){
 					//String number without decimals.
-					double life_double = Double.parseDouble(playerArray[0]);
+					double life_double = Double.parseDouble(playerArray[2]);
 					Integer life_int = (int) life_double;
 					//String life_string = Integer.toString(life_int);
 					//tv_lifeNumber.setText(life_string);
 					
 					//String number without decimals.
-					double energy_double = Double.parseDouble(playerArray[1]);
+					double energy_double = Double.parseDouble(playerArray[3]);
 					Integer energy_int = (int) energy_double;
 					
 					if(energy_int<=0){
@@ -237,13 +241,13 @@ public class ABattle extends Activity implements OnClickListener {
 					//tv_energyNumber.setText(energy_string);
 					
 					//String number without decimals.
-					double life_contrincant_double = Double.parseDouble(playerArray[2]);
+					double life_contrincant_double = Double.parseDouble(playerArray[6]);
 					Integer life_contrincant_int = (int) life_contrincant_double;
 					//String life_contrincant_string = Integer.toString(life_contrincant_int);
 					//tv_lifeNumber2.setText(life_contrincant_string);
 					
 					//String number without decimals.
-					double energy_contrincant_double = Double.parseDouble(playerArray[3]);
+					double energy_contrincant_double = Double.parseDouble(playerArray[7]);
 					Integer energy_contrincant_int = (int) energy_contrincant_double;
 					//String energy_contrincant_string = Integer.toString(energy_contrincant_int);
 					//tv_energyNumber2.setText(energy_contrincant_string);
@@ -265,7 +269,7 @@ public class ABattle extends Activity implements OnClickListener {
 					pb_contrincantMana.setProgress(progressStatusContrincantMana);
 					tv_contrincantMana.setText("Mana: " + progressStatusContrincantMana+"/"+originalContrincantManaPercent);
 					
-					}else if(playerArray.length == 5){
+					}else if(playerArray.length == 9){
 						String result = CApp.getErrorNameByErrorNum(playerArray[4]);
 						Toast.makeText(context, "End battle: " + result , Toast.LENGTH_LONG).show();
 						
