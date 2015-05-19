@@ -63,6 +63,7 @@ public class ALogin extends Activity implements OnClickListener {
 		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
 		
 		
+		
 		//Buttons
 		btn_register = (Button)findViewById(R.id.btn_register);
 		btn_register.setTypeface(face);
