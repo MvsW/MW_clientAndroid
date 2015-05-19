@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,6 +69,9 @@ public class ABattle extends Activity implements OnClickListener {
 	private Button btn_dodge;
 	private Button btn_defense;
 	
+	private ImageView avatarPlayer1;
+	private ImageView avatarPlayer2;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +91,9 @@ public class ABattle extends Activity implements OnClickListener {
 		btn_superAttack = (Button)findViewById(R.id.btn_superAttack);
 		btn_dodge = (Button)findViewById(R.id.btn_dodge);
 		btn_defense = (Button)findViewById(R.id.btn_defense);
+		
+		avatarPlayer1 = (ImageView)findViewById(R.id.avatarPlayer1);
+		avatarPlayer2 = (ImageView)findViewById(R.id.avatarPlayer2);
 
 		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
@@ -222,8 +229,7 @@ public class ABattle extends Activity implements OnClickListener {
 					btn_dodge.setEnabled(false);
 					btn_defense.setEnabled(false);*/
 					
-					classTypePlayer1 = playerArray[1];
-					classTypePlayer2 = playerArray[5];
+					
 					
 
 					if(playerArray.length == 8){
@@ -239,13 +245,6 @@ public class ABattle extends Activity implements OnClickListener {
 					
 					tv_namePlayer1.setText(playerArray[0].toString());
 					tv_namePlayer2.setText(playerArray[4].toString());
-					
-					
-					
-					
-					
-					
-					
 					
 					
 					if(energy_int<=0){
@@ -286,7 +285,7 @@ public class ABattle extends Activity implements OnClickListener {
 					tv_contrincantMana.setText("Mana: " + progressStatusContrincantMana+"/"+originalContrincantManaPercent);
 					
 					}else if(playerArray.length == 9){
-						String result = CApp.getErrorNameByErrorNum(playerArray[4]);
+						String result = CApp.getErrorNameByErrorNum(playerArray[8]);
 						Toast.makeText(context, "End battle: " + result , Toast.LENGTH_LONG).show();
 						
 						Intent intent = new Intent(context, AMenu.class);
@@ -328,22 +327,41 @@ public class ABattle extends Activity implements OnClickListener {
 						public void run() {
 							// TODO Auto-generated method stub
 							
-							double life_double = Double.parseDouble(playerArray[0]);
+							classTypePlayer1 = playerArray[1];
+							classTypePlayer2 = playerArray[5];
+							
+							
+							if(classTypePlayer1.equals("1")){
+								avatarPlayer1.setBackgroundResource(R.drawable.mago);
+							}else{
+								avatarPlayer1.setBackgroundResource(R.drawable.warlock);
+							}
+							
+							if(classTypePlayer2.equals("1")){
+								avatarPlayer2.setBackgroundResource(R.drawable.mago);
+							}else{
+								avatarPlayer2.setBackgroundResource(R.drawable.warlock);
+							}
+							
+							tv_namePlayer1.setText(playerArray[0].toString());
+							tv_namePlayer2.setText(playerArray[4].toString());
+						
+							double life_double = Double.parseDouble(playerArray[2]);
 							Integer life_int = (int) life_double;
 							originalLife = life_int;
 							originalLifePercent = (life_int * 100 / life_int);
 							
-							double energy_double = Double.parseDouble(playerArray[1]);
+							double energy_double = Double.parseDouble(playerArray[3]);
 							Integer energy_int = (int) energy_double;
 							originalMana = energy_int;
 							originalManaPercent = (energy_int * 100 / energy_int);
 							
-							double life_contrincant_double = Double.parseDouble(playerArray[2]);
+							double life_contrincant_double = Double.parseDouble(playerArray[6]);
 							Integer life_contrincant_int = (int) life_contrincant_double;
 							originalContrincantLife = life_contrincant_int;
 							originalContrincantLifePercent = (life_contrincant_int * 100 / life_contrincant_int);
 							
-							double energy_contrincant_double = Double.parseDouble(playerArray[3]);
+							double energy_contrincant_double = Double.parseDouble(playerArray[7]);
 							Integer energy_contrincant_int = (int) energy_contrincant_double;
 							originalContrincantMana = energy_contrincant_int;
 							originalContrincantManaPercent = (energy_contrincant_int * 100 / energy_contrincant_int);
