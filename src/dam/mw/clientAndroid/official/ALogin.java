@@ -65,6 +65,7 @@ public class ALogin extends Activity implements OnClickListener {
 		
 		
 		
+		
 		//Buttons
 		btn_register = (Button)findViewById(R.id.btn_register);
 		btn_register.setTypeface(face);
