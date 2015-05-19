@@ -237,6 +237,8 @@ public class ABattle extends Activity implements OnClickListener {
 					
 					
 					
+					
+					
 					if(energy_int<=0){
 						btn_superAttack.setEnabled(false);
 					}else{
