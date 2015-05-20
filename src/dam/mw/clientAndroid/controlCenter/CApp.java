@@ -13,8 +13,8 @@ public class CApp {
 	private static CConnection connection;
 	private static Socket socket;
 	private static double latitude, longitude;
-	
-	private static ArrayList<String> arrayListData; 
+
+	private static ArrayList<String> arrayListData;
 
 	public static void connect() throws Exception { // Modificar per tractament
 													// propi
@@ -22,7 +22,8 @@ public class CApp {
 		socket = new Socket(serverAddr, CConstant.PORT);
 
 		connection = new CConnection(socket);
-		Log.i("LogsAndroid", "Conectat a: " + socket.getInetAddress().getHostName());
+		Log.i("LogsAndroid", "Conectat a: "
+				+ socket.getInetAddress().getHostName());
 	}
 
 	public static void setPosition(double lat, double lon) {
@@ -38,58 +39,58 @@ public class CApp {
 		return longitude;
 	}
 
-	public static ArrayList<String> sendLogin(String userOrMail, String Password, double longitude, double latitude) {
-		
+	public static ArrayList<String> sendLogin(String userOrMail,
+			String Password, double longitude, double latitude) {
+
 		arrayListData = new ArrayList<String>();
 
 		String result = "";
-		String data ="";
-		
+		String data = "";
+
 		String arrayErrors[];
-		
+
 		Log.i("LogsAndroid", "prepare send login...");
 		connection.sendData(userOrMail + CConstant.SEPARATOR + Password
 				+ CConstant.SEPARATOR + latitude + CConstant.SEPARATOR
 				+ longitude);
 		Log.i("LogsAndroid", "send login...");
-		
-		
+
 		data = connection.readData();
-		
+
 		Log.i("LogsAndroid", "Data: " + data);
-		
+
 		arrayErrors = data.split(CConstant.SEPARATOR);
-		
-		for (int x = 0; x < arrayErrors.length; x++){
-			
+
+		for (int x = 0; x < arrayErrors.length; x++) {
+
 			Log.i("LogsAndroid", "Data: " + arrayErrors[x]);
-		
-		switch(arrayErrors[x]){
-		
-		case CConstant.Response.SUCCES:
-			result = CConstant.Response.SUCCES; 
-			break;
-		case CConstant.Response.ERROR:
-			result = CConstant.Response.ERROR;
-			break;	
-		case CConstant.Response.E_USER_ALREADY_LOGGED:
-			result = CConstant.Response.E_USER_ALREADY_LOGGED;
-			break;	
-		case CConstant.Response.E_PASSWORD_INCORRECT:
-			result = CConstant.Response.E_PASSWORD_INCORRECT;
-			break;
-		case CConstant.Response.E_EMAIL_DOESNT_EXIST:
-			result = CConstant.Response.E_EMAIL_DOESNT_EXIST;
-			break;	
-		case CConstant.Response.E_USER_DOESENT_EXIST:
-			result = CConstant.Response.E_USER_DOESENT_EXIST;
-			break;	
-		default:
-			break;
-		}
-		
-		arrayListData.add(result);
-		
+
+			switch (arrayErrors[x]) {
+
+			case CConstant.Response.SUCCES:
+				result = CConstant.Response.SUCCES;
+				break;
+			case CConstant.Response.ERROR:
+				result = CConstant.Response.ERROR;
+				break;
+			case CConstant.Response.E_USER_ALREADY_LOGGED:
+				result = CConstant.Response.E_USER_ALREADY_LOGGED;
+				break;
+			case CConstant.Response.E_PASSWORD_INCORRECT:
+				result = CConstant.Response.E_PASSWORD_INCORRECT;
+				break;
+			case CConstant.Response.E_EMAIL_DOESNT_EXIST:
+				result = CConstant.Response.E_EMAIL_DOESNT_EXIST;
+				break;
+			case CConstant.Response.E_USER_DOESENT_EXIST:
+				result = CConstant.Response.E_USER_DOESENT_EXIST;
+				break;
+			default:
+				break;
+			}
+
+			arrayListData.add(result);
+
 		}
 		Log.i("LogsAndroid", "Result: " + result);
 		return arrayListData;
@@ -113,79 +114,85 @@ public class CApp {
 	}
 
 	public static boolean sendSearchBattle() {
-		boolean op = false;
+		boolean op = false, waitting = true;
 
 		Log.i("LogsAndroid", "prepare send searching...");
 		connection.sendData(CConstant.START_BATTLE);
 		Log.i("LogsAndroid", "send searching...");
-		if (connection.readData().equals(CConstant.Response.SUCCES)) {
-			op = true;
-			Log.i("LogsAndroid", "recived...");
-		}
+		while (waitting)
+			if (connection.readData().equals(CConstant.Response.SUCCES)) {
+				op = true;
+				waitting = false;
+				Log.i("LogsAndroid", "recived...");
+			} else{
+				connection.sendData("xxx");
+			}
 		return op;
 	}
 
-	public static ArrayList<String> sendRegisterData(String username, String mail, String password) {
+	public static ArrayList<String> sendRegisterData(String username,
+			String mail, String password) {
 		String data = "";
 		String arrayErrors[];
 		String result = "";
-		
+
 		arrayListData = new ArrayList<String>();
-		
+
 		Log.i("LogsAndroid", "Preparing send data...");
-		connection.sendData(username + CConstant.SEPARATOR + mail + CConstant.SEPARATOR + password);
+		connection.sendData(username + CConstant.SEPARATOR + mail
+				+ CConstant.SEPARATOR + password);
 		Log.i("LogsAndroid", "Data sended");
-		
+
 		data = connection.readData();
-		
+
 		Log.i("LogsAndroid", "Data: " + data);
-		
+
 		arrayErrors = data.split(CConstant.SEPARATOR);
-		
-		for (int x = 0; x < arrayErrors.length; x++){
-			
+
+		for (int x = 0; x < arrayErrors.length; x++) {
+
 			Log.i("LogsAndroid", "Data: " + arrayErrors[x]);
-		
-		switch(arrayErrors[x]){
-		
-		case CConstant.Response.SUCCES:
-			result = CConstant.Response.SUCCES; 
-			break;
-		case CConstant.Response.ERROR:
-			result = CConstant.Response.ERROR;
-			break;	
-		case CConstant.Response.E_USER_ALREADY_USED:
-			result = CConstant.Response.E_USER_ALREADY_USED;
-			break;	
-		case CConstant.Response.E_EMAIL_ALREADY_USED:
-			result = CConstant.Response.E_EMAIL_ALREADY_USED;
-			break;
-		case CConstant.Response.E_PLAYERNAME_ALREADY_USED:
-			result = CConstant.Response.E_PLAYERNAME_ALREADY_USED;
-			break;	
-			
-		default:
-			break;
-		}
-		
-		arrayListData.add(result);
-		
+
+			switch (arrayErrors[x]) {
+
+			case CConstant.Response.SUCCES:
+				result = CConstant.Response.SUCCES;
+				break;
+			case CConstant.Response.ERROR:
+				result = CConstant.Response.ERROR;
+				break;
+			case CConstant.Response.E_USER_ALREADY_USED:
+				result = CConstant.Response.E_USER_ALREADY_USED;
+				break;
+			case CConstant.Response.E_EMAIL_ALREADY_USED:
+				result = CConstant.Response.E_EMAIL_ALREADY_USED;
+				break;
+			case CConstant.Response.E_PLAYERNAME_ALREADY_USED:
+				result = CConstant.Response.E_PLAYERNAME_ALREADY_USED;
+				break;
+
+			default:
+				break;
+			}
+
+			arrayListData.add(result);
+
 		}
 		Log.i("LogsAndroid", "Result: " + result);
-		
+
 		return arrayListData;
 	}
 
 	public static ArrayList<String> sendRegisterPlayer(String playerName,
 			String idPlayerType, String life, String energy,
 			String eRegeneration, String strength, String intelligence) {
-		
+
 		arrayListData = new ArrayList<String>();
-		
+
 		String data = "";
 		String arrayErrors[];
 		String result = "";
-		
+
 		Log.i("LogsAndroid", "Preparing send register player data...");
 		connection.sendData(playerName + CConstant.SEPARATOR + idPlayerType
 				+ CConstant.SEPARATOR + life + CConstant.SEPARATOR + energy
@@ -193,38 +200,38 @@ public class CApp {
 				+ strength + CConstant.SEPARATOR + intelligence
 				+ CConstant.SEPARATOR + 1 + CConstant.SEPARATOR + 5);
 		Log.i("LogsAndroid", "Register player data sended");
-		
+
 		data = connection.readData();
-		
+
 		Log.i("LogsAndroid", "Data: " + data);
-		
+
 		arrayErrors = data.split(CConstant.SEPARATOR);
-		
-		for (int x = 0; x < arrayErrors.length; x++){
-			
+
+		for (int x = 0; x < arrayErrors.length; x++) {
+
 			Log.i("LogsAndroid", "Data: " + arrayErrors[x]);
-		
-		switch(arrayErrors[x]){
-		
-		case CConstant.Response.SUCCES:
-			result = CConstant.Response.SUCCES; 
-			break;
-		case CConstant.Response.ERROR:
-			result = CConstant.Response.ERROR;
-			break;
-		case CConstant.Response.E_PLAYERNAME_ALREADY_USED:
-			result = CConstant.Response.E_PLAYERNAME_ALREADY_USED;
-			break;	
-			
-		default:
-			break;
-		}
-		
-		arrayListData.add(result);
-		
+
+			switch (arrayErrors[x]) {
+
+			case CConstant.Response.SUCCES:
+				result = CConstant.Response.SUCCES;
+				break;
+			case CConstant.Response.ERROR:
+				result = CConstant.Response.ERROR;
+				break;
+			case CConstant.Response.E_PLAYERNAME_ALREADY_USED:
+				result = CConstant.Response.E_PLAYERNAME_ALREADY_USED;
+				break;
+
+			default:
+				break;
+			}
+
+			arrayListData.add(result);
+
 		}
 		Log.i("LogsAndroid", "Result: " + result);
-		
+
 		return arrayListData;
 	}
 
@@ -232,7 +239,7 @@ public class CApp {
 		String data = connection.readData();
 		Log.i("LogsAndroid", "Data: " + data);
 		return data;
-		
+
 	}
 
 	public static void sendDataShowMyData() {
@@ -299,18 +306,18 @@ public class CApp {
 		}
 		return errorName;
 	}
-	
-	public static String getDefaultStats(int classType){
+
+	public static String getDefaultStats(int classType) {
 		int life;
 		int energy;
 		int eReg;
-		int str = CConstant.PlayerUtils.BASE_CALC/2;
-		int intll = CConstant.PlayerUtils.BASE_CALC/2;
-		
-		for(int x = 0; x < CConstant.PlayerUtils.RAND_CALC; x++){
-			
+		int str = CConstant.PlayerUtils.BASE_CALC / 2;
+		int intll = CConstant.PlayerUtils.BASE_CALC / 2;
+
+		for (int x = 0; x < CConstant.PlayerUtils.RAND_CALC; x++) {
+
 			int val = CRandom.generaInt(15);
-			switch (""+classType) {
+			switch ("" + classType) {
 			case CConstant.WARLOCK:
 				if (val <= 10)
 					str++;
@@ -327,12 +334,13 @@ public class CApp {
 				break;
 			}
 		}
-		
+
 		life = 100 + (int) (str * CConstant.PlayerUtils.LIFE_INTEL_PERCENT);
 		energy = 100 + (int) (intll * CConstant.PlayerUtils.LIFE_INTEL_PERCENT);
 		eReg = (int) (0.1 * energy);
-		return ""+life+CConstant.SEPARATOR+energy+CConstant.SEPARATOR+eReg+CConstant.SEPARATOR+str+CConstant.SEPARATOR+intll;
+		return "" + life + CConstant.SEPARATOR + energy + CConstant.SEPARATOR
+				+ eReg + CConstant.SEPARATOR + str + CConstant.SEPARATOR
+				+ intll;
 	}
-	
 
 }
