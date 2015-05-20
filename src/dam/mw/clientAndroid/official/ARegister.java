@@ -5,26 +5,42 @@ import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
+import dam.mw.clientAndroid.controlCenter.CApp;
+import dam.mw.clientAndroid.controlCenter.CConstant;
 import dam.mw.clientAndroid.controlCenter.JApp;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ARegister extends Activity {
 	
 	private JApp japp = new JApp(); 
 	private EditText et_username, et_mail, et_password, et_confirmPassword;
+	private TextView tv_registration, tv_username, tv_mail, tv_password, tv_confirmPassword;
 	private ArrayList<EditText> fields = new ArrayList<EditText>();
 	private String username, mail, password, passwordConfirm;
+	private Button btn_registerActivity;
 	private boolean validationOK = true;
+	
+	ProgressDialog pDialog;
+	
+	private static Context context;
+	
+	private ArrayList<String> errorNum= new ArrayList<String>();
 	
 	protected PowerManager.WakeLock wakelock;
 	@Override
@@ -34,15 +50,35 @@ public class ARegister extends Activity {
 		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
+        
+        context = this;
+        
+        
+        //Set typeface.
+      	Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
 		
 		//getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		// FindViewBy ID
+      	btn_registerActivity = (Button)findViewById(R.id.btn_registerActivity);
+      	btn_registerActivity.setTypeface(face);
+      	
 		et_username = (EditText) findViewById(R.id.et_userName);
 		et_mail = (EditText) findViewById(R.id.et_mail);
 		et_password = (EditText) findViewById(R.id.et_password);
 		et_confirmPassword = (EditText) findViewById(R.id.et_confirmPassword);
 		
+		tv_registration = (TextView)findViewById(R.id.tv_registration);
+		tv_username = (TextView)findViewById(R.id.tv_userName);
+		tv_mail = (TextView)findViewById(R.id.tv_mail);
+		tv_password = (TextView)findViewById(R.id.tv_password);
+		tv_confirmPassword = (TextView)findViewById(R.id.tv_confirmPassword);
+		
+		tv_registration.setTypeface(face);
+		tv_username.setTypeface(face);
+		tv_mail.setTypeface(face);
+		tv_password.setTypeface(face);
+		tv_confirmPassword.setTypeface(face);
 		
 		
 		// Add to a ArrayList
@@ -121,18 +157,78 @@ public class ARegister extends Activity {
 				}
 				
 				// 3- Registrar usuario a la base de datos
-				//if	(validationOK == true){
-					Toast e=Toast.makeText(this,"Correct!", Toast.LENGTH_SHORT);
-				    e.show();
-				    Intent i = new Intent(ARegister.this, ARegister_player.class);
-					startActivity(i);
-						
-					overridePendingTransition(R.animator.animator5, R.animator.animator6);
-				//}
+				if (validationOK == true){
+					new sendRegisterData().execute();
+				}
 			}
 			break;
 		default:
 			break;
+		}
+		
+	}
+	
+	class sendRegisterData extends AsyncTask<String, Void, Boolean>{
+
+		@Override
+		protected void onPreExecute(){
+			super.onPreExecute();
+			pDialog = new ProgressDialog(ARegister.this);
+			pDialog.show();
+			pDialog.setContentView(R.layout.custom_progressdialog);
+			pDialog.setMessage("Loading...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(false);
+		}
+		
+		@Override
+		protected Boolean doInBackground(String... params) {
+			Boolean sendRegisterData = false;
+			try{
+			errorNum = CApp.sendRegisterData(username, mail, password);
+			
+			if (errorNum.get(0).equals(CConstant.Response.SUCCES)) {
+				sendRegisterData = true;
+
+			}else{
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						for(int i = 0; i<errorNum.size(); i++){
+						Toast.makeText(context, CApp.getErrorNameByErrorNum(errorNum.get(i)), Toast.LENGTH_SHORT).show();
+						}
+					}
+				});
+			}
+			
+			}catch(Exception e){
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(context, "Error, please try again...", Toast.LENGTH_SHORT).show();
+					}
+				});
+			}
+			
+				
+			
+			return sendRegisterData;
+		}
+		
+		@Override
+		protected void onPostExecute (Boolean s){
+			super.onPostExecute(s);
+			pDialog.dismiss();
+			if(s == true){
+				
+				Intent i = new Intent(ARegister.this, ARegister_player.class);
+				i.putExtra("username", username);
+				i.putExtra("password", password);
+				startActivity(i);
+					
+				overridePendingTransition(R.animator.animator5, R.animator.animator6);
+			}
 		}
 		
 	}

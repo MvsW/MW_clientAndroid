@@ -1,12 +1,19 @@
 package dam.mw.clientAndroid.official;
 
+import java.util.ArrayList;
+
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
+import dam.mw.clientAndroid.controlCenter.CApp;
+import dam.mw.clientAndroid.controlCenter.CConstant;
+import dam.mw.clientAndroid.controlCenter.JApp;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.view.Menu;
@@ -31,7 +38,7 @@ public class ARegister_player extends Activity {
 	private TextView tv_inteligence_point;
 	private TextView tv_unassigned_points;
 	private EditText et_characterName;
-	private String characterName;
+	
 	private TextView tv_selectClass;
 	int count_strength = 0;
 	int count_inteligence = 0;
@@ -40,6 +47,25 @@ public class ARegister_player extends Activity {
 	boolean maxpointsIntel=false;
 	
 	boolean registreOK=true;
+	
+	private String playerName;
+	private String idPlayerType;
+	private String life;
+	private String energy;
+	private String eRegeneration;
+	private String strength;
+	private String intelligence;
+	private int idUser;
+	private int totalPoints;
+	
+	JApp Japp = new JApp();
+	
+	private static Context context;
+	
+	private String username= "";
+	private String password = "";
+	
+	private ArrayList<String> errorNum= new ArrayList<String>();
 
 	protected PowerManager.WakeLock wakelock;
 	@Override
@@ -49,6 +75,9 @@ public class ARegister_player extends Activity {
 		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
+        
+        username = getIntent().getStringExtra("username");
+        password = getIntent().getStringExtra("password");
 		
 		
 		selectCharacter = (ToggleButton)findViewById(R.id.selectChamp);
@@ -81,25 +110,66 @@ public class ARegister_player extends Activity {
 		
 		estatToggleButton();
 		
+		context = this;
+		
+		setStats(CConstant.MAGE);
+		
+	}
+	
+	private void setStats(String value){
+		String[]fields = (CApp.getDefaultStats(Integer.parseInt(value))).split(CConstant.SEPARATOR);
+		
+		tv_life_point.setText(fields[0]);
+		tv_energy_point.setText(fields[1]);
+		tv_energyReg_point.setText(fields[2]);
+		tv_strength_point.setText(fields[3]);
+		tv_inteligence_point.setText(fields[4]);
+		
 	}
 	
 	public void estatToggleButton(){
 		selectCharacter.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-
+			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
 				if	(buttonView.isChecked()){
-					characterClass.setText("Mague");
-					tv_life_point.setText("2");
-					tv_energy_point.setText("8");
-					tv_energyReg_point.setText("5");
+					characterClass.setText("Mage");
+					
+					setStats(CConstant.MAGE);
+					
+					//Assign id of the type Mage/Warlock
+					if(characterClass.getText().toString().equalsIgnoreCase("Mage")){
+						idPlayerType = CConstant.MAGE;
+					}
+					
+					//Get life
+					life = tv_life_point.getText().toString();
+					
+					//Get energy
+					energy = tv_energy_point.getText().toString();
+					
+					//Get energy regeneration
+					eRegeneration = tv_energyReg_point.getText().toString();
+					
 					
 					
 				}else{
 					characterClass.setText("Warlock");
-					tv_life_point.setText("8");
-					tv_energy_point.setText("5");
-					tv_energyReg_point.setText("3");
+					setStats(CConstant.WARLOCK);
+			
+					//Assign id of the type Mage/Warlock
+					if(characterClass.getText().toString().equalsIgnoreCase("Warlock")){
+						idPlayerType = CConstant.WARLOCK;
+					}
+					
+					//Get life
+					life = tv_life_point.getText().toString();
+					
+					//Get energy
+					energy = tv_energy_point.getText().toString();
+					
+					//Get energy regeneration
+					eRegeneration = tv_energyReg_point.getText().toString();
 					
 					
 				}
@@ -108,15 +178,15 @@ public class ARegister_player extends Activity {
 	}
 	
 	public void onClick(View v){
-		characterName = et_characterName.getText().toString();
+		playerName = et_characterName.getText().toString();
 		registreOK=true;
-		if	(!characterName.isEmpty()){
-			if	(characterName.length()>12){
+		if	(!playerName.isEmpty()){
+			if	(playerName.length()>12){
 				et_characterName.setError("Max length: 12");
 				registreOK=false;
 			}
 			
-			if(characterName.contains("@")){
+			if(playerName.contains("@")){
 				et_characterName.setError("'@' not allowed");
 				registreOK=false;
 			}
@@ -127,10 +197,73 @@ public class ARegister_player extends Activity {
 		
 		if	(registreOK==true){
 			//TODO: Guardar registre a la base de dades.
-			Toast e=Toast.makeText(this,"Correct!", Toast.LENGTH_SHORT);
-		    e.show();
+		    
+		    new registerPlayer().execute();
 		}
 		
+	}
+	
+	class registerPlayer extends AsyncTask<String, Void, Boolean>{
+
+		@Override
+		protected void onPreExecute(){
+			super.onPreExecute();
+		}
+		
+		@Override
+		protected Boolean doInBackground(String... params) {
+			Boolean sendRegister = false;
+			
+			/*Send register player data to server:
+			  	playerName
+				idPlayerType
+				life
+				energy
+				eRegeneration
+				strength
+				intelligence
+				idUser
+				totalPoints	
+			 */
+			try{
+			errorNum = CApp.sendRegisterPlayer(playerName, idPlayerType, life, energy, eRegeneration, strength, intelligence);
+			if (errorNum.get(0).equals(CConstant.Response.SUCCES)) {
+				sendRegister = true;
+
+			}else{
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						for(int i = 0; i<errorNum.size(); i++){
+						Toast.makeText(context, CApp.getErrorNameByErrorNum(errorNum.get(i)), Toast.LENGTH_SHORT).show();
+						}
+					}
+				});
+			}
+			
+			}catch(Exception e){
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(context, "Error, please try again...", Toast.LENGTH_SHORT).show();
+					}
+				});
+			}
+			
+			return sendRegister;
+		}
+		
+		@Override
+		protected void onPostExecute (Boolean s){
+			super.onPostExecute(s);
+			if(s == true){
+				Intent intent = new Intent(ARegister_player.this, ALogin.class);
+				intent.putExtra("username", username);
+				intent.putExtra("password", password);
+				startActivity(intent);
+			}
+		}
 	}
 	
 	public void strenght_down (View v){
@@ -146,6 +279,9 @@ public class ARegister_player extends Activity {
 		}
 		tv_strength_point.setText(Integer.toString(count_strength));
 		tv_unassigned_points.setText(Integer.toString(count_unasigned));
+		
+		//Get strenght
+		strength = Integer.toString(count_strength);
 		
 	}
 	public void strenght_up (View v){
@@ -163,6 +299,11 @@ public class ARegister_player extends Activity {
 		tv_strength_point.setText(Integer.toString(count_strength));
 		tv_unassigned_points.setText(Integer.toString(count_unasigned));
 		
+		//Get strenght
+		strength = Integer.toString(count_strength);
+		
+		
+		
 	}
 	
 	public void inteligence_down (View v){
@@ -178,6 +319,9 @@ public class ARegister_player extends Activity {
 		}
 		tv_inteligence_point.setText(Integer.toString(count_inteligence));
 		tv_unassigned_points.setText(Integer.toString(count_unasigned));
+		
+		//Get intelligence
+		intelligence = Integer.toString(count_inteligence);
 	}
 	
 	public void inteligence_up (View v){
@@ -194,6 +338,9 @@ public class ARegister_player extends Activity {
 		}
 		tv_inteligence_point.setText(Integer.toString(count_inteligence));
 		tv_unassigned_points.setText(Integer.toString(count_unasigned));
+		
+		//Get intelligence
+		intelligence = Integer.toString(count_inteligence);
 		
 	}
 	

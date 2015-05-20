@@ -38,7 +38,7 @@ public class ASplash extends Activity {
 		/** Hide action bar **/
 		// getActionBar().hide();
 		context = this;
-		if (checkConnection()) {
+		/*if (checkConnection()) {
 			Toast toast = Toast.makeText(this, "true", Toast.LENGTH_SHORT);
 			toast.show();
 
@@ -46,7 +46,7 @@ public class ASplash extends Activity {
 			Toast toast = Toast.makeText(this, "false", Toast.LENGTH_SHORT);
 			toast.show();
 			System.exit(1);
-		}
+		}*/
 
 	}
 
@@ -77,10 +77,10 @@ public class ASplash extends Activity {
 			CApp.setPosition(latitude, longitude);
 			// \n is for new line
 			check = true;
-			Toast.makeText(
+			/*Toast.makeText(
 					getApplicationContext(),
 					"Your Location is - \nLat: " + latitude + "\nLong: "
-							+ longitude, Toast.LENGTH_LONG).show();
+							+ longitude, Toast.LENGTH_LONG).show();*/
 		} else {
 			// Can't get location.
 			// GPS or network is not enabled.

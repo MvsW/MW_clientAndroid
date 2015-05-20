@@ -7,7 +7,7 @@ public class CPlayer {
     /**
      * ATTRIBUTES
      */
-    private ArrayList<CSpell> spells = new ArrayList<>();
+    private ArrayList<CSpell> spells = new ArrayList<CSpell>();
     /* ó
     private CSpell[] spells = new CSpell[6]; // sugiero el uso de arrays cuando ya sabemos que es limitado
     */
@@ -20,6 +20,7 @@ public class CPlayer {
     private Double intelligence;
     private int currentPoints;
     private int wonGames;
+    
     
     // Battle attributes
     private int action; // use the constants of the CConstant for compare to. 

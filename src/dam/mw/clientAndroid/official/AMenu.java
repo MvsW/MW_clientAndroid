@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
@@ -19,14 +20,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class AMenu extends Activity implements OnClickListener {
 
 	private Context context;
 	private ProgressDialog pDialog;
 	private boolean searching = false;
+	
 
 	protected PowerManager.WakeLock wakelock;
+	
+	TextView tv_menu;
+	Button btn_battle;
+	Button btn_showData;
+	Button dialog_cancel;
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +51,19 @@ public class AMenu extends Activity implements OnClickListener {
 		wakelock.acquire();
 
 		context = this;
+		
+		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
+		
+		tv_menu = (TextView)findViewById(R.id.tv_menu);
+		btn_battle = (Button)findViewById(R.id.btn_battle);
+		btn_showData = (Button)findViewById(R.id.btn_showData);
+		
+		tv_menu.setTypeface(face);
+		btn_battle.setTypeface(face);
+		btn_showData.setTypeface(face);
+		
+		dialog_cancel = (Button)findViewById(R.id.progress_cancel);
+		
 	}
 
 	class sendData extends AsyncTask<String, String, String> {
@@ -47,16 +72,27 @@ public class AMenu extends Activity implements OnClickListener {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pDialog = new ProgressDialog(AMenu.this);
+			pDialog.show();
+			pDialog.setContentView(R.layout.custom_progressdialog);
 			pDialog.setMessage("Show My Data. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(false);
-			pDialog.show();
 		}
 
 		@Override
 		protected String doInBackground(String... params) {
 			Log.i("LogsAndroid", "Sending data to Show my data...");
+			try{
 			CApp.sendDataShowMyData();
+			}catch(Exception e){
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(context, "Error, please try again...", Toast.LENGTH_SHORT).show();
+					}
+				});
+				
+			}
 			return "";
 		}
 
@@ -77,17 +113,28 @@ public class AMenu extends Activity implements OnClickListener {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pDialog = new ProgressDialog(AMenu.this);
+			pDialog.show();
+			pDialog.setContentView(R.layout.custom_progressdialog);
 			pDialog.setMessage("Searching battle. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(false);
-			pDialog.show();
 		}
 
 		@Override
 		protected String doInBackground(String... params) {
-			if (CApp.sendSearchBattle())
+			try{
+			
+			if (CApp.sendSearchBattle()){
 				searching = true;
-
+			}
+			}catch(Exception e){
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(context, "Error, please try again...", Toast.LENGTH_SHORT).show();
+					}
+				});
+			}
 			return "";
 		}
 

@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg_generic"
     tools:context="dam.mw.clientAndroid.official.AMyData" >
 
     <ImageView
@@ -25,6 +26,7 @@
         android:layout_below="@+id/tv_regEnergy"
         android:layout_marginLeft="18dp"
         android:layout_marginTop="200dp"
+        android:textColor="#FFFFFF"
         android:text="@string/tv_dateRegister" />
 
     <ImageView
@@ -42,6 +44,7 @@
         android:layout_alignLeft="@+id/tv_dateRegister"
         android:layout_below="@+id/tv_dateRegister"
         android:layout_marginTop="12dp"
+        android:textColor="#FFFFFF"
         android:text="@string/tv_totalPoints" />
 
     <TextView
@@ -51,6 +54,7 @@
         android:layout_alignLeft="@+id/tv_regEnergy"
         android:layout_below="@+id/iv_avatar"
         android:layout_marginTop="51dp"
+        android:textColor="#FFFFFF"
         android:text="@string/tv_energy" />
 
     <TextView
@@ -60,6 +64,7 @@
         android:layout_alignLeft="@+id/tv_strength"
         android:layout_below="@+id/tv_strength"
         android:layout_marginTop="8dp"
+        android:textColor="#FFFFFF"
         android:text="@string/tv_inteligence" />
 
     <TextView
@@ -69,6 +74,7 @@
         android:layout_alignLeft="@+id/tv_regEnergy"
         android:layout_below="@+id/tv_regEnergy"
         android:layout_marginTop="11dp"
+        android:textColor="#FFFFFF"
         android:text="@string/tv_strength" />
 
     <TextView
@@ -78,6 +84,7 @@
         android:layout_alignLeft="@+id/iv_avatar"
         android:layout_below="@+id/tv_energy"
         android:layout_marginTop="11dp"
+        android:textColor="#FFFFFF"
         android:text="@string/tv_regEnergy" />
 
     <TextView
@@ -87,6 +94,7 @@
         android:layout_alignLeft="@+id/tv_totalPoints"
         android:layout_below="@+id/tv_totalPoints"
         android:layout_marginTop="18dp"
+        android:textColor="#FFFFFF"
         android:text="@string/tv_totalWins" />
 
     <TextView
@@ -96,6 +104,7 @@
         android:layout_above="@+id/tv_regEnergy"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/iv_delimiter"
+        android:textColor="#FFFFFF"
         android:text="9999999" />
 
     <TextView
@@ -105,6 +114,7 @@
         android:layout_alignBaseline="@+id/tv_regEnergy"
         android:layout_alignBottom="@+id/tv_regEnergy"
         android:layout_alignRight="@+id/tv_energyData"
+        android:textColor="#FFFFFF"
         android:text="9999999" />
 
     <TextView
@@ -114,6 +124,7 @@
         android:layout_alignBaseline="@+id/tv_strength"
         android:layout_alignBottom="@+id/tv_strength"
         android:layout_alignRight="@+id/tv_regEnergyData"
+        android:textColor="#FFFFFF"
         android:text="9999999" />
 
     <TextView
@@ -123,6 +134,7 @@
         android:layout_alignBaseline="@+id/tv_inteligence"
         android:layout_alignBottom="@+id/tv_inteligence"
         android:layout_alignRight="@+id/tv_energyData"
+        android:textColor="#FFFFFF"
         android:text="9999999" />
 
     <TextView
@@ -131,6 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tv_dateRegister"
         android:layout_alignLeft="@+id/tv_inteligenceData"
+        android:textColor="#FFFFFF"
         android:text="9999999" />
 
     <TextView
@@ -140,6 +153,7 @@
         android:layout_alignBaseline="@+id/tv_totalPoints"
         android:layout_alignBottom="@+id/tv_totalPoints"
         android:layout_alignLeft="@+id/tv_dateRegisterData"
+        android:textColor="#FFFFFF"
         android:text="9999999" />
 
     <TextView
@@ -148,6 +162,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tv_totalWins"
         android:layout_alignLeft="@+id/tv_totalPointsData"
+        android:textColor="#FFFFFF"
         android:text="9999999" />
 
     <TextView
@@ -157,6 +172,7 @@
         android:layout_alignLeft="@+id/tv_energyData"
         android:layout_alignTop="@+id/iv_avatar"
         android:layout_marginTop="13dp"
+        android:textColor="#FFFFFF"
         android:text="Name avatar" />
 
     <TextView
@@ -167,6 +183,7 @@
         android:layout_alignLeft="@+id/tv_energy"
         android:layout_alignRight="@+id/tv_energy"
         android:layout_marginBottom="11dp"
+        android:textColor="#FFFFFF"
         android:text="@string/tv_life" />
 
     <TextView
@@ -175,6 +192,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tv_life"
         android:layout_alignRight="@+id/tv_energyData"
+        android:textColor="#FFFFFF"
         android:text="9999999" />
 
 </RelativeLayout>
