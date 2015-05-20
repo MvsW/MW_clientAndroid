@@ -270,27 +270,27 @@ public class ABattle extends Activity implements OnClickListener {
 
 						progressStatus = (life_int * 100 / originalLife);
 						pb_life.setProgress(progressStatus);
-						tv_life.setText("Life: " + progressStatus + "/"
-								+ originalLifePercent);
+						tv_life.setText("Life: " + life_int + "/"
+								+ originalLife);
 
 						progressStatusMana = (energy_int * 100 / originalMana);
 						pb_mana.setProgress(progressStatusMana);
-						tv_mana.setText("Mana: " + progressStatusMana + "/"
-								+ originalManaPercent);
+						tv_mana.setText("Mana: " + energy_int + "/"
+								+ originalMana);
 
 						progressStatusContrincantLife = (life_contrincant_int * 100 / originalContrincantLife);
 						pb_contrincantLife
 								.setProgress(progressStatusContrincantLife);
 						tv_contrincantLife.setText("Life: "
-								+ progressStatusContrincantLife + "/"
-								+ originalContrincantLifePercent);
+								+ life_contrincant_int + "/"
+								+ originalContrincantLife);
 
 						progressStatusContrincantMana = (energy_contrincant_int * 100 / originalContrincantMana);
 						pb_contrincantMana
 								.setProgress(progressStatusContrincantMana);
 						tv_contrincantMana.setText("Mana: "
-								+ progressStatusContrincantMana + "/"
-								+ originalContrincantManaPercent);
+								+ energy_contrincant_int + "/"
+								+ originalContrincantMana);
 
 					} else if (playerArray.length == 9) {
 						String result = CApp
@@ -379,24 +379,24 @@ public class ABattle extends Activity implements OnClickListener {
 					originalContrincantManaPercent = (energy_contrincant_int * 100 / energy_contrincant_int);
 
 					pb_life.setProgress(originalLifePercent);
-					tv_life.setText("Life: " + originalLifePercent + "/"
-							+ originalLifePercent);
+					tv_life.setText("Life: " + originalLife + "/"
+							+ originalLife);
 
 					pb_mana.setProgress(originalManaPercent);
-					tv_mana.setText("Mana: " + originalManaPercent + "/"
-							+ originalManaPercent);
+					tv_mana.setText("Mana: " + originalMana + "/"
+							+ originalMana);
 
 					pb_contrincantLife
 							.setProgress(originalContrincantLifePercent);
 					tv_contrincantLife.setText("Contrincant life: "
-							+ originalContrincantLifePercent + "/"
-							+ originalContrincantLifePercent);
+							+ originalContrincantLife + "/"
+							+ originalContrincantLife);
 
 					pb_contrincantMana
 							.setProgress(originalContrincantManaPercent);
 					tv_contrincantMana.setText("Contrincant mana: "
-							+ originalContrincantManaPercent + "/"
-							+ originalContrincantManaPercent);
+							+ originalContrincantMana + "/"
+							+ originalContrincantMana);
 
 				}
 			});

@@ -13,6 +13,8 @@ public class CApp {
 	private static CConnection connection;
 	private static Socket socket;
 	private static double latitude, longitude;
+	
+	private static boolean buttonCancelTapped = false;
 
 	private static ArrayList<String> arrayListData;
 
@@ -29,6 +31,10 @@ public class CApp {
 	public static void setPosition(double lat, double lon) {
 		longitude = lon;
 		latitude = lat;
+	}
+	
+	public static void setButtonCancelTapped (){
+		buttonCancelTapped = true;
 	}
 
 	public static double getLatitude() {
@@ -119,14 +125,25 @@ public class CApp {
 		Log.i("LogsAndroid", "prepare send searching...");
 		connection.sendData(CConstant.START_BATTLE);
 		Log.i("LogsAndroid", "send searching...");
-		while (waitting)
+		while (waitting){
 			if (connection.readData().equals(CConstant.Response.SUCCES)) {
 				op = true;
 				waitting = false;
 				Log.i("LogsAndroid", "recived...");
 			} else{
-				connection.sendData("xxx");
+				if(buttonCancelTapped == false){
+					connection.sendData("xxx");
+					Log.i("LogsAndroid", "XXX sended");
+				}else{
+					connection.sendData(CConstant.CANCEL);
+					waitting = false;
+					Log.i("LogsAndroid", "Cancel sended");
+					buttonCancelTapped = false;
+				}
+				
 			}
+		}
+		Log.i("LogsAndroid", "Out of while");
 		return op;
 	}
 

@@ -62,11 +62,16 @@ public class AMenu extends Activity implements OnClickListener {
 		btn_battle.setTypeface(face);
 		btn_showData.setTypeface(face);
 		
-		dialog_cancel = (Button)findViewById(R.id.progress_cancel);
+		//dialog_cancel = (Button)findViewById(R.id.progress_cancel);
+		
+		
 		
 	}
+	
+	
 
 	class sendData extends AsyncTask<String, String, String> {
+		
 
 		@Override
 		protected void onPreExecute() {
@@ -99,11 +104,14 @@ public class AMenu extends Activity implements OnClickListener {
 		@Override
 		protected void onPostExecute(String s) {
 			super.onPostExecute(s);
+			
 			pDialog.dismiss();
 			Intent intentShowData = new Intent(context, AMyData.class);
 			startActivity(intentShowData);
 
 		}
+		
+
 
 	}
 
@@ -118,6 +126,18 @@ public class AMenu extends Activity implements OnClickListener {
 			pDialog.setMessage("Searching battle. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(false);
+			
+			Button button = (Button)pDialog.findViewById(R.id.progress_cancel);
+			button.setOnClickListener(new OnClickListener(){
+		        @Override
+		        public void onClick(View v){
+		        	Log.i("LogsAndroid", "Cancel clicked");
+		        	//new cancelBattle().execute();
+		        	CApp.setButtonCancelTapped();
+		        	Toast.makeText(context, "Search battle canceled.", Toast.LENGTH_SHORT).show();
+		        	pDialog.dismiss();
+		        }
+		    });
 		}
 
 		@Override
@@ -152,25 +172,47 @@ public class AMenu extends Activity implements OnClickListener {
 		}
 
 	}
+	
+	/*class cancelBattle extends AsyncTask<String, String, String> {
+		
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.amenu, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
 		}
-		return super.onOptionsItemSelected(item);
-	}
+
+		@Override
+		protected String doInBackground(String... params) {
+			Log.i("LogsAndroid", "Sending cancel battle...");
+			try{
+			CApp.sendData(CConstant.CANCEL);
+			}catch(Exception e){
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+					}
+				});
+				
+			}
+			return "";
+		}
+
+		@Override
+		protected void onPostExecute(String s) {
+			super.onPostExecute(s);
+			runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					Toast.makeText(context, "Search battle canceled", Toast.LENGTH_SHORT).show();
+				}
+			});
+		}
+		
+
+
+	}*/
+
 
 	@Override
 	public void onClick(View v) {

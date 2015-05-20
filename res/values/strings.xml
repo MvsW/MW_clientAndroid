@@ -68,8 +68,10 @@
     <string name="lbl_life"></string>
     <string name="lbl_energy"></string>
     <string name="lbl_regEnergy"></string>
-    <string name="lbl_strength"></string> <!-- Enter to the custom component -->
-    <string name="lbl_inteligence"></string> <!-- Enter to the custom component -->
+    <string name="lbl_strength"></string>
+ <!-- Enter to the custom component -->
+    <string name="lbl_inteligence"></string>
+ <!-- Enter to the custom component -->
     <string name="lbl_unsassigned_points"></string>
     <string name="et_playerName">Choose your player name</string>
 
@@ -77,8 +79,8 @@
 
     <string name="tv_searching">Searching</string>
     <string name="tv_cheats"></string>
-    
     <string name="title_activity_aregister_player">ARegister_player</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_custom_progress_dialog">CustomProgressDialog</string>
 
 </resources>
