@@ -132,13 +132,19 @@ public class CApp {
 				Log.i("LogsAndroid", "recived...");
 			} else{
 				if(buttonCancelTapped == false){
-					connection.sendData("xxx");
-					Log.i("LogsAndroid", "XXX sended");
+					connection.sendData("*");
+					Log.i("LogsAndroid", "* sended");
 				}else{
 					connection.sendData(CConstant.CANCEL);
-					waitting = false;
+					
 					Log.i("LogsAndroid", "Cancel sended");
 					buttonCancelTapped = false;
+					if(connection.readData().equals(CConstant.Response.SUCCES)){
+						op = true;
+					}else{
+						op = false;
+					}
+					waitting = false;
 				}
 				
 			}
