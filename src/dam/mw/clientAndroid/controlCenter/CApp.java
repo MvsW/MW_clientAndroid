@@ -271,9 +271,9 @@ public class CApp {
 	}
 
 	public static void sendData(String data) {
-		Log.i("LogsAndroid", "Prepare send battle action...");
+		Log.i("LogsAndroid", "Prepare send  action...");
 		connection.sendData(data);
-		Log.i("LogsAndroid", "Battle action sended: " + data);
+		Log.i("LogsAndroid", "Action sended: " + data);
 	}
 
 	public static void sendRegisterOp() {

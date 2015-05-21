@@ -69,6 +69,7 @@ public class ABattle extends Activity implements OnClickListener {
 
 	private ImageView avatarPlayer1;
 	private ImageView avatarPlayer2;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -152,26 +153,98 @@ public class ABattle extends Activity implements OnClickListener {
 			switch (params[0]) { // TRY CATCH
 			case CConstant.BASIC:
 				CApp.sendData(CConstant.BASIC);
+				runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						btn_normalAttack.setEnabled(false);
+						btn_spell1.setEnabled(false);
+						btn_spell2.setEnabled(false);
+						btn_superAttack.setEnabled(false);
+						btn_dodge.setEnabled(false);
+						btn_defense.setEnabled(false);
+					}
+				});
 				op = true;
 				break;
 			case CConstant.SPELL1:
 				CApp.sendData(CConstant.SPELL1);
+				runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						btn_normalAttack.setEnabled(false);
+						btn_spell1.setEnabled(false);
+						btn_spell2.setEnabled(false);
+						btn_superAttack.setEnabled(false);
+						btn_dodge.setEnabled(false);
+						btn_defense.setEnabled(false);
+					}
+				});
 				op = true;
 				break;
 			case CConstant.SPELL2:
 				CApp.sendData(CConstant.SPELL2);
+				runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						btn_normalAttack.setEnabled(false);
+						btn_spell1.setEnabled(false);
+						btn_spell2.setEnabled(false);
+						btn_superAttack.setEnabled(false);
+						btn_dodge.setEnabled(false);
+						btn_defense.setEnabled(false);
+					}
+				});
 				op = true;
 				break;
 			case CConstant.ULTIMATE:
 				CApp.sendData(CConstant.ULTIMATE);
+				runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						btn_normalAttack.setEnabled(false);
+						btn_spell1.setEnabled(false);
+						btn_spell2.setEnabled(false);
+						btn_superAttack.setEnabled(false);
+						btn_dodge.setEnabled(false);
+						btn_defense.setEnabled(false);
+					}
+				});
 				op = true;
 				break;
 			case CConstant.DODGE:
 				CApp.sendData(CConstant.DODGE);
+				runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						btn_normalAttack.setEnabled(false);
+						btn_spell1.setEnabled(false);
+						btn_spell2.setEnabled(false);
+						btn_superAttack.setEnabled(false);
+						btn_dodge.setEnabled(false);
+						btn_defense.setEnabled(false);
+					}
+				});
 				op = true;
 				break;
 			case CConstant.SHIELD:
 				CApp.sendData(CConstant.SHIELD);
+				runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						btn_normalAttack.setEnabled(false);
+						btn_spell1.setEnabled(false);
+						btn_spell2.setEnabled(false);
+						btn_superAttack.setEnabled(false);
+						btn_dodge.setEnabled(false);
+						btn_defense.setEnabled(false);
+					}
+				});
 				op = true;
 				break;
 			default:
@@ -184,6 +257,7 @@ public class ABattle extends Activity implements OnClickListener {
 		protected void onPostExecute(Boolean op) {
 			super.onPostExecute(op);
 			Log.i("LogsAndroid", "sendActionBattle -> onPostExecute");
+			
 			new ReadResponseBattle().execute();
 
 		}
@@ -197,6 +271,7 @@ public class ABattle extends Activity implements OnClickListener {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			Log.i("LogsAndroid", "ReadResponseBattle -> onPreExecute");
+			
 		}
 
 		@Override
@@ -219,15 +294,13 @@ public class ABattle extends Activity implements OnClickListener {
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-
-					/*
-					 * btn_normalAttack.setEnabled(false);
-					 * btn_spell1.setEnabled(false);
-					 * btn_spell2.setEnabled(false);
-					 * btn_superAttack.setEnabled(false);
-					 * btn_dodge.setEnabled(false);
-					 * btn_defense.setEnabled(false);
-					 */
+					
+					btn_normalAttack.setEnabled(true);
+					btn_spell1.setEnabled(true);
+					btn_spell2.setEnabled(true);
+					btn_superAttack.setEnabled(true);
+					btn_dodge.setEnabled(true);
+					btn_defense.setEnabled(true);
 
 					if (playerArray.length == 8) {
 						// String number without decimals.
@@ -237,8 +310,7 @@ public class ABattle extends Activity implements OnClickListener {
 						// tv_lifeNumber.setText(life_string);
 
 						// String number without decimals.
-						double energy_double = Double
-								.parseDouble(playerArray[3]);
+						double energy_double = Double.parseDouble(playerArray[3]);
 						Integer energy_int = (int) energy_double;
 
 						tv_namePlayer1.setText(playerArray[0].toString());
@@ -249,6 +321,8 @@ public class ABattle extends Activity implements OnClickListener {
 						} else {
 							btn_superAttack.setEnabled(true);
 						}
+						
+						
 						// String energy_string = Integer.toString(energy_int);
 						// tv_energyNumber.setText(energy_string);
 
@@ -270,26 +344,40 @@ public class ABattle extends Activity implements OnClickListener {
 
 						progressStatus = (life_int * 100 / originalLife);
 						pb_life.setProgress(progressStatus);
-						tv_life.setText("Life: " + life_int + "/"
-								+ originalLife);
+						tv_life.setText(life_int + "/"+ originalLife);
 
 						progressStatusMana = (energy_int * 100 / originalMana);
 						pb_mana.setProgress(progressStatusMana);
-						tv_mana.setText("Mana: " + energy_int + "/"
-								+ originalMana);
+						tv_mana.setText(energy_int + "/"+ originalMana);
+						
+						if(progressStatusMana<=15){
+							btn_spell1.setEnabled(false);
+						}else{
+							btn_spell1.setEnabled(true);
+						}
+						
+						if(progressStatusMana<=40){
+							btn_spell2.setEnabled(false);
+						}else{
+							btn_spell2.setEnabled(true);
+						}
+						
+						if(progressStatusMana<=80){
+							btn_superAttack.setEnabled(false);
+						}else{
+							btn_superAttack.setEnabled(true);
+						}
 
 						progressStatusContrincantLife = (life_contrincant_int * 100 / originalContrincantLife);
 						pb_contrincantLife
 								.setProgress(progressStatusContrincantLife);
-						tv_contrincantLife.setText("Life: "
-								+ life_contrincant_int + "/"
+						tv_contrincantLife.setText(life_contrincant_int + "/"
 								+ originalContrincantLife);
 
 						progressStatusContrincantMana = (energy_contrincant_int * 100 / originalContrincantMana);
 						pb_contrincantMana
 								.setProgress(progressStatusContrincantMana);
-						tv_contrincantMana.setText("Mana: "
-								+ energy_contrincant_int + "/"
+						tv_contrincantMana.setText(energy_contrincant_int + "/"
 								+ originalContrincantMana);
 
 					} else if (playerArray.length == 9) {
@@ -343,8 +431,11 @@ public class ABattle extends Activity implements OnClickListener {
 
 					if (classTypePlayer1.equals("1")) {
 						avatarPlayer1.setBackgroundResource(R.drawable.mago);
+						btn_normalAttack.setBackgroundResource(R.drawable.button_basic1_mague_modified_states);
+						
 					} else {
 						avatarPlayer1.setBackgroundResource(R.drawable.warlock);
+						btn_normalAttack.setBackgroundResource(R.drawable.button_basic1_warlock_modified_states);
 					}
 
 					if (classTypePlayer2.equals("1")) {

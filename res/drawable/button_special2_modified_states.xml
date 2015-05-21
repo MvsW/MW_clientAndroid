@@ -11,6 +11,10 @@
         android:drawable="@drawable/nospecial2" 
         /> <!-- focused -->    
     <item 
+        android:state_enabled="false"
+        android:drawable="@drawable/nospecial2" 
+        /> <!-- enabled false -->
+    <item 
         android:drawable="@drawable/special2" 
         /> <!-- default -->
 </selector>

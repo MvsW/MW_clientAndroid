@@ -9,7 +9,11 @@
     <item 
         android:state_focused="true"
         android:drawable="@drawable/nobasic1" 
-        /> <!-- focused -->    
+        /> <!-- focused --> 
+    <item 
+        android:state_enabled="false"
+        android:drawable="@drawable/nobasic1" 
+        /> <!-- enabled false -->   
     <item 
         android:drawable="@drawable/basic1" 
         /> <!-- default -->

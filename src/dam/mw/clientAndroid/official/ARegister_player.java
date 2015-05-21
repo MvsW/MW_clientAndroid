@@ -42,12 +42,12 @@ public class ARegister_player extends Activity {
 	private TextView tv_inteligence_point;
 	private TextView tv_unassigned_points;
 	private EditText et_characterName;
-	
 
 	private TextView tv_selectClass;
 	int count_strength = 0;
 	int count_inteligence = 0;
-	int count_unasigned = 12;
+	int count_unasignedBase = 40;
+	int count_unasigned = 40;
 	boolean maxpoints = false;
 	boolean maxpointsIntel = false;
 
@@ -60,6 +60,10 @@ public class ARegister_player extends Activity {
 	private String eRegeneration;
 	private String strength;
 	private String intelligence;
+	private int strengthBase_Points;
+	private int intelligenceBase_Points;
+	private int strength_Points;
+	private int intelligence_Points;
 	private int idUser;
 	private int totalPoints;
 
@@ -119,8 +123,6 @@ public class ARegister_player extends Activity {
 		context = this;
 
 		setStats(CConstant.MAGE);
-		
-		
 
 	}
 
@@ -131,8 +133,12 @@ public class ARegister_player extends Activity {
 		tv_life_point.setText(fields[0]);
 		tv_energy_point.setText(fields[1]);
 		tv_energyReg_point.setText(fields[2]);
-		tv_strength_point.setText(fields[3]);
-		tv_inteligence_point.setText(fields[4]);
+		strengthBase_Points = Integer.parseInt(fields[3]);
+		intelligenceBase_Points = Integer.parseInt(fields[4]);
+		intelligence_Points = intelligenceBase_Points;
+		strength_Points = strengthBase_Points;
+		tv_strength_point.setText(strength_Points);
+		tv_inteligence_point.setText(intelligence_Points);
 
 	}
 
@@ -243,7 +249,7 @@ public class ARegister_player extends Activity {
 			 * Send back action to server.
 			 */
 			try {
-				CApp.sendData("");
+				CApp.sendData(CConstant.CANCEL);
 				sendBackData = true;
 
 			} catch (Exception e) {
@@ -331,80 +337,51 @@ public class ARegister_player extends Activity {
 	}
 
 	public void strenght_down(View v) {
-		count_strength--;
-		if (count_strength == 0) {
-			count_strength = 0;
-		} else {
+		if (strength_Points > strengthBase_Points) {
+			strength_Points--;
 			count_unasigned++;
+			tv_strength_point.setText(Integer.toString(strength_Points));
+			tv_unassigned_points.setText(Integer.toString(count_unasigned));
+
+			// Get strenght
+			strength = Integer.toString(strength_Points);
 		}
-
-		if (count_unasigned >= 12) {
-			count_unasigned = 12;
-		}
-		tv_strength_point.setText(Integer.toString(count_strength));
-		tv_unassigned_points.setText(Integer.toString(count_unasigned));
-
-		// Get strenght
-		strength = Integer.toString(count_strength);
-
 	}
 
 	public void strenght_up(View v) {
-		if (maxpoints == false) {
-			count_strength++;
+		if (count_unasigned > 0) {
+			strength_Points++;
+			count_unasigned--;
+			tv_strength_point.setText(Integer.toString(strength_Points));
+			tv_unassigned_points.setText(Integer.toString(count_unasigned));
+
+			// Get strenght
+			strength = Integer.toString(strength_Points);
 		}
-
-		count_unasigned--;
-		if (count_unasigned <= 0) {
-			count_unasigned = 0;
-			maxpoints = true;
-		} else {
-			maxpoints = false;
-		}
-		tv_strength_point.setText(Integer.toString(count_strength));
-		tv_unassigned_points.setText(Integer.toString(count_unasigned));
-
-		// Get strenght
-		strength = Integer.toString(count_strength);
-
 	}
 
 	public void inteligence_down(View v) {
-		count_inteligence--;
-
-		if (count_inteligence < 0) {
-			count_inteligence = 0;
-		} else {
+		if (intelligence_Points > intelligenceBase_Points) {
+			intelligence_Points--;
 			count_unasigned++;
-		}
-		if (count_unasigned >= 12) {
-			count_unasigned = 12;
-		}
-		tv_inteligence_point.setText(Integer.toString(count_inteligence));
-		tv_unassigned_points.setText(Integer.toString(count_unasigned));
+			tv_inteligence_point.setText(Integer.toString(intelligence_Points));
+			tv_unassigned_points.setText(Integer.toString(count_unasigned));
 
-		// Get intelligence
-		intelligence = Integer.toString(count_inteligence);
+			// Get intelligence
+			intelligence = Integer.toString(intelligence_Points);
+		}
 	}
 
 	public void inteligence_up(View v) {
-		if (maxpointsIntel == false) {
-			count_inteligence++;
+		if (count_unasigned > 0) {
+			intelligence_Points++;
+			count_unasigned--;
+			tv_inteligence_point.setText(Integer.toString(intelligence_Points));
+			tv_unassigned_points.setText(Integer.toString(count_unasigned));
+
+			// Get intelligence
+			intelligence = Integer.toString(intelligence_Points);
 		}
-
-		count_unasigned--;
-		if (count_unasigned <= 0) {
-			count_unasigned = 0;
-			maxpointsIntel = true;
-		} else {
-			maxpointsIntel = false;
-		}
-		tv_inteligence_point.setText(Integer.toString(count_inteligence));
-		tv_unassigned_points.setText(Integer.toString(count_unasigned));
-
-		// Get intelligence
-		intelligence = Integer.toString(count_inteligence);
-
 	}
 
 }

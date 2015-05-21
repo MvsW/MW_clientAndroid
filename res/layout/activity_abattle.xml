@@ -226,7 +226,6 @@
         android:layout_marginLeft="50dp"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/button_basic1_modified_states"
         android:textColor="#FFFFFF"
         android:onClick="onClick" />
     </LinearLayout>

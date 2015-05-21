@@ -34,7 +34,7 @@ public final class CConstant {
     	public final static double BASE_PERCENT = 0.76;
     	public final static double RAND_PERCENT = 0.4;
     	public final static double CUSTOM_PERCENT = 0.20;
-    	public final static double LIFE_INTEL_PERCENT = 0.80;
+    	public final static double LIFE_INTEL_PERCENT = 0.70;
     	public final static double REGEN_ENERGY_BASE_PERCENT = 0.10;
     
     //Calcs

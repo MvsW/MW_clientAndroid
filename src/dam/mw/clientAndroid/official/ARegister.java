@@ -8,6 +8,7 @@ import dam.mw.clientAndroid.R.menu;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
 import dam.mw.clientAndroid.controlCenter.JApp;
+import dam.mw.clientAndroid.official.ARegister_player.sendBackData;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,6 +18,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -87,6 +89,18 @@ public class ARegister extends Activity {
 		fields.add(et_password);
 		fields.add(et_confirmPassword);
 	}
+	
+	//Get actions of physical buttons.
+		@Override
+		public boolean onKeyDown(int keyCode, KeyEvent event) {
+			// TODO Auto-generated method stub
+
+			switch(keyCode){
+				case KeyEvent.KEYCODE_BACK:
+					return true;
+			}
+			return super.onKeyDown(keyCode, event);
+		}
 	
 	public void onClick(View v) {
 		Intent intent;

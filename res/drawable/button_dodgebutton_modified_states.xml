@@ -9,7 +9,11 @@
     <item 
         android:state_focused="true"
         android:drawable="@drawable/nododgebutton" 
-        /> <!-- focused -->    
+        /> <!-- focused --> 
+    <item 
+        android:state_enabled="false"
+        android:drawable="@drawable/nododgebutton" 
+        /> <!-- enabled false -->       
     <item 
         android:drawable="@drawable/dodgebutton" 
         /> <!-- default -->
