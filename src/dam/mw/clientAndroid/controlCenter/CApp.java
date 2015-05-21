@@ -140,7 +140,7 @@ public class CApp {
 					Log.i("LogsAndroid", "Cancel sended");
 					buttonCancelTapped = false;
 					if(connection.readData().equals(CConstant.Response.SUCCES)){
-						op = true;
+						//op = true;
 					}else{
 						op = false;
 					}

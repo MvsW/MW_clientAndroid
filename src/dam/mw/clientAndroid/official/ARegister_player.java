@@ -16,11 +16,15 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -38,6 +42,7 @@ public class ARegister_player extends Activity {
 	private TextView tv_inteligence_point;
 	private TextView tv_unassigned_points;
 	private EditText et_characterName;
+	
 
 	private TextView tv_selectClass;
 	int count_strength = 0;
@@ -114,6 +119,8 @@ public class ARegister_player extends Activity {
 		context = this;
 
 		setStats(CConstant.MAGE);
+		
+		
 
 	}
 
@@ -206,6 +213,59 @@ public class ARegister_player extends Activity {
 			new registerPlayer().execute();
 		}
 
+	}
+	
+	//Get actions of physical buttons.
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+
+		switch(keyCode){
+			case KeyEvent.KEYCODE_BACK:
+				new sendBackData().execute();
+				return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+	
+	class sendBackData extends AsyncTask<String, Void, Boolean> {
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+		}
+
+		@Override
+		protected Boolean doInBackground(String... params) {
+			Boolean sendBackData = false;
+
+			/*
+			 * Send back action to server.
+			 */
+			try {
+				CApp.sendData("");
+				sendBackData = true;
+
+			} catch (Exception e) {
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(context, "Error, please try again...", Toast.LENGTH_SHORT).show();
+					}
+				});
+			}
+
+			return sendBackData;
+		}
+
+		@Override
+		protected void onPostExecute(Boolean s) {
+			super.onPostExecute(s);
+			if (s == true) {
+				Intent intent = new Intent(ARegister_player.this, ARegister.class);
+				startActivity(intent);
+			}
+		}
 	}
 
 	class registerPlayer extends AsyncTask<String, Void, Boolean> {

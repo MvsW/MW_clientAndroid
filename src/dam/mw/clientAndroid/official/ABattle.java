@@ -379,23 +379,21 @@ public class ABattle extends Activity implements OnClickListener {
 					originalContrincantManaPercent = (energy_contrincant_int * 100 / energy_contrincant_int);
 
 					pb_life.setProgress(originalLifePercent);
-					tv_life.setText("Life: " + originalLife + "/"
+					tv_life.setText(originalLife + "/"
 							+ originalLife);
 
 					pb_mana.setProgress(originalManaPercent);
-					tv_mana.setText("Mana: " + originalMana + "/"
+					tv_mana.setText(originalMana + "/"
 							+ originalMana);
 
 					pb_contrincantLife
 							.setProgress(originalContrincantLifePercent);
-					tv_contrincantLife.setText("Contrincant life: "
-							+ originalContrincantLife + "/"
+					tv_contrincantLife.setText(originalContrincantLife + "/"
 							+ originalContrincantLife);
 
 					pb_contrincantMana
 							.setProgress(originalContrincantManaPercent);
-					tv_contrincantMana.setText("Contrincant mana: "
-							+ originalContrincantMana + "/"
+					tv_contrincantMana.setText(originalContrincantMana + "/"
 							+ originalContrincantMana);
 
 				}
