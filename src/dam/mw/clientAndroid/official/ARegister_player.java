@@ -129,7 +129,7 @@ public class ARegister_player extends Activity {
 	private void setStats(String value) {
 		String[] fields = (CApp.getDefaultStats(Integer.parseInt(value)))
 				.split(CConstant.SEPARATOR);
-
+		count_unasigned = count_unasignedBase;
 		tv_life_point.setText(fields[0]);
 		tv_energy_point.setText(fields[1]);
 		tv_energyReg_point.setText(fields[2]);
@@ -137,8 +137,9 @@ public class ARegister_player extends Activity {
 		intelligenceBase_Points = Integer.parseInt(fields[4]);
 		intelligence_Points = intelligenceBase_Points;
 		strength_Points = strengthBase_Points;
-		tv_strength_point.setText(strength_Points);
-		tv_inteligence_point.setText(intelligence_Points);
+		tv_strength_point.setText(strength_Points + "");
+		tv_inteligence_point.setText(intelligence_Points + "");
+		tv_unassigned_points.setText(Integer.toString(count_unasigned));
 
 	}
 
@@ -220,20 +221,20 @@ public class ARegister_player extends Activity {
 		}
 
 	}
-	
-	//Get actions of physical buttons.
+
+	// Get actions of physical buttons.
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
 
-		switch(keyCode){
-			case KeyEvent.KEYCODE_BACK:
-				new sendBackData().execute();
-				return true;
+		switch (keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			new sendBackData().execute();
+			return true;
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-	
+
 	class sendBackData extends AsyncTask<String, Void, Boolean> {
 
 		@Override
@@ -256,7 +257,8 @@ public class ARegister_player extends Activity {
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						Toast.makeText(context, "Error, please try again...", Toast.LENGTH_SHORT).show();
+						Toast.makeText(context, "Error, please try again...",
+								Toast.LENGTH_SHORT).show();
 					}
 				});
 			}
@@ -268,7 +270,8 @@ public class ARegister_player extends Activity {
 		protected void onPostExecute(Boolean s) {
 			super.onPostExecute(s);
 			if (s == true) {
-				Intent intent = new Intent(ARegister_player.this, ARegister.class);
+				Intent intent = new Intent(ARegister_player.this,
+						ARegister.class);
 				startActivity(intent);
 			}
 		}
