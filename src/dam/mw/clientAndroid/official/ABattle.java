@@ -76,13 +76,14 @@ public class ABattle extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_abattle);
 
+		
 		tv_life = (TextView) findViewById(R.id.tv_life);
 		tv_mana = (TextView) findViewById(R.id.tv_mana);
 		tv_contrincantLife = (TextView) findViewById(R.id.tv_contrincantLife);
 		tv_contrincantMana = (TextView) findViewById(R.id.tv_contrincantMana);
 		tv_namePlayer1 = (TextView) findViewById(R.id.tv_namePlayer1);
 		tv_namePlayer2 = (TextView) findViewById(R.id.tv_namePlayer2);
-
+		
 		btn_normalAttack = (Button) findViewById(R.id.btn_normalAttack);
 		btn_spell1 = (Button) findViewById(R.id.btn_spell1);
 		btn_spell2 = (Button) findViewById(R.id.btn_spell2);
@@ -103,6 +104,7 @@ public class ABattle extends Activity implements OnClickListener {
 		pb_mana = (ProgressBar) findViewById(R.id.pb_mana);
 		pb_contrincantLife = (ProgressBar) findViewById(R.id.pb_contrincantLife);
 		pb_contrincantMana = (ProgressBar) findViewById(R.id.pb_contrincantMana);
+		
 
 		new ReadResponseBattleFirstTime().execute();
 
@@ -111,6 +113,7 @@ public class ABattle extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		
 		switch (v.getId()) {
 
 		case R.id.btn_normalAttack:
@@ -134,6 +137,7 @@ public class ABattle extends Activity implements OnClickListener {
 		default:
 			break;
 		}
+		
 
 	}
 

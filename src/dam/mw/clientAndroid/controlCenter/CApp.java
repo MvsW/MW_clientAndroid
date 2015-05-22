@@ -365,5 +365,21 @@ public class CApp {
 				+ eReg + CConstant.SEPARATOR + str + CConstant.SEPARATOR
 				+ intll;
 	}
+	
+	public static String getDefaultStats(int strenght_points,int intelligence_points) {
+		int life;
+		int energy;
+		int eReg;
+		int str = strenght_points;
+		int intll = intelligence_points;
+
+
+		life = 100 + (int) (str * CConstant.PlayerUtils.LIFE_INTEL_PERCENT);
+		energy = 100 + (int) (intll * CConstant.PlayerUtils.LIFE_INTEL_PERCENT);
+		eReg = (int) (0.1 * energy);
+		return "" + life + CConstant.SEPARATOR + energy + CConstant.SEPARATOR
+				+ eReg + CConstant.SEPARATOR + str + CConstant.SEPARATOR
+				+ intll;
+	}
 
 }

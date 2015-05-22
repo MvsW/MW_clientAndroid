@@ -118,7 +118,7 @@ public class ARegister_player extends Activity {
 		et_characterName.setTypeface(Typeface.SERIF, Typeface.BOLD);
 		et_characterName.setTextSize(25);
 
-		estatToggleButton();
+		ToggleButtonStatus();
 
 		context = this;
 
@@ -142,8 +142,27 @@ public class ARegister_player extends Activity {
 		tv_unassigned_points.setText(Integer.toString(count_unasigned));
 
 	}
+	
+	private void refreshStats() {
+		
+		String[] fields = (CApp.getDefaultStats(Integer.parseInt(tv_strength_point.getText().toString())
+				, Integer.parseInt(tv_inteligence_point.getText().toString())))
+				.split(CConstant.SEPARATOR);
+		//count_unasigned = count_unasignedBase;
+		tv_life_point.setText(fields[0]);
+		tv_energy_point.setText(fields[1]);
+		tv_energyReg_point.setText(fields[2]);
+		//strengthBase_Points = Integer.parseInt(fields[3]);
+		//intelligenceBase_Points = Integer.parseInt(fields[4]);
+		//intelligence_Points = Integer.parseInt(fields[3]);
+		//strength_Points = Integer.parseInt(fields[4]);
+		tv_strength_point.setText(strength_Points + "");
+		tv_inteligence_point.setText(intelligence_Points + "");
+		tv_unassigned_points.setText(Integer.toString(count_unasigned));
 
-	public void estatToggleButton() {
+	}
+
+	public void ToggleButtonStatus() {
 		selectCharacter
 				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -348,6 +367,7 @@ public class ARegister_player extends Activity {
 
 			// Get strenght
 			strength = Integer.toString(strength_Points);
+			refreshStats();
 		}
 	}
 
@@ -360,6 +380,7 @@ public class ARegister_player extends Activity {
 
 			// Get strenght
 			strength = Integer.toString(strength_Points);
+			refreshStats();
 		}
 	}
 
@@ -372,6 +393,7 @@ public class ARegister_player extends Activity {
 
 			// Get intelligence
 			intelligence = Integer.toString(intelligence_Points);
+			refreshStats();
 		}
 	}
 
@@ -384,6 +406,7 @@ public class ARegister_player extends Activity {
 
 			// Get intelligence
 			intelligence = Integer.toString(intelligence_Points);
+			refreshStats();
 		}
 	}
 
