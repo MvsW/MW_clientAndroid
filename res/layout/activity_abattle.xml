@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/bg_generic2"
+    android:background="@drawable/battle_display"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -166,7 +166,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="90dp">
         
         <Button
         android:id="@+id/btn_defense"
