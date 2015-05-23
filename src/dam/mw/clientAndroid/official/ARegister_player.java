@@ -137,6 +137,8 @@ public class ARegister_player extends Activity {
 		intelligenceBase_Points = Integer.parseInt(fields[4]);
 		intelligence_Points = intelligenceBase_Points;
 		strength_Points = strengthBase_Points;
+		strength = strength_Points+"";
+		intelligence = intelligence_Points+"";
 		tv_strength_point.setText(strength_Points + "");
 		tv_inteligence_point.setText(intelligence_Points + "");
 		tv_unassigned_points.setText(Integer.toString(count_unasigned));
