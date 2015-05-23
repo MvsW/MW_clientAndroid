@@ -137,8 +137,6 @@ public class ARegister_player extends Activity {
 		intelligenceBase_Points = Integer.parseInt(fields[4]);
 		intelligence_Points = intelligenceBase_Points;
 		strength_Points = strengthBase_Points;
-		strength = strength_Points+"";
-		intelligence = intelligence_Points+"";
 		tv_strength_point.setText(strength_Points + "");
 		tv_inteligence_point.setText(intelligence_Points + "");
 		tv_unassigned_points.setText(Integer.toString(count_unasigned));
@@ -314,6 +312,11 @@ public class ARegister_player extends Activity {
 			 * energy eRegeneration strength intelligence idUser totalPoints
 			 */
 			try {
+				eRegeneration = tv_energyReg_point.getText().toString();
+				life = tv_life_point.getText().toString();
+				energy = tv_energy_point.getText().toString();
+				strength = tv_strength_point.getText().toString();
+				intelligence = tv_inteligence_point.getText().toString();
 				errorNum = CApp.sendRegisterPlayer(playerName, idPlayerType,
 						life, energy, eRegeneration, strength, intelligence);
 				if (errorNum.get(0).equals(CConstant.Response.SUCCES)) {
