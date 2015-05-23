@@ -1,158 +1,151 @@
- <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_generic"
-    tools:context="dam.mw.clientAndroid.official.ARegister_Player"
-    >
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            
-            android:orientation="vertical">
+    tools:context="dam.mw.clientAndroid.official.ARegister_Player" >
 
-            <EditText
-                android:id="@+id/et_characterName"
-                android:layout_width="500px"
-                android:layout_height="70px"
-                android:layout_marginTop="75dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:hint="Character Name"
-                android:ems="10"
-                android:background="@drawable/rounded_edittext"
-                 >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-                <requestFocus />
-            </EditText>
+        <EditText
+            android:id="@+id/et_characterName"
+            android:layout_width="500px"
+            android:layout_height="70px"
+            android:layout_gravity="center"
+            android:layout_marginTop="75dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Character Name" >
 
-            <TextView
-                android:id="@+id/tv_selectClass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="Select Class"
-                android:textColor="#FFFFFF"
-                android:textSize="30dp" />
+            <requestFocus />
+        </EditText>
 
-            <ToggleButton
-                android:id="@+id/selectChamp"
-                android:layout_width="165dp"
-                android:layout_height="174dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:text="ToggleButton" 
-                android:background="@drawable/toggle_style"
-                android:textOn=""
-                android:textOff=""/>
+        <TextView
+            android:id="@+id/tv_selectClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Select Class"
+            android:textColor="#FFFFFF"
+            android:textSize="30dp" />
 
-            <TextView
-                android:id="@+id/characterClass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_gravity="center"
-                android:text="Warlock" />
+        <ToggleButton
+            android:id="@+id/selectChamp"
+            android:layout_width="165dp"
+            android:layout_height="174dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/toggle_style"
+            android:text="ToggleButton"
+            android:textOff=""
+            android:textOn="" />
 
-            <ImageView
-                android:id="@+id/iv_separator1"
-                android:layout_width="280dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="45dp"
-                android:layout_marginRight="45dp"
-                android:src="@drawable/separator" />
-            
-            <RelativeLayout
+        <TextView
+            android:id="@+id/characterClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:text="Warlock" />
+
+        <ImageView
+            android:id="@+id/iv_separator1"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:src="@drawable/separador" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_column="0"
             android:layout_gravity="left|top"
             android:layout_row="7" >
 
-
-
             <TextView
                 android:id="@+id/tv_skill_life"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:textColor="#FFFFFF"
                 android:layout_marginLeft="50dp"
                 android:text="@string/tv_skill_life"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp" />
-            
-           <TextView
+
+            <TextView
                 android:id="@+id/life_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="50dp"
                 android:gravity="right"
-                android:textColor="#FFFFFF"
-                android:text="8" />
-
-
+                android:text="8"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/tv_skill_energy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="50dp"
-                android:textColor="#FFFFFF"
                 android:layout_below="@+id/tv_skill_life"
-                android:textSize="20dp"
-                android:text="@string/tv_skill_energy" />
-            
+                android:layout_marginLeft="50dp"
+                android:text="@string/tv_skill_energy"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/energy_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_skill_life"
                 android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_skill_life"
                 android:layout_marginRight="50dp"
                 android:gravity="right"
-                android:textColor="#FFFFFF"
-                android:text="5" />
-            
+                android:text="5"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/tv_skill_regEnergy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="50dp"
                 android:layout_below="@+id/tv_skill_energy"
-                android:textSize="20dp"
+                android:layout_marginLeft="50dp"
+                android:text="@string/tv_skill_regEnergy"
                 android:textColor="#FFFFFF"
-                android:text="@string/tv_skill_regEnergy" />
-            
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/energyReg_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_skill_energy"
                 android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_skill_energy"
                 android:layout_marginRight="50dp"
                 android:gravity="right"
-                android:textColor="#FFFFFF"
-                android:text="3" />
-
+                android:text="3"
+                android:textColor="#FFFFFF" />
         </RelativeLayout>
-        
-            <ImageView
-                android:id="@+id/iv_separator2"
-                android:layout_width="280dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="45dp"
-                android:layout_marginRight="45dp"
-                android:layout_gravity="center"
-                android:src="@drawable/separator" />
 
-             <RelativeLayout
+        <ImageView
+            android:id="@+id/iv_separator2"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:src="@drawable/separador" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_column="0"
@@ -166,59 +159,59 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="50dp"
-                android:textSize="20dp"
+                android:text="@string/tv_skill_strength"
                 android:textColor="#FFFFFF"
-                android:text="@string/tv_skill_strength"/>
-            
+                android:textSize="20dp" />
+
             <Button
-                    android:id="@+id/strength_point_down"
-                    android:layout_width="40dp"
-        			android:layout_height="40dp"
-        			android:layout_alignRight="@+id/strength_point"
-        			android:layout_marginRight="15dp"
-        			android:gravity="center"
-        			android:onClick="strenght_down"
-        			android:background="@drawable/minus" />
-            
+                android:id="@+id/strength_point_down"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignRight="@+id/strength_point"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/minus"
+                android:gravity="center"
+                android:onClick="strenght_down" />
+
             <TextView
                 android:id="@+id/strength_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="50dp"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
-                android:layout_marginRight="50dp" />
-            
+                android:textColor="#FFFFFF" />
+
             <Button
-                    android:id="@+id/strength_point_up"
-                    android:layout_width="40dp"
-        			android:layout_height="40dp"
-        			android:layout_marginLeft="15dp"
-        			android:layout_alignLeft="@+id/strength_point"
-        			android:onClick="strenght_up"
-        			android:background="@drawable/plus"/>
-            
+                android:id="@+id/strength_point_up"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignLeft="@+id/strength_point"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/plus"
+                android:onClick="strenght_up" />
+
             <TextView
                 android:id="@+id/tv_skill_inteligence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/tv_skill_strength"
                 android:layout_below="@+id/tv_skill_strength"
-                android:textSize="20dp"
+                android:text="@string/tv_skill_inteligence"
                 android:textColor="#FFFFFF"
-                android:text="@string/tv_skill_inteligence" />
-            
+                android:textSize="20dp" />
+
             <Button
-                    android:id="@+id/inteligence_point_down"
-                    android:layout_width="40dp"
-        			android:layout_height="40dp"
-        			android:layout_alignRight="@+id/inteligence_point"
-        			android:layout_marginRight="20dp"
-        			android:layout_below="@+id/tv_skill_strength"
-        			android:gravity="center"
-        			android:onClick="inteligence_down"
-        			android:background="@drawable/minus" />
-            
+                android:id="@+id/inteligence_point_down"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignRight="@+id/inteligence_point"
+                android:layout_below="@+id/tv_skill_strength"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/minus"
+                android:gravity="center"
+                android:onClick="inteligence_down" />
+
             <TextView
                 android:id="@+id/inteligence_point"
                 android:layout_width="wrap_content"
@@ -226,29 +219,29 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/tv_skill_strength"
                 android:layout_marginRight="50dp"
-                android:textColor="#FFFFFF"
-                android:gravity="right"/>
-            
+                android:gravity="right"
+                android:textColor="#FFFFFF" />
+
             <Button
-                    android:id="@+id/inteligence_point_up"
-                    android:layout_width="40dp"
-        			android:layout_height="40dp"
-        			android:layout_below="@+id/tv_skill_strength"
-        			android:layout_marginLeft="20dp"
-        			android:layout_alignLeft="@+id/inteligence_point"
-        			android:onClick="inteligence_up"
-        			android:background="@drawable/plus"/>
-            
+                android:id="@+id/inteligence_point_up"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignLeft="@+id/inteligence_point"
+                android:layout_below="@+id/tv_skill_strength"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/plus"
+                android:onClick="inteligence_up" />
+
             <TextView
                 android:id="@+id/tv_skill_unassigned_points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/tv_skill_inteligence"
                 android:layout_below="@+id/tv_skill_inteligence"
-                android:textSize="20dp"
+                android:text="@string/tv_skill_unassigned_points"
                 android:textColor="#FFFFFF"
-                android:text="@string/tv_skill_unassigned_points" />
-            
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/unassigned_points"
                 android:layout_width="wrap_content"
@@ -257,19 +250,18 @@
                 android:layout_below="@+id/tv_skill_inteligence"
                 android:layout_marginRight="50dp"
                 android:gravity="right"
-                android:textColor="#FFFFFF"
-                android:text="12" />
-            
+                android:text="12"
+                android:textColor="#FFFFFF" />
         </RelativeLayout>
-        
-             <Button
-                    android:id="@+id/button1"
-                    android:layout_width="70dp"
-        			android:layout_height="70dp"
-        			android:layout_gravity="center"
-        			android:layout_marginTop="50dp"
-        			android:onClick="onClick"
-        			android:background="@drawable/okey" />
 
-        </LinearLayout>
-    </ScrollView>
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/okey"
+            android:onClick="onClick" />
+    </LinearLayout>
+
+</ScrollView>

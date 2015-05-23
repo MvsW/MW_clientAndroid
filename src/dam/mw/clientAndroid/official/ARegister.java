@@ -8,6 +8,7 @@ import dam.mw.clientAndroid.R.menu;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
 import dam.mw.clientAndroid.controlCenter.JApp;
+import dam.mw.clientAndroid.official.ARegister_player.sendBackData;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,6 +18,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -87,6 +89,60 @@ public class ARegister extends Activity {
 		fields.add(et_password);
 		fields.add(et_confirmPassword);
 	}
+	
+	//Get actions of physical buttons.
+		@Override
+		public boolean onKeyDown(int keyCode, KeyEvent event) {
+			// TODO Auto-generated method stub
+
+			switch(keyCode){
+				case KeyEvent.KEYCODE_BACK:
+					new sendBackData().execute();
+					return true;
+			}
+			return super.onKeyDown(keyCode, event);
+		}
+		
+		class sendBackData extends AsyncTask<String, Void, Boolean> {
+
+			@Override
+			protected void onPreExecute() {
+				super.onPreExecute();
+			}
+
+			@Override
+			protected Boolean doInBackground(String... params) {
+				Boolean sendBackData = false;
+
+				/*
+				 * Send back action to server.
+				 */
+				try {
+					CApp.sendData(CConstant.CANCEL);
+					sendBackData = true;
+
+				} catch (Exception e) {
+					runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							Toast.makeText(context, "Error, please try again...",
+									Toast.LENGTH_SHORT).show();
+						}
+					});
+				}
+
+				return sendBackData;
+			}
+
+			@Override
+			protected void onPostExecute(Boolean s) {
+				super.onPostExecute(s);
+				if (s == true) {
+					Intent intent = new Intent(ARegister.this, ALogin.class);
+					startActivity(intent);
+				}
+			}
+		}
 	
 	public void onClick(View v) {
 		Intent intent;

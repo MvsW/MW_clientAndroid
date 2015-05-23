@@ -12,6 +12,8 @@ public final class CConstant {
     public static final String REGISTER = "register";
     public static final String SHOW_MY_DATA = "showData";
     public static final String START_BATTLE = "startBattle";
+    public final static String CANCEL = "cancel";
+    
     //ACTION BUTTONS BATTLE
     public final static String BASIC = "1";
     public final static String SPELL1 = "2";
@@ -30,13 +32,13 @@ public final class CConstant {
     public static class PlayerUtils {
     	public final static int TOTAL_POINTS = 200;
     	public final static double BASE_PERCENT = 0.76;
-    	public final static double RAND_PERCENT = 0.4;
+    	public final static double RAND_PERCENT = 0.04;
     	public final static double CUSTOM_PERCENT = 0.20;
-    	public final static double LIFE_INTEL_PERCENT = 0.80;
+    	public final static double LIFE_INTEL_PERCENT = 0.70;
     	public final static double REGEN_ENERGY_BASE_PERCENT = 0.10;
     
     //Calcs
-    	public static int BASE_CALC = (int)(TOTAL_POINTS * BASE_PERCENT);
+		public static int BASE_CALC = (int) (TOTAL_POINTS * BASE_PERCENT);
     	public static int RAND_CALC = (int)(TOTAL_POINTS * RAND_PERCENT);
     	public static int CUSTOM_CALC = (int)( TOTAL_POINTS * CUSTOM_PERCENT);
     }

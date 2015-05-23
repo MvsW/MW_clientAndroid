@@ -69,7 +69,10 @@ public class AMyData extends Activity {
 		
 		@Override
 		protected String doInBackground(String... params) {
-			playerArray = CApp.getData().split(",");
+			
+				playerArray = CApp.getData().split(",");
+			
+			
 			return "";
 		}
 		
@@ -86,15 +89,61 @@ public class AMyData extends Activity {
 			@Override
 			public void run() {
 				
-				tv_player_name.setText(playerArray[0]);
-				tv_lifeData.setText(playerArray[2]);
-				tv_energyData.setText(playerArray[3]);
-				tv_regEnergyData.setText(playerArray[4]);
-				tv_strengthData.setText(playerArray[5]);
-				tv_inteligenceData.setText(playerArray[6]);
-				tv_totalPointsData.setText(playerArray[7]);
-				tv_totalWinsData.setText(playerArray[8]);
-				tv_dateRegisterData.setText(playerArray[9]);
+				if(playerArray[0].contains("*")){
+					tv_player_name.setText(playerArray[0].replace("*", ""));
+				}else{
+					tv_player_name.setText(playerArray[0]);
+				}
+				
+				if(playerArray[2].contains("*")){
+					tv_lifeData.setText(playerArray[2].replace("*", ""));
+				}else{
+					tv_lifeData.setText(playerArray[2]);
+				}
+				
+				if(playerArray[3].contains("*")){
+					tv_energyData.setText(playerArray[3].replace("*", ""));
+				}else{
+					tv_energyData.setText(playerArray[3]);
+				}
+				
+				if(playerArray[4].contains("*")){
+					tv_regEnergyData.setText(playerArray[4].replace("*", ""));
+				}else{
+					tv_regEnergyData.setText(playerArray[4]);
+				}
+				
+				if(playerArray[5].contains("*")){
+					tv_strengthData.setText(playerArray[5].replace("*", ""));
+				}else{
+					tv_strengthData.setText(playerArray[5]);
+				}
+				
+				if(playerArray[6].contains("*")){
+					tv_inteligenceData.setText(playerArray[6].replace("*", ""));
+				}else{
+					tv_inteligenceData.setText(playerArray[6]);
+				}
+				
+				if(playerArray[7].contains("*")){
+					tv_totalPointsData.setText(playerArray[7].replace("*", ""));
+				}else{
+					tv_totalPointsData.setText(playerArray[7]);
+				}
+				
+				if(playerArray[8].contains("*")){
+					tv_totalWinsData.setText(playerArray[8].replace("*", ""));
+				}else{
+					tv_totalWinsData.setText(playerArray[8]);
+				}
+				
+				
+				if(playerArray[9].contains("*")){
+					tv_dateRegisterData.setText(playerArray[9].replace("*", ""));
+				}else{
+					tv_dateRegisterData.setText(playerArray[9]);
+				}
+				
 				
 			}
 		});

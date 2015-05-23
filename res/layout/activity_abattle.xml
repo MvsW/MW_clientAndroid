@@ -1,9 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/bg_generic2"
-    android:orientation="vertical" >
-
+    android:orientation="vertical"
+    
+     >
+     <!--   android:background="@drawable/battle_display" -->
+  
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="85dp"
+            android:layout_marginLeft="96dp"
             android:textColor="#FFFFFF"
             android:textSize="20dp"
             android:text="Name player 1" />
@@ -29,9 +31,9 @@
         <ProgressBar
         android:id="@+id/pb_life"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
-        android:layout_height="10dp"
-        android:layout_marginLeft="60dp"
+        android:layout_width="213dp"
+        android:layout_height="12dp"
+        android:layout_marginLeft="69dp"
         android:layout_marginTop="55dp"
         android:progress="100"
         android:indeterminate="false"
@@ -39,10 +41,10 @@
 
         <TextView
             android:id="@+id/tv_life"
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="10dp"
             android:layout_marginTop="55dp"
-            android:layout_marginLeft="150dp"
+            android:layout_marginLeft="284dp"
             android:text="TextView"
             android:textSize="8dp"
             android:textColor="#FFFFFF" />
@@ -50,9 +52,9 @@
         <ProgressBar
             android:id="@+id/pb_mana"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="200dp"
-            android:layout_height="10dp"
-            android:layout_marginLeft="60dp"
+            android:layout_width="213dp"
+        	android:layout_height="11dp"
+       		android:layout_marginLeft="69dp"
             android:layout_marginTop="67dp"
             android:indeterminate="false"
             android:progress="100"
@@ -62,8 +64,8 @@
             android:id="@+id/tv_mana"
             android:layout_width="100dp"
             android:layout_height="10dp"
-            android:layout_marginTop="67dp"
-            android:layout_marginLeft="150dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="285dp"
             android:text="TextView"
             android:textSize="8dp"
             android:textColor="#FFFFFF" />
@@ -72,16 +74,27 @@
             android:id="@+id/avatarPlayer1"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="36dp"
-            android:layout_marginTop="6dp" />
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/ic_launcher" />
         
     </RelativeLayout>
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        
+        <ImageView
+            android:id="@+id/vsseparator"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:background="@drawable/separatorvs" />
+    </LinearLayout>    
     
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" 
-        android:layout_marginTop="40dp">
+        android:orientation="vertical" >
         
         <TextView
             android:id="@+id/tv_namePlayer2"
@@ -102,9 +115,9 @@
         <ProgressBar
         android:id="@+id/pb_contrincantLife"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
-        android:layout_height="10dp"
-        android:layout_marginLeft="60dp"
+        android:layout_width="213dp"
+        android:layout_height="12dp"
+        android:layout_marginLeft="69dp"
         android:layout_marginTop="55dp"
         android:progress="100"
         android:indeterminate="false"
@@ -115,17 +128,17 @@
             android:layout_width="100dp"
             android:layout_height="10dp"
             android:layout_marginTop="55dp"
-            android:layout_marginLeft="23dp"
+            android:layout_marginLeft="32dp"
             android:text="TextView"
-            android:textSize="5dp"
+            android:textSize="8dp"
             android:textColor="#FFFFFF" />
         
         <ProgressBar
         android:id="@+id/pb_contrincantMana"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
-        android:layout_height="10dp"
-        android:layout_marginLeft="60dp"
+        android:layout_width="213dp"
+        android:layout_height="11dp"
+       	android:layout_marginLeft="69dp"
         android:layout_marginTop="67dp"
         android:progress="100"
         android:indeterminate="false"
@@ -135,33 +148,34 @@
             android:id="@+id/tv_contrincantMana"
             android:layout_width="100dp"
             android:layout_height="10dp"
-            android:layout_marginTop="67dp"
-            android:layout_marginLeft="23dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="30dp"
             android:text="TextView"
-            android:textSize="5dp"
+            android:textSize="8dp"
             android:textColor="#FFFFFF" />
 
         <ImageView
             android:id="@+id/avatarPlayer2"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="244dp"
+            android:layout_marginLeft="265dp"
             android:layout_marginTop="6dp"
             android:background="@drawable/ic_launcher" />
         
     </RelativeLayout>
     
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginTop="80dp" >
+        android:layout_marginTop="90dp">
         
         <Button
         android:id="@+id/btn_defense"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginLeft="10dp"
-        android:background="@drawable/blockbutton"
+        android:background="@drawable/button_blockbutton_modified_states"
         android:textColor="#FFFFFF"
         android:onClick="onClick" />
         
@@ -169,22 +183,21 @@
         android:id="@+id/btn_superAttack"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginLeft="30dp"
-        android:background="@drawable/specialbutton"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/button_specialbutton_modified_states"
         android:onClick="onClick"
         android:textColor="#FFFFFF" />
         
         <Button
         android:id="@+id/btn_spell1"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="50dp"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/special1"
+        android:background="@drawable/button_special1_modified_states"
         android:textColor="#FFFFFF"
         android:onClick="onClick" />
-        
     </LinearLayout>
-
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -195,7 +208,7 @@
         android:layout_marginLeft="10dp"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/dodgebutton"
+        android:background="@drawable/button_dodgebutton_modified_states"
         android:textColor="#FFFFFF"
         android:onClick="onClick" />
         
@@ -205,27 +218,19 @@
         android:id="@+id/btn_spell2"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginLeft="30dp"
-        android:background="@drawable/special2"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/button_special2_modified_states"
         android:textColor="#FFFFFF"
         android:onClick="onClick" />
         
         <Button
         android:id="@+id/btn_normalAttack"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="50dp"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/basic1"
         android:textColor="#FFFFFF"
         android:onClick="onClick" />
-        
-        
-        
-        
-    
-    
-        
-        
     </LinearLayout>
+
 
 </LinearLayout>

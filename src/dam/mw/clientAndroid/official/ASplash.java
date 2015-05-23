@@ -17,7 +17,8 @@ import android.widget.Toast;
 public class ASplash extends Activity {
 
 	/** Duration of wait **/
-	private final int SPLASH_DISPLAY_LENGTH = 4000;
+	//private final int SPLASH_DISPLAY_LENGTH = 4000;
+	private final int SPLASH_DISPLAY_LENGTH = 1000;
 
 	GPSTracker gps;
 	private Context context;
