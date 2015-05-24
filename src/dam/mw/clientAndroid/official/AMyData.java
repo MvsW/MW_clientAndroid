@@ -16,6 +16,7 @@ import android.os.PowerManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,8 @@ public class AMyData extends Activity {
 	private TextView tv_dateRegisterData;
 	private TextView tv_totalPointsData;
 	private TextView tv_totalWinsData;
+	
+	private ImageView iv_avatar;
 	
 
 	protected PowerManager.WakeLock wakelock;
@@ -55,6 +58,9 @@ public class AMyData extends Activity {
         tv_totalPointsData = (TextView)findViewById(R.id.tv_totalPointsData);
         tv_totalWinsData = (TextView)findViewById(R.id.tv_totalWinsData);
         tv_dateRegisterData = (TextView)findViewById(R.id.tv_dateRegisterData);
+        
+        iv_avatar = (ImageView)findViewById(R.id.iv_avatar);
+        
         
 		
 		new getData().execute();
@@ -93,6 +99,12 @@ public class AMyData extends Activity {
 					tv_player_name.setText(playerArray[0].replace("*", ""));
 				}else{
 					tv_player_name.setText(playerArray[0]);
+				}
+				
+				if(playerArray[1].equals("1")){
+					iv_avatar.setBackgroundResource(R.drawable.mage);
+				}else{
+					iv_avatar.setBackgroundResource(R.drawable.warlock);
 				}
 				
 				if(playerArray[2].contains("*")){

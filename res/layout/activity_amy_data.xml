@@ -6,18 +6,16 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg_generic"
+    android:background="@drawable/bg_generic3"
     tools:context="dam.mw.clientAndroid.official.AMyData" >
 
     <ImageView
         android:id="@+id/iv_avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="100dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="31dp"
-        android:src="@drawable/ic_launcher" />
+        android:layout_marginLeft="18dp"/>
 
     <TextView
         android:id="@+id/tv_dateRegister"

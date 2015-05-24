@@ -4,5 +4,5 @@
     <item android:state_checked="false"
         android:drawable="@drawable/warlock"/>
     <item android:state_checked="true"
-        android:drawable="@drawable/mago"/>
+        android:drawable="@drawable/mage"/>
 </selector>

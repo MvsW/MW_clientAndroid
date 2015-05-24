@@ -42,6 +42,11 @@ public class ARegister_player extends Activity {
 	private TextView tv_inteligence_point;
 	private TextView tv_unassigned_points;
 	private EditText et_characterName;
+	
+	private Button strength_point_down;
+	private Button inteligence_point_down;
+	private Button strength_point_up;
+	private Button inteligence_point_up;
 
 	private TextView tv_selectClass;
 	int count_strength = 0;
@@ -86,6 +91,16 @@ public class ARegister_player extends Activity {
 		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
 				"etiqueta");
 		wakelock.acquire();
+		
+		strength_point_down = (Button)findViewById(R.id.strength_point_down);
+		inteligence_point_down = (Button)findViewById(R.id.inteligence_point_down);
+		strength_point_up = (Button)findViewById(R.id.strength_point_up);
+		inteligence_point_up = (Button)findViewById(R.id.inteligence_point_up);
+		
+		strength_point_down.setBackgroundResource(R.drawable.button_minus_warlock_modified_states);
+		inteligence_point_down.setBackgroundResource(R.drawable.button_minus_warlock_modified_states);
+		strength_point_up.setBackgroundResource(R.drawable.button_plus_warlock_modified_states);
+		inteligence_point_up.setBackgroundResource(R.drawable.button_plus_warlock_modified_states);
 
 		username = getIntent().getStringExtra("username");
 		password = getIntent().getStringExtra("password");
@@ -171,7 +186,12 @@ public class ARegister_player extends Activity {
 							boolean isChecked) {
 						if (buttonView.isChecked()) {
 							characterClass.setText("Mage");
-
+							
+							strength_point_down.setBackgroundResource(R.drawable.button_minus_modified_states);
+							inteligence_point_down.setBackgroundResource(R.drawable.button_minus_modified_states);
+							strength_point_up.setBackgroundResource(R.drawable.button_plus_modified_states);
+							inteligence_point_up.setBackgroundResource(R.drawable.button_plus_modified_states);
+							
 							setStats(CConstant.MAGE);
 
 							// Assign id of the type Mage/Warlock
@@ -192,6 +212,10 @@ public class ARegister_player extends Activity {
 
 						} else {
 							characterClass.setText("Warlock");
+							strength_point_down.setBackgroundResource(R.drawable.button_minus_warlock_modified_states);
+							inteligence_point_down.setBackgroundResource(R.drawable.button_minus_warlock_modified_states);
+							strength_point_up.setBackgroundResource(R.drawable.button_plus_warlock_modified_states);
+							inteligence_point_up.setBackgroundResource(R.drawable.button_plus_warlock_modified_states);
 							setStats(CConstant.WARLOCK);
 
 							// Assign id of the type Mage/Warlock

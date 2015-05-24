@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_generic"
+    android:background="@drawable/bg_generic3"
     tools:context="dam.mw.clientAndroid.official.ARegister_Player" >
 
     <LinearLayout
@@ -36,8 +36,8 @@
 
         <ToggleButton
             android:id="@+id/selectChamp"
-            android:layout_width="165dp"
-            android:layout_height="174dp"
+            android:layout_width="174dp"
+            android:layout_height="240dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:background="@drawable/toggle_style"
@@ -151,6 +151,7 @@
             android:layout_column="0"
             android:layout_gravity="left|top"
             android:layout_row="10" >
+            
 
             <TextView
                 android:id="@+id/tv_skill_strength"
@@ -169,7 +170,6 @@
                 android:layout_height="40dp"
                 android:layout_alignRight="@+id/strength_point"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/minus"
                 android:gravity="center"
                 android:onClick="strenght_down" />
 
@@ -188,8 +188,8 @@
                 android:layout_height="40dp"
                 android:layout_alignLeft="@+id/strength_point"
                 android:layout_marginLeft="15dp"
-                android:background="@drawable/plus"
                 android:onClick="strenght_up" />
+            
 
             <TextView
                 android:id="@+id/tv_skill_inteligence"
@@ -208,7 +208,6 @@
                 android:layout_alignRight="@+id/inteligence_point"
                 android:layout_below="@+id/tv_skill_strength"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/minus"
                 android:gravity="center"
                 android:onClick="inteligence_down" />
 
@@ -229,7 +228,6 @@
                 android:layout_alignLeft="@+id/inteligence_point"
                 android:layout_below="@+id/tv_skill_strength"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/plus"
                 android:onClick="inteligence_up" />
 
             <TextView
@@ -252,6 +250,9 @@
                 android:gravity="right"
                 android:text="12"
                 android:textColor="#FFFFFF" />
+
+            
+
         </RelativeLayout>
 
         <Button
