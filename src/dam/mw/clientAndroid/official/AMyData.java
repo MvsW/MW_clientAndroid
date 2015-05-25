@@ -152,8 +152,9 @@ public class AMyData extends Activity {
 				
 				if(playerArray[9].contains("*")){
 					tv_dateRegisterData.setText(playerArray[9].replace("*", ""));
+					tv_dateRegisterData.setText(playerArray[9].substring(0, 10));
 				}else{
-					tv_dateRegisterData.setText(playerArray[9]);
+					tv_dateRegisterData.setText(playerArray[9].substring(0, 10));
 				}
 				
 				

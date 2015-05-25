@@ -31,7 +31,7 @@
     <!-- AMyData Strings -->
     <string name="tv_life">LIFE</string>
     <string name="tv_energy">ENERGY</string>
-    <string name="tv_regEnergy">ENERGY REGENERATION</string>
+    <string name="tv_regEnergy">ENERGY REG.</string>
     <string name="tv_strength">STRENGTH</string>
     <string name="tv_inteligence">INTELIGENCE</string>
     <string name="tv_dateRegister">DATE REGISTER</string>
