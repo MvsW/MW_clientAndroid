@@ -1,156 +1,133 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg_generic"
-    tools:context="dam.mw.clientAndroid.official.ARegister" >
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_generic" >
     
     <TextView
         android:id="@+id/tv_registration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="@string/tv_registration"
         android:textColor="#FFFFFF" 
         android:textSize="100px"       
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+    
+    <TextView
+        android:id="@+id/tv_userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="@string/tv_userName"
+        android:textColor="#FFFFFF"
+        android:textSize="50px" />
+    
     <EditText
         android:id="@+id/et_userName"
-        android:layout_width="500px"
-        android:layout_height="80px"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
         android:gravity="center"
         android:background="@drawable/edittext_modified_states"
         android:fontFamily="sans-serif-light"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
         android:textSize="14dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_below="@+id/tv_registration"
-        android:layout_marginTop="39dp"
         android:hint="@string/et_userName"
         android:ems="10" >
 
         <requestFocus />
     </EditText>
-
+    
+    <TextView
+        android:id="@+id/tv_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/tv_mail"
+        android:textColor="#FFFFFF"
+        android:textSize="50px" />
+    
     <EditText
         android:id="@+id/et_mail"
-        android:layout_width="500px"
-        android:layout_height="80px"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
         android:gravity="center"
         android:background="@drawable/edittext_modified_states"
         android:fontFamily="sans-serif-light"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
         android:textSize="14dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_below="@+id/et_userName"
-        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="@string/et_mail"
         android:inputType="textEmailAddress" />
-
+    
+    <TextView
+        android:id="@+id/tv_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/tv_password"
+        android:textColor="#FFFFFF"
+        android:textSize="50px" />
+    
     <EditText
         android:id="@+id/et_password"
-        android:layout_width="500px"
-        android:layout_height="80px"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
         android:gravity="center"
         android:background="@drawable/edittext_modified_states"
         android:fontFamily="sans-serif-light"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
         android:textSize="14dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_below="@+id/et_mail"
-        android:layout_marginTop="34dp"
         android:ems="10"
         android:hint="@string/et_password"
         android:inputType="textPassword" />
-
+    
+    <TextView
+        android:id="@+id/tv_confirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/tv_confirmPassword"
+        android:textColor="#FFFFFF"
+        android:textSize="50px" />
+    
     <EditText
         android:id="@+id/et_confirmPassword"
-        android:layout_width="500px"
-        android:layout_height="80px"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
         android:gravity="center"
         android:background="@drawable/edittext_modified_states"
         android:fontFamily="sans-serif-light"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
         android:textSize="14dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_below="@+id/et_password"
-        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="@string/et_confirmPassword"
         android:inputType="textPassword" />
-
+    
     <Button
         android:id="@+id/btn_registerActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_confirmPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
-        android:background="@android:color/transparent"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_modified_states"
         android:onClick="onClick"
         android:text="@string/btn_registerActivity"
         android:textColor="#FFFFFF"
         android:textSize="80px"
         android:textStyle="bold" />
+    
+    
 
-    <TextView
-        android:id="@+id/tv_userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_registration"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="@string/tv_userName"
-        android:textColor="#FFFFFF"
-        android:textSize="50px" />
-
-    <TextView
-        android:id="@+id/tv_mail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_userName"
-        android:layout_centerHorizontal="true"
-        android:text="@string/tv_mail"
-        android:textColor="#FFFFFF"
-        android:textSize="50px" />
-
-    <TextView
-        android:id="@+id/tv_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_mail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
-        android:text="@string/tv_password"
-        android:textColor="#FFFFFF"
-        android:textSize="50px" />
-
-    <TextView
-        android:id="@+id/tv_confirmPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
-        android:text="@string/tv_confirmPassword"
-        android:textColor="#FFFFFF"
-        android:textSize="50px" />
-
-</RelativeLayout>
+</LinearLayout>

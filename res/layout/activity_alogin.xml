@@ -60,14 +60,21 @@
             android:textColor="#FFFFFF"
             android:textSize="30dp"
             android:textStyle="bold" />
-        
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/logo" />
         
         <Button
         android:id="@+id/btn_register"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="40dp"
         android:onClick="onClick"
         android:text="@string/btn_register"
         android:background="@android:color/transparent"

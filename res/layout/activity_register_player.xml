@@ -145,123 +145,123 @@
             android:layout_marginRight="45dp"
             android:src="@drawable/separador" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_gravity="left|top"
-            android:layout_row="10" >
+            android:layout_height="wrap_content" >
             
-
             <TextView
                 android:id="@+id/tv_skill_strength"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
                 android:layout_marginLeft="50dp"
                 android:text="@string/tv_skill_strength"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp" />
-
+            
             <Button
                 android:id="@+id/strength_point_down"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_alignRight="@+id/strength_point"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="80dp"
                 android:gravity="center"
                 android:onClick="strenght_down" />
-
+            
             <TextView
                 android:id="@+id/strength_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="center"
+                android:text="2"
+                android:textSize="20dp"
                 android:textColor="#FFFFFF" />
-
+            
             <Button
                 android:id="@+id/strength_point_up"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_alignLeft="@+id/strength_point"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="10dp"
                 android:onClick="strenght_up" />
             
+            
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            
             <TextView
                 android:id="@+id/tv_skill_inteligence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/tv_skill_strength"
-                android:layout_below="@+id/tv_skill_strength"
+                android:layout_marginLeft="50dp"
                 android:text="@string/tv_skill_inteligence"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp" />
-
+            
             <Button
                 android:id="@+id/inteligence_point_down"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_alignRight="@+id/inteligence_point"
-                android:layout_below="@+id/tv_skill_strength"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="58dp"
                 android:gravity="center"
                 android:onClick="inteligence_down" />
-
+            
             <TextView
                 android:id="@+id/inteligence_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/tv_skill_strength"
-                android:layout_marginRight="50dp"
-                android:gravity="right"
+                android:layout_marginLeft="10dp"
+                android:text="2"
+                android:textSize="20dp"
                 android:textColor="#FFFFFF" />
-
+            
             <Button
                 android:id="@+id/inteligence_point_up"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_alignLeft="@+id/inteligence_point"
-                android:layout_below="@+id/tv_skill_strength"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:onClick="inteligence_up" />
+            
+            
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp" >
+            
             <TextView
                 android:id="@+id/tv_skill_unassigned_points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/tv_skill_inteligence"
-                android:layout_below="@+id/tv_skill_inteligence"
+                android:layout_marginLeft="50dp"
                 android:text="@string/tv_skill_unassigned_points"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp" />
-
+            
             <TextView
                 android:id="@+id/unassigned_points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/tv_skill_inteligence"
-                android:layout_marginRight="50dp"
-                android:gravity="right"
+                android:layout_marginLeft="40dp"
+                android:textSize="20dp"
                 android:text="12"
                 android:textColor="#FFFFFF" />
-
             
-
-        </RelativeLayout>
+            
+        </LinearLayout>
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:background="@drawable/okey"
+            android:textColor="#FFFFFF"
+            android:text="Register"
+            android:background="@drawable/button_modified_states"
             android:onClick="onClick" />
     </LinearLayout>
 

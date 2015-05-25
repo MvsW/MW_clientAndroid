@@ -63,7 +63,7 @@
     <string name="tv_skill_regEnergy">Energy Regeneration</string>
     <string name="tv_skill_strength">Strength</string>
     <string name="tv_skill_inteligence">Inteligence</string>
-    <string name="tv_skill_unassigned_points">Unassigned Points</string>
+    <string name="tv_skill_unassigned_points">Unassigned Points:</string>
     <string name="tv_check_register_player_form"></string>
     <string name="lbl_life"></string>
     <string name="lbl_energy"></string>
