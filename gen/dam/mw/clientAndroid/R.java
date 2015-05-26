@@ -17,6 +17,7 @@ public final class R {
         public static final int animator6=0x7f040005;
         public static final int animator7=0x7f040006;
         public static final int animator8=0x7f040007;
+        public static final int fade_in=0x7f040008;
     }
     public static final class attr {
     }
@@ -108,7 +109,7 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout2=0x7f090036;
-        public static final int action_settings=0x7f090056;
+        public static final int action_settings=0x7f090057;
         public static final int avatarPlayer1=0x7f090006;
         public static final int avatarPlayer2=0x7f09000e;
         public static final int baseprogressbar2=0x7f090009;
@@ -154,6 +155,7 @@ public final class R {
         public static final int progressBar=0x7f090054;
         public static final int progress_cancel=0x7f090055;
         public static final int selectChamp=0x7f090040;
+        public static final int splashImage=0x7f090056;
         public static final int strength_point=0x7f09004b;
         public static final int strength_point_down=0x7f09004a;
         public static final int strength_point_up=0x7f09004c;
