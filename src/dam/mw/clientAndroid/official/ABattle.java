@@ -1,13 +1,18 @@
 package dam.mw.clientAndroid.official;
 
+
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
 import dam.mw.clientAndroid.official.AMyData.getData;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -51,7 +56,7 @@ public class ABattle extends Activity implements OnClickListener {
 	private String classTypePlayer1 = "";
 	private String classTypePlayer2 = "";
 
-	private String[] playerArray = new String[0];
+	private String[] playerArray;
 
 	private TextView tv_life;
 	private TextView tv_mana;
@@ -70,12 +75,15 @@ public class ABattle extends Activity implements OnClickListener {
 	private ImageView avatarPlayer1;
 	private ImageView avatarPlayer2;
 	
+	AlertDialog.Builder dialog;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_abattle);
-
+		playerArray = new String[0];
+		dialog = new AlertDialog.Builder(this);
 		
 		tv_life = (TextView) findViewById(R.id.tv_life);
 		tv_mana = (TextView) findViewById(R.id.tv_mana);
@@ -292,6 +300,8 @@ public class ABattle extends Activity implements OnClickListener {
 		@Override
 		protected void onPostExecute(Boolean op) {
 			super.onPostExecute(op);
+			
+			
 
 			runOnUiThread(new Runnable() {
 
@@ -385,13 +395,28 @@ public class ABattle extends Activity implements OnClickListener {
 								+ originalContrincantMana);
 
 					} else if (playerArray.length == 9) {
-						String result = CApp
-								.getErrorNameByErrorNum(playerArray[8]);
-						Toast.makeText(context, "End battle: " + result,
-								Toast.LENGTH_LONG).show();
+						String result = CApp.getErrorNameByErrorNum(playerArray[8]);
+						//Toast.makeText(context, "End battle: " + result,Toast.LENGTH_LONG).show();
+						
+						//Dialog end battle
+						dialog.setTitle(result);           
+						dialog.setCancelable(true);  
+		                
+						dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {  
+		                    public void onClick(DialogInterface dialogo1, int id) {
+		                    	Intent intent = new Intent(context, AMenu.class);
+								startActivity(intent);
+		                    }  
+		                });  
+						/*dialog.setNegativeButton("Editar", new DialogInterface.OnClickListener() {  
+		                    public void onClick(DialogInterface dialogo1, int id) {  
+		                    	
+		                    }  
+		                });*/
+						dialog.show(); 
+						
 
-						Intent intent = new Intent(context, AMenu.class);
-						startActivity(intent);
+						
 					}
 				}
 			});
@@ -434,18 +459,18 @@ public class ABattle extends Activity implements OnClickListener {
 					classTypePlayer2 = playerArray[5];
 
 					if (classTypePlayer1.equals("1")) {
-						avatarPlayer1.setBackgroundResource(R.drawable.mago);
+						avatarPlayer1.setBackgroundResource(R.drawable.pg_avatar_mage);
 						btn_normalAttack.setBackgroundResource(R.drawable.button_basic1_mague_modified_states);
 						
 					} else {
-						avatarPlayer1.setBackgroundResource(R.drawable.warlock);
+						avatarPlayer1.setBackgroundResource(R.drawable.pg_avatar_warlock);
 						btn_normalAttack.setBackgroundResource(R.drawable.button_basic1_warlock_modified_states);
 					}
 
 					if (classTypePlayer2.equals("1")) {
-						avatarPlayer2.setBackgroundResource(R.drawable.mago);
+						avatarPlayer2.setBackgroundResource(R.drawable.pg_avatar_mage);
 					} else {
-						avatarPlayer2.setBackgroundResource(R.drawable.warlock);
+						avatarPlayer2.setBackgroundResource(R.drawable.pg_avatar_warlock);
 					}
 
 					tv_namePlayer1.setText(playerArray[0].toString());
@@ -498,5 +523,13 @@ public class ABattle extends Activity implements OnClickListener {
 
 		}
 
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		
+		
 	}
 }

@@ -1,5 +1,7 @@
 package dam.mw.clientAndroid.official;
 
+import java.util.ArrayList;
+
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
@@ -10,12 +12,15 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,15 +39,33 @@ public class AMyData extends Activity {
 	private TextView tv_totalPointsData;
 	private TextView tv_totalWinsData;
 	
+	private ImageView iv_avatar;
+	
 
 	protected PowerManager.WakeLock wakelock;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_amy_data);
+		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
+		
 		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
+        
+        ArrayList<TextView> labels = new ArrayList<TextView>();
+        labels.add((TextView)findViewById(R.id.tv_life));
+        labels.add((TextView)findViewById(R.id.tv_energy));
+        labels.add((TextView)findViewById(R.id.tv_regEnergy));
+        labels.add((TextView)findViewById(R.id.tv_strength));
+        labels.add((TextView)findViewById(R.id.tv_inteligence));
+        labels.add((TextView)findViewById(R.id.tv_dateRegister));
+        labels.add((TextView)findViewById(R.id.tv_totalPoints));
+        labels.add((TextView)findViewById(R.id.tv_totalWins));
+        
+        for(TextView textview:labels){
+        	textview.setTypeface(face);
+        }
         
         //Components declaration
         tv_player_name = (TextView) findViewById(R.id.tv_name_avatar);
@@ -55,6 +78,18 @@ public class AMyData extends Activity {
         tv_totalPointsData = (TextView)findViewById(R.id.tv_totalPointsData);
         tv_totalWinsData = (TextView)findViewById(R.id.tv_totalWinsData);
         tv_dateRegisterData = (TextView)findViewById(R.id.tv_dateRegisterData);
+        
+        tv_player_name.setTypeface(face, Typeface.BOLD);
+        tv_lifeData.setTypeface(face);
+        tv_energyData.setTypeface(face);
+        tv_regEnergyData.setTypeface(face);
+        tv_strengthData.setTypeface(face);
+        tv_inteligenceData.setTypeface(face);
+        tv_totalPointsData.setTypeface(face);
+        tv_totalWinsData.setTypeface(face);
+        tv_dateRegisterData.setTypeface(face);
+        iv_avatar = (ImageView)findViewById(R.id.iv_avatar);
+        
         
 		
 		new getData().execute();
@@ -93,6 +128,14 @@ public class AMyData extends Activity {
 					tv_player_name.setText(playerArray[0].replace("*", ""));
 				}else{
 					tv_player_name.setText(playerArray[0]);
+				}
+				
+				if(playerArray[1].equals("1")){
+					iv_avatar.setBackgroundResource(R.drawable.mage);
+					tv_player_name.setTextColor(Color.BLUE);
+				}else{
+					iv_avatar.setBackgroundResource(R.drawable.warlock);
+					tv_player_name.setTextColor(Color.RED);
 				}
 				
 				if(playerArray[2].contains("*")){
@@ -140,8 +183,9 @@ public class AMyData extends Activity {
 				
 				if(playerArray[9].contains("*")){
 					tv_dateRegisterData.setText(playerArray[9].replace("*", ""));
+					tv_dateRegisterData.setText(playerArray[9].substring(0, 10));
 				}else{
-					tv_dateRegisterData.setText(playerArray[9]);
+					tv_dateRegisterData.setText(playerArray[9].substring(0, 10));
 				}
 				
 				

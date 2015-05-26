@@ -42,8 +42,13 @@ public class ARegister_player extends Activity {
 	private TextView tv_inteligence_point;
 	private TextView tv_unassigned_points;
 	private EditText et_characterName;
+	
+	private Button strength_point_down;
+	private Button inteligence_point_down;
+	private Button strength_point_up;
+	private Button inteligence_point_up;
+	private Button btnRegister;
 
-	private TextView tv_selectClass;
 	int count_strength = 0;
 	int count_inteligence = 0;
 	int count_unasignedBase = 40;
@@ -82,40 +87,68 @@ public class ARegister_player extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register_player);
+		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
 		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
 				"etiqueta");
 		wakelock.acquire();
+		
+		((Button)findViewById(R.id.btn_register_player)).setTypeface(face);
+		ArrayList<TextView> labels = new ArrayList<TextView>();
+		labels.add((TextView)findViewById(R.id.tv_skill_life));
+		labels.add((TextView)findViewById(R.id.tv_skill_energy));
+		labels.add((TextView)findViewById(R.id.tv_skill_regEnergy));
+		labels.add((TextView)findViewById(R.id.tv_skill_strength));
+		labels.add((TextView)findViewById(R.id.tv_skill_inteligence));
+		labels.add((TextView)findViewById(R.id.tv_skill_unassigned_points));
+		
+		for(TextView textview: labels){
+			textview.setTypeface(face);
+		}
+		
+		strength_point_down = (Button)findViewById(R.id.strength_point_down);
+		inteligence_point_down = (Button)findViewById(R.id.inteligence_point_down);
+		strength_point_up = (Button)findViewById(R.id.strength_point_up);
+		inteligence_point_up = (Button)findViewById(R.id.inteligence_point_up);
+		
+		strength_point_down.setBackgroundResource(R.drawable.button_minus_warlock_modified_states);
+		inteligence_point_down.setBackgroundResource(R.drawable.button_minus_warlock_modified_states);
+		strength_point_up.setBackgroundResource(R.drawable.button_plus_warlock_modified_states);
+		inteligence_point_up.setBackgroundResource(R.drawable.button_plus_warlock_modified_states);
 
 		username = getIntent().getStringExtra("username");
 		password = getIntent().getStringExtra("password");
 
 		selectCharacter = (ToggleButton) findViewById(R.id.selectChamp);
 		characterClass = (TextView) findViewById(R.id.characterClass);
-		tv_selectClass = (TextView) findViewById(R.id.tv_selectClass);
+		characterClass.setVisibility(View.INVISIBLE);
+		
 
 		// Default points
 		tv_life_point = (TextView) findViewById(R.id.life_point);
-		tv_life_point.setTypeface(Typeface.SERIF);
-		tv_life_point.setTextSize(20);
+		tv_life_point.setTypeface(face);
 		tv_energy_point = (TextView) findViewById(R.id.energy_point);
-		tv_energy_point.setTypeface(Typeface.SERIF);
-		tv_energy_point.setTextSize(20);
+		tv_energy_point.setTypeface(face);
 		tv_energyReg_point = (TextView) findViewById(R.id.energyReg_point);
-		tv_energyReg_point.setTypeface(Typeface.SERIF);
-		tv_energyReg_point.setTextSize(20);
+		tv_energyReg_point.setTypeface(face);
 
 		// Custom points
 		tv_strength_point = (TextView) findViewById(R.id.strength_point);
+		tv_strength_point.setTypeface(face);
 		tv_strength_point.setText(Integer.toString(count_strength));
 		tv_inteligence_point = (TextView) findViewById(R.id.inteligence_point);
+		tv_inteligence_point.setTypeface(face);
 		tv_inteligence_point.setText(Integer.toString(count_inteligence));
 		tv_unassigned_points = (TextView) findViewById(R.id.unassigned_points);
+		tv_unassigned_points.setTypeface(face);
 		tv_unassigned_points.setText(Integer.toString(count_unasigned));
 
+		tv_energyReg_point.setTypeface(face);
+		tv_energyReg_point.setTypeface(face);
+		tv_energyReg_point.setTypeface(face);
+		
 		et_characterName = (EditText) findViewById(R.id.et_characterName);
-		tv_selectClass.setTypeface(Typeface.SERIF);
-		et_characterName.setTypeface(Typeface.SERIF, Typeface.BOLD);
+		et_characterName.setTypeface(face, Typeface.BOLD);
 		et_characterName.setTextSize(25);
 
 		ToggleButtonStatus();
@@ -171,7 +204,12 @@ public class ARegister_player extends Activity {
 							boolean isChecked) {
 						if (buttonView.isChecked()) {
 							characterClass.setText("Mage");
-
+							
+							strength_point_down.setBackgroundResource(R.drawable.button_minus_modified_states);
+							inteligence_point_down.setBackgroundResource(R.drawable.button_minus_modified_states);
+							strength_point_up.setBackgroundResource(R.drawable.button_plus_modified_states);
+							inteligence_point_up.setBackgroundResource(R.drawable.button_plus_modified_states);
+							
 							setStats(CConstant.MAGE);
 
 							// Assign id of the type Mage/Warlock
@@ -192,6 +230,10 @@ public class ARegister_player extends Activity {
 
 						} else {
 							characterClass.setText("Warlock");
+							strength_point_down.setBackgroundResource(R.drawable.button_minus_warlock_modified_states);
+							inteligence_point_down.setBackgroundResource(R.drawable.button_minus_warlock_modified_states);
+							strength_point_up.setBackgroundResource(R.drawable.button_plus_warlock_modified_states);
+							inteligence_point_up.setBackgroundResource(R.drawable.button_plus_warlock_modified_states);
 							setStats(CConstant.WARLOCK);
 
 							// Assign id of the type Mage/Warlock
