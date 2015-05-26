@@ -58,9 +58,7 @@ public class AMenu extends Activity implements OnClickListener {
 		btn_showData.setTypeface(face);
 		
 		//dialog_cancel = (Button)findViewById(R.id.progress_cancel);
-		
-		
-		
+
 	}
 	
 	//Get actions of physical buttons.
