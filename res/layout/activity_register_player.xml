@@ -2,8 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_generic3"
+    android:background="@drawable/bg_generic2"
     tools:context="dam.mw.clientAndroid.official.ARegister_Player" >
+    <!--  android:background="@drawable/bg_generic3" -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,8 +13,8 @@
 
         <EditText
             android:id="@+id/et_characterName"
-            android:layout_width="500px"
-            android:layout_height="70px"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginTop="75dp"
             android:background="@drawable/rounded_edittext"
@@ -30,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:visibility="invisible"
             android:text="Select Class"
             android:textColor="#FFFFFF"
             android:textSize="30dp" />
@@ -44,7 +46,7 @@
             android:text="ToggleButton"
             android:textOff=""
             android:textOn="" />
-
+ 
         <TextView
             android:id="@+id/characterClass"
             android:layout_width="wrap_content"
@@ -53,7 +55,9 @@
             android:layout_marginTop="15dp"
             android:textSize="20dp"
             android:textColor="#FFFFFF"
+            
             android:text="Warlock" />
+
 
         <ImageView
             android:id="@+id/iv_separator1"

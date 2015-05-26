@@ -87,6 +87,7 @@ public class ARegister_player extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register_player);
+		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
 		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
 				"etiqueta");
@@ -107,18 +108,20 @@ public class ARegister_player extends Activity {
 
 		selectCharacter = (ToggleButton) findViewById(R.id.selectChamp);
 		characterClass = (TextView) findViewById(R.id.characterClass);
+		characterClass.setVisibility(View.INVISIBLE);
 		tv_selectClass = (TextView) findViewById(R.id.tv_selectClass);
+		tv_selectClass.setTypeface(face);
 
 		// Default points
 		tv_life_point = (TextView) findViewById(R.id.life_point);
-		tv_life_point.setTypeface(Typeface.SERIF);
 		tv_life_point.setTextSize(20);
+		tv_life_point.setTypeface(face);
 		tv_energy_point = (TextView) findViewById(R.id.energy_point);
-		tv_energy_point.setTypeface(Typeface.SERIF);
 		tv_energy_point.setTextSize(20);
+		tv_energy_point.setTypeface(face);
 		tv_energyReg_point = (TextView) findViewById(R.id.energyReg_point);
-		tv_energyReg_point.setTypeface(Typeface.SERIF);
 		tv_energyReg_point.setTextSize(20);
+		tv_energyReg_point.setTypeface(face);
 
 		// Custom points
 		tv_strength_point = (TextView) findViewById(R.id.strength_point);
@@ -128,9 +131,13 @@ public class ARegister_player extends Activity {
 		tv_unassigned_points = (TextView) findViewById(R.id.unassigned_points);
 		tv_unassigned_points.setText(Integer.toString(count_unasigned));
 
+		tv_energyReg_point.setTypeface(face);
+		tv_energyReg_point.setTypeface(face);
+		tv_energyReg_point.setTypeface(face);
+		
 		et_characterName = (EditText) findViewById(R.id.et_characterName);
-		tv_selectClass.setTypeface(Typeface.SERIF);
-		et_characterName.setTypeface(Typeface.SERIF, Typeface.BOLD);
+		tv_selectClass.setTypeface(face);
+		et_characterName.setTypeface(face, Typeface.BOLD);
 		et_characterName.setTextSize(25);
 
 		ToggleButtonStatus();

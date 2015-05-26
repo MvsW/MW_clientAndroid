@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
@@ -43,6 +44,8 @@ public class AMyData extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_amy_data);
+		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
+		
 		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
@@ -59,6 +62,15 @@ public class AMyData extends Activity {
         tv_totalWinsData = (TextView)findViewById(R.id.tv_totalWinsData);
         tv_dateRegisterData = (TextView)findViewById(R.id.tv_dateRegisterData);
         
+        tv_player_name.setTypeface(face);
+        tv_lifeData.setTypeface(face);
+        tv_energyData.setTypeface(face);
+        tv_regEnergyData.setTypeface(face);
+        tv_strengthData.setTypeface(face);
+        tv_inteligenceData.setTypeface(face);
+        tv_totalPointsData.setTypeface(face);
+        tv_totalWinsData.setTypeface(face);
+        tv_dateRegisterData.setTypeface(face);
         iv_avatar = (ImageView)findViewById(R.id.iv_avatar);
         
         

@@ -56,7 +56,7 @@ public class ABattle extends Activity implements OnClickListener {
 	private String classTypePlayer1 = "";
 	private String classTypePlayer2 = "";
 
-	private String[] playerArray = new String[0];
+	private String[] playerArray;
 
 	private TextView tv_life;
 	private TextView tv_mana;
@@ -75,8 +75,6 @@ public class ABattle extends Activity implements OnClickListener {
 	private ImageView avatarPlayer1;
 	private ImageView avatarPlayer2;
 	
-	private ImageView background;
-	
 	AlertDialog.Builder dialog;
 	
 
@@ -84,9 +82,7 @@ public class ABattle extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_abattle);
-		
-		
-
+		playerArray = new String[0];
 		dialog = new AlertDialog.Builder(this);
 		
 		tv_life = (TextView) findViewById(R.id.tv_life);
@@ -527,5 +523,13 @@ public class ABattle extends Activity implements OnClickListener {
 
 		}
 
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		
+		
 	}
 }

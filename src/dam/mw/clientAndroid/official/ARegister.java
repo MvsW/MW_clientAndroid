@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -156,7 +157,7 @@ public class ARegister extends Activity {
 				password = et_password.getText().toString();
 				passwordConfirm = et_confirmPassword.getText().toString();
 				// TODO: VALIDACIONES de los CAMPOS
-				//Si estan vacíos o no.
+				//Si estan vacï¿½os o no.
 				if (username.equalsIgnoreCase("")){
 					et_username.setError("Required field.");
 					validationOK = false;
@@ -300,5 +301,6 @@ public class ARegister extends Activity {
             return super.onOptionsItemSelected(item);
         }
     }
+
 	
 }
