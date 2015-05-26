@@ -1,24 +1,31 @@
 package dam.mw.clientAndroid.official;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
 import dam.mw.clientAndroid.controlCenter.JApp;
+import dam.mw.clientAndroid.controlCenter.music;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.graphics.AvoidXfermode.Mode;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
@@ -35,6 +42,8 @@ public class ALogin extends Activity implements OnClickListener {
 	static Context context;
 	ProgressDialog pDialog;
 	
+	MediaPlayer mediaPlayer;
+	
 	Button btn_register;
 	Button btn_login;
 	
@@ -44,6 +53,9 @@ public class ALogin extends Activity implements OnClickListener {
 	private ArrayList<String> errorNum= new ArrayList<String>();
 
 	protected PowerManager.WakeLock wakelock;
+	
+	//music
+	music mainTheme;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,6 +67,28 @@ public class ALogin extends Activity implements OnClickListener {
         //Get username & password after register a user & player.
         usernameRegistred = getIntent().getStringExtra("username");
         passwordRegistered = getIntent().getStringExtra("password");
+        
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        
+        
+        //music
+        
+        mainTheme = new music(this);
+        
+        mainTheme.onMainTheme();
+        
+	/*	mediaPlayer = new MediaPlayer();
+		try {
+			AssetManager assetManager = getAssets();
+			AssetFileDescriptor descriptor = assetManager.openFd("maintheme.mp3");
+			mediaPlayer.setDataSource(descriptor.getFileDescriptor(), descriptor.getStartOffset(), descriptor.getLength());
+			mediaPlayer.prepare();
+			mediaPlayer.setLooping(true);
+			mediaPlayer.start();
+		} catch (IOException e) {
+			Log.i("LogsAndroid","Couldn't load music file, " + e.getMessage());
+			mediaPlayer = null;
+		}*/
         
         
 		// TODO: Revisar documentos juancar para quitar top-bars y status-bar.
@@ -175,8 +209,6 @@ public class ALogin extends Activity implements OnClickListener {
 		}
 		
 	}
-	
-	
 
 	@Override
 	public void onClick(View v) {

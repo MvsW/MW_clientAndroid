@@ -154,7 +154,7 @@ public class ARegister extends Activity {
 				password = et_password.getText().toString();
 				passwordConfirm = et_confirmPassword.getText().toString();
 				// TODO: VALIDACIONES de los CAMPOS
-				//Si estan vac�os o no.
+				//Si estan vacíos o no.
 				if (username.equalsIgnoreCase("")){
 					et_username.setError("Required field.");
 					validationOK = false;
@@ -174,7 +174,7 @@ public class ARegister extends Activity {
 					et_confirmPassword.setError("Required field.");
 					validationOK = false;
 				}
-				// 2- Cada campo con su propia validación (revisar excel para conocer los tamaños y maneres de realizar estos checks) Password lenght: 8
+				// 2- Cada campo con su propia validaciÃ³n (revisar excel para conocer los tamaÃ±os y maneres de realizar estos checks) Password lenght: 8
 				if(!username.isEmpty()){
 					if	(username.length()>12){
 						et_username.setError("Max lenght: 12");
@@ -298,6 +298,5 @@ public class ARegister extends Activity {
             return super.onOptionsItemSelected(item);
         }
     }
-
 	
 }

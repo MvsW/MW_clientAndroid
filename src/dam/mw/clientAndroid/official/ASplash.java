@@ -12,13 +12,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class ASplash extends Activity {
 
 	/** Duration of wait **/
-	//private final int SPLASH_DISPLAY_LENGTH = 4000;
-	private final int SPLASH_DISPLAY_LENGTH = 1000;
+	private final int SPLASH_DISPLAY_LENGTH = 4000;
+	//private final int SPLASH_DISPLAY_LENGTH = 1000;
+	
+	Animation animationFadeIn;
 
 	GPSTracker gps;
 	private Context context;
@@ -26,6 +33,8 @@ public class ASplash extends Activity {
 	private final String log = "LogsAndroid";
 
 	private boolean check = false;
+	
+	private ImageView splashImage;
 
 	/** Called when the activity is first created. */
 	protected PowerManager.WakeLock wakelock;
@@ -33,6 +42,14 @@ public class ASplash extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		setContentView(R.layout.splashscreen);
+		splashImage = (ImageView)findViewById(R.id.splashImage);
+		
+		animationFadeIn = AnimationUtils.loadAnimation(this, R.animator.fade_in);
+		
+		splashImage.setVisibility(View.VISIBLE);
+		splashImage.startAnimation(animationFadeIn);
+		
+		
 		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
@@ -61,7 +78,10 @@ public class ASplash extends Activity {
 			public void run() {
 				/* Create an Intent that will start the Login-Activity. */
 				Intent mainIntent = new Intent(ASplash.this, ALogin.class);
+				
 				ASplash.this.startActivity(mainIntent);
+				//animation1, animation2, animator7, animator8
+				overridePendingTransition(R.animator.animation1, R.animator.animation2);
 				ASplash.this.finish();
 			}
 		}, SPLASH_DISPLAY_LENGTH);

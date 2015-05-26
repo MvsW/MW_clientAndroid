@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import org.apache.http.util.LangUtils;
 
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.util.Log;
 
 public class CApp {
@@ -322,7 +324,7 @@ public class CApp {
 			errorName = "DRAW :/";
 			break;
 		case CConstant.Response.LOSE:
-			errorName = "YOU LOOSE :(";
+			errorName = "YOU LOSE :(";
 			break;
 		default:
 			break;

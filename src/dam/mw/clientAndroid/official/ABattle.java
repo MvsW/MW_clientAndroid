@@ -4,6 +4,7 @@ package dam.mw.clientAndroid.official;
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
+import dam.mw.clientAndroid.controlCenter.music;
 import dam.mw.clientAndroid.official.AMyData.getData;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -77,6 +78,8 @@ public class ABattle extends Activity implements OnClickListener {
 	
 	AlertDialog.Builder dialog;
 	
+	music sound;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +116,7 @@ public class ABattle extends Activity implements OnClickListener {
 		pb_contrincantLife = (ProgressBar) findViewById(R.id.pb_contrincantLife);
 		pb_contrincantMana = (ProgressBar) findViewById(R.id.pb_contrincantMana);
 		
+		sound = new music(context);
 
 		new ReadResponseBattleFirstTime().execute();
 
@@ -125,21 +129,33 @@ public class ABattle extends Activity implements OnClickListener {
 		switch (v.getId()) {
 
 		case R.id.btn_normalAttack:
+			sound.cleanSound();
+			sound.onSoundBasic("music/basico.mp3");
 			new SendActionBattle().execute(CConstant.BASIC);
 			break;
 		case R.id.btn_spell1:
+			sound.cleanSound();
+			sound.onSoundBasic("music/spell1.mp3");
 			new SendActionBattle().execute(CConstant.SPELL1);
 			break;
 		case R.id.btn_spell2:
+			sound.cleanSound();
+			sound.onSoundBasic("music/spell2.mp3");
 			new SendActionBattle().execute(CConstant.SPELL2);
 			break;
 		case R.id.btn_superAttack:
+			sound.cleanSound();
+			sound.onSoundBasic("music/ua.mp3");
 			new SendActionBattle().execute(CConstant.ULTIMATE);
 			break;
 		case R.id.btn_dodge:
+			sound.cleanSound();
+			sound.onSoundBasic("music/dodge.mp3");
 			new SendActionBattle().execute(CConstant.DODGE);
 			break;
 		case R.id.btn_defense:
+			sound.cleanSound();
+			sound.onSoundBasic("music/shield.mp3");
 			new SendActionBattle().execute(CConstant.SHIELD);
 			break;
 		default:
@@ -396,7 +412,17 @@ public class ABattle extends Activity implements OnClickListener {
 
 					} else if (playerArray.length == 9) {
 						String result = CApp.getErrorNameByErrorNum(playerArray[8]);
-						//Toast.makeText(context, "End battle: " + result,Toast.LENGTH_LONG).show();
+						
+						/*if(playerArray[8]=="10"){
+							sound.offMusic();
+							sound.cleanMusicWin();
+							sound.onMusicWin();
+						}else{
+							
+							sound.offMusic();
+							sound.clean();
+							sound.onDefeat();
+						}*/
 						
 						//Dialog end battle
 						dialog.setTitle(result);           
