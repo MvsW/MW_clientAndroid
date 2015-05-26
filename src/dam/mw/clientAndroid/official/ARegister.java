@@ -33,7 +33,7 @@ public class ARegister extends Activity {
 	
 	private JApp japp = new JApp(); 
 	private EditText et_username, et_mail, et_password, et_confirmPassword;
-	private TextView tv_registration, tv_username, tv_mail, tv_password, tv_confirmPassword;
+	private TextView tv_username, tv_mail, tv_password, tv_confirmPassword;
 	private ArrayList<EditText> fields = new ArrayList<EditText>();
 	private String username, mail, password, passwordConfirm;
 	private Button btn_registerActivity;
@@ -56,7 +56,6 @@ public class ARegister extends Activity {
         
         context = this;
         
-        
         //Set typeface.
       	Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
 		
@@ -71,13 +70,11 @@ public class ARegister extends Activity {
 		et_password = (EditText) findViewById(R.id.et_password);
 		et_confirmPassword = (EditText) findViewById(R.id.et_confirmPassword);
 		
-		tv_registration = (TextView)findViewById(R.id.tv_registration);
 		tv_username = (TextView)findViewById(R.id.tv_userName);
 		tv_mail = (TextView)findViewById(R.id.tv_mail);
 		tv_password = (TextView)findViewById(R.id.tv_password);
 		tv_confirmPassword = (TextView)findViewById(R.id.tv_confirmPassword);
-		
-		tv_registration.setTypeface(face);
+
 		tv_username.setTypeface(face);
 		tv_mail.setTypeface(face);
 		tv_password.setTypeface(face);

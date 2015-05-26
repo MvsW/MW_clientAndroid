@@ -1,5 +1,7 @@
 package dam.mw.clientAndroid.official;
 
+import java.util.ArrayList;
+
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.R.id;
 import dam.mw.clientAndroid.R.layout;
@@ -10,6 +12,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -50,6 +53,20 @@ public class AMyData extends Activity {
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
         
+        ArrayList<TextView> labels = new ArrayList<TextView>();
+        labels.add((TextView)findViewById(R.id.tv_life));
+        labels.add((TextView)findViewById(R.id.tv_energy));
+        labels.add((TextView)findViewById(R.id.tv_regEnergy));
+        labels.add((TextView)findViewById(R.id.tv_strength));
+        labels.add((TextView)findViewById(R.id.tv_inteligence));
+        labels.add((TextView)findViewById(R.id.tv_dateRegister));
+        labels.add((TextView)findViewById(R.id.tv_totalPoints));
+        labels.add((TextView)findViewById(R.id.tv_totalWins));
+        
+        for(TextView textview:labels){
+        	textview.setTypeface(face);
+        }
+        
         //Components declaration
         tv_player_name = (TextView) findViewById(R.id.tv_name_avatar);
         tv_lifeData = (TextView)findViewById(R.id.tv_lifeData);
@@ -62,7 +79,7 @@ public class AMyData extends Activity {
         tv_totalWinsData = (TextView)findViewById(R.id.tv_totalWinsData);
         tv_dateRegisterData = (TextView)findViewById(R.id.tv_dateRegisterData);
         
-        tv_player_name.setTypeface(face);
+        tv_player_name.setTypeface(face, Typeface.BOLD);
         tv_lifeData.setTypeface(face);
         tv_energyData.setTypeface(face);
         tv_regEnergyData.setTypeface(face);
@@ -115,8 +132,10 @@ public class AMyData extends Activity {
 				
 				if(playerArray[1].equals("1")){
 					iv_avatar.setBackgroundResource(R.drawable.mage);
+					tv_player_name.setTextColor(Color.BLUE);
 				}else{
 					iv_avatar.setBackgroundResource(R.drawable.warlock);
+					tv_player_name.setTextColor(Color.RED);
 				}
 				
 				if(playerArray[2].contains("*")){

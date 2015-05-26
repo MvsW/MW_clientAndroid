@@ -31,11 +31,7 @@ public class AMenu extends Activity implements OnClickListener {
 	private Context context;
 	private ProgressDialog pDialog;
 	private boolean searching = false;
-	
-
 	protected PowerManager.WakeLock wakelock;
-	
-	TextView tv_menu;
 	Button btn_battle;
 	Button btn_showData;
 	Button dialog_cancel;
@@ -55,12 +51,9 @@ public class AMenu extends Activity implements OnClickListener {
 		context = this;
 		
 		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
-		
-		tv_menu = (TextView)findViewById(R.id.tv_menu);
 		btn_battle = (Button)findViewById(R.id.btn_battle);
 		btn_showData = (Button)findViewById(R.id.btn_showData);
 		
-		tv_menu.setTypeface(face);
 		btn_battle.setTypeface(face);
 		btn_showData.setTypeface(face);
 		

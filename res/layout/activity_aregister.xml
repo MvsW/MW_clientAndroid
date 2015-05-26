@@ -5,23 +5,11 @@
     android:background="@drawable/bg_generic" >
     
     <TextView
-        android:id="@+id/tv_registration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
-        android:text="@string/tv_registration"
-        android:textColor="#FFFFFF" 
-        android:textSize="100px"       
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    <TextView
         android:id="@+id/tv_userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="38dp"
         android:text="@string/tv_userName"
         android:textColor="#FFFFFF"
         android:textSize="50px" />
@@ -48,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         android:text="@string/tv_mail"
         android:textColor="#FFFFFF"
         android:textSize="50px" />
@@ -57,21 +46,23 @@
         android:layout_width="300dp"
         android:layout_height="53dp"
         android:layout_gravity="center"
-        android:gravity="center"
+        android:layout_marginTop="5dp"
         android:background="@drawable/edittext_modified_states"
+        android:ems="10"
         android:fontFamily="sans-serif-light"
-        android:textStyle="bold"
+        android:gravity="center"
+        android:hint="@string/et_mail"
+        android:inputType="textEmailAddress"
         android:textColor="#FFFFFF"
         android:textSize="14dp"
-        android:ems="10"
-        android:hint="@string/et_mail"
-        android:inputType="textEmailAddress" />
+        android:textStyle="bold" />
     
     <TextView
         android:id="@+id/tv_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         android:text="@string/tv_password"
         android:textColor="#FFFFFF"
         android:textSize="50px" />
@@ -81,21 +72,23 @@
         android:layout_width="300dp"
         android:layout_height="53dp"
         android:layout_gravity="center"
-        android:gravity="center"
+        android:layout_marginTop="5dp"
         android:background="@drawable/edittext_modified_states"
+        android:ems="10"
         android:fontFamily="sans-serif-light"
-        android:textStyle="bold"
+        android:gravity="center"
+        android:hint="@string/et_password"
+        android:inputType="textPassword"
         android:textColor="#FFFFFF"
         android:textSize="14dp"
-        android:ems="10"
-        android:hint="@string/et_password"
-        android:inputType="textPassword" />
+        android:textStyle="bold" />
     
     <TextView
         android:id="@+id/tv_confirmPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         android:text="@string/tv_confirmPassword"
         android:textColor="#FFFFFF"
         android:textSize="50px" />
@@ -105,15 +98,16 @@
         android:layout_width="300dp"
         android:layout_height="53dp"
         android:layout_gravity="center"
-        android:gravity="center"
+        android:layout_marginTop="5dp"
         android:background="@drawable/edittext_modified_states"
+        android:ems="10"
         android:fontFamily="sans-serif-light"
-        android:textStyle="bold"
+        android:gravity="center"
+        android:hint="@string/et_confirmPassword"
+        android:inputType="textPassword"
         android:textColor="#FFFFFF"
         android:textSize="14dp"
-        android:ems="10"
-        android:hint="@string/et_confirmPassword"
-        android:inputType="textPassword" />
+        android:textStyle="bold" />
     
     <Button
         android:id="@+id/btn_registerActivity"

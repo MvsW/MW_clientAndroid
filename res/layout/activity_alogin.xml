@@ -8,33 +8,33 @@
         android:id="@+id/imageView1"
         android:layout_width="400dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
         android:layout_gravity="center"
-        android:src="@drawable/tittle_login" 
-        />
-    
+        android:layout_marginTop="40dp"
+        android:src="@drawable/tittle_login" />
+
     <EditText
         android:id="@+id/et_userOrMail"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:fontFamily="sans-serif-condensed"
+        android:layout_marginTop="25dp"
         android:background="@drawable/edittext_modified_states"
-        android:textColor="#FFFFFF"
         android:ems="10"
-        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
         android:hint="@string/hint_userOrMail"
+        android:textColor="#FFFFFF"
         android:textSize="20dp" >
 
         <requestFocus />
     </EditText>
-    
+
     <EditText
         android:id="@+id/et_password"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:background="@drawable/edittext_modified_states"
         android:ems="10"
         android:fontFamily="sans-serif-light"
@@ -42,44 +42,41 @@
         android:hint="@string/hint_password"
         android:inputType="textPassword"
         android:textColor="#FFFFFF"
-        android:layout_marginTop="20dp"
         android:textSize="20dp" />
 
-        
-        
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_modified_states"
+        android:onClick="onClick"
+        android:text="@string/btn_login"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/button_modified_states"
-            android:onClick="onClick"
-            android:text="@string/btn_login"
-            android:textColor="#FFFFFF"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="297dp"
+        android:layout_height="162dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_weight="0.14"
+        android:src="@drawable/logo" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/logo" />
-        
-        <Button
+    <Button
         android:id="@+id/btn_register"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/transparent"
         android:onClick="onClick"
         android:text="@string/btn_register"
-        android:background="@android:color/transparent"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:textSize="20dp" />
+        android:textColor="#b7b6b6"
+        android:textSize="28dp"
+        android:textStyle="bold" />
 
 </LinearLayout>

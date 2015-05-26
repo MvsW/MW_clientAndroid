@@ -11,7 +11,7 @@
     <string name="title_activity_amy_data">My Data</string>
 
     <!-- ALogin Strings -->
-    <string name="btn_register">Register new account</string>
+    <string name="btn_register">Register</string>
     <string name="btn_login">Login</string>
     <string name="hint_userOrMail">Username or Email</string>
     <string name="hint_password">Password</string>
@@ -29,14 +29,14 @@
     <string name="btn_normalAttack">Basic Attack</string>
 
     <!-- AMyData Strings -->
-    <string name="tv_life">LIFE</string>
-    <string name="tv_energy">ENERGY</string>
-    <string name="tv_regEnergy">ENERGY REG.</string>
-    <string name="tv_strength">STRENGTH</string>
-    <string name="tv_inteligence">INTELIGENCE</string>
-    <string name="tv_dateRegister">DATE REGISTER</string>
-    <string name="tv_totalPoints">TOTAL POINTS</string>
-    <string name="tv_totalWins">TOTAL WINS</string>
+    <string name="tv_life">Life</string>
+    <string name="tv_energy">Energy</string>
+    <string name="tv_regEnergy">Energy Reg.</string>
+    <string name="tv_strength">Strength</string>
+    <string name="tv_inteligence">Intelligence</string>
+    <string name="tv_dateRegister">Date Register</string>
+    <string name="tv_totalPoints">Total Points</string>
+    <string name="tv_totalWins">Total Wins</string>
 
     <!-- ASplash Strings -->
 
@@ -63,7 +63,7 @@
     <string name="tv_skill_regEnergy">Energy Regeneration</string>
     <string name="tv_skill_strength">Strength</string>
     <string name="tv_skill_inteligence">Inteligence</string>
-    <string name="tv_skill_unassigned_points">Unassigned Points:</string>
+    <string name="tv_skill_unassigned_points">Unassigned Points</string>
     <string name="tv_check_register_player_form"></string>
     <string name="lbl_life"></string>
     <string name="lbl_energy"></string>

@@ -47,8 +47,8 @@ public class ARegister_player extends Activity {
 	private Button inteligence_point_down;
 	private Button strength_point_up;
 	private Button inteligence_point_up;
+	private Button btnRegister;
 
-	private TextView tv_selectClass;
 	int count_strength = 0;
 	int count_inteligence = 0;
 	int count_unasignedBase = 40;
@@ -93,6 +93,19 @@ public class ARegister_player extends Activity {
 				"etiqueta");
 		wakelock.acquire();
 		
+		((Button)findViewById(R.id.btn_register_player)).setTypeface(face);
+		ArrayList<TextView> labels = new ArrayList<TextView>();
+		labels.add((TextView)findViewById(R.id.tv_skill_life));
+		labels.add((TextView)findViewById(R.id.tv_skill_energy));
+		labels.add((TextView)findViewById(R.id.tv_skill_regEnergy));
+		labels.add((TextView)findViewById(R.id.tv_skill_strength));
+		labels.add((TextView)findViewById(R.id.tv_skill_inteligence));
+		labels.add((TextView)findViewById(R.id.tv_skill_unassigned_points));
+		
+		for(TextView textview: labels){
+			textview.setTypeface(face);
+		}
+		
 		strength_point_down = (Button)findViewById(R.id.strength_point_down);
 		inteligence_point_down = (Button)findViewById(R.id.inteligence_point_down);
 		strength_point_up = (Button)findViewById(R.id.strength_point_up);
@@ -109,26 +122,25 @@ public class ARegister_player extends Activity {
 		selectCharacter = (ToggleButton) findViewById(R.id.selectChamp);
 		characterClass = (TextView) findViewById(R.id.characterClass);
 		characterClass.setVisibility(View.INVISIBLE);
-		tv_selectClass = (TextView) findViewById(R.id.tv_selectClass);
-		tv_selectClass.setTypeface(face);
+		
 
 		// Default points
 		tv_life_point = (TextView) findViewById(R.id.life_point);
-		tv_life_point.setTextSize(20);
 		tv_life_point.setTypeface(face);
 		tv_energy_point = (TextView) findViewById(R.id.energy_point);
-		tv_energy_point.setTextSize(20);
 		tv_energy_point.setTypeface(face);
 		tv_energyReg_point = (TextView) findViewById(R.id.energyReg_point);
-		tv_energyReg_point.setTextSize(20);
 		tv_energyReg_point.setTypeface(face);
 
 		// Custom points
 		tv_strength_point = (TextView) findViewById(R.id.strength_point);
+		tv_strength_point.setTypeface(face);
 		tv_strength_point.setText(Integer.toString(count_strength));
 		tv_inteligence_point = (TextView) findViewById(R.id.inteligence_point);
+		tv_inteligence_point.setTypeface(face);
 		tv_inteligence_point.setText(Integer.toString(count_inteligence));
 		tv_unassigned_points = (TextView) findViewById(R.id.unassigned_points);
+		tv_unassigned_points.setTypeface(face);
 		tv_unassigned_points.setText(Integer.toString(count_unasigned));
 
 		tv_energyReg_point.setTypeface(face);
@@ -136,7 +148,6 @@ public class ARegister_player extends Activity {
 		tv_energyReg_point.setTypeface(face);
 		
 		et_characterName = (EditText) findViewById(R.id.et_characterName);
-		tv_selectClass.setTypeface(face);
 		et_characterName.setTypeface(face, Typeface.BOLD);
 		et_characterName.setTextSize(25);
 
