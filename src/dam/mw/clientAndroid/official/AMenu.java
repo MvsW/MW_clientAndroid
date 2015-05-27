@@ -50,6 +50,8 @@ public class AMenu extends Activity implements OnClickListener {
 		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
 				"etiqueta");
 		wakelock.acquire();
+		
+		Battle = new music(getApplicationContext());
 
 		context = this;
 		
@@ -141,7 +143,6 @@ public class AMenu extends Activity implements OnClickListener {
 		        public void onClick(View v){
 		        	Log.i("LogsAndroid", "Cancel clicked");
 		        	CApp.setButtonCancelTapped();
-		        	Toast.makeText(context, "Search battle canceled.", Toast.LENGTH_SHORT).show();
 		        	pDialog.dismiss();
 		        	runOnUiThread(new Runnable() {
 						@Override

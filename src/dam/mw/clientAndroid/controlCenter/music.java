@@ -50,7 +50,7 @@ public class music {
 	}
 	
 	public void offBattleMusic() {
-		music.stop();
+		musicBattle.stop();
 	}
 	
 	
