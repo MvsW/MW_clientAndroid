@@ -1,11 +1,16 @@
 package dam.mw.clientAndroid.controlCenter;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
 import org.apache.http.util.LangUtils;
 
+import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.media.MediaPlayer;
 import android.util.Log;
 
 public class CApp {
@@ -13,10 +18,15 @@ public class CApp {
 	private static CConnection connection;
 	private static Socket socket;
 	private static double latitude, longitude;
+	private Context context;
 	
 	private static boolean buttonCancelTapped = false;
 
 	private static ArrayList<String> arrayListData;
+	
+	public static MediaPlayer music = new MediaPlayer();
+	public static MediaPlayer sound = new MediaPlayer();
+	
 
 	public static void connect() throws Exception { // Modificar per tractament
 													// propi
@@ -322,7 +332,7 @@ public class CApp {
 			errorName = "DRAW :/";
 			break;
 		case CConstant.Response.LOSE:
-			errorName = "YOU LOOSE :(";
+			errorName = "YOU LOSE :(";
 			break;
 		default:
 			break;
@@ -381,5 +391,48 @@ public class CApp {
 				+ eReg + CConstant.SEPARATOR + str + CConstant.SEPARATOR
 				+ intll;
 	}
+	
+	public static void onMusic(Context c, String songName){
+			try {
+				AssetManager assetManager = c.getAssets();
+				AssetFileDescriptor descriptor = assetManager.openFd(songName);
+				music.setDataSource(descriptor.getFileDescriptor(),descriptor.getStartOffset(), descriptor.getLength());
+				music.prepare();
+				music.setLooping(true);
+				music.start();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	}
+	
+	public static void onSound(Context c, String songName){
+		try {
+			AssetManager assetManager = c.getAssets();
+			AssetFileDescriptor descriptor = assetManager.openFd(songName);
+			sound.setDataSource(descriptor.getFileDescriptor(),descriptor.getStartOffset(), descriptor.getLength());
+			sound.prepare();
+			sound.start();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+}
+	
+	public static void offMusic (){
+			music.stop();
+	}
+	
+	public static void clear (){
+		//music.release();
+		music.reset();
+	}
+	
+	public static void clearSound (){
+		//music.release();
+		sound.reset();
+	}
+	
+	
 
 }

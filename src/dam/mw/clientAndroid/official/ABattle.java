@@ -125,21 +125,33 @@ public class ABattle extends Activity implements OnClickListener {
 		switch (v.getId()) {
 
 		case R.id.btn_normalAttack:
+			CApp.clearSound();
+			CApp.onSound(context, "music/basico.mp3");
 			new SendActionBattle().execute(CConstant.BASIC);
 			break;
 		case R.id.btn_spell1:
+			CApp.clearSound();
+			CApp.onSound(context, "music/spell1.mp3");
 			new SendActionBattle().execute(CConstant.SPELL1);
 			break;
 		case R.id.btn_spell2:
+			CApp.clearSound();
+			CApp.onSound(context, "music/spell2.mp3");
 			new SendActionBattle().execute(CConstant.SPELL2);
 			break;
 		case R.id.btn_superAttack:
+			CApp.clearSound();
+			CApp.onSound(context, "music/ua.mp3");
 			new SendActionBattle().execute(CConstant.ULTIMATE);
 			break;
 		case R.id.btn_dodge:
+			CApp.clearSound();
+			CApp.onSound(context, "music/dodge.mp3");
 			new SendActionBattle().execute(CConstant.DODGE);
 			break;
 		case R.id.btn_defense:
+			CApp.clearSound();
+			CApp.onSound(context, "music/shield.mp3");
 			new SendActionBattle().execute(CConstant.SHIELD);
 			break;
 		default:
@@ -396,7 +408,17 @@ public class ABattle extends Activity implements OnClickListener {
 
 					} else if (playerArray.length == 9) {
 						String result = CApp.getErrorNameByErrorNum(playerArray[8]);
-						//Toast.makeText(context, "End battle: " + result,Toast.LENGTH_LONG).show();
+						
+						/*if(playerArray[8]=="10"){
+							sound.offMusic();
+							sound.cleanMusicWin();
+							sound.onMusicWin();
+						}else{
+							
+							sound.offMusic();
+							sound.clean();
+							sound.onDefeat();
+						}*/
 						
 						//Dialog end battle
 						dialog.setTitle(result);           
@@ -404,6 +426,9 @@ public class ABattle extends Activity implements OnClickListener {
 		                
 						dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {  
 		                    public void onClick(DialogInterface dialogo1, int id) {
+		                    	CApp.offMusic();
+								CApp.clear();
+								CApp.onMusic(context, "music/maintheme.mp3");
 		                    	Intent intent = new Intent(context, AMenu.class);
 								startActivity(intent);
 		                    }  

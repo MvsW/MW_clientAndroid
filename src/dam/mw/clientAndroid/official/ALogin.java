@@ -1,5 +1,6 @@
 package dam.mw.clientAndroid.official;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.controlCenter.CApp;
@@ -11,14 +12,19 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.graphics.AvoidXfermode.Mode;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
@@ -27,6 +33,7 @@ import android.widget.*;
 public class ALogin extends Activity implements OnClickListener {
 
 	private JApp japp = new JApp();
+	private CApp Capp = new CApp();
 	private EditText et_usernameOrEmail, et_password;
 	private ArrayList<EditText> fields = new ArrayList<EditText>();
 	Drawable image;
@@ -34,6 +41,7 @@ public class ALogin extends Activity implements OnClickListener {
 	String password;
 	static Context context;
 	ProgressDialog pDialog;
+	
 	
 	Button btn_register;
 	Button btn_login;
@@ -44,6 +52,7 @@ public class ALogin extends Activity implements OnClickListener {
 	private ArrayList<String> errorNum= new ArrayList<String>();
 
 	protected PowerManager.WakeLock wakelock;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,6 +64,28 @@ public class ALogin extends Activity implements OnClickListener {
         //Get username & password after register a user & player.
         usernameRegistred = getIntent().getStringExtra("username");
         passwordRegistered = getIntent().getStringExtra("password");
+        
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        
+        
+        //music
+        CApp.offMusic();
+		CApp.clear();
+        Capp.onMusic(this, "music/maintheme.mp3");
+        
+        
+	/*	mediaPlayer = new MediaPlayer();
+		try {
+			AssetManager assetManager = getAssets();
+			AssetFileDescriptor descriptor = assetManager.openFd("maintheme.mp3");
+			mediaPlayer.setDataSource(descriptor.getFileDescriptor(), descriptor.getStartOffset(), descriptor.getLength());
+			mediaPlayer.prepare();
+			mediaPlayer.setLooping(true);
+			mediaPlayer.start();
+		} catch (IOException e) {
+			Log.i("LogsAndroid","Couldn't load music file, " + e.getMessage());
+			mediaPlayer = null;
+		}*/
         
         
 		// TODO: Revisar documentos juancar para quitar top-bars y status-bar.
@@ -76,16 +107,16 @@ public class ALogin extends Activity implements OnClickListener {
 		// FindViewBy ID
 		et_usernameOrEmail = (EditText) findViewById(R.id.et_userOrMail);
 		et_usernameOrEmail.setTextColor(Color.RED);
-		//et_usernameOrEmail.setText("android1");
-		et_usernameOrEmail.setText("user1@hotmail.com");
+		et_usernameOrEmail.setText("android1");
+		//et_usernameOrEmail.setText("user1@hotmail.com");
 		
 		//Get user after registration process
 		//et_usernameOrEmail.setText(usernameRegistred);
 		
 		et_password = (EditText) findViewById(R.id.et_password);
 		et_password.setTextColor(Color.RED);
-		//et_password.setText("Android1");
-		et_password.setText("User1964");
+		et_password.setText("Android1");
+		//et_password.setText("User1964");
 		
 		//Get password after registration process
 		//et_password.setText(passwordRegistered);
@@ -175,8 +206,6 @@ public class ALogin extends Activity implements OnClickListener {
 		}
 		
 	}
-	
-	
 
 	@Override
 	public void onClick(View v) {

@@ -31,11 +31,12 @@ public class AMenu extends Activity implements OnClickListener {
 	private Context context;
 	private ProgressDialog pDialog;
 	private boolean searching = false;
+	
+
 	protected PowerManager.WakeLock wakelock;
 	Button btn_battle;
 	Button btn_showData;
 	Button dialog_cancel;
-	
 	
 
 	@Override
@@ -47,6 +48,7 @@ public class AMenu extends Activity implements OnClickListener {
 		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
 				"etiqueta");
 		wakelock.acquire();
+		
 
 		context = this;
 		
@@ -58,9 +60,7 @@ public class AMenu extends Activity implements OnClickListener {
 		btn_showData.setTypeface(face);
 		
 		//dialog_cancel = (Button)findViewById(R.id.progress_cancel);
-		
-		
-		
+
 	}
 	
 	//Get actions of physical buttons.
@@ -139,10 +139,19 @@ public class AMenu extends Activity implements OnClickListener {
 		        @Override
 		        public void onClick(View v){
 		        	Log.i("LogsAndroid", "Cancel clicked");
-		        	//new cancelBattle().execute();
+		        	runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							CApp.offMusic();
+							CApp.clear();
+							CApp.onMusic(context, "music/maintheme.mp3");
+						}
+					});
+		        	//music
 		        	CApp.setButtonCancelTapped();
-		        	Toast.makeText(context, "Search battle canceled.", Toast.LENGTH_SHORT).show();
 		        	pDialog.dismiss();
+		        	
+		        	
 		        }
 		    });
 		}
@@ -168,8 +177,7 @@ public class AMenu extends Activity implements OnClickListener {
 		@Override
 		protected void onPostExecute(String s) {
 			super.onPostExecute(s);
-			Log.i("LogsAndroid",
-					"PostExecute Sending data to Searching battle...");
+			Log.i("LogsAndroid", "PostExecute Sending data to Searching battle...");
 			pDialog.dismiss();
 			if (searching) {
 				Intent intentBattle = new Intent(context, ABattle.class);
@@ -180,66 +188,22 @@ public class AMenu extends Activity implements OnClickListener {
 
 	}
 	
-	/*class cancelBattle extends AsyncTask<String, String, String> {
-		
-
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-		}
-
-		@Override
-		protected String doInBackground(String... params) {
-			Log.i("LogsAndroid", "Sending cancel battle...");
-			try{
-			CApp.sendData(CConstant.CANCEL);
-			}catch(Exception e){
-				runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
-					}
-				});
-				
-			}
-			return "";
-		}
-
-		@Override
-		protected void onPostExecute(String s) {
-			super.onPostExecute(s);
-			runOnUiThread(new Runnable() {
-				@Override
-				public void run() {
-					Toast.makeText(context, "Search battle canceled", Toast.LENGTH_SHORT).show();
-				}
-			});
-		}
-		
-
-
-	}*/
-
 
 	@Override
 	public void onClick(View v) {
 		Intent intent;
 		switch (v.getId()) {
 
-		case R.id.btn_battle: // click battle
-			// previament notificar al servidor per buscar un rival, mostrar
-			// pantalla de searching (timeOut), i al finalitzar si tenim
-			// contricant pasem
-			// a Abattle, rebre dades a mostrar en la activity. Inicia la
-			// batalla (timeOuts)
-
+		case R.id.btn_battle: 
+			//music
+			CApp.offMusic();
+			CApp.clear();
+			CApp.onMusic(context, "music/busquedabatalla.mp3");
 			new searchBattle().execute();
-
 			break;
 		case R.id.btn_showData: // click show data
 			// send data to server (Register constant).
 			new sendData().execute();
-
 			break;
 		default:
 			break;
