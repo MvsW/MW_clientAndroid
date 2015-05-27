@@ -6,7 +6,6 @@ import dam.mw.clientAndroid.R.layout;
 import dam.mw.clientAndroid.R.menu;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
-import dam.mw.clientAndroid.controlCenter.music;
 import dam.mw.clientAndroid.official.ALogin.login;
 import dam.mw.clientAndroid.official.ARegister_player.sendBackData;
 import android.app.Activity;
@@ -38,7 +37,6 @@ public class AMenu extends Activity implements OnClickListener {
 	Button btn_battle;
 	Button btn_showData;
 	Button dialog_cancel;
-	music Battle;
 	
 
 	@Override
@@ -51,7 +49,6 @@ public class AMenu extends Activity implements OnClickListener {
 				"etiqueta");
 		wakelock.acquire();
 		
-		Battle = new music(getApplicationContext());
 
 		context = this;
 		
@@ -142,16 +139,18 @@ public class AMenu extends Activity implements OnClickListener {
 		        @Override
 		        public void onClick(View v){
 		        	Log.i("LogsAndroid", "Cancel clicked");
-		        	CApp.setButtonCancelTapped();
-		        	pDialog.dismiss();
 		        	runOnUiThread(new Runnable() {
 						@Override
 						public void run() {
-							Battle.offBattleMusic();
-							Battle.clean();
-				        	Battle.onMainTheme();
+							CApp.offMusic();
+							CApp.clear();
+							CApp.onMusic(context, "music/maintheme.mp3");
 						}
 					});
+		        	//music
+		        	CApp.setButtonCancelTapped();
+		        	pDialog.dismiss();
+		        	
 		        	
 		        }
 		    });
@@ -196,10 +195,10 @@ public class AMenu extends Activity implements OnClickListener {
 		switch (v.getId()) {
 
 		case R.id.btn_battle: 
-			
-			Battle.offMusic();
-			Battle.clean();
-			Battle.onSearchBattle();
+			//music
+			CApp.offMusic();
+			CApp.clear();
+			CApp.onMusic(context, "music/busquedabatalla.mp3");
 			new searchBattle().execute();
 			break;
 		case R.id.btn_showData: // click show data

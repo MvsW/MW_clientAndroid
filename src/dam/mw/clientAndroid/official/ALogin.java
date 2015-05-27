@@ -6,7 +6,6 @@ import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
 import dam.mw.clientAndroid.controlCenter.JApp;
-import dam.mw.clientAndroid.controlCenter.music;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -34,6 +33,7 @@ import android.widget.*;
 public class ALogin extends Activity implements OnClickListener {
 
 	private JApp japp = new JApp();
+	private CApp Capp = new CApp();
 	private EditText et_usernameOrEmail, et_password;
 	private ArrayList<EditText> fields = new ArrayList<EditText>();
 	Drawable image;
@@ -42,7 +42,6 @@ public class ALogin extends Activity implements OnClickListener {
 	static Context context;
 	ProgressDialog pDialog;
 	
-	MediaPlayer mediaPlayer;
 	
 	Button btn_register;
 	Button btn_login;
@@ -54,8 +53,6 @@ public class ALogin extends Activity implements OnClickListener {
 
 	protected PowerManager.WakeLock wakelock;
 	
-	//music
-	music mainTheme;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -72,10 +69,10 @@ public class ALogin extends Activity implements OnClickListener {
         
         
         //music
+        CApp.offMusic();
+		CApp.clear();
+        Capp.onMusic(this, "music/maintheme.mp3");
         
-        mainTheme = new music(getApplicationContext());
-        
-        mainTheme.onMainTheme();
         
 	/*	mediaPlayer = new MediaPlayer();
 		try {

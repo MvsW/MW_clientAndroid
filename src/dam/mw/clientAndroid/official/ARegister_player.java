@@ -260,12 +260,11 @@ public class ARegister_player extends Activity {
 	public void onClick(View v) {
 		playerName = et_characterName.getText().toString();
 		registreOK = true;
-		if (!playerName.isEmpty()) {
+		if (!playerName.isEmpty() || playerName.contains(" ")) {
 			if (playerName.length() > 12) {
-				et_characterName.setError("Max length: 12");
-				registreOK = false;
+			et_characterName.setError("Max length: 12 and no spaces");
+			registreOK = false;
 			}
-
 			if (playerName.contains("@")) {
 				et_characterName.setError("'@' not allowed");
 				registreOK = false;

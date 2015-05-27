@@ -4,7 +4,6 @@ package dam.mw.clientAndroid.official;
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
-import dam.mw.clientAndroid.controlCenter.music;
 import dam.mw.clientAndroid.official.AMyData.getData;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -78,8 +77,6 @@ public class ABattle extends Activity implements OnClickListener {
 	
 	AlertDialog.Builder dialog;
 	
-	music sound;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +113,6 @@ public class ABattle extends Activity implements OnClickListener {
 		pb_contrincantLife = (ProgressBar) findViewById(R.id.pb_contrincantLife);
 		pb_contrincantMana = (ProgressBar) findViewById(R.id.pb_contrincantMana);
 		
-		sound = new music(context);
 
 		new ReadResponseBattleFirstTime().execute();
 
@@ -129,33 +125,33 @@ public class ABattle extends Activity implements OnClickListener {
 		switch (v.getId()) {
 
 		case R.id.btn_normalAttack:
-			sound.cleanSound();
-			sound.onSoundBasic("music/basico.mp3");
+			CApp.clearSound();
+			CApp.onSound(context, "music/basico.mp3");
 			new SendActionBattle().execute(CConstant.BASIC);
 			break;
 		case R.id.btn_spell1:
-			sound.cleanSound();
-			sound.onSoundBasic("music/spell1.mp3");
+			CApp.clearSound();
+			CApp.onSound(context, "music/spell1.mp3");
 			new SendActionBattle().execute(CConstant.SPELL1);
 			break;
 		case R.id.btn_spell2:
-			sound.cleanSound();
-			sound.onSoundBasic("music/spell2.mp3");
+			CApp.clearSound();
+			CApp.onSound(context, "music/spell2.mp3");
 			new SendActionBattle().execute(CConstant.SPELL2);
 			break;
 		case R.id.btn_superAttack:
-			sound.cleanSound();
-			sound.onSoundBasic("music/ua.mp3");
+			CApp.clearSound();
+			CApp.onSound(context, "music/ua.mp3");
 			new SendActionBattle().execute(CConstant.ULTIMATE);
 			break;
 		case R.id.btn_dodge:
-			sound.cleanSound();
-			sound.onSoundBasic("music/dodge.mp3");
+			CApp.clearSound();
+			CApp.onSound(context, "music/dodge.mp3");
 			new SendActionBattle().execute(CConstant.DODGE);
 			break;
 		case R.id.btn_defense:
-			sound.cleanSound();
-			sound.onSoundBasic("music/shield.mp3");
+			CApp.clearSound();
+			CApp.onSound(context, "music/shield.mp3");
 			new SendActionBattle().execute(CConstant.SHIELD);
 			break;
 		default:
@@ -430,6 +426,9 @@ public class ABattle extends Activity implements OnClickListener {
 		                
 						dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {  
 		                    public void onClick(DialogInterface dialogo1, int id) {
+		                    	CApp.offMusic();
+								CApp.clear();
+								CApp.onMusic(context, "music/maintheme.mp3");
 		                    	Intent intent = new Intent(context, AMenu.class);
 								startActivity(intent);
 		                    }  
