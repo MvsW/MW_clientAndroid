@@ -69,8 +69,8 @@ public class ARegister_player extends Activity {
 	private int intelligenceBase_Points;
 	private int strength_Points;
 	private int intelligence_Points;
-	private int idUser;
-	private int totalPoints;
+	//private int idUser;
+	//private int totalPoints;
 
 	JApp Japp = new JApp();
 
@@ -155,7 +155,8 @@ public class ARegister_player extends Activity {
 
 		context = this;
 
-		setStats(CConstant.MAGE);
+		setStats(CConstant.WARLOCK);
+		idPlayerType = CConstant.WARLOCK;
 
 	}
 
@@ -273,6 +274,9 @@ public class ARegister_player extends Activity {
 			et_characterName.setError("Required field");
 			registreOK = false;
 		}
+		if(count_unasigned > 0){
+			registreOK = false;
+		}
 
 		if (registreOK == true) {
 			// TODO: Guardar registre a la base de dades.
@@ -353,6 +357,7 @@ public class ARegister_player extends Activity {
 			 * energy eRegeneration strength intelligence idUser totalPoints
 			 */
 			try {
+				
 				eRegeneration = tv_energyReg_point.getText().toString();
 				life = tv_life_point.getText().toString();
 				energy = tv_energy_point.getText().toString();

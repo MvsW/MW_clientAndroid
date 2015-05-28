@@ -53,6 +53,7 @@ public class AMyData extends Activity {
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
         
+        
         ArrayList<TextView> labels = new ArrayList<TextView>();
         labels.add((TextView)findViewById(R.id.tv_life));
         labels.add((TextView)findViewById(R.id.tv_energy));
@@ -62,6 +63,7 @@ public class AMyData extends Activity {
         labels.add((TextView)findViewById(R.id.tv_dateRegister));
         labels.add((TextView)findViewById(R.id.tv_totalPoints));
         labels.add((TextView)findViewById(R.id.tv_totalWins));
+        
         
         for(TextView textview:labels){
         	textview.setTypeface(face);
