@@ -176,7 +176,12 @@
             android:textSize="7sp" />
 
     </RelativeLayout>
-
+    
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
     <TextView
         android:id="@+id/tv_nameAttack"
         android:layout_width="wrap_content"
@@ -193,11 +198,13 @@
         android:layout_width="182dp"
         android:layout_height="65dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="5dp"
+        android:layout_below="@+id/tv_nameAttack"
         android:hint="definitionAttack"
-        android:textSize="15dp"
         android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF" />
+        android:textColorHint="#FFFFFF"
+        android:textSize="15dp" />
+    
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
