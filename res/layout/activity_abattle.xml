@@ -177,10 +177,33 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/tv_nameAttack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="5dp"
+        android:hint="NameAttack"
+        android:textSize="25dp"
+        android:textColor = "#FFFFFF"
+        android:textColorHint="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tv_definitionAttack"
+        android:layout_width="182dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="5dp"
+        android:hint="definitionAttack"
+        android:textSize="15dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp"
         android:gravity="bottom" >
 
         <Button

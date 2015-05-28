@@ -275,6 +275,7 @@ public class ARegister_player extends Activity {
 			registreOK = false;
 		}
 		if(count_unasigned > 0){
+			Toast.makeText(this, "They must be assignados all attributes", Toast.LENGTH_SHORT).show();
 			registreOK = false;
 		}
 

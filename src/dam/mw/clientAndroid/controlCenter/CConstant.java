@@ -22,6 +22,22 @@ public final class CConstant {
     public final static String SHIELD = "5";
     public final static String DODGE = "6";
     
+    //DEFINITION ATTACK
+    public final static String TEXT_BASIC ="No energy consumption damages the opponent based on your strength.";
+    public final static String TEXT_SPELL1 ="In exchange for a small amount of power you damage your opponent depending on your intelligence.";
+    public final static String TEXT_SPELL2 ="Cause considerable damage to the enemy according to your intelligence and your strength half.";
+    public final static String TEXT_ULTIMATE ="In exchange for almost all your energy you can exercise more than considerable damage on your opponent. This spell takes into account both your strengths as intelligence.";
+    public final static String TEXT_SHIELD ="It allows you to reduce all or part of the damage taken according to your strengths.";
+    public final static String TEXT_DODGE ="Depending on your intelligence you have the possibility to avoid all or part of the damage taken.";
+    
+    //NAME ATTACKS
+    public final static String NAME_BASIC = "Basic Attack";
+    public final static String NAME_SPELL1 = "Spell 1";
+    public final static String NAME_SPELL2 = "Spell 2";
+    public final static String NAME_ULTIMATE = "Ultimate";
+    public final static String NAME_SHIELD = "Shield";
+    public final static String NAME_DODGE = "Dodge";
+    
     public final static String SEPARATOR = ",";
     
     

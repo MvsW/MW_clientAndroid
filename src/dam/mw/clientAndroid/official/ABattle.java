@@ -1,6 +1,8 @@
 package dam.mw.clientAndroid.official;
 
 
+import java.util.ArrayList;
+
 import dam.mw.clientAndroid.R;
 import dam.mw.clientAndroid.controlCenter.CApp;
 import dam.mw.clientAndroid.controlCenter.CConstant;
@@ -13,6 +15,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -64,6 +67,9 @@ public class ABattle extends Activity implements OnClickListener {
 	private TextView tv_contrincantMana;
 	private TextView tv_namePlayer1;
 	private TextView tv_namePlayer2;
+	private TextView tv_nameAttack;
+	private TextView tv_definitionAttack;
+	
 
 	private Button btn_normalAttack;
 	private Button btn_spell1;
@@ -91,6 +97,8 @@ public class ABattle extends Activity implements OnClickListener {
 		tv_contrincantMana = (TextView) findViewById(R.id.tv_contrincantMana);
 		tv_namePlayer1 = (TextView) findViewById(R.id.tv_namePlayer1);
 		tv_namePlayer2 = (TextView) findViewById(R.id.tv_namePlayer2);
+		tv_nameAttack = (TextView) findViewById(R.id.tv_nameAttack);
+		tv_definitionAttack = (TextView) findViewById(R.id.tv_definitionAttack);
 		
 		btn_normalAttack = (Button) findViewById(R.id.btn_normalAttack);
 		btn_spell1 = (Button) findViewById(R.id.btn_spell1);
@@ -112,7 +120,17 @@ public class ABattle extends Activity implements OnClickListener {
 		pb_mana = (ProgressBar) findViewById(R.id.pb_mana);
 		pb_contrincantLife = (ProgressBar) findViewById(R.id.pb_contrincantLife);
 		pb_contrincantMana = (ProgressBar) findViewById(R.id.pb_contrincantMana);
+
+		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
 		
+		ArrayList<TextView> labels = new ArrayList<TextView>();
+		 labels.add(tv_nameAttack);
+	     labels.add(tv_definitionAttack);
+	     
+		
+		for(TextView textview:labels){
+        	textview.setTypeface(face);
+        }
 
 		new ReadResponseBattleFirstTime().execute();
 
@@ -128,31 +146,43 @@ public class ABattle extends Activity implements OnClickListener {
 			CApp.clearSound();
 			CApp.onSound(context, "music/basico.mp3");
 			new SendActionBattle().execute(CConstant.BASIC);
+			tv_nameAttack.setText(CConstant.NAME_BASIC);
+			tv_definitionAttack.setText(CConstant.TEXT_BASIC);
 			break;
 		case R.id.btn_spell1:
 			CApp.clearSound();
 			CApp.onSound(context, "music/spell1.mp3");
 			new SendActionBattle().execute(CConstant.SPELL1);
+			tv_nameAttack.setText(CConstant.NAME_SPELL1);
+			tv_definitionAttack.setText(CConstant.TEXT_SPELL1);
 			break;
 		case R.id.btn_spell2:
 			CApp.clearSound();
 			CApp.onSound(context, "music/spell2.mp3");
 			new SendActionBattle().execute(CConstant.SPELL2);
+			tv_nameAttack.setText(CConstant.NAME_SPELL2);
+			tv_definitionAttack.setText(CConstant.TEXT_SPELL2);
 			break;
 		case R.id.btn_superAttack:
 			CApp.clearSound();
 			CApp.onSound(context, "music/ua.mp3");
 			new SendActionBattle().execute(CConstant.ULTIMATE);
+			tv_nameAttack.setText(CConstant.NAME_ULTIMATE);
+			tv_definitionAttack.setText(CConstant.TEXT_ULTIMATE);
 			break;
 		case R.id.btn_dodge:
 			CApp.clearSound();
 			CApp.onSound(context, "music/dodge.mp3");
 			new SendActionBattle().execute(CConstant.DODGE);
+			tv_nameAttack.setText(CConstant.NAME_DODGE);
+			tv_definitionAttack.setText(CConstant.TEXT_DODGE);
 			break;
 		case R.id.btn_defense:
 			CApp.clearSound();
 			CApp.onSound(context, "music/shield.mp3");
 			new SendActionBattle().execute(CConstant.SHIELD);
+			tv_nameAttack.setText(CConstant.NAME_SHIELD);
+			tv_definitionAttack.setText(CConstant.TEXT_SHIELD);
 			break;
 		default:
 			break;
@@ -376,19 +406,19 @@ public class ABattle extends Activity implements OnClickListener {
 						pb_mana.setProgress(progressStatusMana);
 						tv_mana.setText(energy_int + "/"+ originalMana);
 						
-						if(progressStatusMana<=15){
+						if(progressStatusMana<=21){
 							btn_spell1.setEnabled(false);
 						}else{
 							btn_spell1.setEnabled(true);
 						}
 						
-						if(progressStatusMana<=40){
+						if(progressStatusMana<=34){
 							btn_spell2.setEnabled(false);
 						}else{
 							btn_spell2.setEnabled(true);
 						}
 						
-						if(progressStatusMana<=80){
+						if(progressStatusMana<=89){
 							btn_superAttack.setEnabled(false);
 						}else{
 							btn_superAttack.setEnabled(true);
