@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="@drawable/bg_generic" >
-    
+    android:background="@drawable/bg_generic"
+    android:orientation="vertical" >
+
     <TextView
         android:id="@+id/tv_userName"
         android:layout_width="wrap_content"
@@ -13,24 +13,24 @@
         android:text="@string/tv_userName"
         android:textColor="#FFFFFF"
         android:textSize="50px" />
-    
+
     <EditText
         android:id="@+id/et_userName"
         android:layout_width="300dp"
         android:layout_height="53dp"
         android:layout_gravity="center"
-        android:gravity="center"
         android:background="@drawable/edittext_modified_states"
+        android:ems="10"
         android:fontFamily="sans-serif-light"
-        android:textStyle="bold"
+        android:gravity="center"
+        android:hint="@string/et_userName"
         android:textColor="#FFFFFF"
         android:textSize="14dp"
-        android:hint="@string/et_userName"
-        android:ems="10" >
+        android:textStyle="bold" >
 
         <requestFocus />
     </EditText>
-    
+
     <TextView
         android:id="@+id/tv_mail"
         android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         android:text="@string/tv_mail"
         android:textColor="#FFFFFF"
         android:textSize="50px" />
-    
+
     <EditText
         android:id="@+id/et_mail"
         android:layout_width="300dp"
@@ -56,7 +56,7 @@
         android:textColor="#FFFFFF"
         android:textSize="14dp"
         android:textStyle="bold" />
-    
+
     <TextView
         android:id="@+id/tv_password"
         android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
         android:text="@string/tv_password"
         android:textColor="#FFFFFF"
         android:textSize="50px" />
-    
+
     <EditText
         android:id="@+id/et_password"
         android:layout_width="300dp"
@@ -82,7 +82,7 @@
         android:textColor="#FFFFFF"
         android:textSize="14dp"
         android:textStyle="bold" />
-    
+
     <TextView
         android:id="@+id/tv_confirmPassword"
         android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
         android:text="@string/tv_confirmPassword"
         android:textColor="#FFFFFF"
         android:textSize="50px" />
-    
+
     <EditText
         android:id="@+id/et_confirmPassword"
         android:layout_width="300dp"
@@ -108,7 +108,7 @@
         android:textColor="#FFFFFF"
         android:textSize="14dp"
         android:textStyle="bold" />
-    
+
     <Button
         android:id="@+id/btn_registerActivity"
         android:layout_width="200dp"
@@ -121,7 +121,5 @@
         android:textColor="#FFFFFF"
         android:textSize="80px"
         android:textStyle="bold" />
-    
-    
 
 </LinearLayout>

@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Title Activitys & App name -->
-    <string name="app_name">MW_clientAndroid</string>
+    <string name="app_name">MvsW</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_alogin">Login</string>
     <string name="title_activity_amenu">Menu</string>
@@ -71,9 +71,9 @@
     <string name="lbl_energy"></string>
     <string name="lbl_regEnergy"></string>
     <string name="lbl_strength"></string>
- <!-- Enter to the custom component -->
+    <!-- Enter to the custom component -->
     <string name="lbl_inteligence"></string>
- <!-- Enter to the custom component -->
+    <!-- Enter to the custom component -->
     <string name="lbl_unsassigned_points"></string>
     <string name="et_playerName">Choose your player name</string>
 

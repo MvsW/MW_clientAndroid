@@ -3,12 +3,14 @@
     android:pivotX="50%"
     android:pivotY="50%"
     android:toDegrees="360" >
+
     <shape
         android:shape="oval"
         android:useLevel="false" >
         <size
             android:height="48dip"
             android:width="48dip" />
+
         <gradient
             android:centerColor="#000000"
             android:centerY="0.50"
@@ -17,4 +19,5 @@
             android:type="sweep"
             android:useLevel="false" />
     </shape>
+
 </rotate>
