@@ -27,6 +27,8 @@
     <string name="btn_spell1">Spell 1</string>
     <string name="btn_spell2">Spell 2</string>
     <string name="btn_normalAttack">Basic Attack</string>
+    <string name="tv_nameAttack">Name Attack</string>
+    <string name="tv_definitionAttack">Definition Attack</string>
 
     <!-- AMyData Strings -->
     <string name="tv_life">Life</string>
@@ -43,14 +45,14 @@
 
     <!-- ARegister Strings -->
     <string name="tv_registration">Registration</string>
-    <string name="tv_userName">User Name</string>
-    <string name="et_userName">Choose your User Name</string>
-    <string name="tv_mail">Mail</string>
-    <string name="et_mail">Type the real email</string>
+    <string name="tv_userName">Username</string>
+    <string name="et_userName">Choose your username</string>
+    <string name="tv_mail">Email</string>
+    <string name="et_mail">Type a real email</string>
     <string name="tv_password">Password</string>
-    <string name="et_password">Choose the password</string>
+    <string name="et_password">Choose a password</string>
     <string name="tv_confirmPassword">Confirm password</string>
-    <string name="et_confirmPassword">Repeat this password</string>
+    <string name="et_confirmPassword">Repeat the password</string>
     <string name="btn_registerActivity">Register</string>
 
     <!-- ARegisterPlayer Strings -->
