@@ -67,34 +67,17 @@ public class ALogin extends Activity implements OnClickListener {
         
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
         
-        
         //music
         CApp.offMusic();
 		CApp.clear();
         Capp.onMusic(this, "music/maintheme.mp3");
         
-        
-	/*	mediaPlayer = new MediaPlayer();
-		try {
-			AssetManager assetManager = getAssets();
-			AssetFileDescriptor descriptor = assetManager.openFd("maintheme.mp3");
-			mediaPlayer.setDataSource(descriptor.getFileDescriptor(), descriptor.getStartOffset(), descriptor.getLength());
-			mediaPlayer.prepare();
-			mediaPlayer.setLooping(true);
-			mediaPlayer.start();
-		} catch (IOException e) {
-			Log.i("LogsAndroid","Couldn't load music file, " + e.getMessage());
-			mediaPlayer = null;
-		}*/
-        
+        // Solution for subtitle already set ERROR: 
+        		// http://stackoverflow.com/questions/20087804/should-have-subtitle-controller-already-set-mediaplayer-error-android
         
 		// TODO: Revisar documentos juancar para quitar top-bars y status-bar.
-		
 		//Set typeface.
 		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
-		
-		
-		
 		
 		
 		//Buttons
@@ -107,19 +90,13 @@ public class ALogin extends Activity implements OnClickListener {
 		// FindViewBy ID
 		et_usernameOrEmail = (EditText) findViewById(R.id.et_userOrMail);
 		et_usernameOrEmail.setTextColor(Color.RED);
-		et_usernameOrEmail.setText("android1");
-		//et_usernameOrEmail.setText("user1@hotmail.com");
+		et_usernameOrEmail.setText("user1");
 		
 		//Get user after registration process
 		//et_usernameOrEmail.setText(usernameRegistred);
 		
-		et_password = (EditText) findViewById(R.id.et_password);
+		et_password = (EditText)findViewById(R.id.et_password);
 		et_password.setTextColor(Color.RED);
-		et_password.setText("Android1");
-		//et_password.setText("User1964");
-		
-		//Get password after registration process
-		//et_password.setText(passwordRegistered);
 
 		// Add to a ArrayList
 		fields.add(et_usernameOrEmail);

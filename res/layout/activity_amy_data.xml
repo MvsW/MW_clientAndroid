@@ -4,7 +4,8 @@
     android:background="@drawable/bg_generic3"
     android:columnCount="2"
     android:rowCount="12" >
-    <!--  android:background="@drawable/bg_generic3" -->
+
+    <!-- android:background="@drawable/bg_generic3" -->
 
     <Space
         android:layout_width="1dp"
@@ -15,6 +16,7 @@
         android:id="@+id/tv_name_avatar"
         android:layout_column="0"
         android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_row="1"
         android:text="Large Text"
@@ -25,10 +27,10 @@
     <ImageView
         android:id="@+id/iv_avatar"
         android:layout_width="150dp"
-        android:layout_height="230dp"
+        android:layout_height="190dp"
         android:layout_column="1"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="20dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
         android:layout_row="1"
         android:background="@drawable/mage" />
@@ -36,8 +38,9 @@
     <TextView
         android:id="@+id/tv_lifeData"
         android:layout_column="1"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="50dp"
         android:layout_row="2"
         android:text="99"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -57,7 +60,8 @@
     <TextView
         android:id="@+id/tv_energyData"
         android:layout_column="1"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
         android:layout_row="3"
         android:text="99"
@@ -78,7 +82,8 @@
     <TextView
         android:id="@+id/tv_regEnergyData"
         android:layout_column="1"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
         android:layout_row="4"
         android:text="99"
@@ -99,7 +104,8 @@
     <TextView
         android:id="@+id/tv_strengthData"
         android:layout_column="1"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
         android:layout_row="5"
         android:text="99"
@@ -120,7 +126,8 @@
     <TextView
         android:id="@+id/tv_inteligenceData"
         android:layout_column="1"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
         android:layout_row="6"
         android:text="99"
@@ -141,7 +148,8 @@
     <TextView
         android:id="@+id/tv_dateRegisterData"
         android:layout_column="1"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
         android:layout_row="7"
         android:text="0000-00-00"
@@ -163,7 +171,8 @@
     <TextView
         android:id="@+id/tv_totalPointsData"
         android:layout_column="1"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
         android:layout_row="8"
         android:text="99"
@@ -184,7 +193,8 @@
     <TextView
         android:id="@+id/tv_totalWinsData"
         android:layout_column="1"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
         android:layout_row="9"
         android:text="99"
@@ -196,7 +206,7 @@
         android:layout_column="0"
         android:layout_gravity="left|bottom"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_row="2"
         android:text="@string/tv_life"
         android:textColor="#FFFFFF"

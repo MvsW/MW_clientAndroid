@@ -1,19 +1,12 @@
 package dam.mw.clientAndroid;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
-import dam.mw.clientAndroid.R;
-import dam.mw.clientAndroid.controlCenter.CConstant;
-import dam.mw.clientAndroid.controlCenter.GPSTracker;
 
 import android.app.Activity;
 import android.content.Context;
@@ -25,7 +18,12 @@ import android.os.PowerManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import dam.mw.clientAndroid.controlCenter.CConstant;
+import dam.mw.clientAndroid.controlCenter.GPSTracker;
 
 public class MainActivity extends Activity {
 

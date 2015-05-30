@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
-    <issue id="HardcodedText">
+
+    <issue id="HardcodedText" >
+
         <ignore path="res/layout/activity_main.xml" />
     </issue>
-    <issue id="InefficientWeight">
+
+    <issue id="InefficientWeight" >
+
         <ignore path="res/layout/activity_main.xml" />
     </issue>
+
 </lint>

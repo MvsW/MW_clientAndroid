@@ -5,33 +5,33 @@
     android:layout_gravity="center"
     android:background="@drawable/progressdialog"
     android:orientation="vertical" >
- 
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:indeterminateDrawable="@drawable/progressdialog_color"
-        android:layout_gravity="center_horizontal"/>
- 
+        android:layout_gravity="center_horizontal"
+        android:indeterminateDrawable="@drawable/progressdialog_color" />
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
         android:text="Loading..."
-        android:textStyle="bold"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center_horizontal"/>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/progress_cancel"
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:text="Cancel"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
-        android:textColor="#FFFFFF"
         android:background="@drawable/button_modified_states"
-        android:layout_gravity="center_horizontal" />
- 
+        android:text="Cancel"
+        android:textColor="#FFFFFF" />
+
 </LinearLayout>

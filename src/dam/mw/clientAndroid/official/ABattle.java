@@ -97,6 +97,8 @@ public class ABattle extends Activity implements OnClickListener {
 		tv_contrincantMana = (TextView) findViewById(R.id.tv_contrincantMana);
 		tv_namePlayer1 = (TextView) findViewById(R.id.tv_namePlayer1);
 		tv_namePlayer2 = (TextView) findViewById(R.id.tv_namePlayer2);
+		
+		// Action information boxes
 		tv_nameAttack = (TextView) findViewById(R.id.tv_nameAttack);
 		tv_definitionAttack = (TextView) findViewById(R.id.tv_definitionAttack);
 		
@@ -121,16 +123,16 @@ public class ABattle extends Activity implements OnClickListener {
 		pb_contrincantLife = (ProgressBar) findViewById(R.id.pb_contrincantLife);
 		pb_contrincantMana = (ProgressBar) findViewById(R.id.pb_contrincantMana);
 
-		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
-		
-		ArrayList<TextView> labels = new ArrayList<TextView>();
-		 labels.add(tv_nameAttack);
-	     labels.add(tv_definitionAttack);
-	     
-		
-		for(TextView textview:labels){
-        	textview.setTypeface(face);
-        }
+//		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
+//		
+//		ArrayList<TextView> labels = new ArrayList<TextView>();
+//		 labels.add(tv_nameAttack);
+//	     labels.add(tv_definitionAttack);
+//	     
+//		
+//		for(TextView textview:labels){
+//        	textview.setTypeface(face);
+//        }
 
 		new ReadResponseBattleFirstTime().execute();
 
