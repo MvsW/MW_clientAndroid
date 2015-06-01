@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -134,10 +135,10 @@ public class AMyData extends Activity {
 				
 				if(playerArray[1].equals("1")){
 					iv_avatar.setBackgroundResource(R.drawable.mage);
-					tv_player_name.setTextColor(Color.BLUE);
+					tv_player_name.setTextColor(Color.parseColor("#2E2EFE"));
 				}else{
 					iv_avatar.setBackgroundResource(R.drawable.warlock);
-					tv_player_name.setTextColor(Color.RED);
+					tv_player_name.setTextColor(Color.parseColor("#B40404"));
 				}
 				
 				if(playerArray[2].contains("*")){

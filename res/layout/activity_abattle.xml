@@ -23,11 +23,12 @@
 
         <ImageView
             android:id="@+id/avatarPlayer1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="39dp"
+            android:layout_height="37dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="73dp" />
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="72dp" />
 
         <ProgressBar
             android:id="@+id/pb_life"
@@ -69,7 +70,7 @@
             android:layout_width="50dp"
             android:layout_height="10dp"
             android:layout_above="@+id/pb_mana"
-            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="257dp"
             android:gravity="center"
             android:text="000/000"
             android:textColor="#FFFFFF"
@@ -80,7 +81,7 @@
             android:layout_width="100dp"
             android:layout_height="10dp"
             android:layout_alignTop="@+id/pb_mana"
-            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="232dp"
             android:gravity="center"
             android:text="000/000"
             android:textColor="#FFFFFF"
@@ -120,11 +121,11 @@
 
         <ImageView
             android:id="@+id/avatarPlayer2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="39dp"
+            android:layout_height="37dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="73dp"
+            android:layout_marginRight="72dp"
             android:layout_marginTop="3dp" />
 
         <ProgressBar
@@ -157,8 +158,8 @@
             android:layout_width="100dp"
             android:layout_height="10dp"
             android:layout_alignTop="@+id/pb_contrincantMana"
-            android:layout_centerHorizontal="true"
             android:gravity="center"
+            android:layout_marginLeft="28dp"
             android:text="000/000"
             android:textColor="#FFFFFF"
             android:textSize="7sp" />
@@ -167,9 +168,9 @@
             android:id="@+id/tv_contrincantLife"
             android:layout_width="100dp"
             android:layout_height="10dp"
-            android:layout_alignLeft="@+id/tv_contrincantMana"
             android:layout_alignTop="@+id/pb_contrincantLife"
             android:gravity="center"
+            android:layout_marginLeft="28dp"
             android:text="000/000"
             android:textColor="#FFFFFF"
             android:textSize="7sp" />
