@@ -23,7 +23,6 @@ public class ASplash extends Activity {
 
 	/** Duration of wait **/
 	private final int SPLASH_DISPLAY_LENGTH = 4000;
-	//private final int SPLASH_DISPLAY_LENGTH = 1000;
 	
 	Animation animationFadeIn;
 
@@ -53,19 +52,7 @@ public class ASplash extends Activity {
 		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
         this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
         wakelock.acquire();
-		/** Hide action bar **/
-		// getActionBar().hide();
 		context = this;
-		/*if (checkConnection()) {
-			Toast toast = Toast.makeText(this, "true", Toast.LENGTH_SHORT);
-			toast.show();
-
-		} else {
-			Toast toast = Toast.makeText(this, "false", Toast.LENGTH_SHORT);
-			toast.show();
-			System.exit(1);
-		}*/
-
 	}
 
 	private void startLogin() {
@@ -80,7 +67,6 @@ public class ASplash extends Activity {
 				Intent mainIntent = new Intent(ASplash.this, ALogin.class);
 				
 				ASplash.this.startActivity(mainIntent);
-				//animation1, animation2, animator7, animator8
 				overridePendingTransition(R.animator.animation1, R.animator.animation2);
 				ASplash.this.finish();
 			}
@@ -118,7 +104,7 @@ public class ASplash extends Activity {
 		if (check) {
 			startLogin();
 		}
-		// Thread per separa network del fil principal
+		// Thread per separar network del fil principal
 		new Thread(new Runnable() {
 
 			@Override
