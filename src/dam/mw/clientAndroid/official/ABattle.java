@@ -454,7 +454,7 @@ public class ABattle extends Activity implements OnClickListener {
 						
 						//Dialog end battle
 						dialog.setTitle(result);           
-						dialog.setCancelable(true);  
+						dialog.setCancelable(false);  
 		                
 						dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {  
 		                    public void onClick(DialogInterface dialogo1, int id) {
