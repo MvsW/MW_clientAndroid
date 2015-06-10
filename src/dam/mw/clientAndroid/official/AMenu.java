@@ -59,11 +59,10 @@ public class AMenu extends Activity implements OnClickListener {
 		btn_battle.setTypeface(face);
 		btn_showData.setTypeface(face);
 		
-		//dialog_cancel = (Button)findViewById(R.id.progress_cancel);
 
 	}
 	
-	//Get actions of physical buttons.
+	//Get actions of physical buttons (Back).
 		@Override
 		public boolean onKeyDown(int keyCode, KeyEvent event) {
 			// TODO Auto-generated method stub
@@ -142,16 +141,15 @@ public class AMenu extends Activity implements OnClickListener {
 		        	runOnUiThread(new Runnable() {
 						@Override
 						public void run() {
+							//Music
 							CApp.offMusic();
 							CApp.clear();
 							CApp.onMusic(context, "music/maintheme.mp3");
 						}
 					});
-		        	//music
+		        	
 		        	CApp.setButtonCancelTapped();
 		        	pDialog.dismiss();
-		        	
-		        	
 		        }
 		    });
 		}
@@ -195,14 +193,13 @@ public class AMenu extends Activity implements OnClickListener {
 		switch (v.getId()) {
 
 		case R.id.btn_battle: 
-			//music
+			//Music
 			CApp.offMusic();
 			CApp.clear();
 			CApp.onMusic(context, "music/busquedabatalla.mp3");
 			new searchBattle().execute();
 			break;
-		case R.id.btn_showData: // click show data
-			// send data to server (Register constant).
+		case R.id.btn_showData:
 			new sendData().execute();
 			break;
 		default:

@@ -115,7 +115,6 @@ public class CApp {
 	public static boolean sendRegisterTaped() {
 
 		boolean logged = false;
-		// Log.i("LogsAndroid", ""+connection.equals(null));
 		Log.i("LogsAndroid", "prepare register...");
 		connection.sendData(CConstant.REGISTER + CConstant.SEPARATOR
 				+ CConstant.REGISTER + CConstant.SEPARATOR + 0.0
@@ -150,7 +149,7 @@ public class CApp {
 					Log.i("LogsAndroid", "Cancel sended");
 					buttonCancelTapped = false;
 					if(connection.readData().equals(CConstant.Response.SUCCES)){
-						//op = true;
+						
 					}else{
 						op = false;
 					}
@@ -424,12 +423,10 @@ public class CApp {
 	}
 	
 	public static void clear (){
-		//music.release();
 		music.reset();
 	}
 	
 	public static void clearSound (){
-		//music.release();
 		sound.reset();
 	}
 	

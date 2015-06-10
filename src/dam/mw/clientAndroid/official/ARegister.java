@@ -61,8 +61,6 @@ public class ARegister extends Activity {
 		// Set typeface.
 		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
 
-		// getActionBar().setDisplayHomeAsUpEnabled(true);
-
 		// FindViewBy ID
 		btn_registerActivity = (Button) findViewById(R.id.btn_registerActivity);
 		btn_registerActivity.setTypeface(face);
@@ -149,7 +147,6 @@ public class ARegister extends Activity {
 		case R.id.btn_registerActivity:
 			if (true) {
 				validationOK = true;
-				// Cojer los textos de los editTexts
 				username = et_username.getText().toString();
 				mail = et_mail.getText().toString();
 				password = et_password.getText().toString();

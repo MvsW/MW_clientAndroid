@@ -73,9 +73,8 @@ public class ALogin extends Activity implements OnClickListener {
         Capp.onMusic(this, "music/maintheme.mp3");
         
         // Solution for subtitle already set ERROR: 
-        		// http://stackoverflow.com/questions/20087804/should-have-subtitle-controller-already-set-mediaplayer-error-android
+        //http://stackoverflow.com/questions/20087804/should-have-subtitle-controller-already-set-mediaplayer-error-android
         
-		// TODO: Revisar documentos juancar para quitar top-bars y status-bar.
 		//Set typeface.
 		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
 		
@@ -90,11 +89,13 @@ public class ALogin extends Activity implements OnClickListener {
 		// FindViewBy ID
 		et_usernameOrEmail = (EditText) findViewById(R.id.et_userOrMail);
 		et_usernameOrEmail.setTextColor(Color.WHITE);
+		
 		//Get user after registration process
 		et_usernameOrEmail.setText(usernameRegistred);
 		
 		et_password = (EditText)findViewById(R.id.et_password);
 		et_password.setTextColor(Color.WHITE);
+		//Get password after registration process
 		et_password.setText(passwordRegistered);
 
 		// Add to a ArrayList
@@ -185,8 +186,6 @@ public class ALogin extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		
-		//user1@hotmail.com	User1964
 
 		switch (v.getId()) {
 		case R.id.btn_login:
@@ -194,7 +193,6 @@ public class ALogin extends Activity implements OnClickListener {
 				username = et_usernameOrEmail.getText().toString();
 				password = et_password.getText().toString();
 				// TODO: VALIDACIONES de los CAMPOS
-				// Si estan vac�os o no.
 				if (japp.areEmpty(fields)) {
 					et_usernameOrEmail.setError("Required field");
 					et_password.setError("Required field");
@@ -203,14 +201,11 @@ public class ALogin extends Activity implements OnClickListener {
 					// para conocer los tamaños y maneres de realizar estos
 					// checks) Password lenght: 8
 
-					/*Intent intent = new Intent(context, AMenu.class);
-					startActivity(intent);*/
 					new login().execute();
 				}
 			}
 			break;
 		case R.id.btn_register:
-			// TODO: Falta iniciar la activity
 			
 			new register().execute();
 			

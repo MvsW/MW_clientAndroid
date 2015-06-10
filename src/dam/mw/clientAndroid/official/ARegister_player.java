@@ -89,8 +89,7 @@ public class ARegister_player extends Activity {
 		setContentView(R.layout.activity_register_player);
 		Typeface face = Typeface.createFromAsset(getAssets(), "Augusta.ttf");
 		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
-				"etiqueta");
+		this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
 		wakelock.acquire();
 		
 		((Button)findViewById(R.id.btn_register_player)).setTypeface(face);
@@ -182,14 +181,10 @@ public class ARegister_player extends Activity {
 		String[] fields = (CApp.getDefaultStats(Integer.parseInt(tv_strength_point.getText().toString())
 				, Integer.parseInt(tv_inteligence_point.getText().toString())))
 				.split(CConstant.SEPARATOR);
-		//count_unasigned = count_unasignedBase;
+		
 		tv_life_point.setText(fields[0]);
 		tv_energy_point.setText(fields[1]);
 		tv_energyReg_point.setText(fields[2]);
-		//strengthBase_Points = Integer.parseInt(fields[3]);
-		//intelligenceBase_Points = Integer.parseInt(fields[4]);
-		//intelligence_Points = Integer.parseInt(fields[3]);
-		//strength_Points = Integer.parseInt(fields[4]);
 		tv_strength_point.setText(strength_Points + "");
 		tv_inteligence_point.setText(intelligence_Points + "");
 		tv_unassigned_points.setText(Integer.toString(count_unasigned));
@@ -250,8 +245,7 @@ public class ARegister_player extends Activity {
 							energy = tv_energy_point.getText().toString();
 
 							// Get energy regeneration
-							eRegeneration = tv_energyReg_point.getText()
-									.toString();
+							eRegeneration = tv_energyReg_point.getText().toString();
 
 						}
 					}
@@ -280,14 +274,13 @@ public class ARegister_player extends Activity {
 		}
 
 		if (registreOK == true) {
-			// TODO: Guardar registre a la base de dades.
 
 			new registerPlayer().execute();
 		}
 
 	}
 
-	// Get actions of physical buttons.
+	// Get actions of physical buttons (Back).
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
